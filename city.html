@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>Coffee Shops – Stir My Coffee</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:#faf7f2;
+padding:40px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.location{
+padding:8px 0;
+border-bottom:1px solid #eee;
+}
+
+a{
+text-decoration:none;
+color:#7a4b2c;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 id="cityTitle">Coffee Shops</h1>
+
+<p>
+These coffee locations are tracked on Stir My Coffee.
+Click one to see its Stir Score and vote.
+</p>
+
+<div id="locationList"></div>
+
+<a href="/">← Back to Map</a>
+
+</div>
+
+<script>
+
+const citySlug = window.location.pathname.split("/").pop()
+
+fetch("/coffeeLocations.json")
+.then(r=>r.json())
+.then(data=>{
+
+const list=document.getElementById("locationList")
+
+// simple fake grouping based on coordinates
+const filtered=data.filter(loc=>{
+return Math.floor(loc.lat) == Math.floor(data[0].lat)
+})
+
+document.getElementById("cityTitle").innerText=
+"Coffee Shops in "+citySlug
+
+filtered.forEach(loc=>{
+
+const div=document.createElement("div")
+
+div.className="location"
+
+div.innerHTML=`
+<a href="/shop/${loc.id}">
+${loc.name}
+</a>
+`
+
+list.appendChild(div)
+
+})
+
+})
+
+</script>
+
+</body>
+</html>

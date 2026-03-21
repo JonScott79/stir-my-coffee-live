@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title id="pageTitle">Coffee Shop</title>
+  <meta name="description" id="metaDesc">
+
+  <!-- SEO STRUCTURED DATA -->
+  <script id="schema" type="application/ld+json"></script>
+</head>
+<body>
+
+<h1 id="name"></h1>
+<p id="location"></p>
+
+<p>☕ Stir Rating: <span id="stir">N/A</span></p>
+<p>⚡ Speed Rating: <span id="speed">N/A</span></p>
+
+<script>
+async function loadLocation() {
+  // 🔥 Get slug from URL
+  const path = window.location.pathname;
+  let slug = path.split("/locations/")[1];
+
+  if (slug && slug.endsWith("/")) {
+    slug = slug.slice(0, -1);
+  }
+
+  const res = await fetch("/coffeeLocations.json");
+  const data = await res.json();
+
+  // 🔥 Match slug by converting ID → slug format
+  const shop = data.find(s => {
+    const generatedSlug = s.id.toLowerCase().replace(/_/g, "-");
+    return generatedSlug === slug;
+  });
+
+  if (!shop) {
+    document.body.innerHTML = "<h1>Location not found</h1>";
+    return;
+  }
+
+  // Safe fallbacks (your JSON doesn’t have these yet)
+  const city = shop.city || "";
+  const state = shop.state || "";
+  const stir = shop.stir || "N/A";
+  const speed = shop.speed || "N/A";
+
+  // Fill content
+  document.getElementById("name").textContent = shop.name;
+  document.getElementById("location").textContent =
+    city && state ? `${city}, ${state}` : `${shop.brand} location`;
+
+  document.getElementById("stir").textContent = stir;
+  document.getElementById("speed").textContent = speed;
+
+  // SEO Title + Description
+  document.title = `${shop.name} Coffee Shop Ratings | Stir My Coffee`;
+  document.getElementById("metaDesc").content =
+    `${shop.name} coffee shop ratings. Check stir quality and speed before you go.`;
+
+  // Schema (basic but valid)
+  document.getElementById("schema").textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": shop.name
+  });
+}
+
+loadLocation();
+</script>
+
+</body>
+</html>

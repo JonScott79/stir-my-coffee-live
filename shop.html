@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>Coffee Shop – Stir My Coffee</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+font-family:Arial;
+background:#faf7f2;
+padding:40px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+}
+
+.voteBtn{
+padding:10px 14px;
+margin:6px;
+border:none;
+border-radius:8px;
+background:#eee;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 id="shopName">Loading...</h1>
+
+<p id="shopInfo"></p>
+
+<a href="/">← Back to Map</a>
+
+</div>
+
+<script>
+
+const slug = window.location.pathname.split("/").pop()
+
+fetch("/coffeeLocations.json")
+.then(r=>r.json())
+.then(data=>{
+
+const shop = data.find(s => s.id === slug)
+
+if(!shop){
+document.body.innerHTML="Location not found"
+return
+}
+
+document.getElementById("shopName").innerText = shop.name
+
+document.getElementById("shopInfo").innerText =
+"Location ID: "+shop.id
+
+})
+
+</script>
+
+</body>
+</html>

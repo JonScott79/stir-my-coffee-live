@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="description" content="Find the fastest coffee near you. Stir My Coffee™ is a live crowdsourced map ranking coffee shops by stir quality and speed — built for commuters who need coffee fast.">
+
+<meta name="keywords" content="fast coffee near me, coffee speed rating, best coffee near me, quick coffee, dunkin speed, starbucks wait time, coffee map">
+<meta name="author" content="Stir My Coffee">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://stirmycoffee.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find the Best Coffee Near You ☕⚡">
+<meta property="og:description" content="Live coffee map ranking shops by speed and stir quality. Built for commuters.">
+<meta property="og:image" content="https://stirmycoffee.com/images/StirLogoTM.png">
+<meta property="og:url" content="https://stirmycoffee.com">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Find the Best Coffee Near You ☕⚡">
+<meta name="twitter:description" content="Speed + stir ratings for coffee shops near you.">
+<meta name="twitter:image" content="https://stirmycoffee.com/images/StirLogoTM.png">
+
+<meta name="theme-color" content="#2e7d32">
+
+<link rel="icon" href="/images/favicon.ico">
+<link rel="apple-touch-icon" href="/images/StirLogo.png">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <title>Stir My Coffee™ - Quality and Speed Ratings</title>
+  
+    <link rel="icon" href="images/favicon.ico">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <img src="images/StirLogo.png" class="logo">
+
+  <div class="headerText">
+    <h1>Stir My Coffee™</h1>
+    <p>Find Good Coffee Without the Wait!<br>Rated by Real People.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="actions">
+    <button onclick="goToUser()">📍 Locate Me</button>
+    <button onclick="showMap()">🗺 Map</button>
+    <button onclick="openSubmitForm()">➕ Add a Location</button>
+  </div>
+
+  <div class="mainLayout">
+
+    <!-- LEFT -->
+    <div class="listSection">
+
+      <div class="legend">
+        <span>👍 Vote</span>
+        <span>🌀 Stir Quality</span>
+        <span>⭐ Speed</span>
+        <span>📍 Distance</span>
+        <span>🚗 Directions</span>
+        <span>👥 Votes</span>
+      </div>
+
+      <div id="listContainer">
+        <div id="closestList"></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="topPickSection">
+	<h2><b>🏆 Top Shop</b></h2>
+	<br>
+	  Based on quality, speed, and distance
+      <div id="topPickCard" class="card"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    © 2026 Stir My Coffee™
+    <a href="about.html">About</a>
+    <a href="legal.html">Legal</a>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+  firebase.initializeApp({
+    apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
+    authDomain: "stir-my-coffee.firebaseapp.com",
+    projectId: "stir-my-coffee",
+  });
+
+  const db = firebase.firestore();
+</script>
+
+<script src="js/app.js"></script>
+</body>
+</html>
