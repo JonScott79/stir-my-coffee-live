@@ -11,6 +11,7 @@ let userLat = null;
 let userLng = null;
 
 const DISPLAY_LIMIT = 10;
+const MAX_DISTANCE_MILES = 5;
 
 // ========================
 // INIT
@@ -55,6 +56,18 @@ function showLoading() {
 // ========================
 // LOAD DATA
 // ========================
+
+function getTopPicks(locations) {
+  if (!locations.length) return {};
+
+  const fastest = [...locations].sort((a, b) => (b.speed || 0) - (a.speed || 0))[0];
+
+  const best = [...locations].sort((a, b) => (b.percent || 0) - (a.percent || 0))[0];
+
+  const overall = [...locations].sort((a, b) => b.score - a.score)[0];
+
+  return { fastest, best, overall };
+}
 
 async function loadVotes() {
   const snapshot = await db.collection("votes").get();
@@ -177,18 +190,25 @@ function getUserLocation() {
 function updateDistancesAndSort() {
   if (!userLat || !userLng) return;
 
-  // ✅ update SAME objects
+  // ✅ update distances + scores
   allLocations.forEach(loc => {
     loc.distance = getDistance(userLat, userLng, loc.lat, loc.lng);
     loc.score = calculateScore(loc);
   });
 
-  // ❗ IMPORTANT: DO NOT break reference
-  allLocations.sort((a, b) => b.score - a.score);
+  // 🔥 NEW: FILTER by distance FIRST
+  const nearby = allLocations.filter(loc => loc.distance <= MAX_DISTANCE_MILES);
 
-  // ✅ render from SAME array
-  renderTopPick(allLocations[0]);
-  renderList(allLocations);
+  // ⚠️ fallback if nothing nearby
+  const workingSet = nearby.length > 0 ? nearby : allLocations;
+
+  // 🔥 sort ONLY the working set
+  workingSet.sort((a, b) => b.score - a.score);
+
+  // 🔥 render ONLY filtered results
+  const picks = getTopPicks(workingSet);
+renderTopPicksPanel(picks);
+  renderList(workingSet);
 }
 
 // ========================
@@ -214,6 +234,40 @@ function getDistance(lat1, lon1, lat2, lon2) {
 // ========================
 // RENDER
 // ========================
+
+function renderTopPicksPanel({ fastest, best, overall }) {
+  const el = document.getElementById("topPickCard");
+  if (!el) return;
+
+  el.innerHTML = `
+    ${renderMiniCard("⚡ Fastest", fastest)}
+    ${renderMiniCard("⭐ Best Quality", best)}
+    ${renderMiniCard("🧠 Best Overall", overall)}
+  `;
+}
+
+function renderMiniCard(title, shop) {
+  if (!shop) return `<div class="mini-card">${title}<br>—</div>`;
+
+  return `
+    <div class="mini-card" onclick="openDirections(event, ${shop.lat}, ${shop.lng})">
+      
+      <div class="mini-title">${title}</div>
+
+      <div class="name">
+        ${shop.name}
+        <span class="mini-address">(${shop.street || "..."})</span>
+      </div>
+
+      <div class="meta">
+        <span>🌀 ${shop.percent ? shop.percent + "%" : "—"}</span>
+        <span>⭐ ${shop.speed ? shop.speed.toFixed(1) : "—"}</span>
+        <span>📍 ${shop.distance?.toFixed(1)} mi</span>
+      </div>
+
+    </div>
+  `;
+}
 
 function renderList(locations) {
   const list = document.getElementById("listContainer");
