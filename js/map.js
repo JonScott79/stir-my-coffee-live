@@ -1,52 +1,28 @@
-// ========================
-// LOADING MESSAGES
-// ========================
-
-const loadingMessages = [
-  "Brewing your map ☕",
-  "Grinding the beans...",
-  "Stirring the data...",
-  "Finding fast coffee...",
-  "Condensing road rage...",
-  "Calculating caffeine routes...",
-  "Optimizing your morning...",
-  "Avoiding slow baristas...",
-  "Scanning for elite coffee...",
-  "Fueling your commute...",
-  "Locating liquid motivation...",
-  "Balancing speed vs quality...",
-  "Measuring stir efficiency...",
-  "Reducing coffee disappointment..."
-];
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  addDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ========================
 // FIREBASE
 // ========================
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  setDoc,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 const app = initializeApp({
   apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
   authDomain: "stir-my-coffee.firebaseapp.com",
-  projectId: "stir-my-coffee",
-  storageBucket: "stir-my-coffee.firebasestorage.app",
-  messagingSenderId: "466856067497",
-  appId: "1:466856067497:web:4f6e5b4825b380530984b8"
+  projectId: "stir-my-coffee"
 });
 
 const db = getFirestore(app);
 
 // ========================
-// MAP SETUP
+// MAP
 // ========================
 
 const map = L.map("map").setView([39, -98], 4);
@@ -61,52 +37,81 @@ map.addLayer(markers);
 // ========================
 
 let allLocations = [];
+let staticLocations = [];
 let votesCache = {};
 let newShopCoords = null;
 let userLocation = null;
-
-const closestList = document.getElementById("closestList");
-
-// ========================
-// LOADING UI
-// ========================
-
-function showLoading() {
-  const text = document.getElementById("loadingText");
-  if (text) {
-    text.innerText =
-      loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
-  }
-}
-
-function hideLoading() {
-  const screen = document.getElementById("loadingScreen");
-  if (screen) screen.style.display = "none";
-}
+let tempMarker = null;
 
 // ========================
 // LOAD LOCATIONS
 // ========================
 
-async function loadLocations() {
-  console.log("Loading locations...");
+async function loadLocationsRealtime() {
+  const locationsRef = collection(db, "locations");
 
-  const res = await fetch("coffeeLocations.json");
-  const staticLocations = (await res.json()).map((loc, i) => ({
-    ...loc,
-    id: loc.id || `static_${i}`
-  }));
+  // Static
+  try {
+    const res = await fetch("./coffeeLocations.json");
+    const data = await res.json();
 
-  const snap = await getDocs(collection(db, "locations"));
-  const customLocations = snap.docs.map(d => ({
-    ...d.data(),
-    id: d.id
-  }));
+    staticLocations = data.map((loc, i) => ({
+      ...loc,
+      id: loc.id || `static_${i}`,
+      isFirebase: false
+    }));
+
+    console.log("✅ Static loaded:", staticLocations.length);
+  } catch (err) {
+    console.warn("❌ Static load failed:", err);
+  }
+
+  // Firebase realtime
+// Firebase realtime
+onSnapshot(locationsRef, snapshot => {
+  const customLocations = snapshot.docs.map(d => {
+    const data = d.data();
+
+    console.log("🔥 FIREBASE DOC:", data);
+
+    let lat = Number(data.lat ?? data.latitude ?? data.location?.lat);
+    let lng = Number(data.lng ?? data.long ?? data.longitude ?? data.location?.lng);
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+      console.warn("⚠️ FIXING BAD DATA:", data);
+      lat = 0;
+      lng = 0;
+    }
+
+    console.log("👉 FINAL COORDS:", { lat, lng });
+
+    return {
+      id: d.id,
+      name: data.name || "Unnamed Shop",
+      lat,
+      lng,
+      isFirebase: true
+    };
+  });
+
+  console.log("🔥 Firebase locations:", customLocations.length);
 
   allLocations = [...staticLocations, ...customLocations];
 
-  console.log("Locations loaded:", allLocations.length);
-}
+  console.log("🔥 Total locations:", allLocations.length);
+
+  render();
+
+  const group = new L.featureGroup(markers.getLayers());
+  if (group.getLayers().length > 0) {
+    map.fitBounds(group.getBounds(), {
+      padding: [50, 50],
+      maxZoom: 14
+    });
+  }
+});
+
+} // ✅ THIS WAS MISSING
 
 // ========================
 // VOTES
@@ -115,54 +120,56 @@ async function loadLocations() {
 async function getVoteData(id) {
   if (votesCache[id]) return votesCache[id];
 
-  try {
-    const ref = doc(db, "votes", id);
-    const snap = await getDoc(ref);
+  const ref = doc(db, "votes", id);
+  const snap = await getDoc(ref);
 
-    if (!snap.exists()) {
-      votesCache[id] = { votes: 0, percent: 0 };
-      return votesCache[id];
-    }
-
-    const d = snap.data();
-    const votes = d.votes || 0;
-    const stirs = d.stirs || 0;
-
-    const data = {
-      votes,
-      percent: votes ? Math.round((stirs / votes) * 100) : 0
-    };
-
-    votesCache[id] = data;
-    return data;
-
-  } catch (err) {
-    console.warn("Vote fetch failed:", err);
-    return { votes: 0, percent: 0 };
+  if (!snap.exists()) {
+    return (votesCache[id] = { votes: 0, percent: 0 });
   }
+
+  const d = snap.data();
+  const votes = d.votes || 0;
+  const stirs = d.stirs || 0;
+
+  return (votesCache[id] = {
+    votes,
+    percent: votes ? Math.round((stirs / votes) * 100) : 0
+  });
 }
 
 // ========================
-// RENDER MAP
+// RENDER
 // ========================
 
 function render() {
   markers.clearLayers();
 
+  console.log("=== RENDER START ===");
+
   for (let loc of allLocations) {
-    const marker = L.circleMarker([loc.lat, loc.lng], {
-      radius: 8,
-      fillColor: "#aaa",
-      fillOpacity: 0.9,
-      color: "#333"
-    });
+    if (!Number.isFinite(loc.lat) || !Number.isFinite(loc.lng)) {
+      console.warn("❌ STILL BAD:", loc);
+      continue;
+    }
+
+    // 🚫 prevent bad fallback coords from polluting map
+    if (loc.lat === 0 && loc.lng === 0) {
+      console.warn("🚫 SKIPPING ZERO COORD:", loc);
+      continue;
+    }
+
+const marker = L.circleMarker([loc.lat, loc.lng], {
+  radius: loc.isFirebase ? 16 : 4,
+  fillColor: loc.isFirebase ? "#ff0000" : "#aaa",
+  fillOpacity: 1,
+  color: "#000"
+});
 
     marker.on("click", () => showPopup(loc));
-
     markers.addLayer(marker);
   }
 
-  if (userLocation) updateClosest();
+  console.log("=== RENDER END ===");
 }
 
 // ========================
@@ -206,49 +213,6 @@ window.vote = async (e, id, yes) => {
 };
 
 // ========================
-// CLOSEST PANEL
-// ========================
-
-function updateClosest() {
-  if (!userLocation || !closestList) return;
-
-  let list = allLocations
-    .map(loc => {
-      const d = map.distance([loc.lat, loc.lng], userLocation);
-      const s = votesCache[loc.id] || { percent: 0 };
-
-      return {
-        ...loc,
-        d,
-        percent: s.percent
-      };
-    })
-    .sort((a, b) => a.d - b.d)
-    .slice(0, 5);
-
-  closestList.innerHTML = list.map(l => `
-    <div class="location-card" onclick="focusLocation('${l.id}')">
-      <div>${l.name}</div>
-      <div>${(l.d / 1609).toFixed(2)} mi</div>
-      <button onclick="openDirections(event, ${l.lat}, ${l.lng})">📍</button>
-    </div>
-  `).join("");
-}
-
-window.focusLocation = (id) => {
-  const loc = allLocations.find(l => l.id === id);
-  if (!loc) return;
-
-  map.flyTo([loc.lat, loc.lng], 16);
-  showPopup(loc);
-};
-
-window.openDirections = (e, lat, lng) => {
-  e.stopPropagation();
-  window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, "_blank");
-};
-
-// ========================
 // GEOLOCATION
 // ========================
 
@@ -256,7 +220,6 @@ window.goToUser = () => {
   navigator.geolocation.getCurrentPosition(pos => {
     userLocation = [pos.coords.latitude, pos.coords.longitude];
     map.flyTo(userLocation, 14);
-    updateClosest();
   });
 };
 
@@ -274,7 +237,13 @@ window.closeSubmitForm = () => {
 
 map.on("click", (e) => {
   newShopCoords = e.latlng;
-  console.log("Selected:", newShopCoords);
+
+  if (tempMarker) map.removeLayer(tempMarker);
+
+  tempMarker = L.marker(e.latlng)
+    .addTo(map)
+    .bindPopup("📍 New shop here")
+    .openPopup();
 });
 
 window.submitShop = async () => {
@@ -285,17 +254,31 @@ window.submitShop = async () => {
     return;
   }
 
+  const marker = L.circleMarker([newShopCoords.lat, newShopCoords.lng], {
+    radius: 8,
+    fillColor: "#2ecc71",
+    fillOpacity: 0.9,
+    color: "#2ecc71"
+  });
+
+  marker.bindPopup(`<b>${name}</b><br>Pending votes`);
+  markers.addLayer(marker);
+
   await addDoc(collection(db, "locations"), {
     name,
     lat: newShopCoords.lat,
-    lng: newShopCoords.lng,
-    source: "user"
+    lng: newShopCoords.lng
   });
 
   alert("Added!");
+};
 
-  await loadLocations();
-  render();
+// ========================
+// NAV
+// ========================
+
+window.goToList = () => {
+  window.location.href = "/";
 };
 
 // ========================
@@ -303,26 +286,23 @@ window.submitShop = async () => {
 // ========================
 
 async function init() {
-  console.log("INIT START");
+  await loadLocationsRealtime();
 
-  showLoading();
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      userLocation = [pos.coords.latitude, pos.coords.longitude];
 
-  try {
-    await loadLocations();
-    render();
+      map.flyTo(userLocation, 14, { duration: 0.6 });
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        userLocation = [pos.coords.latitude, pos.coords.longitude];
-        updateClosest();
-      });
-    }
-
-  } catch (err) {
-    console.error("INIT FAILED:", err);
+      L.circleMarker(userLocation, {
+        radius: 6,
+        fillColor: "#007bff",
+        fillOpacity: 1,
+        color: "#fff",
+        weight: 2
+      }).addTo(map);
+    });
   }
-
-  hideLoading();
 }
 
 init();

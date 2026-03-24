@@ -103,13 +103,22 @@ async function loadAddresses() {
 }
 
 async function loadLocations() {
-	console.log("LOAD LOCATIONS START");
+  console.log("LOAD LOCATIONS START");
+
   try {
+    // ✅ Load static locations
     const response = await fetch("./coffeeLocations.json");
+    const staticData = await response.json();
 
-    if (!response.ok) throw new Error("HTTP error " + response.status);
+    // ✅ Load Firebase locations
+    const snapshot = await db.collection("locations").get();
+    const firebaseData = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
 
-    const data = await response.json();
+    // ✅ Combine both
+    const combined = [...staticData, ...firebaseData];
 
     let votes = {};
     try {
@@ -118,23 +127,21 @@ async function loadLocations() {
       console.warn("Votes failed to load");
     }
 
-    allLocations = Array.isArray(data)
-      ? data.map(loc => {
-          const v = votes[loc.id] || {};
-          const up = v.upvotes || 0;
-          const down = v.downvotes || 0;
-          const total = up + down;
+    allLocations = combined.map(loc => {
+      const v = votes[loc.id] || {};
+      const up = v.upvotes || 0;
+      const down = v.downvotes || 0;
+      const total = up + down;
 
-          return {
-            ...loc,
-            street: "",
-            percent: total ? Math.round((up / total) * 100) : 0,
-            speed: 0,
-            votes: total,
-            distance: 0
-          };
-        })
-      : [];
+      return {
+        ...loc,
+        street: "",
+        percent: total ? Math.round((up / total) * 100) : 0,
+        speed: 0,
+        votes: total,
+        distance: 0
+      };
+    });
 
   } catch (err) {
     console.error("LOAD FAILED:", err);
@@ -382,4 +389,10 @@ function calculateScore(shop) {
     (shop.speed || 0) * 20 * 0.3 +
     (shop.distance > 0 ? Math.max(0, 100 - shop.distance * 20) : 0) * 0.2
   );
+}
+
+// Buttons
+
+function goToMap() {
+  window.location.href = "/map.html";
 }

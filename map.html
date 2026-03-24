@@ -4,36 +4,14 @@
 
 <meta charset="utf-8">
 
-<title>Stir My Coffee™ | Best Coffee Near You (Stir + Speed Ratings)</title>
+<title>Stir My Coffee™ | Map</title>
 
-<meta name="description" content="Find the fastest coffee near you. Stir My Coffee™ is a live crowdsourced map ranking coffee shops by stir quality and speed — built for commuters who need coffee fast.">
-
-<meta name="keywords" content="fast coffee near me, coffee speed rating, best coffee near me, quick coffee, dunkin speed, starbucks wait time, coffee map">
-<meta name="author" content="Stir My Coffee">
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://stirmycoffee.com">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Find the Best Coffee Near You ☕⚡">
-<meta property="og:description" content="Live coffee map ranking shops by speed and stir quality. Built for commuters.">
-<meta property="og:image" content="https://stirmycoffee.com/images/StirLogoTM.png">
-<meta property="og:url" content="https://stirmycoffee.com">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Find the Best Coffee Near You ☕⚡">
-<meta name="twitter:description" content="Speed + stir ratings for coffee shops near you.">
-<meta name="twitter:image" content="https://stirmycoffee.com/images/StirLogoTM.png">
-
-<meta name="theme-color" content="#2e7d32">
-
 <link rel="icon" href="/images/favicon.ico">
-<link rel="apple-touch-icon" href="/images/StirLogo.png">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/map.css">
@@ -42,103 +20,31 @@
 
 <body>
 
-<div id="loadingScreen">
-  <img src="images/StirLogo.png" id="loadingLogo">
-  <div id="loadingText">Brewing your map ☕...</div>
-</div>
-
 <div id="header">
   <img src="images/StirLogo.png" id="logo">
-  <button id="locBtn" onclick="goToUser()">📍 Coffee Near Me</button>
-  <a id="submitShopBtn" onclick="openSubmitForm()">➕ Add a Location</a>
+
+  <button id="backBtn" onclick="goToList()">📋 List</button>
+  <button id="locBtn" onclick="goToUser()">📍 Center</button>
+  <button id="submitShopBtn" onclick="openSubmitForm()">➕ Add</button>
 </div>
 
-<div id="mainContent">
+<div id="map"></div>
 
-  <div class="tagline">
-    We are experiencing technical issues with our database, we are working on fixing it right now.
-  </div>
-
-  <div id="map">
-
-    <!-- 🔥 FIXED PANEL (everything inside) -->
-    <div id="closestPanel" class="panel collapsed">
-
-      <div class="panel-header" onclick="togglePanel()" style="cursor:pointer;font-weight:bold;">
-        ⚡ Best Coffee Nearby <span id="panelArrow">▼</span>
-      </div>
-
-      <div id="closestList"></div>
-
-    </div>
-
-  </div>
-
-  <div id="submitPanel" class="panel">
-    <b>Add Coffee Shop</b><br><br>
-    Click map to place<br><br>
-    <input id="shopName" placeholder="Shop name"><br><br>
-    <button onclick="submitShop()">Submit</button>
-    <button onclick="closeSubmitForm()">Cancel</button>
-  </div>
-
-  <div id="legendBar">
-    🟢 Good&nbsp;&nbsp;|&nbsp;&nbsp;
-    🟡 Meh&nbsp;&nbsp;|&nbsp;&nbsp;
-    🔴 Bad&nbsp;&nbsp;|&nbsp;&nbsp;
-    ⚪ Unranked
-  </div>
-
+<div id="submitPanel" class="panel">
+  <b>Add Coffee Shop</b><br><br>
+  Click map to place<br><br>
+  <input id="shopName" placeholder="Shop name"><br><br>
+  <button onclick="submitShop()">Submit</button>
+  <button onclick="closeSubmitForm()">Cancel</button>
 </div>
 
-<footer>
-  <div class="footer-left">
-    © 2026 Stir My Coffee™
-    <a href="about.html">About</a>
-    <a href="https://venmo.com/JonScott79" target="_blank">Donate</a>
-    <a href="mailto:hello@stirmycoffee.com">Contact</a>
-    <a href="legal.html">Legal</a>
-  </div>
-
-  <div class="footer-right">
-  <button id="helpBtn" onclick="openIntro()">How it works</button>
-    <a href="https://instagram.com/stir.my.coffee" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-</footer>
-
-<!-- Instructions PopUp -->
-<div id="introPopup" class="popup-overlay">
-  <div class="popup-box">
-
-    <img src="images/StirLogo.png" class="popup-logo" alt="Stir My Coffee Logo">
-
-    <h2>Welcome to Stir My Coffee™</h2>
-
-<p>
-  Discover coffee shops rated by real people based on what actually matters:
-  <strong>stir quality and speed.</strong>
-</p>
-    <ul class="popup-list">
-      <li><strong>🌀 Stir Rating:</strong> Percentage of customers who received a properly stirred coffee</li>
-      <li><strong>⭐ Speed Rating:</strong> How fast your coffee is prepared</li>
-      <li><strong>📍 Near Me:</strong> Instantly find the best nearby options</li>
-      <li><strong>➕ Add Location:</strong> Submit new coffee shops to the map</li>
-    </ul>
-
-    <p class="popup-footer">
-      Built for people who are tired of getting handed a cup of disappointment.
-    </p>
-
-    <button onclick="closeIntro()">Got it</button>
-
-  </div>
+<div id="legendBar">
+  🟢 Good | 🟡 Meh | 🔴 Bad | ⚪ Unranked
 </div>
 
-<!-- Java Stuff -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
 <script type="module" src="js/map.js"></script>
 
 </body>
