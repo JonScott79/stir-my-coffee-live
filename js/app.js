@@ -1,5 +1,3 @@
-console.log("🔥 APP.JS LOADED");
-
 // ========================
 // GLOBAL STATE
 // ========================
@@ -95,23 +93,19 @@ async function getAddress(lat, lng) {
   }
 }
 
-async function loadAddresses() {
-  console.log("LOAD ADDRESSES RUNNING");
-
-  for (let i = 0; i < Math.min(10, allLocations.length); i++) {
-    const loc = allLocations[i];
+async function loadAddressesForVisible(locations) {
+  for (const loc of locations) {
+    if (loc.street) continue;
 
     try {
       const addr = await getAddress(loc.lat, loc.lng);
-      console.log("ADDRESS:", loc.name, addr); // ✅ correct place
       loc.street = addr;
-    } catch (e) {
+    } catch {
       loc.street = "Unknown location";
     }
 
+    // 🔥 re-run full pipeline
     updateDistancesAndSort();
-
-    await new Promise(res => setTimeout(res, 200));
   }
 }
 
@@ -214,6 +208,9 @@ const sortedByDistance = [...workingSet].sort((a, b) => a.distance - b.distance)
 
 // 🔥 render list as closest first
 renderList(sortedByDistance);
+
+const visible = sortedByDistance.slice(0, DISPLAY_LIMIT);
+loadAddressesForVisible(visible);
 }
 
 // ========================
