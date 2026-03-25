@@ -202,13 +202,18 @@ function updateDistancesAndSort() {
   // ⚠️ fallback if nothing nearby
   const workingSet = nearby.length > 0 ? nearby : allLocations;
 
-  // 🔥 sort ONLY the working set
-  workingSet.sort((a, b) => b.score - a.score);
+// 🔥 SORT FOR TOP PICKS (smart ranking)
+const sortedByScore = [...workingSet].sort((a, b) => b.score - a.score);
 
-  // 🔥 render ONLY filtered results
-  const picks = getTopPicks(workingSet);
+// 🔥 get top picks from smart ranking
+const picks = getTopPicks(sortedByScore);
 renderTopPicksPanel(picks);
-  renderList(workingSet);
+
+// 🔥 SORT FOR LEFT PANEL (distance ONLY)
+const sortedByDistance = [...workingSet].sort((a, b) => a.distance - b.distance);
+
+// 🔥 render list as closest first
+renderList(sortedByDistance);
 }
 
 // ========================
@@ -273,16 +278,13 @@ function renderList(locations) {
   const list = document.getElementById("listContainer");
   if (!list) return;
 
-  const topId = locations[0]?.id;
-
   list.innerHTML = locations
     .slice(0, DISPLAY_LIMIT)
     .map(l => `
-      <div class="location-card ${l.id === topId ? 'top' : ''}" onclick="selectLocation('${l.id}')">
+      <div class="location-card" onclick="selectLocation('${l.id}')">
         
         <div class="card-header">
           <div class="name">${l.name}</div>
-          ${l.id === topId ? `<div class="badge">🔥 Top Pick</div>` : ``}
         </div>
 
         <div class="street">${l.street || "Loading address..."}</div>

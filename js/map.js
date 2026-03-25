@@ -1,3 +1,39 @@
+// ========================
+// GLOBALS
+// ========================
+
+
+
+window.reportLocation = async (id) => {
+  try {
+    const loc = allLocations.find(l => l.id === id);
+
+    await addDoc(collection(db, "reports"), {
+      locationId: id,
+      name: loc?.name || "Unknown",
+      lat: loc?.lat,
+      lng: loc?.lng,
+      timestamp: Date.now()
+    });
+
+    alert("✅ Location reported. Thanks!");
+
+  } catch (err) {
+    console.error("❌ REPORT FAILED:", err);
+    alert("❌ Report failed — check console");
+    throw err; // 🔥 important for button recovery
+  }
+};
+
+
+
+
+
+
+
+let isAddingMode = false;
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getFirestore,
@@ -29,7 +65,17 @@ const map = L.map("map").setView([39, -98], 4);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-const markers = L.markerClusterGroup();
+const markers = L.markerClusterGroup({
+  iconCreateFunction: function (cluster) {
+    const count = cluster.getChildCount();
+
+    return L.divIcon({
+      html: `<div class="cluster-icon">${count}</div>`,
+      className: "custom-cluster",
+      iconSize: L.point(40, 40)
+    });
+  }
+});
 map.addLayer(markers);
 
 // ========================
@@ -159,10 +205,11 @@ function render() {
     }
 
 const marker = L.circleMarker([loc.lat, loc.lng], {
-  radius: loc.isFirebase ? 16 : 4,
-  fillColor: loc.isFirebase ? "#ff0000" : "#aaa",
-  fillOpacity: 1,
-  color: "#000"
+  radius: 6,
+  fillColor: "#4b2e2b", // your brand color
+  fillOpacity: 0.9,
+  color: "#fff",
+  weight: 1
 });
 
     marker.on("click", () => showPopup(loc));
@@ -177,17 +224,30 @@ const marker = L.circleMarker([loc.lat, loc.lng], {
 // ========================
 
 function showPopup(loc) {
-  getVoteData(loc.id).then(s => {
-    L.popup()
-      .setLatLng([loc.lat, loc.lng])
-      .setContent(`
-        <b>${loc.name}</b><br>
-        Stir: ${s.votes ? s.percent + "%" : "—"}<br>
-        <button onclick="vote(event,'${loc.id}',true)">👍</button>
-        <button onclick="vote(event,'${loc.id}',false)">👎</button>
-      `)
-      .openOn(map);
-  });
+  const popup = L.popup()
+    .setLatLng([loc.lat, loc.lng])
+    .setContent(`
+      <b>${loc.name}</b><br><br>
+      <button class="reportBtn">🚩 Report Location</button>
+    `)
+    .openOn(map);
+
+  setTimeout(() => {
+    const popupEl = document.querySelector(".leaflet-popup");
+    const btn = popupEl?.querySelector(".reportBtn");
+
+    if (btn) {
+      btn.onclick = async () => {
+        btn.disabled = true;
+
+        try {
+          await reportLocation(loc.id);
+        } catch (err) {
+          btn.disabled = false;
+        }
+      };
+    }
+  }, 0);
 }
 
 // ========================
@@ -228,6 +288,7 @@ window.goToUser = () => {
 // ========================
 
 window.openSubmitForm = () => {
+  isAddingMode = true;
   document.getElementById("submitPanel").style.display = "block";
 };
 
@@ -236,6 +297,8 @@ window.closeSubmitForm = () => {
 };
 
 map.on("click", (e) => {
+  if (!isAddingMode) return; // 🚫 BLOCK unless adding
+
   newShopCoords = e.latlng;
 
   if (tempMarker) map.removeLayer(tempMarker);
@@ -255,10 +318,11 @@ window.submitShop = async () => {
   }
 
   const marker = L.circleMarker([newShopCoords.lat, newShopCoords.lng], {
-    radius: 8,
-    fillColor: "#2ecc71",
+    radius: 6,
+    fillColor: "#4b2e2b",
     fillOpacity: 0.9,
-    color: "#2ecc71"
+    color: "#fff",
+    weight: 1
   });
 
   marker.bindPopup(`<b>${name}</b><br>Pending votes`);
@@ -273,6 +337,15 @@ window.submitShop = async () => {
   alert("Added!");
 };
 
+window.closeSubmitForm = () => {
+  isAddingMode = false;
+  document.getElementById("submitPanel").style.display = "none";
+
+  if (tempMarker) {
+    map.removeLayer(tempMarker);
+    tempMarker = null;
+  }
+};
 // ========================
 // NAV
 // ========================
