@@ -12,6 +12,38 @@ const DISPLAY_LIMIT = 10;
 const MAX_DISTANCE_MILES = 5;
 
 // ========================
+// Voting Limitation
+// ========================
+
+const VOTE_LIMIT_HOURS = 24;
+
+function getVoteHistory() {
+  return JSON.parse(localStorage.getItem("voteHistory") || "{}");
+}
+
+function saveVoteHistory(history) {
+  localStorage.setItem("voteHistory", JSON.stringify(history));
+}
+
+function canVote(id) {
+  const history = getVoteHistory();
+  const lastVote = history[id];
+
+  if (!lastVote) return true;
+
+  const now = Date.now();
+  const hoursPassed = (now - lastVote) / (1000 * 60 * 60);
+
+  return hoursPassed >= VOTE_LIMIT_HOURS;
+}
+
+function recordVote(id) {
+  const history = getVoteHistory();
+  history[id] = Date.now();
+  saveVoteHistory(history);
+}
+
+// ========================
 // USER location
 // ========================
 
@@ -91,32 +123,78 @@ async function loadVotes() {
 }
 
 async function getAddress(lat, lng) {
+  const key = `addr_${lat}_${lng}`;
+
+  // ✅ 1. CHECK CACHE FIRST
+  const cached = localStorage.getItem(key);
+  if (cached) {
+    return cached;
+  }
+
   try {
     const res = await fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
     );
 
     const data = await res.json();
 
-    return data.locality || data.city || data.principalSubdivision || "Unknown location";
+    const address =
+      data.address?.city ||
+      data.address?.town ||
+      data.address?.village ||
+      data.address?.state ||
+      null;
+
+    // ✅ 2. SAVE TO CACHE (THIS IS YOUR LINE)
+    if (address) {
+      localStorage.setItem(key, address);
+    }
+
+    return address;
+
   } catch (err) {
     console.error("Address lookup failed:", err);
-    return "Unknown location";
+    return null;
   }
 }
 
 async function loadAddressesForVisible(locations) {
+  let updated = false;
+
   for (const loc of locations) {
-    if (loc.street) continue;
+    // ✅ Skip if already has a real address
+if (loc.street !== null) continue;
+
+    // ✅ Prevent duplicate in-flight requests
+    if (loc.loadingAddress) continue;
+
+    // ✅ Retry cooldown (5 seconds)
+    if (loc.lastAddressAttempt && Date.now() - loc.lastAddressAttempt < 5000) continue;
+
+    loc.loadingAddress = true;
+    loc.lastAddressAttempt = Date.now();
 
     try {
       const addr = await getAddress(loc.lat, loc.lng);
-      loc.street = addr;
+
+      if (addr) {
+        loc.street = addr;
+      } else {
+        // ❌ DO NOT lock it into "Unknown"
+        if (!loc.street) loc.street = null;
+      }
+
     } catch {
-      loc.street = "Unknown location";
+      // same logic on failure
+      if (!loc.street) loc.street = null;
     }
 
-    // 🔥 re-run full pipeline
+    loc.loadingAddress = false;
+    updated = true;
+  }
+
+  // ✅ Only rerender once after batch
+  if (updated) {
     updateDistancesAndSort();
   }
 }
@@ -154,7 +232,7 @@ async function loadLocations() {
 
       return {
         ...loc,
-        street: "",
+        street: null,
         percent: total ? Math.round((up / total) * 100) : 0,
         speed: 0,
         votes: total,
@@ -289,39 +367,57 @@ function renderList(locations) {
 
   list.innerHTML = locations
     .slice(0, DISPLAY_LIMIT)
-    .map(l => `
-      <div class="location-card" onclick="selectLocation('${l.id}')">
-        
-        <div class="card-header">
-          <div class="name">${l.name}</div>
+    .map(l => {
+      const canUserVote = canVote(l.id);
+      const voteDisabled = canUserVote ? "" : "disabled";
+
+      const canUserRate = canRateSpeed(l.id);
+
+      return `
+        <div class="location-card" onclick="selectLocation('${l.id}')">
+          
+          <div class="card-header">
+            <div class="name">${l.name}</div>
+          </div>
+
+          <div class="street">${l.street === null ? "Unknown location" : (l.street || "Loading address...")}</div>
+
+          <div class="meta">
+
+            <span class="vote-inline">
+              <button ${voteDisabled} onclick="vote(event, '${l.id}', true)">👍</button>
+              <button ${voteDisabled} onclick="vote(event, '${l.id}', false)">👎</button>
+            </span>
+
+            <span class="quality ${getRatingClass(l.percent)}">
+              🌀 ${l.percent ? l.percent + "%" : "—"}
+            </span>
+
+            <span class="stars">
+              ${Array.from({ length: 5 }, (_, i) => {
+                const rounded = Math.round(l.speed);
+                const filled = i + 1 <= rounded ? "★" : "☆";
+
+                const disabledStyle = !canUserRate
+                  ? 'style="opacity:0.4;pointer-events:none;"'
+                  : "";
+
+                return `<span ${disabledStyle} onclick="rateSpeed(event, '${l.id}', ${i + 1})">${filled}</span>`;
+              }).join("")}
+            </span>
+
+            <span>📍 ${l.distance?.toFixed(1) ?? "—"} mi</span>
+
+            <span class="directions" onclick="openDirections(event, ${l.lat}, ${l.lng})">
+              🚗
+            </span>
+
+            <span>👥 ${l.votes}</span>
+
+          </div>
         </div>
-
-        <div class="street">${l.street || "Loading address..."}</div>
-
-        <div class="meta">
-
-          <span class="vote-inline">
-            <button onclick="vote(event, '${l.id}', true)">👍</button>
-            <button onclick="vote(event, '${l.id}', false)">👎</button>
-          </span>
-
-          <span class="quality ${getRatingClass(l.percent)}">
-            🌀 ${l.percent ? l.percent + "%" : "—"}
-          </span>
-
-          <span class="stars">${renderStars(l.id, l.speed)}</span>
-
-          <span>📍 ${l.distance?.toFixed(1) ?? "—"} mi</span>
-
-          <span class="directions" onclick="openDirections(event, ${l.lat}, ${l.lng})">
-            🚗
-          </span>
-
-          <span>👥 ${l.votes}</span>
-
-        </div>
-      </div>
-    `).join("");
+      `;
+    }).join("");
 }
 
 function renderTopPick(shop) {
@@ -387,21 +483,21 @@ function subscribeToVotes() {
 function vote(e, id, up) {
   e.stopPropagation();
 
-  if (voted.has(id)) {
-    console.log("Already voted");
+  if (!canVote(id)) {
+    alert("⏳ You can vote again on this shop in 24 hours.");
     return;
   }
 
-  voted.add(id);
+  recordVote(id);
 
   const ref = db.collection("votes").doc(id);
 
-ref.set({
-  upvotes: firebase.firestore.FieldValue.increment(up ? 1 : 0),
-  downvotes: firebase.firestore.FieldValue.increment(!up ? 1 : 0)
-}, { merge: true })
-.then(() => console.log("✅ Vote saved:", id))
-.catch(err => console.error("❌ Vote failed:", err));
+  ref.set({
+    upvotes: firebase.firestore.FieldValue.increment(up ? 1 : 0),
+    downvotes: firebase.firestore.FieldValue.increment(!up ? 1 : 0)
+  }, { merge: true })
+  .then(() => console.log("✅ Vote saved:", id))
+  .catch(err => console.error("❌ Vote failed:", err));
 
   e.target.classList.add("pop");
   setTimeout(() => e.target.classList.remove("pop"), 300);
@@ -422,6 +518,13 @@ const filled = i + 1 <= rounded ? "★" : "☆";
 
 function rateSpeed(e, id, rating) {
   e.stopPropagation();
+
+  if (!canRateSpeed(id)) {
+    alert("⏳ You already rated speed here. Try again later.");
+    return;
+  }
+
+  recordSpeedRating(id);
 
   const ref = db.collection("votes").doc(id);
 
@@ -454,6 +557,34 @@ function calculateScore(shop) {
     (shop.speed || 0) * 20 * 0.3 +
     (shop.distance > 0 ? Math.max(0, 100 - shop.distance * 20) : 0) * 0.2
   );
+}
+
+const SPEED_LIMIT_HOURS = 24;
+
+function getSpeedHistory() {
+  return JSON.parse(localStorage.getItem("speedHistory") || "{}");
+}
+
+function saveSpeedHistory(history) {
+  localStorage.setItem("speedHistory", JSON.stringify(history));
+}
+
+function canRateSpeed(id) {
+  const history = getSpeedHistory();
+  const last = history[id];
+
+  if (!last) return true;
+
+  const now = Date.now();
+  const hoursPassed = (now - last) / (1000 * 60 * 60);
+
+  return hoursPassed >= SPEED_LIMIT_HOURS;
+}
+
+function recordSpeedRating(id) {
+  const history = getSpeedHistory();
+  history[id] = Date.now();
+  saveSpeedHistory(history);
 }
 
 // Buttons
