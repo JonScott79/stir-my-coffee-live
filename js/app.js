@@ -12,6 +12,21 @@ const DISPLAY_LIMIT = 10;
 const MAX_DISTANCE_MILES = 5;
 
 // ========================
+// USER location
+// ========================
+
+function goToUser() {
+  getUserLocation().then(location => {
+    userLat = location.lat;
+    userLng = location.lng;
+
+    console.log("📍 Re-centered to user:", userLat, userLng);
+
+    updateDistancesAndSort();
+  });
+}
+
+// ========================
 // INIT
 // ========================
 
@@ -33,9 +48,6 @@ async function init() {
   console.log("📍 User location:", userLat, userLng);
 
   updateDistancesAndSort();
-
-  // 🔥 NOW load addresses (correct timing)
-  loadAddresses();
 
   subscribeToVotes();
 }
