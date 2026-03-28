@@ -125,7 +125,7 @@ async function loadVotes() {
 async function getAddress(lat, lng) {
   const key = `addr_${lat}_${lng}`;
 
-  // ✅ 1. CHECK CACHE FIRST
+  // ✅ 1. CACHE
   const cached = localStorage.getItem(key);
   if (cached) {
     return cached;
@@ -138,19 +138,33 @@ async function getAddress(lat, lng) {
 
     const data = await res.json();
 
-    const address =
-      data.address?.city ||
-      data.address?.town ||
-      data.address?.village ||
-      data.address?.state ||
-      null;
+    // ⚠️ safety check
+    if (!data || !data.address) return null;
 
-    // ✅ 2. SAVE TO CACHE (THIS IS YOUR LINE)
-    if (address) {
-      localStorage.setItem(key, address);
+    const addr = data.address;
+
+    const streetAddress = [
+      addr.house_number,
+      addr.road
+    ].filter(Boolean).join(" ");
+
+    const city =
+      addr.city ||
+      addr.town ||
+      addr.village ||
+      addr.hamlet ||   // 🔥 add this for small areas
+      "";
+
+    const fullAddress = [streetAddress, city]
+      .filter(Boolean)
+      .join(", ");
+
+    // ✅ cache only if valid
+    if (fullAddress) {
+      localStorage.setItem(key, fullAddress);
     }
 
-    return address;
+    return fullAddress || null;
 
   } catch (err) {
     console.error("Address lookup failed:", err);
@@ -380,7 +394,13 @@ function renderList(locations) {
             <div class="name">${l.name}</div>
           </div>
 
-          <div class="street">${l.street === null ? "Unknown location" : (l.street || "Loading address...")}</div>
+          <div class="street">
+            📍 ${
+              l.street
+                ? `${l.street} · ${l.distance?.toFixed(1) ?? "—"} mi`
+                : `${l.distance?.toFixed(1) ?? "—"} mi`
+            }
+          </div>
 
           <div class="meta">
 
@@ -405,8 +425,6 @@ function renderList(locations) {
                 return `<span ${disabledStyle} onclick="rateSpeed(event, '${l.id}', ${i + 1})">${filled}</span>`;
               }).join("")}
             </span>
-
-            <span>📍 ${l.distance?.toFixed(1) ?? "—"} mi</span>
 
             <span class="directions" onclick="openDirections(event, ${l.lat}, ${l.lng})">
               🚗
