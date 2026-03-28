@@ -125,11 +125,8 @@ async function loadVotes() {
 async function getAddress(lat, lng) {
   const key = `addr_${lat}_${lng}`;
 
-  // ✅ 1. CACHE
   const cached = localStorage.getItem(key);
-  if (cached) {
-    return cached;
-  }
+  if (cached) return cached;
 
   try {
     const res = await fetch(
@@ -137,29 +134,29 @@ async function getAddress(lat, lng) {
     );
 
     const data = await res.json();
-
-    // ⚠️ safety check
     if (!data || !data.address) return null;
 
     const addr = data.address;
 
-    const streetAddress = [
-      addr.house_number,
-      addr.road
-    ].filter(Boolean).join(" ");
+    // 🔥 BETTER STREET LOGIC
+    const streetAddress =
+      [addr.house_number, addr.road].filter(Boolean).join(" ") ||
+      addr.neighbourhood ||
+      addr.suburb ||
+      addr.road || // fallback if partial
+      "";
 
     const city =
       addr.city ||
       addr.town ||
       addr.village ||
-      addr.hamlet ||   // 🔥 add this for small areas
+      addr.hamlet ||
       "";
 
     const fullAddress = [streetAddress, city]
       .filter(Boolean)
       .join(", ");
 
-    // ✅ cache only if valid
     if (fullAddress) {
       localStorage.setItem(key, fullAddress);
     }
