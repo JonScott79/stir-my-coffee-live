@@ -232,12 +232,6 @@ header {
   overflow-y: auto;
 }
 
-.street {
-  font-size: 0.85rem;
-  color: #777;
-  margin-bottom: 4px;
-}
-
 .location-card {
   background: var(--bg-card);
   padding: 14px;
@@ -466,11 +460,22 @@ footer {
 
 /* Adresses Mobile */
 .street {
-  font-size: 0.85rem;
-  color: #777;
-  margin-bottom: 2px;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 6px;
+
+  display: block; /* 🔥 force full width */
+  width: 100%;
+
   white-space: normal;
   word-break: break-word;
+  overflow-wrap: anywhere; /* 🔥 critical for long addresses */
+}
+
+.distance-inline {
+  color: #999;
+  font-size: 0.8rem;
+  margin-left: 6px;
 }
 
 .distance {
