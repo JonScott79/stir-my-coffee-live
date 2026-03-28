@@ -9,15 +9,17 @@
 ### Added
 - Google Analytics integration for real user tracking
 
----
-
-## [1.2.0] - Planned
+## [1.2.0] - Mar 28, 2026
 ### Added
-- Global vote cooldown to reduce spam
-- Firebase rule validation for safer writes
+- Progressive Web App (PWA) support with install capability
+- "Get the App" install button integrated into main UI
+- Service worker for app installability and performance groundwork
+- Web app manifest for mobile app experience
 
 ### Changed
-- Improved data integrity protections
+- Unified button styling for consistent UI/UX
+- Improved user onboarding flow with app install prompt
 
-### Fixed
-- Potential abuse vectors in voting system
+### Technical
+- Integrated Capacitor for Android app deployment
+- Initialized native Android project for future Play Store release

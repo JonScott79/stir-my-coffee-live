@@ -610,3 +610,35 @@ function recordSpeedRating(id) {
 function goToMap() {
   window.location.href = "/map.html";
 }
+
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  console.log("🔥 INSTALL READY");
+
+  const btn = document.getElementById("installBtn");
+  if (btn) btn.style.display = "block";
+});
+
+window.addEventListener("load", () => {
+  const btn = document.getElementById("installBtn");
+
+  if (!btn) return;
+
+  btn.addEventListener("click", async () => {
+    if (!deferredPrompt) {
+      alert("To install: use browser menu → Add to Home Screen");
+      return;
+    }
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log("User choice:", outcome);
+
+    deferredPrompt = null;
+  });
+});
