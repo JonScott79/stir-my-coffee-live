@@ -463,3 +463,18 @@ footer {
   color: #777;
   margin-left: 8px;
 }
+
+/* Adresses Mobile */
+.street {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 2px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.distance {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 6px;
+}

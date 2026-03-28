@@ -384,7 +384,6 @@ function renderList(locations) {
     .map(l => {
       const canUserVote = canVote(l.id);
       const voteDisabled = canUserVote ? "" : "disabled";
-
       const canUserRate = canRateSpeed(l.id);
 
       return `
@@ -395,11 +394,10 @@ function renderList(locations) {
           </div>
 
           <div class="street">
-            📍 ${
-              l.street
-                ? `${l.street} · ${l.distance?.toFixed(1) ?? "—"} mi`
-                : `${l.distance?.toFixed(1) ?? "—"} mi`
-            }
+            📍 ${l.street || "Locating address..."}
+            <span class="distance-inline">
+              · ${l.distance?.toFixed(1) ?? "—"} mi
+            </span>
           </div>
 
           <div class="meta">
