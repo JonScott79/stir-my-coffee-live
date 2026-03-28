@@ -1,0 +1,24 @@
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Capacitor / Android build junk
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+
+# Android Studio
+*.iml
+.idea/
+.gradle/
+
+# Misc
+dist/
+build/
