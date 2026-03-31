@@ -85,7 +85,7 @@ async function init() {
 }
 
 // ========================
-// LOADING UI
+// LOADING UI/X
 // ========================
 
 function showLoading() {
@@ -600,7 +600,9 @@ function recordSpeedRating(id) {
   saveSpeedHistory(history);
 }
 
+// ========================
 // Buttons
+// ========================
 
 function goToMap() {
   window.location.href = "/map.html";
