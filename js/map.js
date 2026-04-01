@@ -25,12 +25,6 @@ window.reportLocation = async (id) => {
   }
 };
 
-
-
-
-
-
-
 let isAddingMode = false;
 
 
@@ -107,7 +101,6 @@ async function loadLocationsRealtime() {
       isFirebase: false
     }));
 
-    console.log("✅ Static loaded:", staticLocations.length);
   } catch (err) {
     console.warn("❌ Static load failed:", err);
   }
@@ -118,8 +111,6 @@ onSnapshot(locationsRef, snapshot => {
   const customLocations = snapshot.docs.map(d => {
     const data = d.data();
 
-    console.log("🔥 FIREBASE DOC:", data);
-
     let lat = Number(data.lat ?? data.latitude ?? data.location?.lat);
     let lng = Number(data.lng ?? data.long ?? data.longitude ?? data.location?.lng);
 
@@ -128,8 +119,6 @@ onSnapshot(locationsRef, snapshot => {
       lat = 0;
       lng = 0;
     }
-
-    console.log("👉 FINAL COORDS:", { lat, lng });
 
     return {
       id: d.id,
@@ -140,11 +129,7 @@ onSnapshot(locationsRef, snapshot => {
     };
   });
 
-  console.log("🔥 Firebase locations:", customLocations.length);
-
   allLocations = [...staticLocations, ...customLocations];
-
-  console.log("🔥 Total locations:", allLocations.length);
 
   render();
 
@@ -190,8 +175,6 @@ async function getVoteData(id) {
 function render() {
   markers.clearLayers();
 
-  console.log("=== RENDER START ===");
-
   for (let loc of allLocations) {
     if (!Number.isFinite(loc.lat) || !Number.isFinite(loc.lng)) {
       console.warn("❌ STILL BAD:", loc);
@@ -215,8 +198,6 @@ const marker = L.circleMarker([loc.lat, loc.lng], {
     marker.on("click", () => showPopup(loc));
     markers.addLayer(marker);
   }
-
-  console.log("=== RENDER END ===");
 }
 
 // ========================

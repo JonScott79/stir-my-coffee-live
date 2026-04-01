@@ -1,3 +1,29 @@
+## [1.3.0] – Apr 2026
+
+### Added
+- Facebook social link in footer with hover styling
+- Improved "Locate Me" button feedback states (loading, success, failure)
+- Accessibility enhancements (ARIA labels, keyboard navigation improvements)
+- Changelog page included in sitemap for better indexing
+
+### Changed
+- Major layout improvements with fixed header/footer and scrollable content area
+- Increased max-width to 1350px for improved readability and layout balance
+- Refined responsive grid system for better desktop and mobile experience
+- Improved "Locate Me" UX to better communicate functionality
+- Footer layout enhancements with improved spacing and social icon presentation
+
+### Technical
+- Removed all console.log debug statements (production cleanup)
+- General codebase cleanup and performance improvements
+- Improved HTML structure and removed unused DOM elements
+- Added external link security attributes (noopener noreferrer)
+- Hardened Firestore security rules to prevent abuse
+- Improved sitemap structure and scalability for SEO growth
+
+### Misc
+- Something wanders…
+
 ## [1.2.1] - Mar 31, 2026
 
 ### Added

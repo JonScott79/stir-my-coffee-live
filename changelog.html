@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Changelog – Stir My Coffee™</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/styles.css" rel="stylesheet">
+
+  <style>
+    .changelog-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .changelog-entry {
+      background: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .version-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #4b2e2b;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    ul {
+      margin: 5px 0 10px 20px;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #4b2e2b;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="changelog-container">
+
+  <a href="/" class="back">← Back to map</a>
+
+  <h1>Changelog</h1>
+  <p class="subtle">
+    Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
+  </p>
+
+  <!-- v1.3.0 -->
+  <div class="changelog-entry">
+    <div class="version-title">v1.3.0 – Apr 2026</div>
+
+    <div class="section-title">Added</div>
+    <ul>
+      <li>Facebook social link in footer with hover styling</li>
+      <li>Improved "Locate Me" button feedback states (loading, success, failure)</li>
+      <li>Accessibility enhancements (ARIA labels, keyboard navigation improvements)</li>
+      <li>Changelog page included in sitemap for better indexing</li>
+    </ul>
+
+    <div class="section-title">Changed</div>
+    <ul>
+      <li>Major layout improvements with fixed header/footer and scrollable content area</li>
+      <li>Increased max-width to 1350px for improved readability and layout balance</li>
+      <li>Refined responsive grid system for better desktop and mobile experience</li>
+      <li>Improved "Locate Me" UX to better communicate functionality</li>
+      <li>Footer layout enhancements with improved spacing and social icon presentation</li>
+    </ul>
+
+    <div class="section-title">Technical</div>
+    <ul>
+      <li>Removed all console.log debug statements (production cleanup)</li>
+      <li>General codebase cleanup and performance improvements</li>
+      <li>Improved HTML structure and removed unused DOM elements</li>
+      <li>Added external link security attributes (noopener noreferrer)</li>
+      <li>Hardened Firestore security rules to prevent abuse</li>
+      <li>Improved sitemap structure and scalability for SEO growth</li>
+    </ul>
+
+    <div class="section-title">Misc</div>
+    <ul>
+      <li>Something wanders…</li>
+    </ul>
+  </div>
+
+  <!-- v1.2.1 -->
+  <div class="changelog-entry">
+    <div class="version-title">v1.2.1 – Mar 31, 2026</div>
+
+    <div class="section-title">Added</div>
+    <ul>
+      <li>Open Graph (OG) meta tag optimization for improved social sharing previews</li>
+      <li>Stronger Facebook/Twitter link previews to increase click-through rate</li>
+    </ul>
+
+    <div class="section-title">Changed</div>
+    <ul>
+      <li>Updated page title and metadata to better target "coffee near me" search intent</li>
+      <li>Improved social messaging to emphasize problem-solution positioning</li>
+      <li>Linked version number in footer to changelog for easier transparency</li>
+      <li>Improved location clarity for duplicate stores</li>
+      <li>Cleaner UI for faster decision-making</li>
+    </ul>
+
+    <div class="section-title">Technical</div>
+    <ul>
+      <li>Verified Google Analytics integration and live user tracking</li>
+      <li>Cleaned up duplicate meta tags for consistency</li>
+    </ul>
+
+    <div class="section-title">Removed</div>
+    <ul>
+      <li>Duplicate distance display in location cards</li>
+    </ul>
+  </div>
+
+  <!-- v1.2.0 -->
+  <div class="changelog-entry">
+    <div class="version-title">v1.2.0 – Mar 28, 2026</div>
+
+    <div class="section-title">Added</div>
+    <ul>
+      <li>Progressive Web App (PWA) support with install capability</li>
+      <li>"Get the App" install button integrated into main UI</li>
+      <li>Service worker for app installability and performance groundwork</li>
+      <li>Web app manifest for mobile app experience</li>
+    </ul>
+
+    <div class="section-title">Changed</div>
+    <ul>
+      <li>Unified button styling for consistent UI/UX</li>
+      <li>Improved user onboarding flow with app install prompt</li>
+    </ul>
+
+    <div class="section-title">Technical</div>
+    <ul>
+      <li>Integrated Capacitor for Android app deployment</li>
+      <li>Initialized native Android project for future Play Store release</li>
+    </ul>
+  </div>
+
+  <!-- v1.1.1 -->
+  <div class="changelog-entry">
+    <div class="version-title">v1.1.1 – Mar 28, 2026</div>
+
+    <div class="section-title">Added</div>
+    <ul>
+      <li>Google Analytics integration for real user tracking</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

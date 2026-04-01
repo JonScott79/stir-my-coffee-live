@@ -1,8 +1,4 @@
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}/* ========================
+/* ========================
    ROOT / DESIGN SYSTEM
 ======================== */
 
@@ -32,8 +28,8 @@ body {
 
 .mainLayout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  gap: clamp(16px, 2vw, 28px);
 }
 
 /* LEFT SIDE */
@@ -67,6 +63,11 @@ body {
 ======================== */
 
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;   
+  overflow: hidden;  
+
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg-main);
   margin: 0;
@@ -107,10 +108,15 @@ header {
 ======================== */
 
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 1350px;           /* hard ceiling */
+  margin: 0 auto;
+  padding: clamp(12px, 2vw, 24px);  /* 🔥 responsive padding */
+
+  flex: 1;
+  overflow-y: auto;
 }
+
 .subtle {
   font-size: 13px;
   color: var(--text-muted);
@@ -196,6 +202,19 @@ header {
   cursor: not-allowed;
 }
 
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.locate-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
 /* ========================
    LEGEND
 ======================== */
@@ -227,11 +246,6 @@ header {
    LIST / CARDS
 ======================== */
 
-#listContainer {
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
 .location-card {
   background: var(--bg-card);
   padding: 14px;
@@ -240,6 +254,12 @@ header {
   box-shadow: var(--shadow-soft);
   cursor: pointer;
   transition: all 0.15s ease;
+  animation: fadeInUp 0.3s ease;
+}
+
+#listContainer {
+  /* no scroll */
+  padding-right: clamp(4px, 1vw, 12px);
 }
 
 @keyframes highlightPulse {
@@ -248,6 +268,16 @@ header {
   100% { transform: scale(1.01); }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .card-header {
   display: flex;
@@ -264,6 +294,13 @@ header {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 6px;
+}
+
+.location-card:focus,
+button:focus,
+span[role="button"]:focus {
+  outline: 2px solid #4b2e2b;
+  outline-offset: 2px;
 }
 
 /* ========================
@@ -329,6 +366,8 @@ header {
   color: gold;
 }
 
+
+
 /* ========================
    DIRECTIONS ICON
 ======================== */
@@ -366,7 +405,7 @@ header {
 ======================== */
 
 footer {
-  margin-top: 40px;
+  margin-top: 0px; /* 40 previous */
   padding: 20px;
   background: var(--bg-footer);
   border-top: 1px solid var(--border);
@@ -391,6 +430,25 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.footer-right a {
+  color: inherit;
+  font-size: 20px;
+  margin-left: 12px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-right a:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+.footer-right a:active {
+  transform: scale(0.95);
+}
+
+header, footer {
+  flex-shrink: 0;
+}
+
 /* ========================
    MOBILE
 ======================== */
@@ -407,7 +465,7 @@ footer a:hover {
 }
 
 /* ========================
-   INSTAGRAM
+   FOOTER
 ======================== */
 
 footer i.fa-instagram {
@@ -417,13 +475,7 @@ footer i.fa-instagram {
 footer i.fa-instagram:hover {
   color: #E1306C;
   transform: scale(1.2);
-}
-
-/* Footer layout split */
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  filter: drop-shadow(0 0 6px rgba(225, 48, 108, 0.5));
 }
 
 /* Left side grouping */
@@ -444,7 +496,7 @@ footer {
 .footer-right i {
   font-size: 20px;
   color: #4b2e2b;
-  transition: 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease, filter 0.2s ease;
 }
 
 .footer-right i:hover {
@@ -482,4 +534,10 @@ footer {
   font-size: 0.8rem;
   color: #999;
   margin-bottom: 6px;
+}
+
+footer i.fa-facebook:hover {
+  color: #1877F2;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px rgba(24, 119, 242, 0.5));
 }
