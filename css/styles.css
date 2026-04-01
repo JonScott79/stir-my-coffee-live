@@ -541,3 +541,59 @@ footer i.fa-facebook:hover {
   transform: scale(1.2);
   filter: drop-shadow(0 0 6px rgba(24, 119, 242, 0.5));
 }
+
+/* ========================
+   Content Pages Layout
+======================== */
+
+.content-page .container {
+  max-width: 750px;
+  margin: auto;
+  padding: 30px 16px;
+}
+
+.content-page .section {
+  margin-bottom: 28px;
+}
+
+.content-page p {
+  margin-bottom: 12px;
+}
+
+.content-page h2 {
+  margin-bottom: 10px;
+}
+
+/* Optional: tighten lists */
+.content-page ul {
+  margin-bottom: 12px;
+}
+
+/* Optional: better readability */
+.content-page {
+  line-height: 1.6;
+}
+
+/* ========================
+  ABOOT (I'm Just kidding, I'm not Canadian)
+======================== */
+
+@media (max-width: 700px) {
+  .creatorBox {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.creatorBox {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.creatorImage {
+  width: clamp(110px, 12vw, 140px);
+  border-radius: 12px;
+  box-shadow: var(--shadow-strong);
+  flex-shrink: 0;
+}

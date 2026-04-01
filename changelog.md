@@ -7,6 +7,7 @@
 - Changelog page included in sitemap for better indexing
 
 ### Changed
+- Standardized layout and spacing across About and Legal pages using shared content-page system
 - Major layout improvements with fixed header/footer and scrollable content area
 - Increased max-width to 1350px for improved readability and layout balance
 - Refined responsive grid system for better desktop and mobile experience
