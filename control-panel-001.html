@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <title>Admin Panel – Stir My Coffee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <style>
+    body { padding: 20px; }
+
+    .admin-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .danger { background: #e74c3c; color: white; }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-container">
+
+  <h1>⚙️ Admin Panel</h1>
+
+  <div id="loginCard" class="card">
+    <h2>Admin Login</h2>
+    <input type="email" id="emailInput" placeholder="Email">
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="adminPanel" style="display:none;">
+
+    <div class="card">
+      <div class="row">
+        <h2>🚨 Reported Locations</h2>
+        <button onclick="logout()">Logout</button>
+      </div>
+      <div id="reports"></div>
+    </div>
+
+    <div class="card">
+      <h2>📍 All Locations</h2>
+      <div id="locations"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
+    authDomain: "stir-my-coffee.firebaseapp.com",
+    projectId: "stir-my-coffee",
+    storageBucket: "stir-my-coffee.appspot.com",
+    messagingSenderId: "466856067497",
+    appId: "1:466856067497:web:4f6e5b4825b380530984b8"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const db = firebase.firestore();
+  const auth = firebase.auth();
+
+  function login() {
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value;
+
+    if (!email || !password) {
+      alert("Enter email and password");
+      return;
+    }
+
+    auth.signInWithEmailAndPassword(email, password)
+      .catch(err => alert(err.message));
+  }
+
+  function logout() {
+    auth.signOut();
+  }
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById("loginCard").style.display = "none";
+      document.getElementById("adminPanel").style.display = "block";
+      loadReports();
+      loadLocations();
+    } else {
+      document.getElementById("loginCard").style.display = "block";
+      document.getElementById("adminPanel").style.display = "none";
+    }
+  });
+
+async function viewOnMap(locationId, lat, lng) {
+  if (lat && lng) {
+    window.open(`map.html?lat=${lat}&lng=${lng}`, "_blank");
+    return;
+  }
+
+  try {
+    const doc = await db.collection("locations").doc(locationId).get();
+
+    if (!doc.exists) {
+      alert("Location not found");
+      return;
+    }
+
+    const data = doc.data();
+
+    window.open(`map.html?lat=${data.lat}&lng=${data.lng}`, "_blank");
+
+  } catch (err) {
+    console.error("Map lookup error:", err);
+    alert("Error loading location");
+  }
+}
+
+  async function loadReports() {
+    const container = document.getElementById("reports");
+    container.innerHTML = "Loading...";
+
+    try {
+      const snapshot = await db.collection("reports").get();
+
+      if (snapshot.empty) {
+        container.innerHTML = "<p>No reports 🎉</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        const el = document.createElement("div");
+        el.className = "card";
+
+        el.innerHTML = `
+          <div class="row">
+            <div>
+              <strong>${data.name || 'Unknown'}</strong><br>
+              ${data.reason || 'No reason'}
+            </div>
+            <div>
+              <button onclick="viewOnMap('${data.locationId}', ${data.lat || null}, ${data.lng || null})">View</button>
+              <button class="danger" onclick="deleteLocation('${data.locationId}', '${doc.id}')">Delete</button>
+              <button onclick="clearReport('${doc.id}')">Ignore</button>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(el);
+      });
+
+    } catch (err) {
+      console.error("Reports error:", err);
+      container.innerHTML = "<p>Error loading reports</p>";
+    }
+  }
+
+  function createLocationCard(doc) {
+    const data = doc.data();
+
+    const el = document.createElement("div");
+    el.className = "card";
+
+    el.innerHTML = `
+      <div class="row">
+        <div>
+          <strong>${data.name}</strong><br>
+          ${data.lat}, ${data.lng}
+        </div>
+        <div>
+          <button class="danger" onclick="deleteLocation('${doc.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+
+    return el;
+  }
+
+  async function loadLocations() {
+    const container = document.getElementById("locations");
+    container.innerHTML = "Loading...";
+
+    const snapshot = await db.collection("locations").get();
+    const docs = snapshot.docs;
+
+    if (!docs.length) {
+      container.innerHTML = "<p>No locations found</p>";
+      return;
+    }
+
+    container.innerHTML = "";
+
+    const VISIBLE_COUNT = 10;
+
+    const visible = docs.slice(0, VISIBLE_COUNT);
+    const hidden = docs.slice(VISIBLE_COUNT);
+
+    visible.forEach(doc => {
+      container.appendChild(createLocationCard(doc));
+    });
+
+    if (hidden.length > 0) {
+      const toggleBtn = document.createElement("button");
+      toggleBtn.textContent = `Show ${hidden.length} more`;
+      toggleBtn.style.marginTop = "10px";
+
+      const hiddenContainer = document.createElement("div");
+      hiddenContainer.style.display = "none";
+
+      hidden.forEach(doc => {
+        hiddenContainer.appendChild(createLocationCard(doc));
+      });
+
+      toggleBtn.onclick = () => {
+        const isHidden = hiddenContainer.style.display === "none";
+
+        hiddenContainer.style.display = isHidden ? "block" : "none";
+        toggleBtn.textContent = isHidden
+          ? "Hide extra locations"
+          : `Show ${hidden.length} more`;
+      };
+
+      container.appendChild(toggleBtn);
+      container.appendChild(hiddenContainer);
+    }
+  }
+
+  async function deleteLocation(id, reportId = null) {
+    if (!confirm("Delete this location?")) return;
+
+    await db.collection("locations").doc(id).delete();
+
+    if (reportId) {
+      await db.collection("reports").doc(reportId).delete();
+    }
+
+    loadReports();
+    loadLocations();
+  }
+
+  async function clearReport(id) {
+    await db.collection("reports").doc(id).delete();
+    loadReports();
+  }
+</script>
+
+</body>
+</html>
