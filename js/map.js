@@ -135,16 +135,49 @@ function render() {
     marker.bindPopup(createPopupContent(loc));
 
     let hoverTimeout;
+    let isLocked = false;
 
+    // 👇 HOVER = preview
     marker.on("mouseover", function () {
+      if (isLocked) return;
+
       clearTimeout(hoverTimeout);
       this.openPopup();
+
+      const popupEl = this.getPopup().getElement();
+
+      if (popupEl) {
+        popupEl.addEventListener("mouseenter", () => {
+          clearTimeout(hoverTimeout);
+        });
+
+        popupEl.addEventListener("mouseleave", () => {
+          if (!isLocked) {
+            hoverTimeout = setTimeout(() => {
+              marker.closePopup();
+            }, 200);
+          }
+        });
+      }
     });
 
     marker.on("mouseout", function () {
+      if (isLocked) return;
+
       hoverTimeout = setTimeout(() => {
-        this.closePopup();
-      }, 150);
+        marker.closePopup();
+      }, 200);
+    });
+
+    // 👇 CLICK = lock open (key fix)
+    marker.on("click", function () {
+      isLocked = true;
+      this.openPopup();
+    });
+
+    // 👇 CLICK MAP = unlock everything
+    map.on("click", () => {
+      isLocked = false;
     });
 
     markers.addLayer(marker);
@@ -167,11 +200,38 @@ function createPopupContent(loc) {
 // ========================
 
 window.reportLocation = async (id) => {
-  if (!confirm("Report this location?")) return;
+  const reason = prompt(
+`Why are you reporting this location?
+
+1 = Wrong location
+2 = Duplicate
+3 = Closed permanently
+4 = Bad data
+5 = Other`
+  );
+
+  if (!reason) return;
+
+  const reasonMap = {
+    "1": "Wrong location",
+    "2": "Duplicate",
+    "3": "Closed permanently",
+    "4": "Bad data",
+    "5": "Other"
+  };
+
+  const reasonText = reasonMap[reason] || "Other";
+
+  let details = "";
+  if (reason === "5") {
+    details = prompt("Enter more details (optional):") || "";
+  }
 
   try {
     await addDoc(collection(db, "reports"), {
       locationId: id,
+      reason: reasonText,
+      details: details,
       timestamp: Date.now()
     });
 

@@ -1,84 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow">
-  
-  <title>Admin Panel – Stir My Coffee</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin Panel – Stir My Coffee</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/styles.css" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
 
-  <style>
-    body { padding: 20px; }
+<style>
+body { padding: 20px; }
 
-    .admin-container {
-      max-width: 1000px;
-      margin: auto;
-    }
+.admin-container {
+  max-width: 1100px;
+  margin: auto;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-    .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
-    .danger { background: #e74c3c; color: white; }
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    button {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.danger { background: #e74c3c; color: white; }
+.warn { background: #f39c12; color: white; }
+.good { background: #2ecc71; color: white; }
+.secondary { background: #ccc; }
 
-    input {
-      padding: 10px;
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  </style>
+input {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.small { font-size: 12px; color: #666; }
+.flag { color: #e74c3c; font-weight: bold; }
+
+.collapsible {
+  cursor: pointer;
+  margin-top: 10px;
+}
+</style>
 </head>
+
 <body>
 
 <div class="admin-container">
 
-  <h1>⚙️ Admin Panel</h1>
+<h1>⚙️ Admin Panel</h1>
 
-  <div id="loginCard" class="card">
-    <h2>Admin Login</h2>
-    <input type="email" id="emailInput" placeholder="Email">
-    <input type="password" id="passwordInput" placeholder="Password">
-    <button onclick="login()">Login</button>
+<div id="loginCard" class="card">
+  <h2>Admin Login</h2>
+  <input id="emailInput" placeholder="Email">
+  <input id="passwordInput" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<div id="adminPanel" style="display:none;">
+
+  <!-- REPORTS -->
+  <div class="card">
+    <div class="row">
+      <h2>🚨 Reports</h2>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div id="reports"></div>
   </div>
 
-  <div id="adminPanel" style="display:none;">
-
-    <div class="card">
-      <div class="row">
-        <h2>🚨 Reported Locations</h2>
-        <button onclick="logout()">Logout</button>
-      </div>
-      <div id="reports"></div>
-    </div>
-
-    <div class="card">
-      <h2>📍 All Locations</h2>
-      <div id="locations"></div>
-    </div>
-
+  <!-- SEARCH -->
+  <div class="card">
+    <h2>🔍 Search Locations</h2>
+    <input id="searchInput" placeholder="Search by name..." oninput="filterLocations()">
   </div>
+
+  <!-- LOCATIONS -->
+  <div class="card">
+    <h2>📍 Locations</h2>
+    <div id="locations"></div>
+  </div>
+
+  <!-- DELETED -->
+  <div class="card">
+    <h2 class="collapsible" onclick="toggleDeleted()">🗑️ Deleted Locations (toggle)</h2>
+    <div id="deletedLocations" style="display:none;"></div>
+  </div>
+
+</div>
 
 </div>
 
@@ -87,118 +112,61 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
 <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
-    authDomain: "stir-my-coffee.firebaseapp.com",
-    projectId: "stir-my-coffee",
-    storageBucket: "stir-my-coffee.appspot.com",
-    messagingSenderId: "466856067497",
-    appId: "1:466856067497:web:4f6e5b4825b380530984b8"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
+  authDomain: "stir-my-coffee.firebaseapp.com",
+  projectId: "stir-my-coffee"
+};
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-  const db = firebase.firestore();
-  const auth = firebase.auth();
+const db = firebase.firestore();
+const auth = firebase.auth();
 
-  function login() {
-    const email = document.getElementById("emailInput").value.trim();
-    const password = document.getElementById("passwordInput").value;
+let allLocations = [];
+let reportCounts = {};
 
-    if (!email || !password) {
-      alert("Enter email and password");
-      return;
-    }
-
-    auth.signInWithEmailAndPassword(email, password)
-      .catch(err => alert(err.message));
-  }
-
-  function logout() {
-    auth.signOut();
-  }
-
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      document.getElementById("loginCard").style.display = "none";
-      document.getElementById("adminPanel").style.display = "block";
-      loadReports();
-      loadLocations();
-    } else {
-      document.getElementById("loginCard").style.display = "block";
-      document.getElementById("adminPanel").style.display = "none";
-    }
-  });
-
-async function viewOnMap(locationId, lat, lng) {
-  if (lat && lng) {
-    window.open(`map.html?lat=${lat}&lng=${lng}`, "_blank");
-    return;
-  }
-
-  try {
-    const doc = await db.collection("locations").doc(locationId).get();
-
-    if (!doc.exists) {
-      alert("Location not found");
-      return;
-    }
-
-    const data = doc.data();
-
-    window.open(`map.html?lat=${data.lat}&lng=${data.lng}`, "_blank");
-
-  } catch (err) {
-    console.error("Map lookup error:", err);
-    alert("Error loading location");
-  }
+function login() {
+  auth.signInWithEmailAndPassword(emailInput.value, passwordInput.value)
+    .catch(err => alert(err.message));
 }
 
-  async function loadReports() {
-    const container = document.getElementById("reports");
-    container.innerHTML = "Loading...";
+function logout() {
+  auth.signOut();
+}
 
-    try {
-      const snapshot = await db.collection("reports").get();
-
-      if (snapshot.empty) {
-        container.innerHTML = "<p>No reports 🎉</p>";
-        return;
-      }
-
-      container.innerHTML = "";
-
-      snapshot.forEach(doc => {
-        const data = doc.data();
-
-        const el = document.createElement("div");
-        el.className = "card";
-
-        el.innerHTML = `
-          <div class="row">
-            <div>
-              <strong>${data.name || 'Unknown'}</strong><br>
-              ${data.reason || 'No reason'}
-            </div>
-            <div>
-              <button onclick="viewOnMap('${data.locationId}', ${data.lat || null}, ${data.lng || null})">View</button>
-              <button class="danger" onclick="deleteLocation('${data.locationId}', '${doc.id}')">Delete</button>
-              <button onclick="clearReport('${doc.id}')">Ignore</button>
-            </div>
-          </div>
-        `;
-
-        container.appendChild(el);
-      });
-
-    } catch (err) {
-      console.error("Reports error:", err);
-      container.innerHTML = "<p>Error loading reports</p>";
-    }
+auth.onAuthStateChanged(user => {
+  if (user) {
+    loginCard.style.display = "none";
+    adminPanel.style.display = "block";
+    loadReports();
+    loadLocations();
+  } else {
+    loginCard.style.display = "block";
+    adminPanel.style.display = "none";
   }
+});
 
-  function createLocationCard(doc) {
-    const data = doc.data();
+/* ========================
+   REPORTS
+======================== */
+
+async function loadReports() {
+  const container = document.getElementById("reports");
+  container.innerHTML = "Loading...";
+
+  const snapshot = await db.collection("reports")
+    .orderBy("timestamp", "desc")
+    .get();
+
+  reportCounts = {};
+
+  container.innerHTML = "";
+
+  snapshot.forEach(doc => {
+    const d = doc.data();
+
+    reportCounts[d.locationId] = (reportCounts[d.locationId] || 0) + 1;
 
     const el = document.createElement("div");
     el.className = "card";
@@ -206,84 +174,161 @@ async function viewOnMap(locationId, lat, lng) {
     el.innerHTML = `
       <div class="row">
         <div>
-          <strong>${data.name}</strong><br>
-          ${data.lat}, ${data.lng}
+          <strong>${d.name || "Unknown"}</strong><br>
+          ${d.reason}
+          ${d.details ? `<div class="small">📝 ${d.details}</div>` : ""}
         </div>
         <div>
-          <button class="danger" onclick="deleteLocation('${doc.id}')">Delete</button>
+          <button onclick="viewOnMap('${d.locationId}', ${d.lat}, ${d.lng})">View</button>
+          <button class="danger" onclick="deleteLocation('${d.locationId}', '${doc.id}')">Delete</button>
+          <button onclick="clearReport('${doc.id}')">Ignore</button>
         </div>
       </div>
     `;
 
-    return el;
+    container.appendChild(el);
+  });
+}
+
+function clearReport(id) {
+  db.collection("reports").doc(id).delete().then(loadReports);
+}
+
+/* ========================
+   LOCATIONS
+======================== */
+
+function renderLocations(list) {
+  const container = document.getElementById("locations");
+  container.innerHTML = "";
+
+  list.forEach(loc => {
+    const count = reportCounts[loc.id] || 0;
+
+    const el = document.createElement("div");
+    el.className = "card";
+
+    el.innerHTML = `
+      <div class="row">
+        <div>
+          <strong>${loc.name}</strong><br>
+          ${loc.lat}, ${loc.lng}
+          ${count >= 3 ? `<div class="flag">⚠️ ${count} reports</div>` : ""}
+        </div>
+
+        <div>
+          <button onclick="viewOnMap('${loc.id}', ${loc.lat}, ${loc.lng})">View</button>
+          <button class="warn" onclick="softDelete('${loc.id}')">Hide</button>
+          <button class="danger" onclick="deleteLocation('${loc.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(el);
+  });
+}
+
+async function loadLocations() {
+  const snapshot = await db.collection("locations").get();
+
+  allLocations = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+
+  renderLocations(allLocations);
+}
+
+/* ========================
+   SEARCH
+======================== */
+
+function filterLocations() {
+  const term = searchInput.value.toLowerCase();
+
+  const filtered = allLocations.filter(l =>
+    l.name.toLowerCase().includes(term)
+  );
+
+  renderLocations(filtered);
+}
+
+/* ========================
+   DELETE / SOFT DELETE
+======================== */
+
+async function softDelete(id) {
+  await db.collection("locations").doc(id).update({
+    hidden: true
+  });
+  loadLocations();
+}
+
+async function deleteLocation(id, reportId=null) {
+  if (!confirm("Delete permanently?")) return;
+
+  await db.collection("locations").doc(id).delete();
+
+  if (reportId) {
+    await db.collection("reports").doc(reportId).delete();
   }
 
-  async function loadLocations() {
-    const container = document.getElementById("locations");
-    container.innerHTML = "Loading...";
+  loadReports();
+  loadLocations();
+}
 
-    const snapshot = await db.collection("locations").get();
-    const docs = snapshot.docs;
+/* ========================
+   DELETED VIEW
+======================== */
 
-    if (!docs.length) {
-      container.innerHTML = "<p>No locations found</p>";
-      return;
-    }
+function toggleDeleted() {
+  const el = document.getElementById("deletedLocations");
+  el.style.display = el.style.display === "none" ? "block" : "none";
 
-    container.innerHTML = "";
+  loadDeleted();
+}
 
-    const VISIBLE_COUNT = 10;
+async function loadDeleted() {
+  const container = document.getElementById("deletedLocations");
+  container.innerHTML = "Loading...";
 
-    const visible = docs.slice(0, VISIBLE_COUNT);
-    const hidden = docs.slice(VISIBLE_COUNT);
+  const snapshot = await db.collection("locations")
+    .where("hidden", "==", true)
+    .get();
 
-    visible.forEach(doc => {
-      container.appendChild(createLocationCard(doc));
-    });
+  container.innerHTML = "";
 
-    if (hidden.length > 0) {
-      const toggleBtn = document.createElement("button");
-      toggleBtn.textContent = `Show ${hidden.length} more`;
-      toggleBtn.style.marginTop = "10px";
+  snapshot.forEach(doc => {
+    const d = doc.data();
 
-      const hiddenContainer = document.createElement("div");
-      hiddenContainer.style.display = "none";
+    const el = document.createElement("div");
+    el.className = "card";
 
-      hidden.forEach(doc => {
-        hiddenContainer.appendChild(createLocationCard(doc));
-      });
+    el.innerHTML = `
+      <div class="row">
+        <div>${d.name}</div>
+        <button class="good" onclick="restore('${doc.id}')">Restore</button>
+      </div>
+    `;
 
-      toggleBtn.onclick = () => {
-        const isHidden = hiddenContainer.style.display === "none";
+    container.appendChild(el);
+  });
+}
 
-        hiddenContainer.style.display = isHidden ? "block" : "none";
-        toggleBtn.textContent = isHidden
-          ? "Hide extra locations"
-          : `Show ${hidden.length} more`;
-      };
+function restore(id) {
+  db.collection("locations").doc(id).update({ hidden: false })
+    .then(loadDeleted);
+}
 
-      container.appendChild(toggleBtn);
-      container.appendChild(hiddenContainer);
-    }
+/* ========================
+   MAP VIEW
+======================== */
+
+function viewOnMap(id, lat, lng) {
+  if (lat && lng) {
+    window.open(`map.html?lat=${lat}&lng=${lng}`, "_blank");
   }
-
-  async function deleteLocation(id, reportId = null) {
-    if (!confirm("Delete this location?")) return;
-
-    await db.collection("locations").doc(id).delete();
-
-    if (reportId) {
-      await db.collection("reports").doc(reportId).delete();
-    }
-
-    loadReports();
-    loadLocations();
-  }
-
-  async function clearReport(id) {
-    await db.collection("reports").doc(id).delete();
-    loadReports();
-  }
+}
 </script>
 
 </body>
