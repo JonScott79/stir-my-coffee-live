@@ -19,8 +19,8 @@
 
 <meta charset="UTF-8" />
   
-<meta name="description" content="Find the best coffee near you with real-time speed and stir ratings. Discover which coffee shops actually get it right before you order." />
-<meta name="keywords" content="coffee near me, fast coffee near me, coffee speed rating, best coffee near me, quick coffee, dunkin speed, starbucks wait time, coffee map" />
+<meta name="description" content="Tired of getting the wrong coffee or waiting forever? Find shops near you that get your order right—and fast—before you go." />
+<meta name="keywords" content="coffee near me, accurate coffee orders, fast coffee near me, wrong coffee order, coffee order mistakes, best coffee service, coffee wait time, which coffee shops get orders right" />
 <meta name="author" content="Stir My Coffee" />
 <meta name="robots" content="index, follow" />
 
@@ -28,15 +28,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta property="fb:app_id" content="3437917336371806" />
-<meta property="og:title" content="Which Coffee Shops Actually Stir Your Coffee? ☕">
-<meta property="og:description" content="Live map showing which coffee spots get it right and which don’t. Stop gambling on your morning coffee.">
+<meta property="og:title" content="Which Coffee Shops Get Your Order Right — and Fast? ☕⚡">
+<meta property="og:description" content="Find coffee shops that get your order right—and fast. Real ratings from real customers.">
 <meta property="og:image" content="https://stirmycoffee.com/images/StirLogoTM.png" />
 <meta property="og:url" content="https://stirmycoffee.com" />
 <meta property="og:type" content="website" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Stop rolling the dice on your morning coffee. ☕⚡" />
-<meta name="twitter:description" content="Speed + stir ratings for coffee shops near you." />
+<meta name="twitter:description" content="Find coffee shops that get your order right—and fast. Real ratings from real customers." />
 <meta name="twitter:image" content="https://stirmycoffee.com/images/StirLogoTM.png" />
 
 <!-- app -->
@@ -47,9 +47,15 @@
 <link rel="apple-touch-icon" href="/images/StirLogo.png" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<link href="css/styles.css" rel="stylesheet">
 
-<title>Best Coffee Near Me – Stir My Coffee™ | Speed & Stir Ratings</title>
+
+<link href="css/styles.css" rel="stylesheet" />
+<!-- Seasonal Styles -->
+<link id="baseTheme" rel="stylesheet" />
+<!-- Holiday Styles -->
+<link id="holidayTheme" rel="stylesheet" />
+
+<title>Best Coffee Near Me – Who Gets It Right (and Fast)? | Stir My Coffee™</title>
   
 
 </head>
@@ -61,7 +67,10 @@
 
   <div class="headerText">
     <h1>Stir My Coffee™</h1>
-    <p>Find Good Coffee Without the Wait!<br>Rated by Real People.</p>
+  <p>
+  See which coffee shops get your order right — and how fast you get it.<br>
+  Rated by real customers.
+</p>
   </div>
 </header>
 
@@ -89,7 +98,7 @@
 
       <div class="legend">
         <span>👍 Vote</span>
-        <span>🌀 Stir Quality</span>
+        <span>🎯 Accuracy</span>
         <span>⭐ Speed</span>
         <span>📍 Distance</span>
         <span>🚗 Directions</span>
@@ -118,7 +127,7 @@
     <a href="legal.html">Legal</a>
     <a href="mailto:hello@stirmycoffee.com">Contact</a>
     <a href="https://venmo.com/JonScott79">Donate</a>
-    <span class="version"><a href="/changelog.html">v1.3.0</a></span>
+    <span class="version"><a href="/changelog.html">v1.4.0</a></span>
   </div>
 
 <div class="footer-right">
@@ -163,7 +172,7 @@
   gtag('config', 'G-BTYN2QJPLJ');
 </script>
 
-<script src="js/app.js" defer></script>
+
 
 <!-- app -->
 <script>
@@ -174,5 +183,9 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+<script src="js/app.js" defer></script>
+<script src="js/theme.js" defer></script>
+
+<div id="themeFade"></div>
 </body>
 </html>

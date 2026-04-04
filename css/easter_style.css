@@ -1,0 +1,40 @@
+/* ========================
+   EASTER THEME (BLUE + YELLOW PASTEL)
+======================== */
+
+:root {
+  --bg-main: #f6fbff;        /* very light sky blue */
+  --bg-header: #e6f4ff;      /* soft blue */
+  --bg-card: #ffffff;
+  --bg-footer: #f0faff;
+
+  --text-main: #2f3b4a;
+  --text-muted: #6b7c8f;
+
+  --accent: #a7d8ff;         /* pastel blue */
+  --accent-light: #d6ecff;   /* lighter blue */
+
+  --border: #dbeeff;
+
+  /* 🎯 Core theme accents */
+  --accent-primary: #a7d8ff;   /* blue */
+  --accent-secondary: #fff3b0; /* soft pastel yellow */
+  --accent-highlight: #eaffd6; /* light spring green hint */
+
+  --bg-card: #ffffff;
+}
+
+/* subtle hover (cool blue glow instead of pink) */
+.location-card:hover {
+  box-shadow: 0 6px 18px rgba(167, 216, 255, 0.25);
+}
+
+/* soft seasonal gradient */
+body {
+  background: linear-gradient(
+    135deg,
+    #f6fbff,   /* sky */
+    #fffde7,   /* soft yellow */
+    #f0fff4    /* spring green */
+  );
+}

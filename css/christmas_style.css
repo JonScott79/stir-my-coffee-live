@@ -1,0 +1,23 @@
+/* ========================
+   CHRISTMAS THEME
+======================== */
+
+:root {
+  --bg-main: #f4f8f4;
+  --bg-header: #e6f2e6;
+  --bg-card: #ffffff;
+  --bg-footer: #edf5ed;
+
+  --text-main: #2b2b2b;
+  --text-muted: #666;
+
+  --accent: #b30000;
+  --accent-light: #006400;
+
+  --border: #cce0cc;
+}
+
+/* festive highlight */
+.actions button:hover {
+  box-shadow: 0 0 10px rgba(179, 0, 0, 0.4);
+}

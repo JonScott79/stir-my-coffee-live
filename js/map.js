@@ -1,47 +1,26 @@
 // ========================
-// GLOBALS
+// GLOBAL STATE
 // ========================
 
-
-
-window.reportLocation = async (id) => {
-  try {
-    const loc = allLocations.find(l => l.id === id);
-
-    await addDoc(collection(db, "reports"), {
-      locationId: id,
-      name: loc?.name || "Unknown",
-      lat: loc?.lat,
-      lng: loc?.lng,
-      timestamp: Date.now()
-    });
-
-    alert("✅ Location reported. Thanks!");
-
-  } catch (err) {
-    console.error("❌ REPORT FAILED:", err);
-    alert("❌ Report failed — check console");
-    throw err; // 🔥 important for button recovery
-  }
-};
-
 let isAddingMode = false;
+let allLocations = [];
+let staticLocations = [];
+let newShopCoords = null;
+let userLocation = null;
+let tempMarker = null;
+let hasFitBounds = false;
 
+// ========================
+// FIREBASE
+// ========================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getFirestore,
   collection,
-  doc,
-  getDoc,
-  setDoc,
   addDoc,
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-// ========================
-// FIREBASE
-// ========================
 
 const app = initializeApp({
   apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
@@ -52,36 +31,31 @@ const app = initializeApp({
 const db = getFirestore(app);
 
 // ========================
-// MAP
+// MAP SETUP (🌍 GLOBAL)
 // ========================
 
-const map = L.map("map").setView([39, -98], 4);
+const map = L.map("map", {
+  zoomControl: false
+}).setView([20, 0], 2);
+
+// Add zoom control manually in bottom-right
+L.control.zoom({
+  position: "bottomright"
+}).addTo(map);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
 const markers = L.markerClusterGroup({
-  iconCreateFunction: function (cluster) {
-    const count = cluster.getChildCount();
-
+  iconCreateFunction: cluster => {
     return L.divIcon({
-      html: `<div class="cluster-icon">${count}</div>`,
+      html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
       className: "custom-cluster",
       iconSize: L.point(40, 40)
     });
   }
 });
+
 map.addLayer(markers);
-
-// ========================
-// STATE
-// ========================
-
-let allLocations = [];
-let staticLocations = [];
-let votesCache = {};
-let newShopCoords = null;
-let userLocation = null;
-let tempMarker = null;
 
 // ========================
 // LOAD LOCATIONS
@@ -90,81 +64,55 @@ let tempMarker = null;
 async function loadLocationsRealtime() {
   const locationsRef = collection(db, "locations");
 
-  // Static
+  // Static locations
   try {
     const res = await fetch("./coffeeLocations.json");
     const data = await res.json();
 
     staticLocations = data.map((loc, i) => ({
       ...loc,
-      id: loc.id || `static_${i}`,
-      isFirebase: false
+      id: loc.id || `static_${i}`
     }));
-
   } catch (err) {
     console.warn("❌ Static load failed:", err);
   }
 
-  // Firebase realtime
-// Firebase realtime
-onSnapshot(locationsRef, snapshot => {
-  const customLocations = snapshot.docs.map(d => {
-    const data = d.data();
+  // Firebase realtime locations
+  onSnapshot(locationsRef, snapshot => {
+    const customLocations = snapshot.docs
+      .map(doc => {
+        const data = doc.data();
 
-    let lat = Number(data.lat ?? data.latitude ?? data.location?.lat);
-    let lng = Number(data.lng ?? data.long ?? data.longitude ?? data.location?.lng);
+        const lat = Number(data.lat ?? data.latitude ?? data.location?.lat);
+        const lng = Number(data.lng ?? data.long ?? data.longitude ?? data.location?.lng);
 
-    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-      console.warn("⚠️ FIXING BAD DATA:", data);
-      lat = 0;
-      lng = 0;
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+          console.warn("❌ BAD DATA:", data);
+          return null;
+        }
+
+        return {
+          id: doc.id,
+          name: data.name || "Unnamed Shop",
+          lat,
+          lng
+        };
+      })
+      .filter(Boolean);
+
+    allLocations = [...staticLocations, ...customLocations];
+
+    render();
+
+    // ✅ Fit bounds ONLY ONCE
+    const group = new L.featureGroup(markers.getLayers());
+    if (!hasFitBounds && group.getLayers().length > 0) {
+      map.fitBounds(group.getBounds(), {
+        padding: [50, 50],
+        maxZoom: 14
+      });
+      hasFitBounds = true;
     }
-
-    return {
-      id: d.id,
-      name: data.name || "Unnamed Shop",
-      lat,
-      lng,
-      isFirebase: true
-    };
-  });
-
-  allLocations = [...staticLocations, ...customLocations];
-
-  render();
-
-  const group = new L.featureGroup(markers.getLayers());
-  if (group.getLayers().length > 0) {
-    map.fitBounds(group.getBounds(), {
-      padding: [50, 50],
-      maxZoom: 14
-    });
-  }
-});
-
-} // ✅ THIS WAS MISSING
-
-// ========================
-// VOTES
-// ========================
-
-async function getVoteData(id) {
-  if (votesCache[id]) return votesCache[id];
-
-  const ref = doc(db, "votes", id);
-  const snap = await getDoc(ref);
-
-  if (!snap.exists()) {
-    return (votesCache[id] = { votes: 0, percent: 0 });
-  }
-
-  const d = snap.data();
-  const votes = d.votes || 0;
-  const stirs = d.stirs || 0;
-
-  return (votesCache[id] = {
-    votes,
-    percent: votes ? Math.round((stirs / votes) * 100) : 0
   });
 }
 
@@ -175,27 +123,30 @@ async function getVoteData(id) {
 function render() {
   markers.clearLayers();
 
-  for (let loc of allLocations) {
-    if (!Number.isFinite(loc.lat) || !Number.isFinite(loc.lng)) {
-      console.warn("❌ STILL BAD:", loc);
-      continue;
-    }
+  for (const loc of allLocations) {
+    const marker = L.circleMarker([loc.lat, loc.lng], {
+      radius: 6,
+      fillColor: "#4b2e2b",
+      fillOpacity: 0.9,
+      color: "#fff",
+      weight: 1
+    });
 
-    // 🚫 prevent bad fallback coords from polluting map
-    if (loc.lat === 0 && loc.lng === 0) {
-      console.warn("🚫 SKIPPING ZERO COORD:", loc);
-      continue;
-    }
+    marker.bindPopup(createPopupContent(loc));
 
-const marker = L.circleMarker([loc.lat, loc.lng], {
-  radius: 6,
-  fillColor: "#4b2e2b", // your brand color
-  fillOpacity: 0.9,
-  color: "#fff",
-  weight: 1
-});
+    let hoverTimeout;
 
-    marker.on("click", () => showPopup(loc));
+    marker.on("mouseover", function () {
+      clearTimeout(hoverTimeout);
+      this.openPopup();
+    });
+
+    marker.on("mouseout", function () {
+      hoverTimeout = setTimeout(() => {
+        this.closePopup();
+      }, 150);
+    });
+
     markers.addLayer(marker);
   }
 }
@@ -204,53 +155,31 @@ const marker = L.circleMarker([loc.lat, loc.lng], {
 // POPUP
 // ========================
 
-function showPopup(loc) {
-  const popup = L.popup()
-    .setLatLng([loc.lat, loc.lng])
-    .setContent(`
-      <b>${loc.name}</b><br><br>
-      <button class="reportBtn">🚩 Report Location</button>
-    `)
-    .openOn(map);
-
-  setTimeout(() => {
-    const popupEl = document.querySelector(".leaflet-popup");
-    const btn = popupEl?.querySelector(".reportBtn");
-
-    if (btn) {
-      btn.onclick = async () => {
-        btn.disabled = true;
-
-        try {
-          await reportLocation(loc.id);
-        } catch (err) {
-          btn.disabled = false;
-        }
-      };
-    }
-  }, 0);
+function createPopupContent(loc) {
+  return `
+    <b>${loc.name}</b><br><br>
+    <button onclick="reportLocation('${loc.id}')">🚩 Report Location</button>
+  `;
 }
 
 // ========================
-// VOTE
+// REPORT SYSTEM
 // ========================
 
-window.vote = async (e, id, yes) => {
-  let ref = doc(db, "votes", id);
-  let snap = await getDoc(ref);
-  let d = snap.exists() ? snap.data() : {};
+window.reportLocation = async (id) => {
+  if (!confirm("Report this location?")) return;
 
-  let votes = (d.votes || 0) + 1;
-  let stirs = (d.stirs || 0) + (yes ? 1 : 0);
+  try {
+    await addDoc(collection(db, "reports"), {
+      locationId: id,
+      timestamp: Date.now()
+    });
 
-  await setDoc(ref, { ...d, votes, stirs });
-
-  votesCache[id] = {
-    votes,
-    percent: Math.round((stirs / votes) * 100)
-  };
-
-  render();
+    alert("✅ Report submitted");
+  } catch (err) {
+    console.error("Report failed:", err);
+    alert("❌ Failed to report");
+  }
 };
 
 // ========================
@@ -274,11 +203,17 @@ window.openSubmitForm = () => {
 };
 
 window.closeSubmitForm = () => {
+  isAddingMode = false;
   document.getElementById("submitPanel").style.display = "none";
+
+  if (tempMarker) {
+    map.removeLayer(tempMarker);
+    tempMarker = null;
+  }
 };
 
-map.on("click", (e) => {
-  if (!isAddingMode) return; // 🚫 BLOCK unless adding
+map.on("click", e => {
+  if (!isAddingMode) return;
 
   newShopCoords = e.latlng;
 
@@ -298,35 +233,15 @@ window.submitShop = async () => {
     return;
   }
 
-  const marker = L.circleMarker([newShopCoords.lat, newShopCoords.lng], {
-    radius: 6,
-    fillColor: "#4b2e2b",
-    fillOpacity: 0.9,
-    color: "#fff",
-    weight: 1
-  });
-
-  marker.bindPopup(`<b>${name}</b><br>Pending votes`);
-  markers.addLayer(marker);
-
   await addDoc(collection(db, "locations"), {
     name,
     lat: newShopCoords.lat,
     lng: newShopCoords.lng
   });
 
-  alert("Added!");
+  alert("✅ Added!");
 };
 
-window.closeSubmitForm = () => {
-  isAddingMode = false;
-  document.getElementById("submitPanel").style.display = "none";
-
-  if (tempMarker) {
-    map.removeLayer(tempMarker);
-    tempMarker = null;
-  }
-};
 // ========================
 // NAV
 // ========================

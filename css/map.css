@@ -24,8 +24,8 @@
   z-index: 1000;
 }
 
-#logo {
-  height: 36px;
+.logo {
+  height: 50px;
 }
 
 /* BUTTONS */
@@ -36,6 +36,7 @@
   background: #eee;
   cursor: pointer;
 }
+
 
 /* PANEL */
 .panel {
@@ -87,4 +88,10 @@
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   border: 2px solid white;
+}
+
+/* Leaflet */
+
+.leaflet-top.leaflet-left {
+  top: 80px;
 }

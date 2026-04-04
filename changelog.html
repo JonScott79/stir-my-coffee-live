@@ -5,9 +5,17 @@
   <title>Changelog – Stir My Coffee™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/styles.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet" />
+<!-- Seasonal Styles -->
+<link id="baseTheme" rel="stylesheet" />
+<!-- Holiday Styles -->
+<link id="holidayTheme" rel="stylesheet" />
 
   <style>
+  html, body {
+  overflow-y: auto;
+  height: auto;
+}
     .changelog-container {
       max-width: 800px;
       margin: auto;
@@ -59,9 +67,44 @@
     Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
   </p>
 
-  <!-- v1.3.0 -->
+<!-- v1.4.0 -->
+<div class="changelog-entry">
+  <div class="version-title">v1.4.0 – Apr 2026</div>
+
+  <div class="section-title">Added</div>
+  <ul>
+    <li>Dynamic seasonal theme system (Winter, Spring, Summer, Fall)</li>
+    <li>Holiday-based themes (Easter, Christmas, Halloween, July 4, Veterans Day, Memorial Day, Thanksgiving, Valentines Day, St. Patricks Day, Black History Month)</li>
+    <li>Automatic theme switching based on date</li>
+    <li>Cross-page theme support (About, Legal, Changelog now match main app)</li>
+    <li>Smooth theme transition effect with fade animation</li>
+  </ul>
+
+  <div class="section-title">Changed</div>
+  <ul>
+    <li>Spring and Easter themes redesigned with cleaner pastel palette (blue/yellow focus)</li>
+    <li>Improved visual consistency across all pages</li>
+    <li>Enhanced seasonal UI clarity and identity</li>
+  </ul>
+
+  <div class="section-title">Technical</div>
+  <ul>
+    <li>Extracted theme system into dedicated <code>theme.js</code> module</li>
+    <li>Removed duplicate theme logic from <code>app.js</code></li>
+    <li>Implemented safe CSS loading with fallback handling</li>
+    <li>Fixed theme loading across secondary pages</li>
+    <li>Improved script loading order for reliability</li>
+  </ul>
+
+  <div class="section-title">Misc</div>
+  <ul>
+    <li>The site now changes with the seasons 🌸🎃🎄</li>
+  </ul>
+</div>
+
+  <!-- v1.3.1 -->
   <div class="changelog-entry">
-    <div class="version-title">v1.3.0 – Apr 2026</div>
+    <div class="version-title">v1.3.1 – Apr 2026</div>
 
     <div class="section-title">Added</div>
     <ul>
@@ -164,5 +207,8 @@
 
 </div>
 
+<script src="js/theme.js" defer></script>
+
+<div id="themeFade"></div>
 </body>
 </html>

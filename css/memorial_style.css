@@ -1,0 +1,25 @@
+/* ========================
+   MEMORIAL DAY THEME
+   (respectful, subdued)
+======================== */
+
+:root {
+  --bg-main: #f5f7fa;
+  --bg-header: #e8edf3;
+  --bg-card: #ffffff;
+  --bg-footer: #eef3f8;
+
+  --text-main: #1f2a44;
+  --text-muted: #5c6b82;
+
+  /* muted patriotic tones */
+  --accent: #2c3e73;        /* navy */
+  --accent-light: #a8b3c7;  /* soft steel */
+
+  --border: #d6dde6;
+}
+
+/* subtle, not flashy */
+.location-card:hover {
+  box-shadow: 0 4px 12px rgba(44, 62, 115, 0.15);
+}

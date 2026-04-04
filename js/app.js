@@ -1481,7 +1481,7 @@ function renderMiniCard(title, shop) {
       </div>
 
       <div class="meta">
-        <span>🌀 ${shop.percent ? shop.percent + "%" : "—"}</span>
+        <span>🎯 ${shop.percent ? shop.percent + "%" : "—"}</span>
         <span>⭐ ${shop.speed ? shop.speed.toFixed(1) : "—"}</span>
         <span>📍 ${shop.distance?.toFixed(1)} mi</span>
       </div>
@@ -1528,7 +1528,7 @@ function renderList(locations) {
             </span>
 
             <span class="quality ${getRatingClass(l.percent)}">
-              🌀 ${l.percent ? l.percent + "%" : "—"}
+              🎯 ${l.percent ? l.percent + "%" : "—"}
             </span>
 
             <span class="stars">
@@ -1576,7 +1576,7 @@ function renderTopPick(shop) {
     <div class="name">${shop.name}</div>
     <div class="meta">
       <span class="quality ${getRatingClass(shop.percent)}">
-        🌀 ${shop.percent ? shop.percent + "%" : "—"}
+        🎯 ${shop.percent ? shop.percent + "%" : "—"}
       </span>
       <span class="stars">${renderStars(shop.id, shop.speed)}</span>
       <span>📍 ${shop.distance?.toFixed(1) ?? "—"} mi</span>
@@ -1736,7 +1736,6 @@ function goToMap() {
 let deferredPrompt = null;
 
 window.addEventListener("load", () => {
-
   init();
 
   const btn = document.getElementById("installBtn");
@@ -1756,3 +1755,4 @@ window.addEventListener("load", () => {
     });
   }
 });
+

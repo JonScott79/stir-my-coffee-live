@@ -1,0 +1,18 @@
+/* ========================
+   VETERANS DAY THEME
+======================== */
+
+:root {
+  --bg-main: #f5f7fa;
+  --bg-header: #e3eaf2;
+  --bg-card: #ffffff;
+  --bg-footer: #eef3f8;
+
+  --text-main: #1f2a44;
+  --text-muted: #5c6b82;
+
+  --accent: #1f3c88;
+  --accent-light: #b22234;
+
+  --border: #ccd6e0;
+}

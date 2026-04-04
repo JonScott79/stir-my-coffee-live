@@ -1,4 +1,28 @@
-## [1.3.0] – Apr 2026
+## [1.4.0] – Apr 2026
+
+### Added
+- Dynamic seasonal theme system (Winter, Spring, Summer, Fall)
+- Holiday-based themes (Easter, Christmas, Halloween, July 4, Veterans Day, Memorial Day, Thanksgiving, Valentines Day, St. Patricks Day, Black History Month)
+- Automatic theme switching based on date
+- Cross-page theme support (About, Legal, Changelog now match main app)
+- Smooth theme transition effect with fade animation
+
+### Changed
+- Spring and Easter themes redesigned with cleaner pastel palette (blue/yellow focus)
+- Improved visual consistency across all pages
+- Enhanced seasonal UI clarity and identity
+
+### Technical
+- Extracted theme system into dedicated `theme.js` module
+- Removed duplicate theme logic from `app.js`
+- Implemented safe CSS loading with fallback handling
+- Fixed theme loading across secondary pages
+- Improved script loading order for reliability
+
+### Misc
+- The site now changes with the seasons 🌸🎃🎄
+
+## [1.3.1] – Apr 2026
 
 ### Added
 - Facebook social link in footer with hover styling

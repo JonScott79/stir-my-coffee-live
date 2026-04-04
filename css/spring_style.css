@@ -1,0 +1,38 @@
+/* ========================
+   SPRING THEME (FRESH + ALIVE)
+======================== */
+
+:root {
+  --bg-main: #f4fff7;        /* soft green tint */
+  --bg-header: #e8fff1;      /* brighter spring green */
+  --bg-card: #ffffff;
+  --bg-footer: #f0fff6;
+
+  --text-main: #24332a;
+  --text-muted: #5f7a68;
+
+  --accent: #6ee7a8;         /* lively green */
+  --accent-light: #b9fbcf;   /* pastel green */
+
+  --border: #d9f5e4;
+
+  /* 🎯 Core accents */
+  --accent-primary: #6ee7a8;   /* fresh green */
+  --accent-secondary: #a7f3d0; /* mint */
+  --accent-highlight: #fef9c3; /* soft sunlight yellow */
+}
+
+/* 🌿 hover glow */
+.location-card:hover {
+  box-shadow: 0 6px 18px rgba(110, 231, 168, 0.25);
+}
+
+/* 🌞 subtle spring gradient */
+body {
+  background: linear-gradient(
+    135deg,
+    #f4fff7,   /* green tint */
+    #fefce8,   /* sunlight */
+    #ecfdf5    /* mint */
+  );
+}

@@ -1,0 +1,23 @@
+/* ========================
+   BLACK HISTORY MONTH THEME
+======================== */
+
+:root {
+  --bg-main: #111;
+  --bg-header: #1a1a1a;
+  --bg-card: #1f1f1f;
+  --bg-footer: #181818;
+
+  --text-main: #f5f5f5;
+  --text-muted: #bbb;
+
+  --accent: #e63946;
+  --accent-light: #f1c40f;
+
+  --border: #333;
+}
+
+/* subtle gold highlight */
+.actions button:hover {
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
+}
