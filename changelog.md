@@ -1,3 +1,29 @@
+## [1.5.0] – Apr 2026
+
+### Fixed
+- Resolved mobile layout overflow causing UI elements to extend off-screen
+- Fixed Top Picks panel duplicate entries when dataset is small
+- Restored Top Picks panel border and visual styling
+- Fixed inconsistent cursor behavior across interactive elements (cards, buttons, icons)
+- Fixed social media icons (Facebook, Instagram) being overridden by theme styles
+- Fixed star rating hover interaction (visual feedback + scaling)
+- Fixed directions icon hover and pointer behavior
+
+### Changed
+- Refactored and consolidated CSS to remove duplicate and conflicting rules
+- Improved interaction feedback across voting, rating, and navigation elements
+- Enhanced UI consistency across desktop and mobile
+- Improved Top Picks selection logic with better distribution across categories
+
+### Technical
+- Reduced CSS conflicts by centralizing card and interaction styles
+- Improved selector specificity to prevent theme overrides from breaking core UI
+- Cleaned up redundant styling rules for maintainability
+- Strengthened UI behavior under edge cases and mixed data conditions
+
+### Misc
+- The app now feels way more responsive and intentional 😎
+
 ## [1.4.0] – Apr 2026
 
 ### Added

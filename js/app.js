@@ -1107,7 +1107,17 @@ Now go rate your coffee ☕
 */
 
 
+// ========================
+// Google Analytics
+// ========================
 
+function trackEvent(name, params = {}) {
+  if (typeof gtag !== "function") return;
+
+  gtag("event", name, {
+    ...params
+  });
+}
 
 // ========================
 // GLOBAL STATE
@@ -1159,6 +1169,9 @@ function recordVote(id) {
 function goToUser() {
   const btn = document.getElementById("locateBtn");
 
+  // 🔥 ANALYTICS
+  trackEvent("locate_me");
+
   if (btn) {
     btn.disabled = true;
     btn.textContent = "⏳ Finding...";
@@ -1173,7 +1186,6 @@ function goToUser() {
 
       if (btn) btn.textContent = "✅ Nearby Found";
 
-      // 🔥 reset after delay
       setTimeout(() => {
         if (btn) {
           btn.textContent = "📍 Locate Me";
@@ -1217,11 +1229,47 @@ async function init() {
 function getTopPicks(locations) {
   if (!locations.length) return {};
 
-  const fastest = [...locations].sort((a, b) => (b.speed || 0) - (a.speed || 0))[0];
+  // clone so we don’t mutate original
+  const pool = [...locations];
 
-  const best = [...locations].sort((a, b) => (b.percent || 0) - (a.percent || 0))[0];
+  // helper: require minimum votes to be eligible
+  const MIN_VOTES = 3;
 
-  const overall = [...locations].sort((a, b) => b.score - a.score)[0];
+  const withVoteThreshold = (value, votes) => {
+    return (votes >= MIN_VOTES) ? value : 0;
+  };
+
+  // 🧠 BEST OVERALL (your main ranking stays as-is)
+  const overall = pool
+    .sort((a, b) => b.score - a.score)[0];
+
+  // remove it
+  const remainingAfterOverall = pool.filter(l => l.id !== overall.id);
+
+  // ⭐ BEST QUALITY (accuracy with threshold)
+  let best = null;
+  if (remainingAfterOverall.length) {
+    best = [...remainingAfterOverall]
+      .sort((a, b) =>
+        withVoteThreshold(b.percent || 0, b.votes) -
+        withVoteThreshold(a.percent || 0, a.votes)
+      )[0];
+  }
+
+  // remove it
+  const remainingAfterBest = remainingAfterOverall.filter(
+    l => best && l.id !== best.id
+  );
+
+  // ⚡ FASTEST (speed with threshold)
+  let fastest = null;
+  if (remainingAfterBest.length) {
+    fastest = [...remainingAfterBest]
+      .sort((a, b) =>
+        withVoteThreshold(b.speed || 0, b.votes) -
+        withVoteThreshold(a.speed || 0, a.votes)
+      )[0];
+  }
 
   return { fastest, best, overall };
 }
@@ -1506,7 +1554,7 @@ function renderList(locations) {
      tabindex="0"
      role="button"
      aria-label="${l.name}, ${l.percent || 0}% stir quality, ${l.distance?.toFixed(1)} miles away. Press Enter for details."
-     onclick="selectLocation('${l.id}')"
+     onclick="trackEvent('view_location', { location_id: '${l.id}' }); selectLocation('${l.id}')"
      onkeypress="if(event.key==='Enter'){selectLocation('${l.id}')}">
           
           <div class="card-header">
@@ -1631,6 +1679,12 @@ function vote(e, id, up) {
 
   recordVote(id);
 
+  // ANALYTICS
+  trackEvent("vote", {
+    location_id: id,
+    type: up ? "upvote" : "downvote"
+  });
+
   const ref = db.collection("votes").doc(id);
 
   ref.set({
@@ -1665,6 +1719,12 @@ function rateSpeed(e, id, rating) {
 
   recordSpeedRating(id);
 
+  // ANALYTICS
+  trackEvent("rate_speed", {
+    location_id: id,
+    rating: rating
+  });
+
   const ref = db.collection("votes").doc(id);
 
   ref.set({
@@ -1686,9 +1746,15 @@ function getRatingClass(percent) {
 
 function openDirections(e, lat, lng) {
   e.stopPropagation();
+
+  // ANALYTICS ($$$)
+  trackEvent("get_directions", {
+    lat,
+    lng
+  });
+
   window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`);
 }
-
 function calculateScore(shop) {
   return (
     (shop.percent || 0) * 0.5 +
