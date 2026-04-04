@@ -1808,17 +1808,26 @@ window.addEventListener("load", () => {
 
   if (btn) {
     btn.addEventListener("click", async () => {
+
+      // 🔥 Track click
+      trackEvent("install_click");
+
       if (!deferredPrompt) {
         alert("To install: use browser menu → Add to Home Screen");
         return;
       }
 
+      // Show install prompt
       deferredPrompt.prompt();
 
       const { outcome } = await deferredPrompt.userChoice;
+
+      // 🔥 Track result (accepted or dismissed)
+      trackEvent("install_prompt_result", {
+        outcome: outcome
+      });
 
       deferredPrompt = null;
     });
   }
 });
-
