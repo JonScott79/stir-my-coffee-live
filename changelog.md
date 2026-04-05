@@ -1,3 +1,21 @@
+## [1.5.1] – Apr 2026
+
+### Changed
+- Moved Top Picks section to top on mobile for improved visibility and engagement
+- Reworded Top Picks header for stronger clarity and product alignment
+- Added “Vote Here” section header to guide user interaction
+- Added voting subtext (“Once per shop per day”) to improve transparency and reduce confusion
+- Improved visual hierarchy by matching header styles (font size, weight, color)
+- Refined spacing and alignment for tighter, more intentional UI
+
+### UX
+- Increased clarity of core user actions (voting + discovery)
+- Reduced friction and confusion around voting limitations
+- Improved mobile-first experience by prioritizing high-value content
+
+### Misc
+- The app is starting to feel *really* dialed in ☕🔥
+
 ## [1.5.0] – Apr 2026
 
 ### Fixed

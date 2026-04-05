@@ -145,6 +145,22 @@ header {
   color: var(--text-muted);
 }
 
+.vote-header {
+  text-align: center;
+  font-size: 24px;   
+  font-weight: 700;     
+  color: var(--text-main);
+  margin-bottom: 1px;   
+}
+
+.vote-subtext {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
 /* ========================
    ACTION BUTTONS
 ======================== */
@@ -290,7 +306,12 @@ footer {
 
   .topPickSection {
     position: static;
+	order: -1;
   }
+  
+.topPickSection h2 {
+  text-align: center;
+}
 
   .container {
     padding: 12px;
