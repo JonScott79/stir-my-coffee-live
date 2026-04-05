@@ -211,8 +211,9 @@ function renderLocations(list) {
     el.innerHTML = `
       <div class="row">
         <div>
-          <strong>${loc.name}</strong><br>
-          ${loc.lat}, ${loc.lng}
+<strong>${loc.name}</strong><br>
+${loc.lat}, ${loc.lng}<br>
+🎯 ${loc.percent || 0}% (${loc.votes || 0} votes)
           ${count >= 3 ? `<div class="flag">⚠️ ${count} reports</div>` : ""}
         </div>
 
@@ -228,13 +229,36 @@ function renderLocations(list) {
   });
 }
 
+async function loadVotes() {
+  const snapshot = await db.collection("votes").get();
+  const voteMap = {};
+
+  snapshot.forEach(doc => {
+    voteMap[doc.id] = doc.data();
+  });
+
+  return voteMap;
+}
+
 async function loadLocations() {
   const snapshot = await db.collection("locations").get();
+  const votes = await loadVotes();
 
-  allLocations = snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+  allLocations = snapshot.docs.map(doc => {
+    const data = doc.data();
+    const v = votes[doc.id] || {};
+
+    const up = v.upvotes || 0;
+    const down = v.downvotes || 0;
+    const total = up + down;
+
+    return {
+      id: doc.id,
+      ...data,
+      votes: total,
+      percent: total ? Math.round((up / total) * 100) : 0
+    };
+  });
 
   renderLocations(allLocations);
 }
