@@ -1,0 +1,98 @@
+/* ========================
+   ABOUT HERO
+======================== */
+
+.heroAbout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 350px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-strong);
+}
+
+.heroText h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.heroActions {
+  margin-top: 15px;
+}
+
+.primaryBtn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ========================
+   FEATURED CARD
+======================== */
+
+.featuredCard {
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 25px;
+  box-shadow: var(--shadow-strong);
+}
+
+.featuredCard h3 {
+  margin-top: 0;
+}
+
+/* ========================
+   SECTION IMPROVEMENTS
+======================== */
+
+.section {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ========================
+   CREATOR BOX UPGRADE
+======================== */
+
+.creatorBox {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.creatorImage {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* ========================
+   MOBILE
+======================== */
+
+@media (max-width: 768px) {
+  .heroAbout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .creatorBox {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}

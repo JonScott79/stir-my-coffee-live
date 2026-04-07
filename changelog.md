@@ -1,3 +1,24 @@
+## [1.6.0] – Apr 2026
+
+### Added
+- New About page hero section featuring founder illustration and core product message
+- Featured spotlight section highlighting QCC Student of the Month recognition
+- Dedicated `about.css` for modular styling
+
+### Changed
+- Complete About page redesign with card-based layout
+- Improved visual hierarchy and spacing
+- Moved credibility and key messaging above the fold
+- Better integration of founder story with product narrative
+
+### UX
+- Reduced wall-of-text feel with scannable sections
+- Improved engagement and readability
+- Stronger first impression and onboarding experience
+
+### Misc
+- The About page finally feels like a product, not a document ☕🔥
+
 ## [1.5.1] – Apr 2026
 
 ### Changed
