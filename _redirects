@@ -1,2 +1,30 @@
-/shop/*   /shop.html   200
-/*        /index.html  200
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 🔒 LOCATIONS (READ ONLY)
+    match /locations/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // 🗳️ VOTES (ALLOW WRITES BUT LIMIT STRUCTURE)
+    match /votes/{doc} {
+      allow read: if true;
+
+      allow create, update: if request.resource.data.keys().hasOnly(['votes', 'stirs']) &&
+        request.resource.data.votes is int &&
+        request.resource.data.stirs is int &&
+        request.resource.data.votes >= 0 &&
+        request.resource.data.stirs >= 0;
+    }
+
+    // 🚩 REPORTS (ALLOW CREATION ONLY)
+    match /reports/{doc} {
+      allow create: if request.resource.data.keys().hasOnly(['locationId', 'name', 'lat', 'lng', 'timestamp']);
+      allow read: if false;
+      allow update, delete: if false;
+    }
+
+  }
+}

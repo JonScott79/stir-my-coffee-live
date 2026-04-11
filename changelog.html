@@ -67,6 +67,57 @@
     Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
   </p>
 
+<!-- v2.0.0 -->
+<div class="changelog-entry">
+  <div class="version-title">v2.0.0 – Apr 2026</div>
+
+  <div class="section-title">🚀 Major Release – Data System Overhaul</div>
+
+  <div class="section-title">Added</div>
+  <ul>
+    <li>Unified location identity system using deterministic ID generation (name + lat/lng)</li>
+    <li>Seamless merging of static dataset (19k+ locations) with real-time Firebase data</li>
+    <li>Real-time vote synchronization across Map and List views</li>
+    <li>Scalable voting architecture supporting large datasets without performance degradation</li>
+    <li>Consistent 5-star speed rating system across all components</li>
+  </ul>
+
+  <div class="section-title">Changed</div>
+  <ul>
+    <li>Refactored data loading pipeline to support hybrid static + dynamic sources</li>
+    <li>Standardized vote schema (<code>upvotes</code>, <code>downvotes</code>, <code>speedTotal</code>, <code>speedVotes</code>)</li>
+    <li>Rebuilt map rendering pipeline for consistency with index view</li>
+    <li>Aligned UI behavior between map and list views (votes + ratings)</li>
+  </ul>
+
+  <div class="section-title">Fixed</div>
+  <ul>
+    <li>Resolved vote desync between map and index views</li>
+    <li>Fixed ID mismatches causing missing or incorrect vote data</li>
+    <li>Fixed speed rating inconsistencies (<code>speedCount</code> → <code>speedVotes</code>)</li>
+    <li>Fixed map popup hover interaction issues</li>
+  </ul>
+
+  <div class="section-title">Performance</div>
+  <ul>
+    <li>Optimized handling of large datasets (19k+ locations)</li>
+    <li>Reduced redundant computations during render cycles</li>
+    <li>Improved real-time update efficiency via Firestore listeners</li>
+  </ul>
+
+  <div class="section-title">Developer Experience</div>
+  <ul>
+    <li>Cleaner separation between static data, Firebase data, and UI logic</li>
+    <li>Improved maintainability of location and vote systems</li>
+    <li>Established foundation for future features (moderation, ranking, analytics)</li>
+  </ul>
+
+  <div class="section-title">Misc</div>
+  <ul>
+    <li>This is the update where Stir My Coffee stops being a project… and becomes a platform ☕🔥</li>
+  </ul>
+</div>
+
 <!-- v1.6.0 -->
 <div class="changelog-entry">
   <div class="version-title">v1.6.0 – Apr 2026</div>

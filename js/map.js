@@ -2,13 +2,50 @@
 // GLOBAL STATE
 // ========================
 
-let isAddingMode = false;
 let allLocations = [];
 let staticLocations = [];
-let newShopCoords = null;
-let userLocation = null;
-let tempMarker = null;
 let hasFitBounds = false;
+let activeMarker = null;
+let votesData = {};
+
+// ========================
+// STABLE LOCATION ID
+// ========================
+
+function generateLocationId(name, lat, lng) {
+  return `${name}_${Number(lat).toFixed(5)}_${Number(lng).toFixed(5)}`
+    .toLowerCase()
+    .replace(/[^a-z0-9_]/g, "");
+}
+
+// ========================
+// VOTE LIMIT SYSTEM
+// ========================
+
+const VOTE_LIMIT_HOURS = 24;
+
+function getVoteHistory() {
+  return JSON.parse(localStorage.getItem("voteHistory") || "{}");
+}
+
+function saveVoteHistory(history) {
+  localStorage.setItem("voteHistory", JSON.stringify(history));
+}
+
+function canVote(id) {
+  const history = getVoteHistory();
+  const lastVote = history[id];
+  if (!lastVote) return true;
+
+  const hoursPassed = (Date.now() - lastVote) / (1000 * 60 * 60);
+  return hoursPassed >= VOTE_LIMIT_HOURS;
+}
+
+function recordVote(id) {
+  const history = getVoteHistory();
+  history[id] = Date.now();
+  saveVoteHistory(history);
+}
 
 // ========================
 // FIREBASE
@@ -19,7 +56,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-  onSnapshot
+  onSnapshot,
+  doc,
+  setDoc,
+  increment
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const app = initializeApp({
@@ -31,31 +71,31 @@ const app = initializeApp({
 const db = getFirestore(app);
 
 // ========================
-// MAP SETUP (🌍 GLOBAL)
+// MAP
 // ========================
 
-const map = L.map("map", {
-  zoomControl: false
-}).setView([20, 0], 2);
+const map = L.map("map", { zoomControl: false }).setView([20, 0], 2);
 
-// Add zoom control manually in bottom-right
-L.control.zoom({
-  position: "bottomright"
-}).addTo(map);
-
+L.control.zoom({ position: "bottomright" }).addTo(map);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-const markers = L.markerClusterGroup({
-  iconCreateFunction: cluster => {
-    return L.divIcon({
-      html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
-      className: "custom-cluster",
-      iconSize: L.point(40, 40)
-    });
-  }
-});
-
+const markers = L.markerClusterGroup();
 map.addLayer(markers);
+
+// ========================
+// HEADER BUTTONS
+// ========================
+
+window.goToUser = () => {
+  navigator.geolocation.getCurrentPosition(pos => {
+    const latlng = [pos.coords.latitude, pos.coords.longitude];
+    map.flyTo(latlng, 14, { duration: 1.2 });
+  });
+};
+
+window.goToList = () => {
+  window.location.href = "index.html";
+};
 
 // ========================
 // LOAD LOCATIONS
@@ -63,56 +103,86 @@ map.addLayer(markers);
 
 async function loadLocationsRealtime() {
   const locationsRef = collection(db, "locations");
+  const votesRef = collection(db, "votes");
 
-  // Static locations
-  try {
-    const res = await fetch("./coffeeLocations.json");
-    const data = await res.json();
+  let locationsData = [];
 
-    staticLocations = data.map((loc, i) => ({
-      ...loc,
-      id: loc.id || `static_${i}`
-    }));
-  } catch (err) {
-    console.warn("❌ Static load failed:", err);
-  }
+  function combineAndRender() {
+    let combined = [...staticLocations];
 
-  // Firebase realtime locations
-  onSnapshot(locationsRef, snapshot => {
-    const customLocations = snapshot.docs
-      .map(doc => {
-        const data = doc.data();
-
-        const lat = Number(data.lat ?? data.latitude ?? data.location?.lat);
-        const lng = Number(data.lng ?? data.long ?? data.longitude ?? data.location?.lng);
-
-        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-          console.warn("❌ BAD DATA:", data);
-          return null;
-        }
+    if (locationsData.length) {
+      const customLocations = locationsData.map(d => {
+        const id = d.id || generateLocationId(d.name, d.lat, d.lng);
+        const v = votesData[id] || {};
 
         return {
-          id: doc.id,
-          name: data.name || "Unnamed Shop",
-          lat,
-          lng
+          id,
+          name: d.name,
+          lat: Number(d.lat),
+          lng: Number(d.lng),
+          ...v
         };
-      })
-      .filter(Boolean);
+      });
 
-    allLocations = [...staticLocations, ...customLocations];
+      combined = [...combined, ...customLocations];
+    }
+
+    allLocations = combined.map(loc => {
+      const lat = Number(loc.lat);
+      const lng = Number(loc.lng);
+
+      const id = loc.id || generateLocationId(loc.name, lat, lng);
+      const v = votesData[id] || {};
+
+      const up = v.upvotes || 0;
+      const down = v.downvotes || 0;
+      const total = up + down;
+
+      // 🔥 FIXED HERE (speedVotes instead of speedCount)
+      const speedTotal = v.speedTotal || 0;
+      const speedVotes = v.speedVotes || 0;
+
+      return {
+        ...loc,
+        id,
+        lat,
+        lng,
+        percent: total ? Math.round((up / total) * 100) : 0,
+        speed: speedVotes ? (speedTotal / speedVotes) : 0,
+        votes: total
+      };
+    });
 
     render();
+  }
 
-    // ✅ Fit bounds ONLY ONCE
-    const group = new L.featureGroup(markers.getLayers());
-    if (!hasFitBounds && group.getLayers().length > 0) {
-      map.fitBounds(group.getBounds(), {
-        padding: [50, 50],
-        maxZoom: 14
-      });
-      hasFitBounds = true;
-    }
+  // STATIC
+  const res = await fetch("./coffeeLocations.json");
+  const data = await res.json();
+
+  staticLocations = data.map(loc => ({
+    ...loc,
+    id: generateLocationId(loc.name, loc.lat, loc.lng)
+  }));
+
+  combineAndRender();
+
+  // FIREBASE LOCATIONS
+  onSnapshot(locationsRef, snapshot => {
+    locationsData = snapshot.docs.map(docSnap => ({
+      id: docSnap.id,
+      ...docSnap.data()
+    }));
+    combineAndRender();
+  });
+
+  // FIREBASE VOTES
+  onSnapshot(votesRef, snapshot => {
+    votesData = {};
+    snapshot.forEach(docSnap => {
+      votesData[docSnap.id] = docSnap.data();
+    });
+    combineAndRender();
   });
 }
 
@@ -125,213 +195,100 @@ function render() {
 
   for (const loc of allLocations) {
     const marker = L.circleMarker([loc.lat, loc.lng], {
-      radius: 6,
+      radius: window.innerWidth < 600 ? 4 : 6,
       fillColor: "#4b2e2b",
       fillOpacity: 0.9,
       color: "#fff",
       weight: 1
     });
 
-    marker.bindPopup(createPopupContent(loc));
+    marker.bindPopup(`
+      <b>${loc.name}</b><br><br>
 
-    let hoverTimeout;
-    let isLocked = false;
+      <b>Accuracy:</b> ${loc.percent}% (${loc.votes} votes)<br>
+      <b>Speed:</b> ${loc.speed ? loc.speed.toFixed(1) : "N/A"} ⭐<br><br>
 
-    // 👇 HOVER = preview
-    marker.on("mouseover", function () {
-      if (isLocked) return;
+      <div class="vote-inline">
+        <button onclick="vote(event, '${loc.id}', true)">👍</button>
+        <button onclick="vote(event, '${loc.id}', false)">👎</button>
+      </div>
 
-      clearTimeout(hoverTimeout);
-      this.openPopup();
+      <br>
 
-      const popupEl = this.getPopup().getElement();
+<div class="stars">
+  ${Array.from({ length: 5 }, (_, i) => {
+    const rounded = Math.round(loc.speed || 0);
+    const filled = i + 1 <= rounded ? "★" : "☆";
 
-      if (popupEl) {
-        popupEl.addEventListener("mouseenter", () => {
-          clearTimeout(hoverTimeout);
-        });
+    return `
+      <span
+        role="button"
+        tabindex="0"
+        aria-label="Rate ${i + 1} stars"
+        onclick="rateSpeed(event, '${loc.id}', ${i + 1})"
+        onkeypress="if(event.key==='Enter'){rateSpeed(event, '${loc.id}', ${i + 1})}">
+        ${filled}
+      </span>
+    `;
+  }).join("")}
+</div>
 
-        popupEl.addEventListener("mouseleave", () => {
-          if (!isLocked) {
-            hoverTimeout = setTimeout(() => {
-              marker.closePopup();
-            }, 200);
-          }
-        });
-      }
-    });
+      <br>
 
-    marker.on("mouseout", function () {
-      if (isLocked) return;
-
-      hoverTimeout = setTimeout(() => {
-        marker.closePopup();
-      }, 200);
-    });
-
-    // 👇 CLICK = lock open (key fix)
-    marker.on("click", function () {
-      isLocked = true;
-      this.openPopup();
-    });
-
-    // 👇 CLICK MAP = unlock everything
-    map.on("click", () => {
-      isLocked = false;
-    });
+      <button onclick="reportLocation('${loc.id}')">🚩 Report</button>
+    `);
 
     markers.addLayer(marker);
   }
 }
 
 // ========================
-// POPUP
+// VOTE
 // ========================
 
-function createPopupContent(loc) {
-  return `
-    <b>${loc.name}</b><br><br>
-    <button onclick="reportLocation('${loc.id}')">🚩 Report Location</button>
-  `;
-}
+window.vote = function (event, id, up) {
+  event.stopPropagation();
+
+  if (!canVote(id)) return alert("⏳ Wait 24h");
+
+  recordVote(id);
+
+  setDoc(doc(db, "votes", id), {
+    upvotes: increment(up ? 1 : 0),
+    downvotes: increment(!up ? 1 : 0)
+  }, { merge: true });
+};
 
 // ========================
-// REPORT SYSTEM
+// SPEED
+// ========================
+
+window.rateSpeed = async (event, id, rating) => {
+  event.stopPropagation();
+
+  await setDoc(doc(db, "votes", id), {
+    speedTotal: increment(rating),
+    speedCount: increment(1)
+  }, { merge: true });
+};
+
+// ========================
+// REPORT
 // ========================
 
 window.reportLocation = async (id) => {
-  const reason = prompt(
-`Why are you reporting this location?
-
-1 = Wrong location
-2 = Duplicate
-3 = Closed permanently
-4 = Bad data
-5 = Other`
-  );
-
+  const reason = prompt("1 Wrong\n2 Duplicate\n3 Closed\n4 Bad\n5 Other");
   if (!reason) return;
 
-  const reasonMap = {
-    "1": "Wrong location",
-    "2": "Duplicate",
-    "3": "Closed permanently",
-    "4": "Bad data",
-    "5": "Other"
-  };
-
-  const reasonText = reasonMap[reason] || "Other";
-
-  let details = "";
-  if (reason === "5") {
-    details = prompt("Enter more details (optional):") || "";
-  }
-
-  try {
-    await addDoc(collection(db, "reports"), {
-      locationId: id,
-      reason: reasonText,
-      details: details,
-      timestamp: Date.now()
-    });
-
-    alert("✅ Report submitted");
-  } catch (err) {
-    console.error("Report failed:", err);
-    alert("❌ Failed to report");
-  }
-};
-
-// ========================
-// GEOLOCATION
-// ========================
-
-window.goToUser = () => {
-  navigator.geolocation.getCurrentPosition(pos => {
-    userLocation = [pos.coords.latitude, pos.coords.longitude];
-    map.flyTo(userLocation, 14);
+  await addDoc(collection(db, "reports"), {
+    locationId: id,
+    reason,
+    timestamp: Date.now()
   });
-};
-
-// ========================
-// ADD LOCATION
-// ========================
-
-window.openSubmitForm = () => {
-  isAddingMode = true;
-  document.getElementById("submitPanel").style.display = "block";
-};
-
-window.closeSubmitForm = () => {
-  isAddingMode = false;
-  document.getElementById("submitPanel").style.display = "none";
-
-  if (tempMarker) {
-    map.removeLayer(tempMarker);
-    tempMarker = null;
-  }
-};
-
-map.on("click", e => {
-  if (!isAddingMode) return;
-
-  newShopCoords = e.latlng;
-
-  if (tempMarker) map.removeLayer(tempMarker);
-
-  tempMarker = L.marker(e.latlng)
-    .addTo(map)
-    .bindPopup("📍 New shop here")
-    .openPopup();
-});
-
-window.submitShop = async () => {
-  const name = document.getElementById("shopName").value;
-
-  if (!name || !newShopCoords) {
-    alert("Click map + enter name");
-    return;
-  }
-
-  await addDoc(collection(db, "locations"), {
-    name,
-    lat: newShopCoords.lat,
-    lng: newShopCoords.lng
-  });
-
-  alert("✅ Added!");
-};
-
-// ========================
-// NAV
-// ========================
-
-window.goToList = () => {
-  window.location.href = "/";
 };
 
 // ========================
 // INIT
 // ========================
 
-async function init() {
-  await loadLocationsRealtime();
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      userLocation = [pos.coords.latitude, pos.coords.longitude];
-
-      map.flyTo(userLocation, 14, { duration: 0.6 });
-
-      L.circleMarker(userLocation, {
-        radius: 6,
-        fillColor: "#007bff",
-        fillOpacity: 1,
-        color: "#fff",
-        weight: 2
-      }).addTo(map);
-    });
-  }
-}
-
-init();
+window.addEventListener("DOMContentLoaded", loadLocationsRealtime);

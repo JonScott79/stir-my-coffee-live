@@ -1,3 +1,41 @@
+## [2.0.0] – Apr 2026
+
+### 🚀 Major Release – Data System Overhaul
+
+### Added
+- Unified location identity system using deterministic ID generation (name + lat/lng)
+- Seamless merging of static dataset (19k+ locations) with real-time Firebase data
+- Real-time vote synchronization across Map and List views
+- Scalable voting architecture supporting large datasets without performance degradation
+- Consistent speed rating system (5-star) across all components
+
+### Changed
+- Refactored data loading pipeline to support hybrid static + dynamic sources
+- Standardized vote schema (`upvotes`, `downvotes`, `speedTotal`, `speedVotes`)
+- Rebuilt map rendering pipeline for consistency with index view
+- Improved marker rendering and popup interaction behavior
+- Aligned UI behavior between map and list views (votes + ratings)
+
+### Fixed
+- Resolved vote desync between map and index views
+- Fixed ID mismatches causing missing or incorrect vote data
+- Fixed speed rating inconsistencies (`speedCount` → `speedVotes`)
+- Fixed hover/popup interaction issues on map markers
+
+### Performance
+- Optimized handling of large datasets (19k+ locations)
+- Reduced redundant computations during render cycles
+- Improved real-time update efficiency via Firestore listeners
+
+### Developer Experience
+- Cleaner separation between static data, Firebase data, and UI logic
+- Improved maintainability of location and vote systems
+- Established foundation for future features (moderation, ranking, analytics)
+
+### Misc
+- This is the update where Stir My Coffee stops being a project… and becomes a platform ☕🔥
+
+
 ## [1.6.0] – Apr 2026
 
 ### Added

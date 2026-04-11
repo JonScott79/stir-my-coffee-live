@@ -3,9 +3,7 @@
 <head>
 
 <meta charset="utf-8">
-
 <title>Stir My Coffee™ | Map</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="/images/favicon.ico">
@@ -21,21 +19,50 @@
 <body>
 
 <div id="header">
-<a href="index.html" alt="Home">
-<img src="images/StirLogo.png" alt="Stir My Coffee Logo" class="logo">
-</a>
 
-  <button id="backBtn" onclick="goToList()">📋 List</button>
-  <button id="locateBtn" onclick="goToUser()">📍 Center</button>
-  <button id="submitShopBtn" onclick="openSubmitForm()">➕ Add</button>
+  <div class="header-left">
+    <a href="index.html">
+      <img src="images/StirLogo.png" class="logo">
+    </a>
+  </div>
+
+  <div class="header-center">
+    <div id="mapInstructions">
+      <span>🖱 Click map</span>
+      <span>→</span>
+      <span>☕ Select chain</span>
+      <span>→</span>
+      <span>✅ Submit</span>
+    </div>
+
+    <div class="header-actions">
+      <button onclick="goToList()">📋 List</button>
+      <button onclick="goToUser()">📍 Center</button>
+    </div>
+  </div>
+
 </div>
 
 <div id="map"></div>
 
 <div id="submitPanel" class="panel">
   <b>Add Coffee Shop</b><br><br>
-  Click map to place<br><br>
-  <input id="shopName" placeholder="Shop name"><br><br>
+
+  <select id="shopChain" onchange="handleChainChange()">
+    <option value="">Select Chain</option>
+    <option value="Starbucks">Starbucks</option>
+    <option value="Dunkin">Dunkin</option>
+    <option value="Tim Hortons">Tim Hortons</option>
+    <option value="Peet's Coffee">Peet's Coffee</option>
+    <option value="Caribou Coffee">Caribou Coffee</option>
+    <option value="Biggby Coffee">Biggby Coffee</option>
+    <option value="Philz Coffee">Philz Coffee</option>
+    <option value="Blue Bottle Coffee">Blue Bottle Coffee</option>
+    <option value="Other">Other (Local / Independent)</option>
+  </select><br><br>
+
+  <input id="shopName" placeholder="Shop name" disabled><br><br>
+
   <button onclick="submitShop()">Submit</button>
   <button onclick="closeSubmitForm()">Cancel</button>
 </div>

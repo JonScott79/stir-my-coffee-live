@@ -1131,6 +1131,16 @@ const DISPLAY_LIMIT = 10;
 const MAX_DISTANCE_MILES = 5;
 
 // ========================
+// Generate IDs
+// ========================
+
+function generateLocationId(name, lat, lng) {
+  return `${name}_${Number(lat).toFixed(5)}_${Number(lng).toFixed(5)}`
+    .toLowerCase()
+    .replace(/[^a-z0-9_]/g, "");
+}
+
+// ========================
 // Voting Limitation
 // ========================
 
@@ -1397,16 +1407,28 @@ async function loadLocations() {
     }
 
     allLocations = combined.map(loc => {
-      const v = votes[loc.id] || {};
+      const lat = Number(loc.lat);
+      const lng = Number(loc.lng);
+
+      // 🔥 FIX: preserve Firebase IDs
+      const id = loc.id || generateLocationId(loc.name, lat, lng);
+
+      const v = votes[id] || {};
       const up = v.upvotes || 0;
       const down = v.downvotes || 0;
       const total = up + down;
 
+      const speedTotal = v.speedTotal || 0;
+      const speedVotes = v.speedVotes || 0;
+
       return {
         ...loc,
+        id,
+        lat,
+        lng,
         street: null,
         percent: total ? Math.round((up / total) * 100) : 0,
-        speed: 0,
+        speed: speedVotes ? (speedTotal / speedVotes) : 0,
         votes: total,
         distance: 0
       };

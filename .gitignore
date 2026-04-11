@@ -1,24 +1,47 @@
+# ========================
 # Node
+# ========================
 node_modules/
 
+# ========================
 # Logs
+# ========================
 *.log
 
+# ========================
 # OS junk
+# ========================
 .DS_Store
 Thumbs.db
 
-# Capacitor / Android build junk
-android/.gradle/
-android/build/
-android/app/build/
-android/local.properties
-
-# Android Studio
-*.iml
-.idea/
-.gradle/
-
-# Misc
+# ========================
+# Build / Dist
+# ========================
 dist/
 build/
+
+# ========================
+# Android / TWA (Capacitor)
+# ========================
+android/
+app/
+.gradle/
+gradle/
+
+# Gradle files
+build.gradle
+settings.gradle
+gradlew
+gradlew.bat
+
+# Local config
+local.properties
+
+# Keystore (CRITICAL)
+*.keystore
+
+# ========================
+# IDE
+# ========================
+.idea/
+*.iml
