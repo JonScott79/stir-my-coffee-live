@@ -1,3 +1,27 @@
+## [2.2.0] – Apr 2026
+
+### ✨ Mobile UX & Header System Refinement
+
+### Improved
+- Redesigned mobile header with anchored, app-style layout for better usability
+- Improved interaction clarity by separating context (logo + instructions) from actions (buttons)
+- Enhanced button layout with equal-width responsive controls
+- Refined spacing, alignment, and visual hierarchy across mobile view
+
+### Changed
+- Transitioned mobile header from floating glass UI to fixed top navigation bar
+- Reworked header structure to eliminate “floating blob” layout issues
+- Updated instruction placement for improved readability and reduced wrapping
+- Adjusted responsive behavior to better differentiate desktop vs mobile experience
+
+### UX
+- Reduced visual clutter and improved scan flow on mobile
+- Improved perceived stability and usability with anchored navigation pattern
+- Created more native “app-like” experience on mobile devices
+
+### Misc
+- This is the update where the mobile experience finally clicks 📱☕🔥
+
 ## [2.1.0] – Apr 2026
 
 ### ✨ UI & Map Experience Upgrade

@@ -41,11 +41,11 @@
   align-items: center;
 }
 
-/* CENTER GROUP (instructions + buttons) */
+/* CENTER */
 .header-center {
   flex: 1;
   display: flex;
-  justify-content: center; /* 🔥 CENTER EVERYTHING */
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }
@@ -60,10 +60,6 @@
   opacity: 0.7;
   font-weight: 500;
   color: #333;
-
-  padding: 0;             
-  background: none;      
-  box-shadow: none;       
 }
 
 #mapInstructions span {
@@ -78,7 +74,7 @@
 
 #header button {
   padding: 7px 14px;
-  border-radius: 999px;
+  border-radius: 16px;
 
   background: #6b3e26;
   color: white;
@@ -94,7 +90,7 @@
 }
 
 #header button:hover {
-  background: #7a4a2f; /* lighter brown */
+  background: #7a4a2f;
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
@@ -149,7 +145,8 @@
 /* ======================== */
 
 .custom-cluster {
-  background: transparent;
+  background: transparent !important;
+  border: none !important;
 }
 
 .cluster-icon {
@@ -168,7 +165,6 @@
   font-size: 14px;
 
   border: 2px solid rgba(255,255,255,0.9); 
-
   box-shadow: 0 6px 14px rgba(0,0,0,0.25);
 
   backdrop-filter: blur(4px);
@@ -180,11 +176,6 @@
 .cluster-icon:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-}
-
-.custom-cluster {
-  background: transparent !important;
-  border: none !important;
 }
 
 @keyframes clusterPop {
@@ -221,51 +212,27 @@
 @media (max-width: 600px) {
 
   #header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: none;
 
-.header-center {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px; /* tighter spacing */
-}
-
-  #mapInstructions {
     width: 100%;
-    flex-wrap: wrap;
-    font-size: 13px;
-    padding: 6px 10px;
+    max-width: none;
+
+    border-radius: 0; /* 🔥 kill the bubble */
+    
+    background: rgba(255,255,255,0.95); /* more solid */
+    backdrop-filter: blur(6px);
+
+    padding: 10px 12px;
   }
 
-  /* Hide arrows on mobile */
-  #mapInstructions span:nth-child(2),
-  #mapInstructions span:nth-child(4) {
-    display: none;
-  }
-
-.header-actions {
-  display: flex;
-  gap: 8px;
-  background: rgba(0,0,0,0.03); /* subtle grouping */
-  padding: 6px;
-  border-radius: 999px;
-}
-
-  .panel {
-    top: 140px;
-    width: calc(100% - 24px);
-  }
-
-  .logo {
-    height: 40px;
-  }
 }
 
 /* ======================== */
-/*   MATCH INDEX VOTE STYLE */
+/* MATCH INDEX VOTE STYLE */
 /* ======================== */
 
 .leaflet-popup-content .vote-inline {
@@ -274,30 +241,27 @@
 }
 
 .leaflet-popup-content .vote-inline button {
-  all: unset; /* 🔥 removes ugly default button */
+  all: unset;
   cursor: pointer;
   font-size: 16px;
   transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
-/* Hover = same as index */
 .leaflet-popup-content .vote-inline button:hover {
   transform: scale(1.2);
 }
 
-/* Click feel */
 .leaflet-popup-content .vote-inline button:active {
   transform: scale(0.95);
 }
 
-/* Disabled state (same logic as index) */
 .leaflet-popup-content .vote-inline button:disabled {
   opacity: 0.4;
   pointer-events: none;
 }
 
 /* ======================== */
-/* ⭐ MAP STARS (MATCH INDEX) */
+/* ⭐ MAP STARS */
 /* ======================== */
 
 .leaflet-popup-content .stars {
@@ -311,18 +275,15 @@
   transition: transform 0.15s ease, color 0.15s ease;
 }
 
-/* Hover glow */
 .leaflet-popup-content .stars span:hover {
   color: gold;
   transform: scale(1.2);
 }
 
-/* Click feel */
 .leaflet-popup-content .stars span:active {
   transform: scale(0.95);
 }
 
-/* Disabled state (future-proof) */
 .leaflet-popup-content .stars span.disabled {
   opacity: 0.4;
   pointer-events: none;
