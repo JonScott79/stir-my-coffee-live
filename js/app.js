@@ -1315,6 +1315,12 @@ async function loadVotes() {
     voteMap[doc.id] = doc.data();
   });
 
+  // 💾 cache votes
+  localStorage.setItem("cachedVotes", JSON.stringify({
+    data: voteMap,
+    timestamp: Date.now()
+  }));
+
   return voteMap;
 }
 
@@ -1407,83 +1413,45 @@ if (loc.street !== null) continue;
 }
 
 async function loadLocations() {
-	loaderVisible = false; // reset state
-scheduleLoader();
+  loaderVisible = false;
+  scheduleLoader();
+
   try {
     // ========================
-    // 🔥 STEP 1: LOAD CACHE FIRST
+    // 🔥 STEP 0: LOAD CACHED VOTES FIRST
+    // ========================
+    let voteMap = {};
+    const cachedVotes = localStorage.getItem("cachedVotes");
+
+    if (cachedVotes) {
+      const parsedVotes = JSON.parse(cachedVotes);
+      const age = Date.now() - parsedVotes.timestamp;
+      const maxAge = 1000 * 60 * 10;
+
+      if (age < maxAge) {
+        console.log("⚡ Using cached votes");
+        voteMap = parsedVotes.data;
+      }
+    }
+
+    // ========================
+    // 🔥 STEP 1: LOAD LOCATION CACHE (STATIC ONLY)
     // ========================
     const cached = localStorage.getItem("cachedLocations");
 
     if (cached) {
       const parsed = JSON.parse(cached);
-
       const age = Date.now() - parsed.timestamp;
-      const maxAge = 1000 * 60 * 10; // 10 min
+      const maxAge = 1000 * 60 * 30;
 
       if (age < maxAge) {
         console.log("⚡ Using cached locations");
 
-        allLocations = parsed.data;
+        // rebuild locations with vote data
+        allLocations = parsed.data.map(loc => {
+          const id = generateLocationId(loc.name, loc.lat, loc.lng);
+          const v = voteMap[id] || {};
 
-        locationsReady = true;
-        dataFullyReady = true;
-
-        tryRender(); // 🚀 instant render
-      } else {
-        console.log("🗑 Cache expired");
-      }
-    }
-
-    // ========================
-    // ✅ STEP 2: LOAD STATIC DATA (FAST)
-    // ========================
-    const response = await fetch("./coffeeLocations.json");
-    const staticData = await response.json();
-
-    allLocations = staticData.map(loc => ({
-      ...loc,
-      id: generateLocationId(loc.name, loc.lat, loc.lng),
-      lat: Number(loc.lat),
-      lng: Number(loc.lng),
-      street: null,
-      percent: 0,
-      speed: 0,
-      votes: 0,
-      distance: 0
-    }));
-
-    // mark ready if not already
-    if (!locationsReady) {
-      locationsReady = true;
-    }
-
-    // 🔥 UI READY RIGHT HERE
-    dataFullyReady = true;
-    tryRender(); // 🚀 show UI immediately
-
-    // ========================
-    // 🐢 STEP 3: FIREBASE (NON-BLOCKING)
-    // ========================
-    db.collection("locations").limit(50).get().then(snapshot => {
-      const firebaseData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-
-      const combined = [...allLocations, ...firebaseData];
-
-      // ========================
-      // 📊 STEP 4: LOAD VOTES
-      // ========================
-      loadVotes().then(votes => {
-
-        allLocations = combined.map(loc => {
-          const lat = Number(loc.lat);
-          const lng = Number(loc.lng);
-          const id = loc.id || generateLocationId(loc.name, lat, lng);
-
-          const v = votes[id] || {};
           const up = v.upvotes || 0;
           const down = v.downvotes || 0;
           const total = up + down;
@@ -1494,8 +1462,8 @@ scheduleLoader();
           return {
             ...loc,
             id,
-            lat,
-            lng,
+            lat: Number(loc.lat),
+            lng: Number(loc.lng),
             street: null,
             percent: total ? Math.round((up / total) * 100) : 0,
             speed: speedVotes ? (speedTotal / speedVotes) : 0,
@@ -1504,23 +1472,81 @@ scheduleLoader();
           };
         });
 
-        // 💾 update cache AFTER hydration
-        localStorage.setItem("cachedLocations", JSON.stringify({
-          data: allLocations,
-          timestamp: Date.now()
-        }));
+        locationsReady = true;
+        dataFullyReady = true;
 
-        console.log("🔥 Firebase hydrated");
+        tryRender(); // ⚡ instant render from cache
+      }
+    }
 
-        updateDistancesAndSort(); // smooth refresh
-      });
+    // ========================
+    // ✅ STEP 2: STATIC DATA (FRESH)
+    // ========================
+    const response = await fetch("./coffeeLocations.json");
+    const staticData = await response.json();
 
-    }).catch(err => {
-      console.warn("Firebase skipped:", err);
+    allLocations = staticData.map(loc => {
+      const id = generateLocationId(loc.name, loc.lat, loc.lng);
+      const v = voteMap[id] || {};
+
+      const up = v.upvotes || 0;
+      const down = v.downvotes || 0;
+      const total = up + down;
+
+      const speedTotal = v.speedTotal || 0;
+      const speedVotes = v.speedVotes || 0;
+
+      return {
+        ...loc,
+        id,
+        lat: Number(loc.lat),
+        lng: Number(loc.lng),
+        street: null,
+        percent: total ? Math.round((up / total) * 100) : 0,
+        speed: speedVotes ? (speedTotal / speedVotes) : 0,
+        votes: total,
+        distance: 0
+      };
+    });
+
+    if (!locationsReady) locationsReady = true;
+
+    dataFullyReady = true;
+    tryRender(); // 🚀 instant render again (fresh data)
+
+    // 💾 SAFE CACHE (STATIC ONLY — SMALL SIZE)
+    try {
+      localStorage.setItem("cachedLocations", JSON.stringify({
+        data: staticData.map(loc => ({
+          name: loc.name,
+          lat: loc.lat,
+          lng: loc.lng
+        })),
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      console.warn("⚠️ Cache skipped (quota exceeded)");
+    }
+
+    // ========================
+    // 🐢 STEP 3: FIREBASE LOCATIONS (NON-BLOCKING)
+    // ========================
+    db.collection("locations").limit(50).get().then(snapshot => {
+      const firebaseData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      // merge WITHOUT blocking UI
+      allLocations = [...allLocations, ...firebaseData];
+
+      console.log("⚡ Firebase locations merged");
+
+      updateDistancesAndSort();
     });
 
     // ========================
-    // 🛑 FAILSAFE (never get stuck again)
+    // 🛑 FAILSAFE
     // ========================
     setTimeout(() => {
       hideLoader();
@@ -1528,8 +1554,6 @@ scheduleLoader();
 
   } catch (err) {
     console.error("LOAD FAILED:", err);
-
-    // 🛑 absolute fallback
     hideLoader();
   }
 }
