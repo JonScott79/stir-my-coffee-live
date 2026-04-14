@@ -1,3 +1,27 @@
+## [2.1.0] – Apr 2026
+
+### ✨ UI & Map Experience Upgrade
+
+### Improved
+- Redesigned map header with lightweight, centered glass-style layout
+- Simplified interaction guidance for faster onboarding
+- Improved navigation clarity with updated button labels (List View, Locate Me)
+- Unified button styling with consistent brand-aligned appearance
+- Enhanced visual hierarchy to prioritize map interaction
+
+### Added
+- Dynamic header system that updates based on user actions (add, vote, interact)
+- Custom cluster styling with improved visibility and interaction feedback
+- Subtle animation and hover feedback across map controls
+
+### Changed
+- Refactored map UI layout to reduce visual clutter and improve focus
+- Updated cluster rendering system to support custom styling
+- Improved consistency between map interactions and overall app behavior
+
+### Misc
+- The map finally feels like a product, not just a feature ☕🔥
+
 ## [2.0.0] – Apr 2026
 
 ### 🚀 Major Release – Data System Overhaul

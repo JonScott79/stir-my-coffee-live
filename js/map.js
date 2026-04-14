@@ -7,7 +7,16 @@ let staticLocations = [];
 let hasFitBounds = false;
 let activeMarker = null;
 let votesData = {};
-let selectedLatLng = null; // 🔥 NEW
+let selectedLatLng = null;
+
+// ========================
+// HEADER
+// ========================
+
+function setHeader(text) {
+  const el = document.getElementById("mapInstructions");
+  if (el) el.textContent = text;
+}
 
 // ========================
 // STABLE LOCATION ID
@@ -80,11 +89,19 @@ const map = L.map("map", { zoomControl: false }).setView([20, 0], 2);
 L.control.zoom({ position: "bottomright" }).addTo(map);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-const markers = L.markerClusterGroup();
+const markers = L.markerClusterGroup({
+  iconCreateFunction: function (cluster) {
+    return L.divIcon({
+      html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
+      className: "custom-cluster",
+      iconSize: [42, 42]
+    });
+  }
+});
 map.addLayer(markers);
 
 // ========================
-// AUTO CENTER ON LOAD 🔥
+// AUTO CENTER
 // ========================
 
 let hasCentered = false;
@@ -93,22 +110,23 @@ navigator.geolocation.getCurrentPosition(
   (pos) => {
     if (hasCentered) return;
 
-    // Only center if still at default zoom (prevents override)
     if (map.getZoom() <= 3) {
       const latlng = [pos.coords.latitude, pos.coords.longitude];
       map.setView(latlng, 13);
       hasCentered = true;
     }
   },
-  () => {
-    // fail silently if denied
-  }
+  () => {}
 );
 
-// 🔥 CLICK TO ADD LOCATION
+// ========================
+// MAP CLICK (ADD FLOW)
+// ========================
+
 map.on("click", (e) => {
   selectedLatLng = e.latlng;
   document.getElementById("submitPanel").style.display = "block";
+  setHeader("Select chain • Submit");
 });
 
 // ========================
@@ -130,7 +148,6 @@ window.goToList = () => {
 // ADD LOCATION SYSTEM
 // ========================
 
-// 🔥 HANDLE DROPDOWN
 window.handleChainChange = function () {
   const chain = document.getElementById("shopChain").value;
   const nameInput = document.getElementById("shopName");
@@ -138,7 +155,6 @@ window.handleChainChange = function () {
   if (chain === "Other") {
     nameInput.disabled = false;
     nameInput.value = "";
-    nameInput.placeholder = "Enter shop name";
   } else if (chain) {
     nameInput.disabled = true;
     nameInput.value = chain;
@@ -148,13 +164,12 @@ window.handleChainChange = function () {
   }
 };
 
-// 🔥 CLOSE PANEL
 window.closeSubmitForm = function () {
   document.getElementById("submitPanel").style.display = "none";
   selectedLatLng = null;
+  setHeader("Tap map to add • Tap shops to vote");
 };
 
-// 🔥 SUBMIT LOCATION
 window.submitShop = async function () {
   const chain = document.getElementById("shopChain").value;
   const name = document.getElementById("shopName").value;
@@ -181,8 +196,6 @@ window.submitShop = async function () {
 
 // ========================
 // LOAD LOCATIONS
-// ========================
-// (unchanged…)
 // ========================
 
 async function loadLocationsRealtime() {
@@ -267,7 +280,97 @@ async function loadLocationsRealtime() {
 }
 
 // ========================
-// (rest unchanged)
+// RENDER (FIXED 🔥)
 // ========================
 
-window.addEventListener("DOMContentLoaded", loadLocationsRealtime);
+function render() {
+  markers.clearLayers();
+
+  for (const loc of allLocations) {
+    const marker = L.circleMarker([loc.lat, loc.lng], {
+      radius: window.innerWidth < 600 ? 4 : 6,
+      fillColor: "#4b2e2b",
+      fillOpacity: 0.9,
+      color: "#fff",
+      weight: 1
+    });
+
+    marker.on("click", () => {
+      setHeader("Vote or rate this shop");
+    });
+
+    marker.bindPopup(`
+      <b>${loc.name}</b><br><br>
+      <b>Accuracy:</b> ${loc.percent}% (${loc.votes} votes)<br>
+      <b>Speed:</b> ${loc.speed ? loc.speed.toFixed(1) : "N/A"} ⭐<br><br>
+
+      <div class="vote-inline">
+        <button onclick="vote(event, '${loc.id}', true)">👍</button>
+        <button onclick="vote(event, '${loc.id}', false)">👎</button>
+      </div>
+
+      <br>
+
+      <div class="stars">
+        ${Array.from({ length: 5 }, (_, i) => {
+          const rounded = Math.round(loc.speed || 0);
+          const filled = i + 1 <= rounded ? "★" : "☆";
+
+          return `<span onclick="rateSpeed(event, '${loc.id}', ${i + 1})">${filled}</span>`;
+        }).join("")}
+      </div>
+
+      <br>
+
+      <button onclick="reportLocation('${loc.id}')">🚩 Report</button>
+    `);
+
+    markers.addLayer(marker);
+  }
+}
+
+// ========================
+// INTERACTIONS
+// ========================
+
+window.vote = function (event, id, up) {
+  event.stopPropagation();
+
+  if (!canVote(id)) return alert("⏳ Wait 24h");
+
+  recordVote(id);
+
+  setDoc(doc(db, "votes", id), {
+    upvotes: increment(up ? 1 : 0),
+    downvotes: increment(!up ? 1 : 0)
+  }, { merge: true });
+};
+
+window.rateSpeed = async (event, id, rating) => {
+  event.stopPropagation();
+
+  await setDoc(doc(db, "votes", id), {
+    speedTotal: increment(rating),
+    speedVotes: increment(1)
+  }, { merge: true });
+};
+
+window.reportLocation = async (id) => {
+  const reason = prompt("1 Wrong\n2 Duplicate\n3 Closed\n4 Bad\n5 Other");
+  if (!reason) return;
+
+  await addDoc(collection(db, "reports"), {
+    locationId: id,
+    reason,
+    timestamp: Date.now()
+  });
+};
+
+// ========================
+// INIT
+// ========================
+
+window.addEventListener("DOMContentLoaded", () => {
+  setHeader("Tap map to add • Tap shops to vote");
+  loadLocationsRealtime();
+});
