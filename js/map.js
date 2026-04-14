@@ -288,7 +288,7 @@ function render() {
 
   for (const loc of allLocations) {
     const marker = L.circleMarker([loc.lat, loc.lng], {
-      radius: window.innerWidth < 600 ? 4 : 6,
+      radius: window.innerWidth < 600 ? 9 : 7,
       fillColor: "#4b2e2b",
       fillOpacity: 0.9,
       color: "#fff",

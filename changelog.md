@@ -1,3 +1,39 @@
+## [2.3.0] – Apr 2026
+
+### 🚀 Performance & Core UX Breakthrough
+
+### Added
+- LocalStorage caching system with timestamp-based expiration for location data
+- Progressive data loading pipeline (instant UI → background enrichment)
+- Branded loading screen with rotating coffee puns for improved engagement
+
+### Improved
+- Massive perceived performance improvement through non-blocking initialization
+- Instant UI rendering using cached or static data before network completion
+- Significantly reduced Firebase load using query limiting
+- Mobile map usability improved with larger tap targets for location markers
+
+### Changed
+- Refactored app initialization to remove blocking `await` patterns
+- Transitioned to parallel async loading (locations, user position, votes)
+- Reworked data flow to prioritize user experience over load completion
+- Simplified loading screen to a single branded spinner (removed redundant indicators)
+
+### UX
+- Eliminated long “dead load” experience (~14s → near-instant perceived load)
+- Introduced progressive rendering (data fills in instead of blocking UI)
+- Improved mobile interaction reliability with fat-finger-friendly markers
+- Loading experience now reinforces brand personality instead of feeling broken
+
+### Performance
+- Reduced initial blocking operations across the entire app lifecycle
+- Optimized Firestore reads with `.limit()` to prevent full collection scans
+- Cached location dataset to dramatically improve repeat visit speed
+- Improved rendering efficiency with staged updates instead of full blocking loads
+
+### Misc
+- This is the update where the app stops feeling slow… and starts feeling fast ☕⚡🔥
+
 ## [2.2.0] – Apr 2026
 
 ### ✨ Mobile UX & Header System Refinement

@@ -1219,16 +1219,36 @@ function goToUser() {
 // INIT
 // ========================
 
-async function init() {
-  await loadLocations();
+let locationsReady = false;
+let userReady = false;
 
-  const location = await getUserLocation();
+function tryRender() {
+  // If locations are ready, render immediately
+  if (locationsReady) {
+    updateDistancesAndSort();
+  }
+}
 
-  userLat = location.lat;
-  userLng = location.lng;
+function init() {
+  document.getElementById("listContainer").innerHTML =
+    "☕ Finding great coffee near you...";
 
-  updateDistancesAndSort();
+  // Load locations
+  loadLocations().then(() => {
+    locationsReady = true;
+    tryRender();
+  });
 
+  // Get user location
+  getUserLocation().then(location => {
+    userLat = location.lat;
+    userLng = location.lng;
+
+    userReady = true;
+    tryRender();
+  });
+
+  // Realtime votes can still run immediately
   subscribeToVotes();
 }
 
@@ -1385,20 +1405,71 @@ if (loc.street !== null) continue;
 
 async function loadLocations() {
   try {
-    // ✅ Load static locations
+    // ========================
+    // 🔥 STEP 1: LOAD CACHE FIRST
+    // ========================
+    const cached = localStorage.getItem("cachedLocations");
+
+    if (cached) {
+      const parsed = JSON.parse(cached);
+
+      const age = Date.now() - parsed.timestamp;
+      const maxAge = 1000 * 60 * 10; // 10 minutes
+
+      if (age < maxAge) {
+        console.log("⚡ Using cached locations");
+
+        allLocations = parsed.data;
+
+        locationsReady = true;
+        tryRender(); // 🚀 instant UI from cache
+      } else {
+        console.log("🗑 Cache expired");
+      }
+    }
+
+    // ========================
+    // ✅ STEP 2: LOAD STATIC DATA (FAST)
+    // ========================
     const response = await fetch("./coffeeLocations.json");
     const staticData = await response.json();
 
-    // ✅ Load Firebase locations
-    const snapshot = await db.collection("locations").get();
+    // Build base immediately
+    allLocations = staticData.map(loc => ({
+      ...loc,
+      id: generateLocationId(loc.name, loc.lat, loc.lng),
+      lat: Number(loc.lat),
+      lng: Number(loc.lng),
+      street: null,
+      percent: 0,
+      speed: 0,
+      votes: 0,
+      distance: 0
+    }));
+
+    if (!locationsReady) {
+      locationsReady = true;
+      tryRender(); // 🚀 instant UI even without cache
+    } else {
+      updateDistancesAndSort(); // smoother refresh
+    }
+
+    // ========================
+    // 🐢 STEP 3: LOAD FIREBASE (LIMITED)
+    // ========================
+    const snapshot = await db.collection("locations").limit(50).get();
+
     const firebaseData = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     }));
 
-    // ✅ Combine both
-    const combined = [...staticData, ...firebaseData];
+    // Merge static + firebase
+    const combined = [...allLocations, ...firebaseData];
 
+    // ========================
+    // 📊 STEP 4: LOAD VOTES
+    // ========================
     let votes = {};
     try {
       votes = await loadVotes();
@@ -1406,11 +1477,12 @@ async function loadLocations() {
       console.warn("Votes failed to load");
     }
 
+    // ========================
+    // 🧠 STEP 5: NORMALIZE DATA
+    // ========================
     allLocations = combined.map(loc => {
       const lat = Number(loc.lat);
       const lng = Number(loc.lng);
-
-      // 🔥 FIX: preserve Firebase IDs
       const id = loc.id || generateLocationId(loc.name, lat, lng);
 
       const v = votes[id] || {};
@@ -1434,10 +1506,26 @@ async function loadLocations() {
       };
     });
 
+    // ========================
+    // 💾 STEP 6: SAVE CACHE
+    // ========================
+    localStorage.setItem("cachedLocations", JSON.stringify({
+      data: allLocations,
+      timestamp: Date.now()
+    }));
+
+    console.log("💾 Locations cached");
+
+    // ========================
+    // 🔄 STEP 7: FINAL RENDER
+    // ========================
+    updateDistancesAndSort();
+
   } catch (err) {
     console.error("LOAD FAILED:", err);
   }
 }
+
 // ========================
 // GEOLOCATION
 // ========================
@@ -1466,35 +1554,37 @@ function getUserLocation() {
 
 
 function updateDistancesAndSort() {
-  if (!userLat || !userLng) return;
+  // Allow render even without user location
+  const hasUser = userLat && userLng;
 
-  // ✅ update distances + scores
   allLocations.forEach(loc => {
-    loc.distance = getDistance(userLat, userLng, loc.lat, loc.lng);
+    if (hasUser) {
+      loc.distance = getDistance(userLat, userLng, loc.lat, loc.lng);
+    } else {
+      loc.distance = 0; // fallback
+    }
+
     loc.score = calculateScore(loc);
   });
 
-  // 🔥 NEW: FILTER by distance FIRST
-  const nearby = allLocations.filter(loc => loc.distance <= MAX_DISTANCE_MILES);
+  const workingSet = hasUser
+    ? allLocations.filter(loc => loc.distance <= MAX_DISTANCE_MILES)
+    : allLocations;
 
-  // ⚠️ fallback if nothing nearby
-  const workingSet = nearby.length > 0 ? nearby : allLocations;
+  const sortedByScore = [...workingSet].sort((a, b) => b.score - a.score);
+  const picks = getTopPicks(sortedByScore);
+  renderTopPicksPanel(picks);
 
-// 🔥 SORT FOR TOP PICKS (smart ranking)
-const sortedByScore = [...workingSet].sort((a, b) => b.score - a.score);
+  const sortedByDistance = hasUser
+    ? [...workingSet].sort((a, b) => a.distance - b.distance)
+    : workingSet;
 
-// 🔥 get top picks from smart ranking
-const picks = getTopPicks(sortedByScore);
-renderTopPicksPanel(picks);
+  renderList(sortedByDistance);
 
-// 🔥 SORT FOR LEFT PANEL (distance ONLY)
-const sortedByDistance = [...workingSet].sort((a, b) => a.distance - b.distance);
-
-// 🔥 render list as closest first
-renderList(sortedByDistance);
-
-const visible = sortedByDistance.slice(0, DISPLAY_LIMIT);
-loadAddressesForVisible(visible);
+  if (hasUser) {
+    const visible = sortedByDistance.slice(0, DISPLAY_LIMIT);
+    loadAddressesForVisible(visible);
+  }
 }
 
 // ========================
@@ -1824,6 +1914,14 @@ function goToMap() {
 let deferredPrompt = null;
 
 window.addEventListener("load", () => {
+  startLoadingPuns();
+
+  // show loader briefly for polish (optional)
+  setTimeout(() => {
+    hideLoader();
+  }, 800); // short, intentional UX delay
+
+  // 🚀 DO NOT AWAIT
   init();
 
   const btn = document.getElementById("installBtn");
@@ -1831,7 +1929,6 @@ window.addEventListener("load", () => {
   if (btn) {
     btn.addEventListener("click", async () => {
 
-      // 🔥 Track click
       trackEvent("install_click");
 
       if (!deferredPrompt) {
@@ -1839,12 +1936,10 @@ window.addEventListener("load", () => {
         return;
       }
 
-      // Show install prompt
       deferredPrompt.prompt();
 
       const { outcome } = await deferredPrompt.userChoice;
 
-      // 🔥 Track result (accepted or dismissed)
       trackEvent("install_prompt_result", {
         outcome: outcome
       });
@@ -1853,3 +1948,50 @@ window.addEventListener("load", () => {
     });
   }
 });
+
+// ========================
+// LOADER SYSTEM
+// ========================
+
+const COFFEE_PUNS = [
+  "Brewing something awesome...",
+  "Grinding the beans...",
+  "Espresso yourself...",
+  "Almost latte fun...",
+  "Perking things up...",
+  "Steaming ahead...",
+  "Pouring greatness...",
+  "Caffeine loading...",
+  "Stay grounded ☕",
+  "Bean there in a sec..."
+];
+
+let punInterval = null;
+
+function startLoadingPuns() {
+  const textEl = document.getElementById("loadingText");
+  if (!textEl) return;
+
+  let i = 0;
+
+  textEl.textContent = COFFEE_PUNS[i];
+
+  punInterval = setInterval(() => {
+    i = (i + 1) % COFFEE_PUNS.length;
+    textEl.textContent = COFFEE_PUNS[i];
+  }, 2000);
+}
+
+function hideLoader() {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+
+  if (punInterval) clearInterval(punInterval);
+
+  loader.classList.add("hidden");
+
+  // fully remove after fade
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 400);
+}
