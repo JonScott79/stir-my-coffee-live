@@ -1126,6 +1126,7 @@ function trackEvent(name, params = {}) {
 let allLocations = [];
 let userLat = null;
 let userLng = null;
+let dataFullyReady = false;
 
 const DISPLAY_LIMIT = 10;
 const MAX_DISTANCE_MILES = 5;
@@ -1223,9 +1224,12 @@ let locationsReady = false;
 let userReady = false;
 
 function tryRender() {
-  // If locations are ready, render immediately
   if (locationsReady) {
     updateDistancesAndSort();
+  }
+
+  if (dataFullyReady) {
+    hideLoader();
   }
 }
 
@@ -1233,22 +1237,21 @@ function init() {
   document.getElementById("listContainer").innerHTML =
     "☕ Finding great coffee near you...";
 
-  // Load locations
-  loadLocations().then(() => {
-    locationsReady = true;
-    tryRender();
-  });
+  // 🚀 JUST CALL IT — no .then()
+  loadLocations();
 
   // Get user location
   getUserLocation().then(location => {
     userLat = location.lat;
     userLng = location.lng;
 
+    trackEvent("auto_locate");
+
     userReady = true;
     tryRender();
   });
 
-  // Realtime votes can still run immediately
+  // Realtime votes
   subscribeToVotes();
 }
 
@@ -1404,6 +1407,8 @@ if (loc.street !== null) continue;
 }
 
 async function loadLocations() {
+	loaderVisible = false; // reset state
+scheduleLoader();
   try {
     // ========================
     // 🔥 STEP 1: LOAD CACHE FIRST
@@ -1414,7 +1419,7 @@ async function loadLocations() {
       const parsed = JSON.parse(cached);
 
       const age = Date.now() - parsed.timestamp;
-      const maxAge = 1000 * 60 * 10; // 10 minutes
+      const maxAge = 1000 * 60 * 10; // 10 min
 
       if (age < maxAge) {
         console.log("⚡ Using cached locations");
@@ -1422,7 +1427,9 @@ async function loadLocations() {
         allLocations = parsed.data;
 
         locationsReady = true;
-        tryRender(); // 🚀 instant UI from cache
+        dataFullyReady = true;
+
+        tryRender(); // 🚀 instant render
       } else {
         console.log("🗑 Cache expired");
       }
@@ -1434,7 +1441,6 @@ async function loadLocations() {
     const response = await fetch("./coffeeLocations.json");
     const staticData = await response.json();
 
-    // Build base immediately
     allLocations = staticData.map(loc => ({
       ...loc,
       id: generateLocationId(loc.name, loc.lat, loc.lng),
@@ -1447,82 +1453,84 @@ async function loadLocations() {
       distance: 0
     }));
 
+    // mark ready if not already
     if (!locationsReady) {
       locationsReady = true;
-      tryRender(); // 🚀 instant UI even without cache
-    } else {
-      updateDistancesAndSort(); // smoother refresh
     }
 
-    // ========================
-    // 🐢 STEP 3: LOAD FIREBASE (LIMITED)
-    // ========================
-    const snapshot = await db.collection("locations").limit(50).get();
-
-    const firebaseData = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-
-    // Merge static + firebase
-    const combined = [...allLocations, ...firebaseData];
+    // 🔥 UI READY RIGHT HERE
+    dataFullyReady = true;
+    tryRender(); // 🚀 show UI immediately
 
     // ========================
-    // 📊 STEP 4: LOAD VOTES
+    // 🐢 STEP 3: FIREBASE (NON-BLOCKING)
     // ========================
-    let votes = {};
-    try {
-      votes = await loadVotes();
-    } catch {
-      console.warn("Votes failed to load");
-    }
+    db.collection("locations").limit(50).get().then(snapshot => {
+      const firebaseData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
 
-    // ========================
-    // 🧠 STEP 5: NORMALIZE DATA
-    // ========================
-    allLocations = combined.map(loc => {
-      const lat = Number(loc.lat);
-      const lng = Number(loc.lng);
-      const id = loc.id || generateLocationId(loc.name, lat, lng);
+      const combined = [...allLocations, ...firebaseData];
 
-      const v = votes[id] || {};
-      const up = v.upvotes || 0;
-      const down = v.downvotes || 0;
-      const total = up + down;
+      // ========================
+      // 📊 STEP 4: LOAD VOTES
+      // ========================
+      loadVotes().then(votes => {
 
-      const speedTotal = v.speedTotal || 0;
-      const speedVotes = v.speedVotes || 0;
+        allLocations = combined.map(loc => {
+          const lat = Number(loc.lat);
+          const lng = Number(loc.lng);
+          const id = loc.id || generateLocationId(loc.name, lat, lng);
 
-      return {
-        ...loc,
-        id,
-        lat,
-        lng,
-        street: null,
-        percent: total ? Math.round((up / total) * 100) : 0,
-        speed: speedVotes ? (speedTotal / speedVotes) : 0,
-        votes: total,
-        distance: 0
-      };
+          const v = votes[id] || {};
+          const up = v.upvotes || 0;
+          const down = v.downvotes || 0;
+          const total = up + down;
+
+          const speedTotal = v.speedTotal || 0;
+          const speedVotes = v.speedVotes || 0;
+
+          return {
+            ...loc,
+            id,
+            lat,
+            lng,
+            street: null,
+            percent: total ? Math.round((up / total) * 100) : 0,
+            speed: speedVotes ? (speedTotal / speedVotes) : 0,
+            votes: total,
+            distance: 0
+          };
+        });
+
+        // 💾 update cache AFTER hydration
+        localStorage.setItem("cachedLocations", JSON.stringify({
+          data: allLocations,
+          timestamp: Date.now()
+        }));
+
+        console.log("🔥 Firebase hydrated");
+
+        updateDistancesAndSort(); // smooth refresh
+      });
+
+    }).catch(err => {
+      console.warn("Firebase skipped:", err);
     });
 
     // ========================
-    // 💾 STEP 6: SAVE CACHE
+    // 🛑 FAILSAFE (never get stuck again)
     // ========================
-    localStorage.setItem("cachedLocations", JSON.stringify({
-      data: allLocations,
-      timestamp: Date.now()
-    }));
-
-    console.log("💾 Locations cached");
-
-    // ========================
-    // 🔄 STEP 7: FINAL RENDER
-    // ========================
-    updateDistancesAndSort();
+    setTimeout(() => {
+      hideLoader();
+    }, 1500);
 
   } catch (err) {
     console.error("LOAD FAILED:", err);
+
+    // 🛑 absolute fallback
+    hideLoader();
   }
 }
 
@@ -1663,28 +1671,30 @@ function renderList(locations) {
 
       return `
         <div class="location-card" 
-     tabindex="0"
-     role="button"
-     aria-label="${l.name}, ${l.percent || 0}% stir quality, ${l.distance?.toFixed(1)} miles away. Press Enter for details."
-     onclick="trackEvent('view_location', { location_id: '${l.id}' }); selectLocation('${l.id}')"
-     onkeypress="if(event.key==='Enter'){selectLocation('${l.id}')}">
+          tabindex="0"
+          role="button"
+          aria-label="${l.name}, ${l.percent || 0}% stir quality, ${
+            userLat ? l.distance.toFixed(1) + " miles away" : "distance unavailable"
+          }. Press Enter for details."
+          onclick="trackEvent('view_location', { location_id: '${l.id}' }); selectLocation('${l.id}')"
+          onkeypress="if(event.key==='Enter'){selectLocation('${l.id}')}">
           
           <div class="card-header">
             <div class="name">${l.name}</div>
           </div>
 
           <div class="street">
-            📍 ${l.street || "Locating address..."}
+            📍 ${l.street || (userLat ? "Locating address..." : "Tap Locate Me")}
             <span class="distance-inline">
-              · ${l.distance?.toFixed(1) ?? "—"} mi
+              · ${userLat ? l.distance.toFixed(1) + " mi" : "Locating..."}
             </span>
           </div>
 
           <div class="meta">
 
             <span class="vote-inline">
-<button aria-label="Upvote this location" ${voteDisabled} onclick="vote(event, '${l.id}', true)">👍</button>
-<button aria-label="Downvote this location" ${voteDisabled} onclick="vote(event, '${l.id}', false)">👎</button>
+              <button aria-label="Upvote this location" ${voteDisabled} onclick="vote(event, '${l.id}', true)">👍</button>
+              <button aria-label="Downvote this location" ${voteDisabled} onclick="vote(event, '${l.id}', false)">👎</button>
             </span>
 
             <span class="quality ${getRatingClass(l.percent)}">
@@ -1701,24 +1711,24 @@ function renderList(locations) {
                   : "";
 
                 return `<span ${disabledStyle}
-              role="button"
-              tabindex="0"
-              aria-label="Rate ${i + 1} stars"
-              onclick="rateSpeed(event, '${l.id}', ${i + 1})"
-              onkeypress="if(event.key==='Enter'){rateSpeed(event, '${l.id}', ${i + 1})}">
-              ${filled}
-        </span>`;
+                  role="button"
+                  tabindex="0"
+                  aria-label="Rate ${i + 1} stars"
+                  onclick="rateSpeed(event, '${l.id}', ${i + 1})"
+                  onkeypress="if(event.key==='Enter'){rateSpeed(event, '${l.id}', ${i + 1})}">
+                  ${filled}
+                </span>`;
               }).join("")}
             </span>
 
-<span class="directions"
-      role="button"
-      tabindex="0"
-      aria-label="Get directions to this location"
-      onclick="openDirections(event, ${l.lat}, ${l.lng})"
-      onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
-  🚗
-</span>
+            <span class="directions"
+              role="button"
+              tabindex="0"
+              aria-label="Get directions to this location"
+              onclick="openDirections(event, ${l.lat}, ${l.lng})"
+              onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
+              🚗
+            </span>
 
             <span>👥 ${l.votes}</span>
 
@@ -1791,12 +1801,34 @@ function vote(e, id, up) {
 
   recordVote(id);
 
-  // ANALYTICS
+  // 🔥 ANALYTICS
   trackEvent("vote", {
     location_id: id,
     type: up ? "upvote" : "downvote"
   });
 
+  // ========================
+  // ⚡ INSTANT UI UPDATE (KEY FIX)
+  // ========================
+  const loc = allLocations.find(l => l.id === id);
+  if (loc) {
+    const currentUp = Math.round((loc.percent / 100) * loc.votes) || 0;
+    const currentDown = loc.votes - currentUp;
+
+    const newUp = currentUp + (up ? 1 : 0);
+    const newDown = currentDown + (!up ? 1 : 0);
+    const total = newUp + newDown;
+
+    loc.votes = total;
+    loc.percent = total ? Math.round((newUp / total) * 100) : 0;
+  }
+
+  // 🚀 re-render immediately
+  updateDistancesAndSort();
+
+  // ========================
+  // 🔥 FIREBASE (ASYNC)
+  // ========================
   const ref = db.collection("votes").doc(id);
 
   ref.set({
@@ -1805,6 +1837,7 @@ function vote(e, id, up) {
   }, { merge: true })
   .catch(err => console.error("❌ Vote failed:", err));
 
+  // animation
   e.target.classList.add("pop");
   setTimeout(() => e.target.classList.remove("pop"), 300);
 }
@@ -1915,20 +1948,12 @@ let deferredPrompt = null;
 
 window.addEventListener("load", () => {
   startLoadingPuns();
-
-  // show loader briefly for polish (optional)
-  setTimeout(() => {
-    hideLoader();
-  }, 800); // short, intentional UX delay
-
-  // 🚀 DO NOT AWAIT
   init();
 
   const btn = document.getElementById("installBtn");
 
   if (btn) {
     btn.addEventListener("click", async () => {
-
       trackEvent("install_click");
 
       if (!deferredPrompt) {
@@ -1952,6 +1977,22 @@ window.addEventListener("load", () => {
 // ========================
 // LOADER SYSTEM
 // ========================
+
+let loaderTimeout = null;
+let loaderVisible = false;
+
+function scheduleLoader() {
+  loaderTimeout = setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if (!loader) return;
+
+    loader.style.display = "flex";
+    loader.style.opacity = "1";
+    loader.style.pointerEvents = "auto";
+
+    loaderVisible = true;
+  }, 250); // 🔥 sweet spot (200–300ms)
+}
 
 const COFFEE_PUNS = [
   "Brewing something awesome...",
@@ -1986,12 +2027,17 @@ function hideLoader() {
   const loader = document.getElementById("loader");
   if (!loader) return;
 
-  if (punInterval) clearInterval(punInterval);
+  if (loaderTimeout) {
+    clearTimeout(loaderTimeout);
+  }
 
-  loader.classList.add("hidden");
+  // 🔥 ALWAYS hide — no conditions
+  loader.style.opacity = "0";
+  loader.style.pointerEvents = "none";
 
-  // fully remove after fade
   setTimeout(() => {
     loader.style.display = "none";
-  }, 400);
+  }, 300);
+
+  loaderVisible = false;
 }
