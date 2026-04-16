@@ -1,3 +1,30 @@
+
+## [2.5.0] – Apr 2026
+
+### 🚀 Programmatic SEO System
+
+### Added
+- Generated 18,000+ location-specific pages for improved search visibility
+- Introduced static SEO page generation pipeline using template-based rendering
+- Created scalable location URL structure (`/locations/[slug].html`)
+- Implemented automated sitemap generation with support for large datasets
+
+### Changed
+- Shifted from client-rendered location pages to static pre-rendered SEO pages
+- Improved search engine crawlability and indexing potential
+
+### SEO
+- Massive increase in searchable surface area across U.S. coffee locations
+- Each location now has a dedicated, indexable page with structured metadata
+- Improved discoverability for long-tail search queries
+
+### Technical
+- Built Node.js page generation system from location dataset
+- Implemented sitemap index with segmented location sitemaps
+- Ensured unique slug generation using deterministic location data
+
+### Misc
+- This is the update where Stir My Coffee becomes discoverable ☕🚀
 ## [2.4.1] – Apr 2026
 
 ### ✨ UX Clarity Update

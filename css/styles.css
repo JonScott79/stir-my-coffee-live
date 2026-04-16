@@ -161,6 +161,14 @@ header {
   margin-bottom: 10px;
 }
 
+.tagline {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.3px;
+}
+
 /* ========================
    ACTION BUTTONS
 ======================== */
@@ -276,23 +284,87 @@ button,
 ======================== */
 
 footer {
-  padding: 20px;
+  padding: 18px 24px;
   background: var(--bg-footer);
   border-top: 1px solid var(--border);
 
   display: flex;
   justify-content: space-between;
+  align-items: center; /* 👈 fixes vertical alignment */
   flex-wrap: wrap;
+  gap: 12px; /* 👈 prevents crowding on wrap */
 }
+
+/* LEFT SIDE */
 
 .footer-left {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
+
+  font-size: 13px;
+  color: var(--text-muted);
 }
+
+.footer-left a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.footer-left a:hover {
+  color: var(--accent);
+}
+
+/* Version styling (subtle, pro touch) */
+.version {
+  opacity: 0.6;
+  font-size: 12px;
+}
+
+/* RIGHT SIDE (SOCIALS) */
 
 .footer-right {
   display: flex;
+  align-items: center;
+  gap: 12px;
+
+  /* subtle separation (optional but nice) */
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+}
+
+/* Icon buttons (BIG upgrade) */
+.footer-right a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-main);
+
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Hover feel = premium */
+.footer-right a:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Brand hover colors */
+.footer-right a:hover .fa-instagram {
+  color: #E1306C;
+}
+
+.footer-right a:hover .fa-facebook {
+  color: #1877F2;
 }
 
 /* ========================
@@ -318,33 +390,7 @@ footer {
   }
 }
 
-/* ========================
-   SOCIAL ICON HARD LOCK
-======================== */
 
-.footer-right a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--text-main);
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.footer-right a:hover {
-  transform: scale(1.2);
-}
-
-/* Brand colors */
-.footer-right a .fa-instagram:hover {
-  color: #E1306C;
-}
-
-.footer-right a .fa-facebook:hover {
-  color: #1877F2;
-}
 
 /* ========================
    LOADER
@@ -360,12 +406,19 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+
+  z-index: -1; /* 👈 KEY CHANGE */
   flex-direction: column;
-  transition: opacity 0.4s ease;
-    opacity: 0;
+
+  opacity: 0;
   pointer-events: none;
-  
+  transition: opacity 0.3s ease;
+}
+
+body.loading #loader {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 9999;
 }
 
 #loader.hidden {
@@ -402,4 +455,19 @@ footer {
 /* Spin animation */
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* SEO */
+
+.seo-content {
+  max-width: 900px;
+  margin: 20px auto 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.seo-content h2 {
+  margin-top: 0;
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 🔥 SEO TITLE -->
+  <title>{{NAME}} Coffee Shop Ratings | Stir My Coffee</title>
+
+  <!-- 🔥 META DESCRIPTION -->
+  <meta name="description" content="Check {{NAME}} coffee shop ratings in {{CITY}}, {{STATE}}. See order accuracy and speed before you go. Don't enable bad coffee. Rate it.">
+
+  <!-- 🔥 MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 🔥 CANONICAL -->
+  <link rel="canonical" href="https://stirmycoffee.com/locations/{{SLUG}}">
+
+  <!-- 🔥 OPEN GRAPH -->
+  <meta property="og:title" content="{{NAME}} Coffee Shop Ratings">
+  <meta property="og:description" content="Order accuracy and speed ratings for {{NAME}} in {{CITY}}, {{STATE}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stirmycoffee.com/locations/{{SLUG}}">
+
+  <!-- 🔥 STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "{{NAME}}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{CITY}}",
+      "addressRegion": "{{STATE}}"
+    }
+  }
+  </script>
+
+  <!-- Optional: your main CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+  <main style="max-width:700px;margin:auto;padding:20px;font-family:sans-serif;">
+
+    <h1>{{NAME}}</h1>
+
+    <p><strong>Location:</strong> {{CITY}}, {{STATE}}</p>
+
+    <hr>
+
+    <h2>Ratings</h2>
+
+    <p>🎯 <strong>Order Accuracy:</strong> {{ACCURACY}}%</p>
+    <p>⚡ <strong>Speed:</strong> {{SPEED}}</p>
+    <p>👥 <strong>Total Votes:</strong> {{VOTES}}</p>
+
+    <hr>
+
+    <h2>About this location</h2>
+
+    <p>
+      Wondering if {{NAME}} gets your order right?
+      Stir My Coffee helps you avoid bad coffee runs by showing real user ratings
+      for order accuracy and speed in {{CITY}}, {{STATE}}.
+    </p>
+
+    <p>
+      Don't enable bad coffee. Rate it.
+    </p>
+
+    <hr>
+
+    <a href="/">← Back to map</a>
+
+  </main>
+
+</body>
+</html>

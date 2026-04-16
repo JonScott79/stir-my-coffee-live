@@ -1985,15 +1985,10 @@ let loaderVisible = false;
 
 function scheduleLoader() {
   loaderTimeout = setTimeout(() => {
-    const loader = document.getElementById("loader");
-    if (!loader) return;
-
-    loader.style.display = "flex";
-    loader.style.opacity = "1";
-    loader.style.pointerEvents = "auto";
+    document.body.classList.add("loading"); // ✅ use class instead
 
     loaderVisible = true;
-  }, 250); // 🔥 sweet spot (200–300ms)
+  }, 250);
 }
 
 const COFFEE_PUNS = [
@@ -2027,20 +2022,11 @@ function startLoadingPuns() {
 }
 
 function hideLoader() {
-  const loader = document.getElementById("loader");
-  if (!loader) return;
-
   if (loaderTimeout) {
     clearTimeout(loaderTimeout);
   }
 
-  // 🔥 ALWAYS hide — no conditions
-  loader.style.opacity = "0";
-  loader.style.pointerEvents = "none";
-
-  setTimeout(() => {
-    loader.style.display = "none";
-  }, 300);
+  document.body.classList.remove("loading"); // ✅ clean removal
 
   loaderVisible = false;
 }
