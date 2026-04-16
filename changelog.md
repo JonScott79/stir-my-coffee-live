@@ -1,3 +1,34 @@
+## [2.4.0] – Apr 2026
+
+### 🔥 Real-Time Data System (Firebase Only)
+
+### Added
+- Full Firebase-powered location system (removed dependency on static JSON)
+- Unified location + vote pipeline using consistent ID structure
+- Real-time synchronization between locations and votes
+
+### Changed
+- Removed `coffeeLocations.json` from runtime (now fully database-driven)
+- Refactored all data loading to use Firestore collections
+- Standardized ID matching across `locations` and `votes`
+
+### Fixed
+- Resolved missing location data across map and Coffeenomics
+- Fixed ID mismatches from legacy vote system
+- Fixed user-added locations not resolving correctly
+
+### Performance
+- Eliminated large JSON fetch (~19k locations)
+- Reduced memory usage and improved load speed
+- Improved scalability for real-time growth
+
+### Developer
+- Completed migration of legacy vote data to deterministic ID system
+- Clean Firestore architecture established for future features
+
+### Misc
+- This is the update where Stir My Coffee becomes fully real-time ☕🔥
+
 ## [2.3.0] – Apr 2026
 
 ### 🚀 Performance & Core UX Breakthrough

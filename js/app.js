@@ -1418,7 +1418,7 @@ async function loadLocations() {
 
   try {
     // ========================
-    // 🔥 STEP 0: LOAD CACHED VOTES FIRST
+    // 🔥 STEP 0: LOAD CACHED VOTES
     // ========================
     let voteMap = {};
     const cachedVotes = localStorage.getItem("cachedVotes");
@@ -1435,58 +1435,14 @@ async function loadLocations() {
     }
 
     // ========================
-    // 🔥 STEP 1: LOAD LOCATION CACHE (STATIC ONLY)
+    // 🔥 STEP 1: LOAD LOCATIONS FROM FIREBASE (PRIMARY)
     // ========================
-    const cached = localStorage.getItem("cachedLocations");
+    const snapshot = await db.collection("locations").get();
 
-    if (cached) {
-      const parsed = JSON.parse(cached);
-      const age = Date.now() - parsed.timestamp;
-      const maxAge = 1000 * 60 * 30;
+    const firebaseData = snapshot.docs.map(doc => {
+      const d = doc.data();
+      const id = doc.id;
 
-      if (age < maxAge) {
-        console.log("⚡ Using cached locations");
-
-        // rebuild locations with vote data
-        allLocations = parsed.data.map(loc => {
-          const id = generateLocationId(loc.name, loc.lat, loc.lng);
-          const v = voteMap[id] || {};
-
-          const up = v.upvotes || 0;
-          const down = v.downvotes || 0;
-          const total = up + down;
-
-          const speedTotal = v.speedTotal || 0;
-          const speedVotes = v.speedVotes || 0;
-
-          return {
-            ...loc,
-            id,
-            lat: Number(loc.lat),
-            lng: Number(loc.lng),
-            street: null,
-            percent: total ? Math.round((up / total) * 100) : 0,
-            speed: speedVotes ? (speedTotal / speedVotes) : 0,
-            votes: total,
-            distance: 0
-          };
-        });
-
-        locationsReady = true;
-        dataFullyReady = true;
-
-        tryRender(); // ⚡ instant render from cache
-      }
-    }
-
-    // ========================
-    // ✅ STEP 2: STATIC DATA (FRESH)
-    // ========================
-    const response = await fetch("./coffeeLocations.json");
-    const staticData = await response.json();
-
-    allLocations = staticData.map(loc => {
-      const id = generateLocationId(loc.name, loc.lat, loc.lng);
       const v = voteMap[id] || {};
 
       const up = v.upvotes || 0;
@@ -1497,10 +1453,12 @@ async function loadLocations() {
       const speedVotes = v.speedVotes || 0;
 
       return {
-        ...loc,
         id,
-        lat: Number(loc.lat),
-        lng: Number(loc.lng),
+        name: d.name,
+        lat: Number(d.lat),
+        lng: Number(d.lng),
+        city: d.city || "",
+        state: d.state || "",
         street: null,
         percent: total ? Math.round((up / total) * 100) : 0,
         speed: speedVotes ? (speedTotal / speedVotes) : 0,
@@ -1509,38 +1467,58 @@ async function loadLocations() {
       };
     });
 
-    if (!locationsReady) locationsReady = true;
+    allLocations = firebaseData;
 
+    locationsReady = true;
     dataFullyReady = true;
-    tryRender(); // 🚀 instant render again (fresh data)
 
-    // 💾 SAFE CACHE (STATIC ONLY — SMALL SIZE)
+    tryRender();
+
+    console.log("🔥 Firebase locations loaded:", firebaseData.length);
+
+    // ========================
+    // 💾 CACHE (SLIM VERSION)
+    // ========================
     try {
+      const slim = firebaseData.map(loc => ({
+        id: loc.id,
+        name: loc.name,
+        lat: loc.lat,
+        lng: loc.lng,
+        city: loc.city,
+        state: loc.state
+      }));
+
       localStorage.setItem("cachedLocations", JSON.stringify({
-        data: staticData.map(loc => ({
-          name: loc.name,
-          lat: loc.lat,
-          lng: loc.lng
-        })),
+        data: slim,
         timestamp: Date.now()
       }));
+
     } catch (e) {
-      console.warn("⚠️ Cache skipped (quota exceeded)");
+      console.warn("⚠️ Cache skipped");
     }
 
-    // ========================
-    // 🐢 STEP 3: FIREBASE LOCATIONS (NON-BLOCKING)
-    // ========================
-    db.collection("locations").limit(50).get().then(snapshot => {
-      const firebaseData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
+    updateDistancesAndSort();
 
-      // merge WITHOUT blocking UI
-      allLocations = [...allLocations, ...firebaseData];
+    // ========================
+    // 🔥 STEP 2: REFRESH VOTES (ASYNC)
+    // ========================
+    loadVotes().then(votes => {
+      allLocations.forEach(loc => {
+        const v = votes[loc.id];
+        if (!v) return;
 
-      console.log("⚡ Firebase locations merged");
+        const up = v.upvotes || 0;
+        const down = v.downvotes || 0;
+        const total = up + down;
+
+        const speedTotal = v.speedTotal || 0;
+        const speedVotes = v.speedVotes || 0;
+
+        loc.percent = total ? Math.round((up / total) * 100) : 0;
+        loc.votes = total;
+        loc.speed = speedVotes ? (speedTotal / speedVotes) : 0;
+      });
 
       updateDistancesAndSort();
     });

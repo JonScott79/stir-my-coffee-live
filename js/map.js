@@ -179,15 +179,24 @@ window.submitShop = async function () {
   if (!name) return alert("Enter shop name");
 
   try {
+    // 🔥 NEW: get city/state BEFORE saving
+    const { city, state } = await getCityState(
+      selectedLatLng.lat,
+      selectedLatLng.lng
+    );
+
     await addDoc(collection(db, "locations"), {
       name,
       lat: selectedLatLng.lat,
       lng: selectedLatLng.lng,
       chain,
+      city: city || "",
+      state: state || "",
       timestamp: Date.now()
     });
 
     closeSubmitForm();
+
   } catch (err) {
     console.error(err);
     alert("Error adding location");
@@ -252,15 +261,9 @@ async function loadLocationsRealtime() {
     render();
   }
 
-  const res = await fetch("./coffeeLocations.json");
-  const data = await res.json();
-
-  staticLocations = data.map(loc => ({
-    ...loc,
-    id: generateLocationId(loc.name, loc.lat, loc.lng)
-  }));
-
-  combineAndRender();
+// 🔥 REMOVE STATIC LOAD — FIREBASE REALTIME ONLY
+staticLocations = [];
+combineAndRender();
 
   onSnapshot(locationsRef, snapshot => {
     locationsData = snapshot.docs.map(docSnap => ({
@@ -374,3 +377,38 @@ window.addEventListener("DOMContentLoaded", () => {
   setHeader("Tap map to add • Tap shops to vote");
   loadLocationsRealtime();
 });
+
+// ========================
+// GeoCoding
+// ========================
+
+async function getCityState(lat, lng) {
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+    );
+
+    const data = await res.json();
+    if (!data || !data.address) return {};
+
+    const addr = data.address;
+
+    const city =
+      addr.city ||
+      addr.town ||
+      addr.village ||
+      addr.hamlet ||
+      "";
+
+    const state =
+      addr.state ||
+      addr.region ||
+      "";
+
+    return { city, state };
+
+  } catch (err) {
+    console.warn("Geocode failed:", err);
+    return {};
+  }
+}

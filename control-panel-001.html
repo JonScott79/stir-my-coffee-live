@@ -126,6 +126,10 @@ const auth = firebase.auth();
 let allLocations = [];
 let reportCounts = {};
 
+// ========================
+// AUTH
+// ========================
+
 function login() {
   auth.signInWithEmailAndPassword(emailInput.value, passwordInput.value)
     .catch(err => alert(err.message));
@@ -139,64 +143,153 @@ auth.onAuthStateChanged(user => {
   if (user) {
     loginCard.style.display = "none";
     adminPanel.style.display = "block";
-    loadReports();
-    loadLocations();
+    initAdmin();
   } else {
     loginCard.style.display = "block";
     adminPanel.style.display = "none";
   }
 });
 
-/* ========================
-   REPORTS
-======================== */
+// ========================
+// INIT
+// ========================
+
+async function initAdmin() {
+  try {
+    await loadReports();
+    await loadLocations();
+  } catch (e) {
+    console.error("Init failed", e);
+    alert("Failed to load admin panel");
+  }
+}
+
+// ========================
+// REPORTS
+// ========================
 
 async function loadReports() {
   const container = document.getElementById("reports");
   container.innerHTML = "Loading...";
 
-  const snapshot = await db.collection("reports")
-    .orderBy("timestamp", "desc")
-    .get();
+  try {
+    const snapshot = await db.collection("reports")
+      .orderBy("timestamp", "desc")
+      .limit(100)
+      .get();
 
-  reportCounts = {};
+    reportCounts = {};
+    container.innerHTML = "";
 
-  container.innerHTML = "";
+    snapshot.forEach(doc => {
+      const d = doc.data();
+      reportCounts[d.locationId] = (reportCounts[d.locationId] || 0) + 1;
 
-  snapshot.forEach(doc => {
-    const d = doc.data();
+      const el = document.createElement("div");
+      el.className = "card";
 
-    reportCounts[d.locationId] = (reportCounts[d.locationId] || 0) + 1;
-
-    const el = document.createElement("div");
-    el.className = "card";
-
-    el.innerHTML = `
-      <div class="row">
-        <div>
-          <strong>${d.name || "Unknown"}</strong><br>
-          ${d.reason}
-          ${d.details ? `<div class="small">📝 ${d.details}</div>` : ""}
+      el.innerHTML = `
+        <div class="row">
+          <div>
+            <strong>${d.name || "Unknown"}</strong><br>
+            ${d.reason}
+            ${d.details ? `<div class="small">📝 ${d.details}</div>` : ""}
+          </div>
+          <div>
+            <button onclick="viewOnMap('${d.locationId}', ${d.lat}, ${d.lng})">View</button>
+            <button class="danger" onclick="deleteLocation('${d.locationId}', '${doc.id}', this)">Delete</button>
+            <button onclick="clearReport('${doc.id}', this)">Ignore</button>
+          </div>
         </div>
-        <div>
-          <button onclick="viewOnMap('${d.locationId}', ${d.lat}, ${d.lng})">View</button>
-          <button class="danger" onclick="deleteLocation('${d.locationId}', '${doc.id}')">Delete</button>
-          <button onclick="clearReport('${doc.id}')">Ignore</button>
-        </div>
-      </div>
-    `;
+      `;
 
-    container.appendChild(el);
-  });
+      container.appendChild(el);
+    });
+
+  } catch (e) {
+    console.error("Failed to load reports", e);
+    container.innerHTML = "Failed to load reports";
+  }
 }
 
-function clearReport(id) {
-  db.collection("reports").doc(id).delete().then(loadReports);
+async function clearReport(id, btn) {
+  btn.innerText = "Removing...";
+  try {
+    await db.collection("reports").doc(id).delete();
+    btn.closest(".card").remove();
+  } catch (e) {
+    alert("Failed");
+  }
 }
 
-/* ========================
-   LOCATIONS
-======================== */
+// ========================
+// LOCATIONS + FAST VOTES
+// ========================
+
+async function getVotesForIds(ids) {
+  if (!ids.length) return {};
+
+  const voteMap = {};
+  const chunks = [];
+
+  for (let i = 0; i < ids.length; i += 10) {
+    chunks.push(ids.slice(i, i + 10));
+  }
+
+  for (const chunk of chunks) {
+    const snap = await db.collection("votes")
+      .where(firebase.firestore.FieldPath.documentId(), "in", chunk)
+      .get();
+
+    snap.forEach(doc => {
+      voteMap[doc.id] = doc.data();
+    });
+  }
+
+  return voteMap;
+}
+
+async function loadLocations() {
+  const container = document.getElementById("locations");
+  container.innerHTML = "Loading...";
+
+  try {
+    const snapshot = await db.collection("locations").limit(200).get();
+
+    const baseLocations = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    // 🔥 Only fetch votes for these
+    const ids = baseLocations.map(l => l.id);
+    const votes = await getVotesForIds(ids);
+
+    allLocations = baseLocations.map(loc => {
+      const v = votes[loc.id] || {};
+
+      const up = v.upvotes || 0;
+      const down = v.downvotes || 0;
+      const total = up + down;
+
+      return {
+        ...loc,
+        votes: total,
+        percent: total ? Math.round((up / total) * 100) : 0
+      };
+    });
+
+    renderLocations(allLocations);
+
+  } catch (e) {
+    console.error("Failed to load locations", e);
+    container.innerHTML = "Failed to load locations";
+  }
+}
+
+// ========================
+// RENDER
+// ========================
 
 function renderLocations(list) {
   const container = document.getElementById("locations");
@@ -211,16 +304,16 @@ function renderLocations(list) {
     el.innerHTML = `
       <div class="row">
         <div>
-<strong>${loc.name}</strong><br>
-${loc.lat}, ${loc.lng}<br>
-🎯 ${loc.percent || 0}% (${loc.votes || 0} votes)
+          <strong>${loc.name || "Unnamed"}</strong><br>
+          ${loc.lat}, ${loc.lng}<br>
+          🎯 ${loc.percent || 0}% (${loc.votes || 0} votes)
           ${count >= 3 ? `<div class="flag">⚠️ ${count} reports</div>` : ""}
         </div>
 
         <div>
           <button onclick="viewOnMap('${loc.id}', ${loc.lat}, ${loc.lng})">View</button>
-          <button class="warn" onclick="softDelete('${loc.id}')">Hide</button>
-          <button class="danger" onclick="deleteLocation('${loc.id}')">Delete</button>
+          <button class="warn" onclick="softDelete('${loc.id}', this)">Hide</button>
+          <button class="danger" onclick="deleteLocation('${loc.id}', null, this)">Delete</button>
         </div>
       </div>
     `;
@@ -229,81 +322,56 @@ ${loc.lat}, ${loc.lng}<br>
   });
 }
 
-async function loadVotes() {
-  const snapshot = await db.collection("votes").get();
-  const voteMap = {};
-
-  snapshot.forEach(doc => {
-    voteMap[doc.id] = doc.data();
-  });
-
-  return voteMap;
-}
-
-async function loadLocations() {
-  const snapshot = await db.collection("locations").get();
-  const votes = await loadVotes();
-
-  allLocations = snapshot.docs.map(doc => {
-    const data = doc.data();
-    const v = votes[doc.id] || {};
-
-    const up = v.upvotes || 0;
-    const down = v.downvotes || 0;
-    const total = up + down;
-
-    return {
-      id: doc.id,
-      ...data,
-      votes: total,
-      percent: total ? Math.round((up / total) * 100) : 0
-    };
-  });
-
-  renderLocations(allLocations);
-}
-
-/* ========================
-   SEARCH
-======================== */
+// ========================
+// SEARCH
+// ========================
 
 function filterLocations() {
-  const term = searchInput.value.toLowerCase();
+  const term = (searchInput.value || "").toLowerCase();
 
   const filtered = allLocations.filter(l =>
-    l.name.toLowerCase().includes(term)
+    (l.name || "").toLowerCase().includes(term)
   );
 
   renderLocations(filtered);
 }
 
-/* ========================
-   DELETE / SOFT DELETE
-======================== */
+// ========================
+// DELETE / SOFT DELETE
+// ========================
 
-async function softDelete(id) {
-  await db.collection("locations").doc(id).update({
-    hidden: true
-  });
-  loadLocations();
+async function softDelete(id, btn) {
+  btn.innerText = "Hiding...";
+  try {
+    await db.collection("locations").doc(id).update({ hidden: true });
+    loadLocations();
+  } catch {
+    alert("Failed");
+  }
 }
 
-async function deleteLocation(id, reportId=null) {
+async function deleteLocation(id, reportId = null, btn) {
   if (!confirm("Delete permanently?")) return;
 
-  await db.collection("locations").doc(id).delete();
+  btn.innerText = "Deleting...";
 
-  if (reportId) {
-    await db.collection("reports").doc(reportId).delete();
+  try {
+    await db.collection("locations").doc(id).delete();
+
+    if (reportId) {
+      await db.collection("reports").doc(reportId).delete();
+    }
+
+    loadReports();
+    loadLocations();
+  } catch {
+    alert("Delete failed");
   }
-
-  loadReports();
-  loadLocations();
 }
 
-/* ========================
-   DELETED VIEW
-======================== */
+// ========================
+// DELETED VIEW
+// ========================
 
 function toggleDeleted() {
   const el = document.getElementById("deletedLocations");
@@ -316,27 +384,33 @@ async function loadDeleted() {
   const container = document.getElementById("deletedLocations");
   container.innerHTML = "Loading...";
 
-  const snapshot = await db.collection("locations")
-    .where("hidden", "==", true)
-    .get();
+  try {
+    const snapshot = await db.collection("locations")
+      .where("hidden", "==", true)
+      .limit(100)
+      .get();
 
-  container.innerHTML = "";
+    container.innerHTML = "";
 
-  snapshot.forEach(doc => {
-    const d = doc.data();
+    snapshot.forEach(doc => {
+      const d = doc.data();
 
-    const el = document.createElement("div");
-    el.className = "card";
+      const el = document.createElement("div");
+      el.className = "card";
 
-    el.innerHTML = `
-      <div class="row">
-        <div>${d.name}</div>
-        <button class="good" onclick="restore('${doc.id}')">Restore</button>
-      </div>
-    `;
+      el.innerHTML = `
+        <div class="row">
+          <div>${d.name}</div>
+          <button class="good" onclick="restore('${doc.id}')">Restore</button>
+        </div>
+      `;
 
-    container.appendChild(el);
-  });
+      container.appendChild(el);
+    });
+
+  } catch {
+    container.innerHTML = "Failed to load";
+  }
 }
 
 function restore(id) {
@@ -344,9 +418,9 @@ function restore(id) {
     .then(loadDeleted);
 }
 
-/* ========================
-   MAP VIEW
-======================== */
+// ========================
+// MAP VIEW
+// ========================
 
 function viewOnMap(id, lat, lng) {
   if (lat && lng) {

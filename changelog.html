@@ -67,6 +67,52 @@
     Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
   </p>
   
+  <!-- v2.4.0 -->
+<div class="changelog-entry">
+  <div class="version-title">v2.4.0 – Apr 2026</div>
+
+  <div class="section-title">🔥 Real-Time Data System (Firebase Only)</div>
+
+  <div class="section-title">Added</div>
+  <ul>
+    <li>Full Firebase-powered location system (removed dependency on static JSON)</li>
+    <li>Unified location + vote data pipeline using consistent ID structure</li>
+    <li>Live vote + location synchronization across all views</li>
+  </ul>
+
+  <div class="section-title">Changed</div>
+  <ul>
+    <li>Removed <code>coffeeLocations.json</code> from runtime (now fully database-driven)</li>
+    <li>Refactored data loading to pull locations and votes directly from Firestore</li>
+    <li>Standardized ID matching across locations and votes collections</li>
+  </ul>
+
+  <div class="section-title">Fixed</div>
+  <ul>
+    <li>Resolved missing location data in Coffeenomics and map views</li>
+    <li>Fixed ID mismatch issues between legacy vote data and location records</li>
+    <li>Fixed edge cases where user-added locations failed to resolve</li>
+  </ul>
+
+  <div class="section-title">Performance</div>
+  <ul>
+    <li>Eliminated large JSON fetch (~19k locations) improving initial load</li>
+    <li>Reduced memory footprint by removing static dataset from client</li>
+    <li>Improved scalability for future growth and real-time updates</li>
+  </ul>
+
+  <div class="section-title">Developer</div>
+  <ul>
+    <li>Completed migration of legacy vote data to deterministic ID system</li>
+    <li>Established clean, scalable Firestore structure for long-term growth</li>
+  </ul>
+
+  <div class="section-title">Misc</div>
+  <ul>
+    <li>This is the update where Stir My Coffee goes fully live data ☕🔥</li>
+  </ul>
+</div>
+
   <!-- v2.3.0 -->
 <div class="changelog-entry">
   <div class="version-title">v2.3.0 – Apr 2026</div>

@@ -1,7 +1,4 @@
 const admin = require("firebase-admin");
-const fs = require("fs");
-
-// 🔑 Load service account
 const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
@@ -10,53 +7,74 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// 🔥 SAME ID FUNCTION (DO NOT CHANGE)
 function generateLocationId(name, lat, lng) {
   return `${name}_${Number(lat).toFixed(5)}_${Number(lng).toFixed(5)}`
     .toLowerCase()
     .replace(/[^a-z0-9_]/g, "");
 }
 
-// 📍 Load your static locations
-const locations = JSON.parse(
-  fs.readFileSync("./coffeeLocations.json", "utf8")
-);
+async function migrateUserVotes() {
+  console.log("🚀 Migrating remaining user votes...\n");
 
-async function seed() {
-  console.log(`Seeding ${locations.length} locations...\n`);
+  const voteSnap = await db.collection("votes").get();
 
   let batch = db.batch();
   let count = 0;
+  let skipped = 0;
 
-  for (const loc of locations) {
-    const lat = Number(loc.lat);
-    const lng = Number(loc.lng);
+  for (const doc of voteSnap.docs) {
+    const vote = doc.data();
+    const oldId = doc.id;
 
-    const id = generateLocationId(loc.name, lat, lng);
+    // ✅ Skip already-correct IDs (lat/lng format)
+    const parts = oldId.split("_");
+    if (parts.length === 3 && !isNaN(parts[1]) && !isNaN(parts[2])) {
+      continue;
+    }
 
-    const ref = db.collection("votes").doc(id);
+    // 🔥 Try to find matching location by SAME ID
+    const locDoc = await db.collection("locations").doc(oldId).get();
 
-    batch.set(ref, {
-      upvotes: 1,
-      downvotes: 0,
-      speedTotal: 5,
-      speedVotes: 1
-    }, { merge: true });
+    if (!locDoc.exists) {
+      console.log("❌ No location for:", oldId);
+      skipped++;
+      continue;
+    }
+
+    const d = locDoc.data();
+
+    if (!d.name || d.lat == null || d.lng == null) {
+      console.log("❌ Bad location data:", oldId);
+      skipped++;
+      continue;
+    }
+
+    const newId = generateLocationId(d.name, d.lat, d.lng);
+
+    // 🛑 Skip if already exists (avoid overwrite spam)
+    const existing = await db.collection("votes").doc(newId).get();
+    if (existing.exists) {
+      continue;
+    }
+
+    const newRef = db.collection("votes").doc(newId);
+
+    batch.set(newRef, vote, { merge: true });
 
     count++;
 
-    // 🔥 Firestore batch limit = 500
     if (count % 500 === 0) {
       await batch.commit();
-      console.log(`✔ Committed ${count}`);
+      console.log(`✔ Migrated ${count}`);
       batch = db.batch();
     }
   }
 
-  // Final batch
   await batch.commit();
 
-  console.log("\n🔥 SEED COMPLETE");
+  console.log("\n🔥 USER MIGRATION COMPLETE");
+  console.log(`✔ Migrated: ${count}`);
+  console.log(`❌ Skipped: ${skipped}`);
 }
 
-seed().catch(console.error);
+migrateUserVotes().catch(console.error);

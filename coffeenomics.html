@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coffeenomics | Stir My Coffee™</title>
+
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/coffeenomics.css" rel="stylesheet">
+
+<!-- Accessibility -->
+<meta name="description" content="Coffeenomics shows the best, worst, and fastest coffee shops based on real user ratings.">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RH5JLNDP3T"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RH5JLNDP3T');
+</script>
+
+<!-- Theme system -->
+<link id="baseTheme" rel="stylesheet" />
+<link id="holidayTheme" rel="stylesheet" />
+
+</head>
+
+<body class="content-page">
+
+<!-- HEADER -->
+<header role="banner">
+  <img src="images/StirLogo.png" class="logo" alt="Stir My Coffee logo" />
+
+  <div class="headerText">
+    <h1>Stir My Coffee™</h1>
+    <p>Coffeenomics</p>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="container" role="main">
+
+  <h2>📊 Coffeenomics</h2>
+
+  <div class="coffeenomics-grid" role="region" aria-label="Coffee statistics dashboard">
+
+    <section class="coffee-card" aria-labelledby="bestOverallTitle">
+      <h3 id="bestOverallTitle">🏆 Best Overall</h3>
+      <div id="bestOverall" aria-live="polite"></div>
+    </section>
+
+    <section class="coffee-card" aria-labelledby="worstOverallTitle">
+      <h3 id="worstOverallTitle">💀 Worst</h3>
+      <div id="worstOverall" aria-live="polite"></div>
+    </section>
+
+    <section class="coffee-card" aria-labelledby="fastestTitle">
+      <h3 id="fastestTitle">⚡ Fastest</h3>
+      <div id="fastest" aria-live="polite"></div>
+    </section>
+
+    <section class="coffee-card" aria-labelledby="chaosTitle">
+      <h3 id="chaosTitle">🔥 Chaos</h3>
+      <div id="chaos" aria-live="polite"></div>
+    </section>
+
+    <section class="coffee-card" aria-labelledby="eliteTitle">
+      <h3 id="eliteTitle">🏅 Elite Shops</h3>
+      <div id="elite" aria-live="polite"></div>
+    </section>
+
+    <section class="coffee-card" aria-labelledby="trashTitle">
+      <h3 id="trashTitle">🚨 Avoid These</h3>
+      <div id="trash" aria-live="polite"></div>
+    </section>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-left">
+    © 2026 Stir My Coffee™
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="legal.html">Legal</a>
+    <a href="mailto:hello@stirmycoffee.com">Contact</a>
+    <span class="version"><a href="/changelog.html">v2.3.0</a></span>
+  </div>
+
+  <div class="footer-right">
+    <a href="https://instagram.com/stir.my.coffee" target="_blank" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61576515072675" target="_blank" aria-label="Facebook">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- ========================= -->
+<!-- 🔥 SCRIPTS (ORDER MATTERS) -->
+<!-- ========================= -->
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
+  authDomain: "stir-my-coffee.firebaseapp.com",
+  projectId: "stir-my-coffee"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+</script>
+
+<!-- Coffeenomics logic -->
+<script src="js/coffeenomics.js"></script>
+
+<!-- Initialize AFTER script loads -->
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  loadCoffeenomics();
+});
+</script>
+
+<!-- Theme -->
+<script src="js/theme.js" defer></script>
+<div id="themeFade"></div>
+
+</body>
+</html>
