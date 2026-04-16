@@ -1997,16 +1997,17 @@ function scheduleLoader() {
 }
 
 const COFFEE_PUNS = [
-  "Brewing something awesome...",
-  "Grinding the beans...",
-  "Espresso yourself...",
-  "Almost latte fun...",
-  "Perking things up...",
-  "Steaming ahead...",
-  "Pouring greatness...",
-  "Caffeine loading...",
-  "Stay grounded ☕",
-  "Bean there in a sec..."
+"First brew takes the longest ☕",
+"Brewing something awesome...",
+"Grinding the beans...",
+"Espresso yourself...",
+"Almost latte fun...",
+"Perking things up...",
+"Steaming ahead...",
+"Pouring greatness...",
+"Caffeine loading...",
+"Stay grounded ☕",
+"Bean there in a sec..."
 ];
 
 let punInterval = null;

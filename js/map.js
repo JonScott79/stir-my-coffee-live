@@ -212,72 +212,79 @@ async function loadLocationsRealtime() {
   const votesRef = collection(db, "votes");
 
   let locationsData = [];
+  let votesReady = false;
+  let locationsReady = false;
 
   function combineAndRender() {
-    let combined = [...staticLocations];
+    // 🚫 WAIT until BOTH are loaded
+    if (!votesReady || !locationsReady) return;
 
-    if (locationsData.length) {
-      const customLocations = locationsData.map(d => {
-        const id = d.id || generateLocationId(d.name, d.lat, d.lng);
+    // 🔍 DEBUG (you can remove later)
+    const bad = locationsData.filter(d => !d.lat || !d.lng);
+    if (bad.length) {
+      console.warn("⚠️ Bad locations skipped:", bad.length, bad.slice(0, 5));
+    }
+
+    const combined = locationsData
+      // 🔥 CRITICAL FIX (prevents render crash)
+      .filter(d => d.lat && d.lng)
+      .map(d => {
+        const id = d.id;
         const v = votesData[id] || {};
+
+        const up = v.upvotes || 0;
+        const down = v.downvotes || 0;
+        const total = up + down;
+
+        const speedTotal = v.speedTotal || 0;
+        const speedVotes = v.speedVotes || 0;
 
         return {
           id,
-          name: d.name,
+          name: d.name || "Unknown",
           lat: Number(d.lat),
           lng: Number(d.lng),
-          ...v
+          percent: total ? Math.round((up / total) * 100) : 0,
+          speed: speedVotes ? (speedTotal / speedVotes) : 0,
+          votes: total
         };
       });
 
-      combined = [...combined, ...customLocations];
-    }
+    allLocations = combined;
 
-    allLocations = combined.map(loc => {
-      const lat = Number(loc.lat);
-      const lng = Number(loc.lng);
-
-      const id = loc.id || generateLocationId(loc.name, lat, lng);
-      const v = votesData[id] || {};
-
-      const up = v.upvotes || 0;
-      const down = v.downvotes || 0;
-      const total = up + down;
-
-      const speedTotal = v.speedTotal || 0;
-      const speedVotes = v.speedVotes || 0;
-
-      return {
-        ...loc,
-        id,
-        lat,
-        lng,
-        percent: total ? Math.round((up / total) * 100) : 0,
-        speed: speedVotes ? (speedTotal / speedVotes) : 0,
-        votes: total
-      };
-    });
+    console.log("🔥 Rendering locations:", allLocations.length);
 
     render();
   }
 
-// 🔥 REMOVE STATIC LOAD — FIREBASE REALTIME ONLY
-staticLocations = [];
-combineAndRender();
-
+  // ========================
+  // 🔥 LOCATIONS LISTENER
+  // ========================
   onSnapshot(locationsRef, snapshot => {
     locationsData = snapshot.docs.map(docSnap => ({
       id: docSnap.id,
       ...docSnap.data()
     }));
+
+    console.log("📍 Locations loaded:", locationsData.length);
+
+    locationsReady = true;
     combineAndRender();
   });
 
+  // ========================
+  // 🔥 VOTES LISTENER
+  // ========================
   onSnapshot(votesRef, snapshot => {
     votesData = {};
+
     snapshot.forEach(docSnap => {
       votesData[docSnap.id] = docSnap.data();
     });
+
+    console.log("🗳 Votes loaded:", Object.keys(votesData).length);
+
+    votesReady = true;
     combineAndRender();
   });
 }
@@ -302,14 +309,38 @@ function render() {
       setHeader("Vote or rate this shop");
     });
 
+    // ========================
+    // 🔥 DISABLE LOGIC
+    // ========================
+
+    const voteDisabled = canVote(loc.id)
+      ? ""
+      : "disabled title='Already voted (24h cooldown)'";
+
+    const speedDisabled = canRateSpeed(loc.id)
+      ? ""
+      : "style='opacity:0.4;pointer-events:none;' title='Already rated (24h cooldown)'";
+
+    // ========================
+    // POPUP
+    // ========================
+
     marker.bindPopup(`
       <b>${loc.name}</b><br><br>
+
       <b>Accuracy:</b> ${loc.percent}% (${loc.votes} votes)<br>
       <b>Speed:</b> ${loc.speed ? loc.speed.toFixed(1) : "N/A"} ⭐<br><br>
 
       <div class="vote-inline">
-        <button onclick="vote(event, '${loc.id}', true)">👍</button>
-        <button onclick="vote(event, '${loc.id}', false)">👎</button>
+        <button ${voteDisabled}
+          onclick="vote(event, '${loc.id}', true)">
+          👍
+        </button>
+
+        <button ${voteDisabled}
+          onclick="vote(event, '${loc.id}', false)">
+          👎
+        </button>
       </div>
 
       <br>
@@ -319,7 +350,10 @@ function render() {
           const rounded = Math.round(loc.speed || 0);
           const filled = i + 1 <= rounded ? "★" : "☆";
 
-          return `<span onclick="rateSpeed(event, '${loc.id}', ${i + 1})">${filled}</span>`;
+          return `<span ${speedDisabled}
+            onclick="rateSpeed(event, '${loc.id}', ${i + 1})">
+            ${filled}
+          </span>`;
         }).join("")}
       </div>
 
@@ -336,13 +370,50 @@ function render() {
 // INTERACTIONS
 // ========================
 
+const SPEED_LIMIT_HOURS = 24;
+
+function getSpeedHistory() {
+  return JSON.parse(localStorage.getItem("speedHistory") || "{}");
+}
+
+function saveSpeedHistory(history) {
+  localStorage.setItem("speedHistory", JSON.stringify(history));
+}
+
+function canRateSpeed(id) {
+  const history = getSpeedHistory();
+  const last = history[id];
+
+  if (!last) return true;
+
+  const hoursPassed = (Date.now() - last) / (1000 * 60 * 60);
+  return hoursPassed >= SPEED_LIMIT_HOURS;
+}
+
+function recordSpeedRating(id) {
+  const history = getSpeedHistory();
+  history[id] = Date.now();
+  saveSpeedHistory(history);
+}
+
 window.vote = function (event, id, up) {
   event.stopPropagation();
 
-  if (!canVote(id)) return alert("⏳ Wait 24h");
+  // 🚫 HARD BLOCK
+  if (!canVote(id)) {
+    alert("⏳ You can vote again on this shop in 24 hours.");
+    return;
+  }
 
+  // ✅ RECORD LOCALLY FIRST (CRITICAL)
   recordVote(id);
 
+  // ⚡ OPTIONAL: instant feedback (nice UX)
+  const btn = event.target;
+  btn.classList.add("pop");
+  setTimeout(() => btn.classList.remove("pop"), 300);
+
+  // 🔥 FIREBASE WRITE
   setDoc(doc(db, "votes", id), {
     upvotes: increment(up ? 1 : 0),
     downvotes: increment(!up ? 1 : 0)
@@ -352,10 +423,24 @@ window.vote = function (event, id, up) {
 window.rateSpeed = async (event, id, rating) => {
   event.stopPropagation();
 
+  if (!canRateSpeed(id)) {
+    alert("⏳ You already rated speed here. Try again later.");
+    return;
+  }
+
+  recordSpeedRating(id);
+
+  const el = event.target;
+  el.classList.add("pop");
+  setTimeout(() => el.classList.remove("pop"), 300);
+
   await setDoc(doc(db, "votes", id), {
     speedTotal: increment(rating),
     speedVotes: increment(1)
   }, { merge: true });
+
+  // 🔥 FORCE UI REFRESH (THIS IS WHAT YOU WERE MISSING)
+  render();
 };
 
 window.reportLocation = async (id) => {

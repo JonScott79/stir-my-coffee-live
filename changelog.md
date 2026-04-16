@@ -1,3 +1,19 @@
+## [2.4.1] – Apr 2026
+
+### ✨ UX Clarity Update
+
+### Improved
+- Replaced “Vote (accuracy)” with “Order Correct?” for clearer user understanding
+- Reduced cognitive friction in voting interaction
+- Better alignment with core product messaging
+
+### UX
+- More intuitive, question-based interaction model
+- Faster comprehension for new users
+
+### Misc
+- Small change, big impact ☕⚡
+
 ## [2.4.0] – Apr 2026
 
 ### 🔥 Real-Time Data System (Firebase Only)
