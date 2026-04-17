@@ -1,4 +1,32 @@
 
+## [2.5.1] – Apr 2026
+
+### 🧠 Ranking System Overhaul
+
+### Improved
+- Rebuilt core ranking algorithm to better reflect real-world shop performance
+- Introduced balanced scoring model combining order accuracy and speed
+- Implemented vote-based confidence scaling to prevent low-sample bias
+- Eliminated misleading rankings from low-vote or unbalanced data
+
+### Changed
+- “Best Overall” now uses a hybrid scoring system (accuracy + speed + confidence)
+- “Fastest” category now ranks purely by speed for clearer user expectations
+- “Best Quality” category now ranks purely by accuracy
+- Reordered Top Picks panel to prioritize “Best Overall” first
+
+### UX
+- Rankings now feel more intuitive and trustworthy
+- Improved alignment between labels and actual behavior (no more confusion)
+- Faster user decision-making with clearer category meaning
+
+### Technical
+- Introduced new `calculateScore()` system using normalized metrics and confidence weighting
+- Simplified category logic to separate concerns (overall vs specific metrics)
+
+### Misc
+- This is the update where the app starts thinking like a user ☕🧠🔥
+
 ## [2.5.0] – Apr 2026
 
 ### 🚀 Programmatic SEO System

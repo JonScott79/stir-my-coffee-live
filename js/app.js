@@ -1262,46 +1262,30 @@ function init() {
 function getTopPicks(locations) {
   if (!locations.length) return {};
 
-  // clone so we don’t mutate original
   const pool = [...locations];
 
-  // helper: require minimum votes to be eligible
-  const MIN_VOTES = 3;
-
-  const withVoteThreshold = (value, votes) => {
-    return (votes >= MIN_VOTES) ? value : 0;
-  };
-
-  // 🧠 BEST OVERALL (your main ranking stays as-is)
+  // 🧠 BEST OVERALL (your smart algorithm)
   const overall = pool
     .sort((a, b) => b.score - a.score)[0];
 
-  // remove it
   const remainingAfterOverall = pool.filter(l => l.id !== overall.id);
 
-  // ⭐ BEST QUALITY (accuracy with threshold)
+  // ⭐ BEST QUALITY (pure accuracy)
   let best = null;
   if (remainingAfterOverall.length) {
     best = [...remainingAfterOverall]
-      .sort((a, b) =>
-        withVoteThreshold(b.percent || 0, b.votes) -
-        withVoteThreshold(a.percent || 0, a.votes)
-      )[0];
+      .sort((a, b) => (b.percent || 0) - (a.percent || 0))[0];
   }
 
-  // remove it
   const remainingAfterBest = remainingAfterOverall.filter(
     l => best && l.id !== best.id
   );
 
-  // ⚡ FASTEST (speed with threshold)
+  // ⚡ FASTEST (pure speed)
   let fastest = null;
   if (remainingAfterBest.length) {
     fastest = [...remainingAfterBest]
-      .sort((a, b) =>
-        withVoteThreshold(b.speed || 0, b.votes) -
-        withVoteThreshold(a.speed || 0, a.votes)
-      )[0];
+      .sort((a, b) => (b.speed || 0) - (a.speed || 0))[0];
   }
 
   return { fastest, best, overall };
@@ -1626,9 +1610,9 @@ function renderTopPicksPanel({ fastest, best, overall }) {
   if (!el) return;
 
   el.innerHTML = `
-    ${renderMiniCard("⚡ Fastest", fastest)}
-    ${renderMiniCard("⭐ Best Quality", best)}
     ${renderMiniCard("🧠 Best Overall", overall)}
+	${renderMiniCard("⚡ Fastest", fastest)}
+    ${renderMiniCard("⭐ Best Quality", best)}
   `;
 }
 
@@ -1902,13 +1886,28 @@ function openDirections(e, lat, lng) {
 
   window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`);
 }
+
+// ===============================
+// SUPER TOP SECRET ALGORITHM™
+// ===============================
+
 function calculateScore(shop) {
-  return (
-    (shop.percent || 0) * 0.5 +
-    (shop.speed || 0) * 20 * 0.3 +
-    (shop.distance > 0 ? Math.max(0, 100 - shop.distance * 20) : 0) * 0.2
-  );
+  const accuracy = shop.percent || 0;
+
+  const speedScore = shop.speed ? shop.speed * 20 : 50;
+
+  const baseScore = Math.min(accuracy, speedScore);
+
+  const votes = shop.votes || 0;
+  const confidence = Math.min(1, votes / 5);
+
+  return baseScore * confidence;
 }
+
+// ===============================
+// OK, You can look now!
+// ===============================
+
 
 const SPEED_LIMIT_HOURS = 24;
 
