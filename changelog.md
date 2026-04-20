@@ -1,3 +1,31 @@
+## [2.6.0] – Apr 2026
+
+### ✨ Header UX & SEO Interaction Upgrade
+
+### Added
+- Interactive “What is Stir My Coffee?” side panel for contextual information
+- Consolidated SEO content into a single structured panel
+
+### Improved
+- Rebuilt About page creator section with cleaner layout, tighter spacing, and stronger narrative
+- Refined header typography and spacing for tighter visual hierarchy
+- Improved alignment and consistency between title, tagline, and supporting text
+- Cleaner presentation of introductory content
+
+### Fixed
+- Resolved duplicate SEO content rendering as multiple panels
+- Fixed layout issue causing text to appear both inline and in floating panel
+- Fixed theme override affecting brand accent color
+
+### UX
+- Improved readability and flow of creator story (reduced spacing, more concise structure)
+- Reduced header clutter with on-demand content display
+- Improved first impression and readability for new users
+- More intentional, app-like interaction pattern
+
+### Misc
+- Version number now updates automatically across the entire site
+- The header finally feels like a product, not a layout ☕✨
 
 ## [2.5.1] – Apr 2026
 

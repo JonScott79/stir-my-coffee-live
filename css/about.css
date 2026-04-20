@@ -70,10 +70,8 @@
 ======================== */
 
 .creatorBox {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 20px;
-  align-items: center;
+  display: block;
+  max-width: 850px;
 }
 
 .creatorImage {

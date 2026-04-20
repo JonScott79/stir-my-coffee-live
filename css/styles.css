@@ -87,7 +87,7 @@ body {
 }
 
 /* ========================
-   CARDS (CONSOLIDATED)
+   CARDS
 ======================== */
 
 .location-card,
@@ -98,23 +98,17 @@ body {
   border: 2px solid var(--accent);
 }
 
-/* Top picks + mini cards (stronger look) */
 .mini-card,
 #topPickCard {
   padding: 16px;
   box-shadow: var(--shadow-strong);
 }
 
-/* Location cards (lighter look) */
 .location-card {
   padding: 14px;
   margin-bottom: 12px;
   box-shadow: var(--shadow-soft);
   cursor: pointer;
-}
-
-#listContainer {
-  padding-right: 0;
 }
 
 /* ========================
@@ -134,40 +128,31 @@ header {
   height: 50px;
 }
 
+.headerText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px; /* ✅ fixed spacing */
+  width: 100%;
+}
+
+/* Remove default h1 spacing */
 .headerText h1 {
   margin: 0;
-  font-size: 24px;
-}
-
-.headerText p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.vote-header {
-  text-align: center;
-  font-size: 24px;   
-  font-weight: 700;     
-  color: var(--text-main);
-  margin-bottom: 1px;   
-}
-
-.vote-subtext {
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 0px;
-  margin-bottom: 10px;
+  color: #4b2e2b;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .tagline {
-  margin-top: 6px;
+  margin: 0; /* ✅ tight stack */
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.3px;
+  color: #4b2e2b;
+  opacity: 1;
+  filter: none;
 }
+
 
 /* ========================
    ACTION BUTTONS
@@ -378,15 +363,48 @@ footer {
 
   .topPickSection {
     position: static;
-	order: -1;
+    order: -1;
   }
-  
-.topPickSection h2 {
-  text-align: center;
-}
+
+  .topPickSection h2 {
+    text-align: center;
+  }
 
   .container {
     padding: 12px;
+  }
+
+  .headerText {
+    flex-direction: column;
+  }
+
+  .header-right {
+    max-width: 100%;
+  }
+
+  .seo-content {
+    margin-top: 6px;
+  }
+
+  /* 🔥 HARD FIX: SEO PANEL MOBILE BEHAVIOR */
+  .seo-content details {
+    position: relative;
+  }
+
+  .seo-panel {
+    position: relative !important;   /* override desktop absolute */
+    left: 0 !important;
+    top: auto !important;
+
+    width: 100%;
+    margin-top: 8px;
+
+    display: none;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .seo-content details[open] .seo-panel {
+    display: block;
   }
 }
 
@@ -456,18 +474,85 @@ body.loading #loader {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-
-/* SEO */
+/* ======================
+     SEO 
+   ======================*/
 
 .seo-content {
-  max-width: 900px;
-  margin: 20px auto 0;
+  margin: 2px 0 0;
   font-size: 13px;
-  color: var(--text-muted);
-  text-align: center;
+  text-align: left;
   line-height: 1.5;
+  position: relative;
 }
 
-.seo-content h2 {
-  margin-top: 0;
+/* Keep clean inline look */
+.seo-content details {
+  background: none;
+  padding: 0;
+  box-shadow: none;
+  position: relative;
+}
+
+/* MATCH TAGLINE EXACTLY */
+.seo-content summary {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b2e2b;
+  opacity: 1;
+  filter: none;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Remove default marker */
+.seo-content summary::marker {
+  display: none;
+}
+
+/* Arrow */
+.seo-content summary::after {
+  content: " ▼";
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.seo-content details[open] summary::after {
+  content: " ▲";
+}
+
+/* ======================
+   SIDE PANEL (FIXED)
+   ======================*/
+
+/* Hide panel by default */
+.seo-panel {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 16px;
+
+  width: 300px;
+  background: var(--bg-card);
+  padding: 12px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-strong);
+
+  display: none;
+  z-index: 10;
+}
+
+/* Show panel */
+.seo-content details[open] .seo-panel {
+  display: block;
+}
+
+/* Text inside panel */
+.seo-panel p {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+}
+
+.seo-panel p:last-child {
+  margin-bottom: 0;
 }
