@@ -1,3 +1,29 @@
+## [2.6.1] – Apr 2026
+
+### ☕ Dataset Expansion & Ingestion Pipeline
+
+### Added
+- Added multiple coffee chain datasets via Overpass API (Peet’s, Dutch Bros, Caribou, etc.)
+- Added Krispy Kreme locations to expand coffee-adjacent coverage
+- Implemented repeatable Overpass → Firebase ingestion workflow
+
+### Improved
+- Increased map density across multiple regions for better user experience
+- Reduced empty-map scenarios in lower-density areas
+- Improved perceived completeness for new users
+
+### Data
+- Seeded new locations with baseline vote data (accuracy + speed)
+- Maintained consistent ID structure across all new locations
+- Prevented duplicate inserts during ingestion
+
+### Developer
+- Established scalable ingestion pipeline for future dataset expansion
+- Improved data normalization and processing reliability
+
+### Misc
+- This is the update where the map starts feeling alive everywhere ☕🌎🔥
+
 ## [2.6.0] – Apr 2026
 
 ### ✨ Header UX & SEO Interaction Upgrade

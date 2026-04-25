@@ -1,52 +1,71 @@
 # ========================
-# Node
+# 📦 NODE
 # ========================
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # ========================
-# Secrets / Keys
+# 🔐 SECRETS / KEYS
 # ========================
 serviceAccountKey.json
+.env
+.env.local
 
 # ========================
-# Logs
+# 🔥 DATA PIPELINE (IMPORTANT)
+# ========================
+/data/
+data/
+
+# Overpass + seeding scripts (local tools)
+pull.js
+pull-*.js
+seed.js
+seed-*.js
+
+# ========================
+# 📝 LOGS
 # ========================
 *.log
 
 # ========================
-# OS junk
+# 🧠 OS junk
 # ========================
 .DS_Store
 Thumbs.db
 
 # ========================
-# Build / Dist
+# 🏗 BUILD / DIST
 # ========================
 dist/
 build/
 
 # ========================
-# Android / TWA (Capacitor)
+# 🤖 ANDROID / CAPACITOR
 # ========================
 android/
 app/
 .gradle/
 gradle/
 
-# Gradle files
 build.gradle
 settings.gradle
 gradlew
 gradlew.bat
-
-# Local config
 local.properties
-
-# Keystore (CRITICAL)
 *.keystore
 
 # ========================
-# IDE
+# 🧪 TEMP / CACHE
+# ========================
+*.tmp
+*.cache
+
+# ========================
+# 🛠 IDE
 # ========================
 .idea/
+.vscode/
 *.iml
