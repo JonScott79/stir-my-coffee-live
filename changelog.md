@@ -1,3 +1,29 @@
+## [2.7.0] – Apr 2026
+
+### 🚀 Android Beta Launch & Support System
+
+### Added
+- Google Play closed beta launch for Android testers
+- Native install experience for Android users
+- Dedicated Support / Donate page to help fund hosting and future development
+- Direct support pathway for community members who want to back the project
+
+### Improved
+- Faster repeat access through installed app experience
+- Easier onboarding for mobile users outside the browser
+- Stronger platform legitimacy through official Google Play presence
+
+### Platform
+- Stir My Coffee now available as both web platform and Android beta app
+- Expanded reach beyond browser-only users
+
+### Community
+- Began closed beta tester recruitment for launch approval process
+- Early user feedback loop established for app refinement
+
+### Misc
+- This is the update where Stir My Coffee steps onto the Play Store ☕📱🔥
+
 ## [2.6.1] – Apr 2026
 
 ### ☕ Dataset Expansion & Ingestion Pipeline
