@@ -1,3 +1,21 @@
+## [2.7.1] – Apr 2026
+
+### 🔍 SEO Optimization Update
+
+### Improved
+- Enhanced homepage title tag for stronger search intent targeting
+- Upgraded meta description to improve click-through rate from search results
+- Expanded Open Graph and Twitter tags for better social sharing previews
+- Improved canonical, robots, and metadata consistency
+- Added richer structured data for search engine understanding
+
+### Growth
+- Strengthened discoverability for coffee-related local searches
+- Improved foundation for long-tail traffic and brand visibility
+
+### Misc
+- Quiet update. Loud results. ☕📈
+
 ## [2.7.0] – Apr 2026
 
 ### 🚀 Android Beta Launch & Support System
