@@ -1,0 +1,2521 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-25T15:27:29Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 365356499,
+      "lat": 32.9518803,
+      "lon": -117.065669,
+      "tags": {
+        "addr:city": "Poway",
+        "addr:housenumber": "12314",
+        "addr:postcode": "92064",
+        "addr:state": "CA",
+        "addr:street": "Poway Road",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:30-21:00; Sa-Su 06:00-21:00",
+        "phone": "+1 858 6680708",
+        "source": "SanGIS Business Sites Public Domain (http://www.sangis.org/)",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/poway/12314-poway-rd"
+      }
+    },
+    {
+      "type": "node",
+      "id": 518277231,
+      "lat": 34.1057642,
+      "lon": -117.5763886,
+      "tags": {
+        "addr:city": "Rancho Cucamonga",
+        "addr:housenumber": "8140",
+        "addr:postcode": "91730",
+        "addr:state": "CA",
+        "addr:street": "Haven Ave",
+        "addr:suite": "100",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "source": "image;survey;usgs_imagery",
+        "source_ref": "AM909_DSCP2072",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 617859814,
+      "lat": 34.2053424,
+      "lon": -118.2282493,
+      "tags": {
+        "addr:city": "Montrose",
+        "addr:housenumber": "3701",
+        "addr:postcode": "91020",
+        "addr:state": "CA",
+        "addr:street": "Ocean View Boulevard",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "branch": "Ocean View & Honolulu",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "diet:kosher": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Su 05:00-23:00",
+        "outdoor_seating": "yes",
+        "phone": "+1 818 249 7848",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 709064592,
+      "lat": 42.5226741,
+      "lon": -73.6828214,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Bean Cafe"
+      }
+    },
+    {
+      "type": "node",
+      "id": 835997638,
+      "lat": 33.4809678,
+      "lon": -117.1008302,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "source": "survey;bing_imagery",
+        "source_ref": "vvvexp97",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 902322536,
+      "lat": 34.1098325,
+      "lon": -118.287797,
+      "tags": {
+        "addr:city": "Los Angeles",
+        "addr:housenumber": "2081",
+        "addr:postcode": "90027",
+        "addr:state": "CA",
+        "addr:street": "Hillhurst Avenue",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 05:30-23:00; Fr 05:30-24:00; Sa 06:00-24:00; Su 06:00-23:00",
+        "phone": "+1-323-913-3457",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 957101362,
+      "lat": 34.1428386,
+      "lon": -118.3945366,
+      "tags": {
+        "amenity": "cafe",
+        "name": "The Coffee Bean",
+        "source": "survey"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1040764267,
+      "lat": 34.0700464,
+      "lon": -118.3508864,
+      "tags": {
+        "addr:city": "Los Angeles",
+        "addr:housenumber": "5979",
+        "addr:postcode": "90036",
+        "addr:state": "CA",
+        "addr:street": "West 3rd Street",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1098396788,
+      "lat": 34.0741657,
+      "lon": -118.323907,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1568666010,
+      "lat": 42.97087,
+      "lon": -74.185991,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1584153811,
+      "lat": 34.0453231,
+      "lon": -118.260413,
+      "tags": {
+        "addr:housenumber": "645 (Suite #108)",
+        "addr:postcode": "90015",
+        "addr:street": "W. 9th St.",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "phone": "+1-213-627-3816",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1818454075,
+      "lat": 43.5583744,
+      "lon": -79.578132,
+      "tags": {
+        "addr:city": "Mississauga",
+        "addr:housenumber": "211",
+        "addr:street": "Lakeshore Road East",
+        "amenity": "cafe",
+        "name": "Social Coffee Bean",
+        "website": "https://www.socialcoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1898409087,
+      "lat": 34.0637237,
+      "lon": -118.399308,
+      "tags": {
+        "addr:city": "Beverly Hills",
+        "addr:housenumber": "233",
+        "addr:postcode": "90212",
+        "addr:state": "CA",
+        "addr:street": "South Beverly Drive",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "phone": "+1 310-274-7801",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1931549990,
+      "lat": 33.3065855,
+      "lon": -111.888984,
+      "tags": {
+        "addr:city": "Chandler",
+        "addr:housenumber": "2560",
+        "addr:postcode": "85224",
+        "addr:state": "AZ",
+        "addr:street": "West Chandler Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "source": "esri/USA_NAD_Addresses",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2033292794,
+      "lat": 32.8049587,
+      "lon": -116.968352,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2164946875,
+      "lat": 34.101337,
+      "lon": -118.3412439,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2169479541,
+      "lat": 36.0681771,
+      "lon": -115.177534,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2545081686,
+      "lat": 33.6397227,
+      "lon": -84.4392715,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2602885434,
+      "lat": 34.0604707,
+      "lon": -117.1823632,
+      "tags": {
+        "addr:housenumber": "528",
+        "addr:street": "Orange Street",
+        "amenity": "cafe",
+        "branch": "#179",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Su 07:00-22:00; Mo-Sa 06:00-23:00",
+        "smoking": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2810282830,
+      "lat": 35.3952893,
+      "lon": -97.5973969,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2890385811,
+      "lat": 45.7470989,
+      "lon": -87.0907456,
+      "tags": {
+        "addr:housenumber": "201",
+        "addr:postcode": "49829",
+        "addr:street": "North 30th Street",
+        "amenity": "cafe",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2894676836,
+      "lat": 33.8350599,
+      "lon": -118.3527983,
+      "tags": {
+        "addr:city": "Torrance",
+        "addr:housenumber": "21300",
+        "addr:postcode": "90503",
+        "addr:state": "CA",
+        "addr:street": "Hawthorne Boulevard",
+        "addr:unit": "B",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "changing_table": "no",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "CoffeeBeanWifi",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 05:30-21:00; Fr 05:30-22:00; Sa 06:00-22:00; Su 06:00-21:00",
+        "outdoor_seating": "yes",
+        "panoramax": "5ad0e5a0-373c-437d-aa53-a8f78fa0b08a",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:qr_code": "yes",
+        "phone": "+1 310 792 8630",
+        "smoking": "no",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:access": "customers",
+        "toilets:disposal": "flush",
+        "toilets:fee": "no",
+        "toilets:gender_segregated": "no",
+        "toilets:hands_drying": "electric_hand_dryer;paper_towel",
+        "toilets:handwashing": "yes",
+        "toilets:paper_supplied": "yes",
+        "toilets:position": "seated",
+        "toilets:wheelchair": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/torrance/21300-b-hawthorne-blvd",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2897270433,
+      "lat": 40.7102382,
+      "lon": -74.0106426,
+      "tags": {
+        "addr:housenumber": "22",
+        "addr:street": "Cortlandt Street",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008692794,
+      "lat": 42.6409413,
+      "lon": -73.741373,
+      "tags": {
+        "addr:city": "Rensselaer",
+        "addr:country": "US",
+        "addr:housenumber": "525",
+        "addr:postcode": "12144",
+        "addr:state": "NY",
+        "addr:street": "East Street",
+        "amenity": "cafe",
+        "indoor_seating": "yes",
+        "name": "Coffee Beanery",
+        "note": "inside train station",
+        "opening_hours": "Mo-Su 05:30-19:30",
+        "outdoor_seating": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3052721144,
+      "lat": 34.0028196,
+      "lon": -117.7278099,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3093306793,
+      "lat": 33.7737949,
+      "lon": -117.866854,
+      "tags": {
+        "addr:city": "Santa Ana",
+        "addr:housenumber": "2783",
+        "addr:postcode": "92705",
+        "addr:street": "North Main Street",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "05:00-21:00",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3271196826,
+      "lat": 36.0834893,
+      "lon": -115.1485883,
+      "tags": {
+        "amenity": "fast_food",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3358864543,
+      "lat": 33.8101204,
+      "lon": -118.108209,
+      "tags": {
+        "addr:housenumber": "6344",
+        "addr:street": "East Spring Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3418373764,
+      "lat": 33.9729547,
+      "lon": -118.42264,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3491229799,
+      "lat": 34.261814,
+      "lon": -119.232712,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "smoking": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3534527621,
+      "lat": 34.2100693,
+      "lon": -118.8455479,
+      "tags": {
+        "addr:city": "Thousand Oaks",
+        "addr:housenumber": "1772",
+        "addr:postcode": "91362",
+        "addr:state": "CA",
+        "addr:street": "East Avenida de Los Arboles",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 09:30-17:00; Sa 06:00-21:00; Su 06:30-21:00",
+        "phone": "+1-805-241-2499",
+        "smoking": "outside",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3567233817,
+      "lat": 34.1450709,
+      "lon": -118.4144843,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3785833193,
+      "lat": 34.1858571,
+      "lon": -118.604599,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3832225183,
+      "lat": 34.1686467,
+      "lon": -118.603289,
+      "tags": {
+        "addr:housenumber": "21851",
+        "addr:street": "Ventura Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2025-08-21",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3839583239,
+      "lat": 33.6426109,
+      "lon": -84.4293987,
+      "tags": {
+        "name": "Tje Coffee Bean and Tea Leaf",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3840405455,
+      "lat": 34.1564705,
+      "lon": -118.6424553,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3843990893,
+      "lat": 34.1850067,
+      "lon": -118.8886622,
+      "tags": {
+        "amenity": "cafe",
+        "level": "0",
+        "name": "Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3864331937,
+      "lat": 36.0861169,
+      "lon": -115.13848,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3909644673,
+      "lat": 34.1384511,
+      "lon": -118.1325316,
+      "tags": {
+        "addr:city": "Pasadena",
+        "addr:housenumber": "415",
+        "addr:postcode": "91101-5015",
+        "addr:state": "CA",
+        "addr:street": "South Lake Avenue",
+        "addr:unit": "108",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2026-01-30",
+        "contact:yelp": "https://www.yelp.com/biz/the-coffee-bean-and-tea-leaf-pasadena",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "phone": "+1 626-744-9370",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/ca/pasadena/415-s-lake-ave"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3972395416,
+      "lat": 42.5370747,
+      "lon": -83.7537795,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4084452081,
+      "lat": 34.1428971,
+      "lon": -118.4054294,
+      "tags": {
+        "addr:city": "Studio City",
+        "addr:housenumber": "12501",
+        "addr:postcode": "91604",
+        "addr:state": "CA",
+        "addr:street": "Ventura Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "phone": "+1-818-763-7271",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4100350872,
+      "lat": 34.1610925,
+      "lon": -118.5100253,
+      "tags": {
+        "addr:city": "Encino",
+        "addr:housenumber": "17301",
+        "addr:postcode": "91316",
+        "addr:state": "CA",
+        "addr:street": "Ventura Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4308164738,
+      "lat": 36.1065948,
+      "lon": -115.1370439,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 07:00-20:00, 09:00-18:00; Sa, Su 07:00-19:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4711222950,
+      "lat": 34.1524029,
+      "lon": -118.351455,
+      "tags": {
+        "addr:city": "Toluca Lake",
+        "addr:housenumber": "10121",
+        "addr:postcode": "91602",
+        "addr:state": "CA",
+        "addr:street": "Riverside Drive",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:00-21:00; Sa, Su 06:00-20:00",
+        "phone": "+1-818-763-4815",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4727204318,
+      "lat": 34.0534844,
+      "lon": -118.465181,
+      "tags": {
+        "addr:city": "Los Angeles",
+        "addr:housenumber": "11698",
+        "addr:postcode": "90049",
+        "addr:state": "CA",
+        "addr:street": "West San Vicente Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Su-Sa 10:00-22:00",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4742179561,
+      "lat": 36.0217605,
+      "lon": -115.086188,
+      "tags": {
+        "addr:city": "Henderson",
+        "addr:housenumber": "2220",
+        "addr:postcode": "89052",
+        "addr:state": "NV",
+        "addr:street": "Village Walk Drive",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "mo-th 06:30-19:00; Fr-Sa 06:30-20:00; Su 07:00-19:00",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/pages/locations"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4748045978,
+      "lat": 34.0602589,
+      "lon": -117.5858541,
+      "tags": {
+        "name": "The Coffee Bean",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4752769183,
+      "lat": 34.0602703,
+      "lon": -117.5863838,
+      "tags": {
+        "name": "The Coffee Bean",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4810513604,
+      "lat": 33.9417177,
+      "lon": -118.4043977,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4812789187,
+      "lat": 39.8631507,
+      "lon": -104.6764121,
+      "tags": {
+        "addr:state": "CO",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "The Coffee Bean & Tea Leaf",
+        "note": "C Gates",
+        "opening_hours:signed": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4903114325,
+      "lat": 34.0870001,
+      "lon": -118.3814124,
+      "tags": {
+        "addr:city": "West Hollywood",
+        "addr:housenumber": "8735",
+        "addr:postcode": "90069",
+        "addr:state": "CA",
+        "addr:street": "Santa Monica Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 06:00-21:00; Fr-Sa 06:00-22:00; Su 19:00-22:00",
+        "phone": "+1-310-659-8207",
+        "source": "mapillary",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/usa/west-hollywood/west-hollywood"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4992789667,
+      "lat": 41.7059892,
+      "lon": -73.9386495,
+      "tags": {
+        "amenity": "cafe",
+        "name": "The Coffee Bean Cafe"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5101864952,
+      "lat": 34.0087833,
+      "lon": -118.4979242,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5101961542,
+      "lat": 34.0702344,
+      "lon": -118.4385067,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5111896342,
+      "lat": 34.0615432,
+      "lon": -118.302556,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5112123926,
+      "lat": 34.0620121,
+      "lon": -118.298986,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5116078823,
+      "lat": 34.0620242,
+      "lon": -118.291101,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5126042960,
+      "lat": 34.0910301,
+      "lon": -118.383248,
+      "tags": {
+        "addr:city": "West Hollywood",
+        "addr:housenumber": "8789",
+        "addr:postcode": "90069",
+        "addr:state": "CA",
+        "addr:street": "West Sunset Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 05:30-23:00; Fr 05:30-00:00, Sa 06:00-00:00, Su 06:00-23:00",
+        "phone": "+1-310-659-4592",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/usa/west-hollywood/sunset-and-horn"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5394515274,
+      "lat": 33.5474898,
+      "lon": -117.671309,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5512762953,
+      "lat": 34.1830164,
+      "lon": -118.311435,
+      "tags": {
+        "addr:city": "Burbank",
+        "addr:housenumber": "340",
+        "addr:postcode": "91502",
+        "addr:state": "CA",
+        "addr:street": "North San Fernando Boulevard",
+        "amenity": "cafe",
+        "check_date": "2024-04-19",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "The Coffee Bean",
+        "opening_hours": "Mo-Fr 05:30-21:30; Sa-Su 06:30-21:30",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1-818-842-2394",
+        "source": "local knowledge",
+        "toilets": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/burbank/340-n-san-fernando-blvd",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5517321848,
+      "lat": 33.9425633,
+      "lon": -118.3973622,
+      "tags": {
+        "addr:floor": "3",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2025-09-14",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "website": "https://www.flylax.com/lax-dining-and-shopping-details?id=1073"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5519052599,
+      "lat": 33.9414417,
+      "lon": -118.399487,
+      "tags": {
+        "amenity": "cafe",
+        "level": "1",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5614546288,
+      "lat": 43.0380318,
+      "lon": -87.9088607,
+      "tags": {
+        "amenity": "cafe",
+        "check_date:opening_hours": "2022-03-01",
+        "contact:email": "catering@thecoffeebeanmke.com",
+        "contact:phone": "+1 414 276 2233",
+        "contact:website": "http://thecoffeebeanmke.com",
+        "delivery": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "The Coffee Bean",
+        "name:1992": "Steamer's Coffee",
+        "name:2012": "Sven's European Cafe",
+        "note": "Hours were posted as a sign saying \"until further notice\"",
+        "opening_hours": "Mo-Fr 06:30-12:30; Sa 07:30-12:30; Su off",
+        "outdoor_seating": "no",
+        "start_date": "2015-08-01",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5631377833,
+      "lat": 33.6899964,
+      "lon": -117.8898994,
+      "tags": {
+        "amenity": "cafe",
+        "level": "1",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5640778824,
+      "lat": 33.7917065,
+      "lon": -118.1386963,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5673425421,
+      "lat": 33.8030502,
+      "lon": -117.916555,
+      "tags": {
+        "addr:city": "Anaheim",
+        "addr:housenumber": "1801",
+        "addr:postcode": "92802",
+        "addr:state": "CA",
+        "addr:street": "South Harbor Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5706844510,
+      "lat": 34.0209468,
+      "lon": -117.8104409,
+      "tags": {
+        "addr:city": "Diamond Bar",
+        "addr:housenumber": "235",
+        "addr:postcode": "91765",
+        "addr:state": "CA",
+        "addr:street": "Diamond Bar Boulevard",
+        "addr:unit": "A",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5742849222,
+      "lat": 34.0467709,
+      "lon": -118.525567,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5792775211,
+      "lat": 34.2233676,
+      "lon": -118.2369863,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5921925585,
+      "lat": 38.336908,
+      "lon": -75.2093085,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5952846064,
+      "lat": 42.2280039,
+      "lon": -83.3469911,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6247522571,
+      "lat": 33.7811763,
+      "lon": -118.1130738,
+      "tags": {
+        "addr:city": "Long Beach",
+        "addr:housenumber": "1212",
+        "addr:postcode": "90815",
+        "addr:state": "CA",
+        "addr:street": "N Bellflower Blvd",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6342361809,
+      "lat": 34.1432951,
+      "lon": -118.2552627,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6419998627,
+      "lat": 34.1437094,
+      "lon": -118.2552879,
+      "tags": {
+        "addr:city": "Glendale",
+        "addr:housenumber": "763",
+        "addr:postcode": "91210",
+        "addr:state": "CA",
+        "addr:street": "Americana Way",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6533415394,
+      "lat": 33.895269,
+      "lon": -118.3943348,
+      "tags": {
+        "addr:housenumber": "2616",
+        "addr:street": "Sepulveda Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "internet_access:ssid": "CoffeeBeanWifi",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:30-21:00; Sa-Su 06:00-21:00",
+        "outdoor_seating": "yes",
+        "panoramax": "5fc05768-ed6b-4859-9d3e-2ac4ccf6375a",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:qr_code": "yes",
+        "phone": "+1-310-546-3359",
+        "service:electricity": "yes",
+        "smoking": "no",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:access": "customers",
+        "toilets:disposal": "flush",
+        "toilets:fee": "no",
+        "toilets:gender_segregated": "no",
+        "toilets:handwashing": "yes",
+        "toilets:paper_supplied": "yes",
+        "toilets:position": "seated",
+        "toilets:wheelchair": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/manhattan-beach/2616-n-sepulveda-blvd",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6677585378,
+      "lat": 38.4098229,
+      "lon": -75.0602306,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6721942462,
+      "lat": 34.0554209,
+      "lon": -118.3967181,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6743320432,
+      "lat": 34.1402752,
+      "lon": -117.9900391,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6898320023,
+      "lat": 34.0725498,
+      "lon": -118.35979,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes",
+        "website": "https://th"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6904057546,
+      "lat": 34.0952522,
+      "lon": -117.719589,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7091805213,
+      "lat": 39.1045766,
+      "lon": -100.9050157,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7115166260,
+      "lat": 34.2877528,
+      "lon": -118.7158167,
+      "tags": {
+        "addr:city": "Simi Valley",
+        "addr:housenumber": "2944-G",
+        "addr:postcode": "93063",
+        "addr:state": "CA",
+        "addr:street": "Tapo Canyon Road",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:00-21:00; Sa 05:30-21:30; Su 05:30-21:00",
+        "phone": "+1 805-582-0566",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7189284777,
+      "lat": 43.4770356,
+      "lon": -83.9728107,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7333426004,
+      "lat": 40.7210847,
+      "lon": -74.0954451,
+      "tags": {
+        "addr:city": "Jersey City",
+        "addr:housenumber": "701",
+        "addr:postcode": "07304",
+        "addr:state": "NJ",
+        "addr:street": "NJ-440",
+        "name": "Coffee Beanery",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7383098552,
+      "lat": 35.1821698,
+      "lon": -111.660157,
+      "tags": {
+        "addr:city": "Flagstaff",
+        "addr:housenumber": "1800",
+        "addr:postcode": "86001",
+        "addr:state": "AZ",
+        "addr:street": "South Milton Road",
+        "addr:unit": "24",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "bar": "no",
+        "check_date": "2024-12-31",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "internet_access": "yes",
+        "name": "Campus Coffee Bean and Grill",
+        "opening_hours": "Mo-Su 07:00-15:00",
+        "outdoor_seating": "yes",
+        "phone": "+1 928-556-0660",
+        "website": "https://campuscoffebean.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7523512346,
+      "lat": 33.8888949,
+      "lon": -117.811114,
+      "tags": {
+        "addr:city": "Yorba Linda",
+        "addr:housenumber": "18503",
+        "addr:postcode": "92885",
+        "addr:state": "CA",
+        "addr:street": "Yorba Linda Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8051907839,
+      "lat": 34.4150065,
+      "lon": -118.5586806,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8294940063,
+      "lat": 34.2581124,
+      "lon": -118.5404152,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8359021427,
+      "lat": 34.042962,
+      "lon": -118.3767845,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8439536120,
+      "lat": 34.0180995,
+      "lon": -118.401145,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8461651380,
+      "lat": 34.0454948,
+      "lon": -118.2384613,
+      "tags": {
+        "addr:city": "Los Angeles",
+        "addr:housenumber": "333",
+        "addr:postcode": "90013",
+        "addr:state": "CA",
+        "addr:street": "South Alameda Street",
+        "addr:unit": "108",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8786334048,
+      "lat": 28.3427499,
+      "lon": -81.526528,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean Coffee House"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8809792872,
+      "lat": 34.0327313,
+      "lon": -118.4527922,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8910195819,
+      "lat": 34.159664,
+      "lon": -118.25475,
+      "tags": {
+        "addr:city": "Glendale",
+        "addr:housenumber": "101",
+        "addr:postcode": "91207",
+        "addr:state": "CA",
+        "addr:street": "East Glenoaks Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-323-412-9550",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/usa/glendale/glenoaks-and-brand"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9099290345,
+      "lat": 33.8114405,
+      "lon": -118.350802,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "changing_table": "yes",
+        "changing_table:fee": "no",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "internet_access:ssid": "CoffeeBeanWifi",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 05:30-20:30; Fr 05:00-21:00; Sa 06:00-20:00; Su 06:00-19:30",
+        "outdoor_seating": "yes",
+        "panoramax": "2c48c32e-4643-4294-8bd7-1d23ba0214aa",
+        "panoramax:0": "958d1192-94df-44d4-9bdf-ad29bcd02fc2",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:qr_code": "yes",
+        "phone": "+1 424 241 1097",
+        "service:electricity": "yes",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:access": "customers",
+        "toilets:fee": "no",
+        "toilets:handwashing": "yes",
+        "toilets:paper_supplied": "yes",
+        "toilets:position": "seated",
+        "toilets:wheelchair": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/torrance/23600-hawthorne-blvd",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9254922095,
+      "lat": 33.9295026,
+      "lon": -118.39652,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "changing_table": "no",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "handwashing:soap": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "internet_access:ssid": "CoffeeBeanWifi",
+        "level": "0",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:30-19:00; Sa,Su 07:00-18:00",
+        "outdoor_seating": "yes",
+        "panoramax": "fe38c3e5-c82a-4186-9a9c-7d8bba4a090f",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:qr_code": "yes",
+        "service:electricity": "limited",
+        "smoking": "no",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:access": "customers",
+        "toilets:disposal": "flush",
+        "toilets:fee": "no",
+        "toilets:gender_segregated": "no",
+        "toilets:hands_drying": "paper_towel",
+        "toilets:handwashing": "yes",
+        "toilets:paper_supplied": "yes",
+        "toilets:position": "seated",
+        "toilets:wheelchair": "yes",
+        "toilets:wheelchair:grab_rail:behind": "yes",
+        "toilets:wheelchair:grab_rail:foldable:right": "no",
+        "toilets:wheelchair:grab_rail:left": "no",
+        "toilets:wheelchair:grab_rail:right": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9311670178,
+      "lat": 32.9840941,
+      "lon": -117.0774612,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 06:00-20:00; Fr,Sa 06:00-20:30; Su 06:30-20:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9523211021,
+      "lat": 34.0695194,
+      "lon": -117.9720709,
+      "tags": {
+        "addr:city": "Baldwin Park",
+        "addr:housenumber": "13916",
+        "addr:postcode": "91706",
+        "addr:state": "CA",
+        "addr:street": "Garvey Avenue",
+        "addr:unit": "101",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9762729177,
+      "lat": 33.9373807,
+      "lon": -118.128324,
+      "tags": {
+        "addr:housenumber": "8550",
+        "addr:street": "Firestone Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "CoffeeBeanWifi",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 05:30-21:00; Fr 06:00-21:30; Sa-Su 06:00-21:00",
+        "outdoor_seating": "yes",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:qr_code": "yes",
+        "phone": "+1 562 904 7016",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/downey/8550-firestone-blvd",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9879654238,
+      "lat": 33.6431739,
+      "lon": -117.92025,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2026-03-25",
+        "name": "The Coffee Bean",
+        "opening_hours": "Mo-Fr 05:00-20:00; Sa 05:30-20:00; Su 05:30-19:30"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9947878316,
+      "lat": 34.1500276,
+      "lon": -118.0710086,
+      "tags": {
+        "addr:city": "Pasadena",
+        "addr:housenumber": "3770",
+        "addr:postcode": "91107",
+        "addr:state": "CA",
+        "addr:street": "East Foothill Boulevard",
+        "amenity": "cafe",
+        "branch": "East Pasadena",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2026-01-04",
+        "contact:yelp": "https://www.yelp.com/biz/the-coffee-bean-and-tea-leaf-pasadena-6",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "level": "0",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "phone": "+1-626-657-6321",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/ca/pasadena/3770-e-foothill-blvd"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10032264153,
+      "lat": 34.6024682,
+      "lon": -118.1473275,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10085753421,
+      "lat": 34.016577,
+      "lon": -118.4974279,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10133254411,
+      "lat": 34.08438,
+      "lon": -118.3205644,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10141342750,
+      "lat": 36.852268,
+      "lon": -119.9517579,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10234782797,
+      "lat": 33.3047931,
+      "lon": -111.9750677,
+      "tags": {
+        "addr:city": "Phoenix",
+        "addr:housenumber": "5025",
+        "addr:postcode": "85048",
+        "addr:state": "AZ",
+        "addr:street": "East Chandler Boulevard",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10249780226,
+      "lat": 42.934694,
+      "lon": -78.7321741,
+      "tags": {
+        "addr:city": "Buffalo",
+        "addr:housenumber": "4200",
+        "addr:postcode": "14225",
+        "addr:state": "NY",
+        "addr:street": "Genesee Street",
+        "airside": "yes",
+        "amenity": "cafe",
+        "check_date": "2025-06-20",
+        "check_date:opening_hours": "2025-06-20",
+        "cuisine": "coffee_shop",
+        "name": "Coffee Beanery",
+        "opening_hours": "Mo-Su 04:00-16:00",
+        "outdoor_seating": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10270356428,
+      "lat": 37.8502315,
+      "lon": -122.252651,
+      "tags": {
+        "addr:city": "Oakland",
+        "addr:housenumber": "307",
+        "addr:postcode": "94618",
+        "addr:state": "CA",
+        "addr:street": "63rd Street",
+        "name": "Cole Coffee Bean Shop",
+        "opening_hours": "Mo 07:00-13:00; Tu-Fr 06:00-17:00; Sa-Su 07:00-17:00",
+        "phone": "+1 510 653 5458",
+        "shop": "coffee",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10299257812,
+      "lat": 33.5089739,
+      "lon": -112.0357643,
+      "tags": {
+        "addr:city": "Phoenix",
+        "addr:housenumber": "2131",
+        "addr:postcode": "85016",
+        "addr:state": "AZ",
+        "addr:street": "East Camelback Road",
+        "addr:unit": "100",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2025-08-31",
+        "cuisine": "coffee_shop",
+        "fixme:atp": "Check if still exists. No corresponding ATP object.",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:00-19:00,Sa-Su 06:00-19:00",
+        "phone": "+1-480-738-4086",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10650219618,
+      "lat": 33.6866311,
+      "lon": -117.1686277,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "drive_through": "yes",
+        "indoor_seating": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10738084068,
+      "lat": 34.0577687,
+      "lon": -118.4187913,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10932243765,
+      "lat": 33.8584183,
+      "lon": -117.9216244,
+      "tags": {
+        "addr:housenumber": "205",
+        "addr:street": "Orangefair Avenue",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:30-21:30; Sa-Su 06:00-21:30",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:access": "customers",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969742022,
+      "lat": 33.9864447,
+      "lon": -118.440046,
+      "tags": {
+        "addr:city": "Marina Del Rey",
+        "addr:housenumber": "13420",
+        "addr:postcode": "90292",
+        "addr:state": "CA",
+        "addr:street": "Maxella Avenue",
+        "addr:unit": "C20",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 05:30-22:00, Sa-Su 06:00-22:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-310-823-0858",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/marina-del-rey/13420-maxella"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11085586543,
+      "lat": 34.110949,
+      "lon": -117.5314149,
+      "tags": {
+        "addr:city": "Rancho Cucamonga",
+        "addr:housenumber": "12556",
+        "addr:postcode": "91730",
+        "addr:state": "CA",
+        "addr:street": "South Mainstreet",
+        "amenity": "cafe",
+        "branch": "Victoria Gardens Mall",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/rancho-cucamonga/12556-s-main-st"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11175926609,
+      "lat": 33.982881,
+      "lon": -117.3740907,
+      "tags": {
+        "addr:city": "Riverside",
+        "addr:housenumber": "3712",
+        "addr:postcode": "92501",
+        "addr:state": "CA",
+        "addr:street": "Mission Inn Avenue",
+        "addr:unit": "#N-4",
+        "amenity": "cafe",
+        "branch": "MAIN & MISSION INN",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "level": "0",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "phone": "+1-951-684-3803",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/stores/ca/riverside/3712-mission-inn-ave?utm_source=pjn&utm_medium=affiliate&utm_campaign=43737&cvosrc=affiliate.pepperjam.43737&clickId=4493583424",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11182405000,
+      "lat": 33.637772,
+      "lon": -112.2182847,
+      "tags": {
+        "addr:city": "Peoria",
+        "addr:housenumber": "7407",
+        "addr:postcode": "85382",
+        "addr:state": "AZ",
+        "addr:street": "West Bell Road",
+        "addr:unit": "2",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "no",
+        "source": "esri/USA_NAD_Addresses",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11347196769,
+      "lat": 34.1868475,
+      "lon": -118.6432953,
+      "tags": {
+        "addr:housenumber": "64011",
+        "addr:street": "Platt Avenue",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "shop": "coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11552985896,
+      "lat": 34.168609,
+      "lon": -118.2290853,
+      "tags": {
+        "addr:floor": "1",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2025-10-07",
+        "cuisine": "coffee_shop",
+        "level": "0",
+        "name": "Starbucks",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11670267208,
+      "lat": 34.0698744,
+      "lon": -117.2360801,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Coffee Bean",
+        "check_date": "2024-02-27",
+        "cuisine": "coffee_shop",
+        "name": "Wild Goose Coffee Roasters",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11921462735,
+      "lat": 33.9459401,
+      "lon": -118.3926706,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "indoor_seating": "yes",
+        "level": "0",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/usa/los-angeles/h-hotel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12070301070,
+      "lat": 33.8141935,
+      "lon": -118.299901,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "shop": "coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12113068109,
+      "lat": 36.0809783,
+      "lon": -115.1468667,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12210051962,
+      "lat": 34.1691972,
+      "lon": -118.5362556,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12400346738,
+      "lat": 36.1220724,
+      "lon": -115.1703861,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "shop": "coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12482576664,
+      "lat": 32.5358316,
+      "lon": -92.1009224,
+      "tags": {
+        "addr:city": "Monroe",
+        "addr:housenumber": "2501",
+        "addr:postcode": "71201",
+        "addr:state": "LA",
+        "addr:street": "Broadmoor Boulevard",
+        "amenity": "restaurant",
+        "cuisine": "coffee_shop;regional",
+        "name": "The Coffee Bean",
+        "opening_hours": "Mo-Fr 07:00-17:00",
+        "phone": "+1-318-324-9114"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12688460522,
+      "lat": 36.8572806,
+      "lon": -119.7841652,
+      "tags": {
+        "addr:city": "Fresno",
+        "addr:housenumber": "8462",
+        "addr:postcode": "93720",
+        "addr:state": "CA",
+        "addr:street": "North Friant Road",
+        "addr:unit": "103",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Su 06:00-21:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-559-493-5295",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/",
+        "website:menu": "https://coffeebean.olo.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12696432526,
+      "lat": 40.7889036,
+      "lon": -111.9851649,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12842691981,
+      "lat": 36.1241012,
+      "lon": -115.3254155,
+      "tags": {
+        "addr:city": "Las Vegas",
+        "addr:housenumber": "3645",
+        "addr:postcode": "89135",
+        "addr:state": "NV",
+        "addr:street": "South Town Center Drive",
+        "addr:unit": "106",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Su 05:30-20:00",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/pages/locations"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12842793701,
+      "lat": 36.1141942,
+      "lon": -115.3086136,
+      "tags": {
+        "addr:city": "Las Vegas",
+        "addr:housenumber": "4165",
+        "addr:postcode": "89147",
+        "addr:state": "NV",
+        "addr:street": "Grand Canyon Drive",
+        "addr:unit": "106",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/pages/locations"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12843104970,
+      "lat": 36.077085,
+      "lon": -115.2431845,
+      "tags": {
+        "addr:city": "Las Vegas",
+        "addr:housenumber": "6115",
+        "addr:postcode": "89118",
+        "addr:state": "NV",
+        "addr:street": "S Rainbow Blvd",
+        "addr:unit": "101",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Fr 06:00-20:00; Sa 07:00-20:00; Su 07:00-19:00",
+        "website": "https://www.coffeebean.com/pages/locations"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12843104971,
+      "lat": 36.1142332,
+      "lon": -115.194245,
+      "tags": {
+        "addr:city": "Las Vegas",
+        "addr:housenumber": "4321",
+        "addr:postcode": "89103",
+        "addr:state": "NV",
+        "addr:street": "West Flamingo Road",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "opening_hours": "Mo-Th 06:00-20:00; Fr-Su 06:00-22:00",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/pages/locations"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12849071210,
+      "lat": 35.1217024,
+      "lon": -82.1427252,
+      "tags": {
+        "addr:city": "Campobello",
+        "addr:housenumber": "10796",
+        "addr:postcode": "29322",
+        "addr:state": "SC",
+        "addr:street": "SC 11",
+        "addr:unit": "A",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Coffee Bean Delight"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12944462423,
+      "lat": 45.0139407,
+      "lon": -99.9568606,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "212 Coffee Bean"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13119734857,
+      "lat": 33.6080383,
+      "lon": -117.7228269,
+      "tags": {
+        "addr:housenumber": "24380",
+        "addr:street": "Moulton Parkway",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13241620704,
+      "lat": 34.0738533,
+      "lon": -117.3710765,
+      "tags": {
+        "addr:city": "Rialto",
+        "addr:housenumber": "1508",
+        "addr:postcode": "92376",
+        "addr:state": "CA",
+        "addr:street": "South Riverside Avenue",
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13269389608,
+      "lat": 44.2481747,
+      "lon": -105.4788737,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2025-10-26",
+        "cuisine": "coffee_shop",
+        "name": "Coffee Beanery"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13278901425,
+      "lat": 33.9539639,
+      "lon": -117.3896514,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "The Coffee Bean & Tea Leaf",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13296006683,
+      "lat": 34.1352733,
+      "lon": -118.0515359,
+      "tags": {
+        "addr:city": "Arcadia",
+        "addr:floor": "1",
+        "addr:housenumber": "400",
+        "addr:postcode": "91007",
+        "addr:state": "CA",
+        "addr:street": "South Baldwin Avenue",
+        "addr:unit": "9025",
+        "amenity": "cafe",
+        "branch": "Santa Anita Mall",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2025-11-10",
+        "contact:yelp": "https://www.yelp.com/biz/the-coffee-bean-and-tea-leaf-arcadia-2",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "level": "0",
+        "name": "The Coffee Bean & Tea Leaf",
+        "phone": "+1-626-254-9400",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/ca/arcadia/400-s-baldwin-ave"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13504212367,
+      "lat": 34.1180961,
+      "lon": -118.150125,
+      "tags": {
+        "addr:city": "South Pasadena",
+        "addr:housenumber": "700",
+        "addr:postcode": "91105",
+        "addr:state": "CA",
+        "addr:street": "Fair Oaks Avenue",
+        "addr:unit": "A",
+        "amenity": "cafe",
+        "branch": "South Pasadena",
+        "brand": "The Coffee Bean & Tea Leaf",
+        "brand:wikidata": "Q1141384",
+        "check_date": "2026-01-27",
+        "contact:yelp": "https://www.yelp.com/biz/the-coffee-bean-and-tea-leaf-south-pasadena",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "level": "0",
+        "name": "The Coffee Bean & Tea Leaf",
+        "outdoor_seating": "yes",
+        "phone": "+1-626-403-2141",
+        "takeaway": "yes",
+        "website": "https://www.coffeebean.com/store/ca/south-pasadena/700-fair-oaks"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13571635581,
+      "lat": 42.1699761,
+      "lon": -71.619663,
+      "tags": {
+        "addr:city": "Upton",
+        "addr:housenumber": "113",
+        "addr:postcode": "01568",
+        "addr:state": "MA",
+        "addr:street": "Main Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "The Little Coffee Bean",
+        "opening_hours": "Mo-Fr 05:00-15:00; Sa-Su 05:30-14:00",
+        "outdoor_seating": "no",
+        "phone": "+1-508-529-2161",
+        "website": "https://littlecoffeebean.co/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13655265201,
+      "lat": 42.1605336,
+      "lon": -71.7381941,
+      "tags": {
+        "addr:housenumber": "160",
+        "addr:street": "Worcester Providence Turnpike",
+        "amenity": "cafe",
+        "check_date": "2026-03-17",
+        "internet_access": "wlan",
+        "name": "The Little Coffee Bean"
+      }
+    }
+  ]
+}

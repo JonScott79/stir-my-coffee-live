@@ -1,0 +1,481 @@
+<!-- /admin/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="robots"
+  content="noindex,nofollow"
+>
+
+<title>SMC Tactical Command</title>
+
+<link
+  rel="stylesheet"
+  href="../css/styles.css"
+>
+
+<link
+  rel="stylesheet"
+  href="admin.css"
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap"
+  rel="stylesheet"
+>
+
+</head>
+
+<body>
+
+<!-- ===================================== -->
+<!-- BOOT SCREEN -->
+<!-- ===================================== -->
+
+<div id="bootScreen">
+
+  <div class="boot-logo">
+    STIR MY COFFEE™
+  </div>
+
+  <div class="boot-sub">
+    TACTICAL COMMAND INTERFACE
+  </div>
+
+  <div
+    class="boot-lines"
+    id="bootLines"
+  >
+
+    <div>
+      INITIALIZING COFFEE NETWORK...
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- LOGIN SCREEN -->
+<!-- ===================================== -->
+
+<div
+  id="loginView"
+  class="center-screen hidden"
+>
+
+  <div class="login-panel">
+
+    <div class="panel-header">
+      COMMAND AUTHORIZATION
+    </div>
+
+    <div class="panel-sub">
+      AUTHENTICATION REQUIRED
+    </div>
+
+    <input
+      id="emailInput"
+      type="email"
+      placeholder="Operator Email"
+    >
+
+    <input
+      id="passwordInput"
+      type="password"
+      placeholder="Password"
+    >
+
+    <button id="loginBtn">
+      INITIATE SESSION
+    </button>
+
+    <div class="login-status">
+      FIRESTORE LINK: STANDBY
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- MAIN APP -->
+<!-- ===================================== -->
+
+<div
+  id="app"
+  class="hidden"
+>
+
+  <!-- ===================================== -->
+  <!-- SIDEBAR -->
+  <!-- ===================================== -->
+
+  <aside class="sidebar">
+
+    <div class="sidebar-top">
+
+      <div class="brand">
+
+        <div class="brand-main">
+          SMC COMMAND
+        </div>
+
+        <div class="brand-sub">
+          TACTICAL OPS
+        </div>
+
+      </div>
+
+      <!-- NAV -->
+
+      <nav>
+
+        <button class="nav-btn active">
+          ◉ OVERVIEW
+        </button>
+
+        <button class="nav-btn">
+          ◉ INCIDENTS
+        </button>
+
+        <button class="nav-btn">
+          ◉ OUTPOSTS
+        </button>
+
+        <button class="nav-btn">
+          ◉ COFFEENOMICS
+        </button>
+
+        <button class="nav-btn">
+          ◉ SYSTEM STATUS
+        </button>
+
+      </nav>
+
+    </div>
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-bottom">
+
+      <div class="system-box">
+
+        <div>
+          NETWORK STATUS
+        </div>
+
+        <span class="good">
+          OPTIMAL
+        </span>
+
+      </div>
+
+      <div class="system-box">
+
+        <div>
+          THREAT CONDITION
+        </div>
+
+        <span class="warn">
+          MONDAY MORNING
+        </span>
+
+      </div>
+
+      <div class="system-box">
+
+        <div>
+          FIRESTORE LINK
+        </div>
+
+        <span class="good">
+          ACTIVE
+        </span>
+
+      </div>
+
+      <button
+        id="logoutBtn"
+        class="logout-btn"
+      >
+
+        TERMINATE SESSION
+
+      </button>
+
+    </div>
+
+  </aside>
+
+  <!-- ===================================== -->
+  <!-- MAIN CONTENT -->
+  <!-- ===================================== -->
+
+  <main class="main-content">
+
+    <!-- ===================================== -->
+    <!-- TOPBAR -->
+    <!-- ===================================== -->
+
+    <header class="topbar">
+
+      <div>
+
+        <h1>
+          TACTICAL OVERVIEW
+        </h1>
+
+        <div class="subtitle">
+          LIVE COFFEE NETWORK MONITORING
+        </div>
+
+      </div>
+
+      <div class="top-status">
+
+        <div class="pulse"></div>
+
+        REALTIME LINK ACTIVE
+
+      </div>
+
+    </header>
+
+    <!-- ===================================== -->
+    <!-- METRICS -->
+    <!-- ===================================== -->
+
+    <section class="metrics-grid">
+
+      <!-- ACTIVE OUTPOSTS -->
+
+      <div class="metric-card">
+
+        <div class="metric-label">
+          ACTIVE OUTPOSTS
+        </div>
+
+        <div
+          class="metric-value"
+          id="metricLocations"
+        >
+
+          --
+
+        </div>
+
+      </div>
+
+      <!-- TOTAL VOTES -->
+
+      <div class="metric-card">
+
+        <div class="metric-label">
+          TOTAL VOTES
+        </div>
+
+        <div
+          class="metric-value"
+          id="metricVotes"
+        >
+
+          --
+
+        </div>
+
+      </div>
+
+      <!-- INCIDENTS -->
+
+      <div class="metric-card alert">
+
+        <div class="metric-label">
+          INCIDENT QUEUE
+        </div>
+
+        <div
+          class="metric-value"
+          id="metricReports"
+        >
+
+          --
+
+        </div>
+
+      </div>
+
+      <!-- ACCURACY -->
+
+      <div class="metric-card">
+
+        <div class="metric-label">
+          NETWORK ACCURACY
+        </div>
+
+        <div
+          class="metric-value"
+          id="metricAccuracy"
+        >
+
+          --%
+
+        </div>
+
+      </div>
+
+      <!-- DAILY HITS -->
+
+      <div class="metric-card">
+
+        <div class="metric-label">
+          DAILY BEACON PINGS
+        </div>
+
+        <div
+          class="metric-value"
+          id="metricHits"
+        >
+
+          --
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- DASHBOARD GRID -->
+    <!-- ===================================== -->
+
+    <section class="dashboard-grid">
+
+      <!-- ===================================== -->
+      <!-- EVENT FEED -->
+      <!-- ===================================== -->
+
+      <div class="panel large">
+
+        <div class="panel-title">
+          LIVE EVENT FEED
+        </div>
+
+        <div
+          id="eventFeed"
+          class="event-feed"
+        >
+
+          <div class="event">
+            [BOOT] Tactical systems initialized...
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ===================================== -->
+      <!-- REPORTS -->
+      <!-- ===================================== -->
+
+      <div class="panel">
+
+        <div class="panel-title">
+          INCIDENT QUEUE
+        </div>
+
+        <div
+          id="reportsContainer"
+          class="report-list"
+        >
+
+          Loading incidents...
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- BEACON TELEMETRY -->
+    <!-- ===================================== -->
+
+    <section class="panel">
+
+      <div class="panel-title">
+        BEACON PERFORMANCE
+      </div>
+
+      <div id="stickerStats">
+
+        Loading beacon telemetry...
+
+      </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- LOCATIONS -->
+    <!-- ===================================== -->
+
+    <section class="panel locations-panel">
+
+      <div class="panel-title">
+        REGISTERED OUTPOSTS
+      </div>
+
+      <!-- SEARCH -->
+
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search outposts..."
+      >
+
+      <!-- LOCATIONS GRID -->
+
+      <div
+        id="locationsContainer"
+        class="locations-grid"
+      >
+
+        Loading outposts...
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- ===================================== -->
+<!-- FIREBASE -->
+<!-- ===================================== -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<!-- ===================================== -->
+<!-- APP -->
+<!-- ===================================== -->
+
+<script src="admin.js"></script>
+
+</body>
+</html>

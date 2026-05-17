@@ -1,3 +1,48 @@
+## [3.0.0] – May 2026
+
+### ☕ Stir My Coffee 3.0 – The Platform Release
+
+### Added
+- New Accuracy and Speed status bars for faster visual comparison between shops
+- Swipe navigation between core mobile views (Rate Shops, Best Nearby, Interactive Map)
+- “How Ratings Work” contextual help system replacing cluttered inline legends
+- Expanded coffee chain detection system with broader alias recognition
+- Official 7 Brew branding and icon support
+- Google Play “Rate Us” integration for app feedback and growth
+
+### Improved
+- Major mobile UI refinement with cleaner spacing, hierarchy, and card presentation
+- Refined coffee-inspired color palette with warmer tones and stronger visual identity
+- Improved footer layout and visibility for important actions and engagement
+- Enhanced onboarding messaging and clarity for first-time users
+- Improved scanability and readability of location cards
+- More app-like interaction flow across Android and web
+- Refined “Best Nearby” experience for faster coffee decisions on the go
+
+### Changed
+- Reworked location cards with lightweight visual metric indicators
+- Simplified ratings explanation system to reduce UI clutter
+- Updated branding direction to focus on order accuracy and service speed
+- Improved responsiveness and consistency across mobile layouts
+- Adjusted voting cooldown logic for smoother real-world usage patterns
+
+### UX
+- Reduced cognitive load for first-time users
+- Faster comparison between coffee shops while mobile
+- Improved one-handed navigation and interaction flow
+- Cleaner and more intentional visual hierarchy throughout the app
+- More cohesive experience across map, list, and nearby views
+
+### Technical
+- Improved mobile gesture handling for swipe navigation
+- Refactored reusable card rendering system for visual metric components
+- Expanded chain normalization logic for better dataset consistency
+- Additional responsive layout cleanup and performance optimization
+- General UI cleanup and production polish across the platform
+
+### Misc
+- This is the update where Stir My Coffee stops feeling like a beta… and starts feeling real ☕🔥
+
 ## [2.7.1] – Apr 2026
 
 ### 🔍 SEO Optimization Update

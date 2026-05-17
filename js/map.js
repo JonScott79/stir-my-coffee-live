@@ -2,6 +2,7 @@
 // GLOBAL STATE
 // ========================
 
+let activeReportLocationId = null;
 let allLocations = [];
 let staticLocations = [];
 let hasFitBounds = false;
@@ -79,6 +80,105 @@ const app = initializeApp({
 });
 
 const db = getFirestore(app);
+
+// ========================
+// MAP ICONS
+// ========================
+
+const chainIcons = {
+
+  "Starbucks": L.icon({
+    iconUrl: "images/map-icons/starbucks.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+
+  "Dunkin": L.icon({
+    iconUrl: "images/map-icons/dunkin.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+
+  "Tim Hortons": L.icon({
+    iconUrl: "images/map-icons/tim-hortons.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+
+  "Peet's Coffee": L.icon({
+    iconUrl: "images/map-icons/peets.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+  
+  "Honey Dew": L.icon({
+  iconUrl: "images/map-icons/honey-dew.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -36]
+}),
+
+  "Caribou Coffee": L.icon({
+    iconUrl: "images/map-icons/caribou.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+
+  "Biggby Coffee": L.icon({
+    iconUrl: "images/map-icons/bigby.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+
+  "Philz Coffee": L.icon({
+    iconUrl: "images/map-icons/philz.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+  
+  "Krispy Kreme": L.icon({
+  iconUrl: "images/map-icons/krispy-kreme.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -36]
+}),
+
+  "Blue Bottle Coffee": L.icon({
+    iconUrl: "images/map-icons/blue-bottle.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -36]
+  }),
+
+  "Other": L.icon({
+    iconUrl: "images/map-icons/local.png",
+    iconSize: [38, 38],
+    iconAnchor: [19, 38],
+    popupAnchor: [0, -34]
+  }),
+  
+  "7 Brew": L.icon({
+  iconUrl: "images/map-icons/7brew.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -36]
+}),
+
+  "default": L.icon({
+    iconUrl: "images/map-icons/default.png",
+    iconSize: [38, 38],
+    iconAnchor: [19, 38],
+    popupAnchor: [0, -34]
+  })
+
+};
 
 // ========================
 // MAP
@@ -208,6 +308,7 @@ window.submitShop = async function () {
 // ========================
 
 async function loadLocationsRealtime() {
+
   const locationsRef = collection(db, "locations");
   const votesRef = collection(db, "votes");
 
@@ -215,20 +316,37 @@ async function loadLocationsRealtime() {
   let votesReady = false;
   let locationsReady = false;
 
+  // ========================
+  // COMBINE + RENDER
+  // ========================
+
   function combineAndRender() {
-    // 🚫 WAIT until BOTH are loaded
+
+    // 🚫 WAIT UNTIL BOTH LOAD
     if (!votesReady || !locationsReady) return;
 
-    // 🔍 DEBUG (you can remove later)
+    // 🔍 DEBUG BAD DATA
     const bad = locationsData.filter(d => !d.lat || !d.lng);
+
     if (bad.length) {
-      console.warn("⚠️ Bad locations skipped:", bad.length, bad.slice(0, 5));
+      console.warn(
+        "⚠️ Bad locations skipped:",
+        bad.length,
+        bad.slice(0, 5)
+      );
     }
 
+    // ========================
+    // BUILD COMBINED DATA
+    // ========================
+
     const combined = locationsData
-      // 🔥 CRITICAL FIX (prevents render crash)
+
+      // 🔥 PREVENT BAD DATA CRASHES
       .filter(d => d.lat && d.lng)
+
       .map(d => {
+
         const id = d.id;
         const v = votesData[id] || {};
 
@@ -239,52 +357,137 @@ async function loadLocationsRealtime() {
         const speedTotal = v.speedTotal || 0;
         const speedVotes = v.speedVotes || 0;
 
+        // ========================
+        // AUTO CHAIN DETECTION
+        // ========================
+
+const lowerName =
+  (d.name || "")
+    .toLowerCase()
+    .replace(/[’']/g, "");
+
+const inferredChain =
+  d.chain ||
+
+  (
+    lowerName.includes("starbucks")
+      ? "Starbucks"
+
+    : (
+        lowerName.includes("dunkin") ||
+        lowerName.includes("dunkin donuts")
+      )
+      ? "Dunkin"
+
+    : (
+        lowerName.includes("7 brew") ||
+        lowerName.includes("7brew") ||
+        lowerName.includes("7-brew")
+      )
+      ? "7 Brew"
+
+    : (
+        lowerName.includes("tim hortons") ||
+        lowerName.includes("tim horton") ||
+        lowerName.includes("tims")
+      )
+      ? "Tim Hortons"
+
+    : (
+        lowerName.includes("peet") ||
+        lowerName.includes("peets")
+      )
+      ? "Peet's Coffee"
+
+    : lowerName.includes("caribou")
+      ? "Caribou Coffee"
+
+    : (
+        lowerName.includes("biggby") ||
+        lowerName.includes("bigby")
+      )
+      ? "Biggby Coffee"
+
+    : lowerName.includes("philz")
+      ? "Philz Coffee"
+
+    : (
+        lowerName.includes("blue bottle") ||
+        lowerName.includes("bluebottle")
+      )
+      ? "Blue Bottle Coffee"
+
+    : (
+        lowerName.includes("krispy") ||
+        lowerName.includes("krispy kreme")
+      )
+      ? "Krispy Kreme"
+
+    : (
+        lowerName.includes("honey dew") ||
+        lowerName.includes("honeydew")
+      )
+      ? "Honey Dew"
+
+    : "default"
+  );
+
         return {
           id,
           name: d.name || "Unknown",
+          chain: inferredChain,
           lat: Number(d.lat),
           lng: Number(d.lng),
-          percent: total ? Math.round((up / total) * 100) : 0,
-          speed: speedVotes ? (speedTotal / speedVotes) : 0,
+          percent: total
+            ? Math.round((up / total) * 100)
+            : 0,
+          speed: speedVotes
+            ? (speedTotal / speedVotes)
+            : 0,
           votes: total
         };
+
       });
 
-    allLocations = combined;
+    // ========================
+    // SAVE + RENDER
+    // ========================
 
-    console.log("🔥 Rendering locations:", allLocations.length);
+    allLocations = combined;
 
     render();
   }
 
   // ========================
-  // 🔥 LOCATIONS LISTENER
+  // LOCATIONS LISTENER
   // ========================
+
   onSnapshot(locationsRef, snapshot => {
+
     locationsData = snapshot.docs.map(docSnap => ({
       id: docSnap.id,
       ...docSnap.data()
     }));
 
-    console.log("📍 Locations loaded:", locationsData.length);
-
     locationsReady = true;
+
     combineAndRender();
   });
 
   // ========================
-  // 🔥 VOTES LISTENER
+  // VOTES LISTENER
   // ========================
+
   onSnapshot(votesRef, snapshot => {
+
     votesData = {};
 
     snapshot.forEach(docSnap => {
       votesData[docSnap.id] = docSnap.data();
     });
 
-    console.log("🗳 Votes loaded:", Object.keys(votesData).length);
-
     votesReady = true;
+
     combineAndRender();
   });
 }
@@ -297,20 +500,26 @@ function render() {
   markers.clearLayers();
 
   for (const loc of allLocations) {
-    const marker = L.circleMarker([loc.lat, loc.lng], {
-      radius: window.innerWidth < 600 ? 9 : 7,
-      fillColor: "#4b2e2b",
-      fillOpacity: 0.9,
-      color: "#fff",
-      weight: 1
-    });
+
+    // ========================
+    // CUSTOM CHAIN ICONS
+    // ========================
+
+    const icon =
+      chainIcons[loc.chain] ||
+      chainIcons["default"];
+
+    const marker = L.marker(
+      [loc.lat, loc.lng],
+      { icon }
+    );
 
     marker.on("click", () => {
       setHeader("Vote or rate this shop");
     });
 
     // ========================
-    // 🔥 DISABLE LOGIC
+    // DISABLE LOGIC
     // ========================
 
     const voteDisabled = canVote(loc.id)
@@ -347,19 +556,24 @@ function render() {
 
       <div class="stars">
         ${Array.from({ length: 5 }, (_, i) => {
+
           const rounded = Math.round(loc.speed || 0);
           const filled = i + 1 <= rounded ? "★" : "☆";
 
-          return `<span ${speedDisabled}
-            onclick="rateSpeed(event, '${loc.id}', ${i + 1})">
-            ${filled}
-          </span>`;
+          return `
+            <span ${speedDisabled}
+              onclick="rateSpeed(event, '${loc.id}', ${i + 1})">
+              ${filled}
+            </span>
+          `;
         }).join("")}
       </div>
 
       <br>
 
-      <button onclick="reportLocation('${loc.id}')">🚩 Report</button>
+      <button onclick="reportLocation('${loc.id}')">
+        🚩 Report
+      </button>
     `);
 
     markers.addLayer(marker);
@@ -443,15 +657,79 @@ window.rateSpeed = async (event, id, rating) => {
   render();
 };
 
-window.reportLocation = async (id) => {
-  const reason = prompt("1 Wrong\n2 Duplicate\n3 Closed\n4 Bad\n5 Other");
-  if (!reason) return;
+window.reportLocation = function (id) {
 
-  await addDoc(collection(db, "reports"), {
-    locationId: id,
-    reason,
-    timestamp: Date.now()
-  });
+  activeReportLocationId = id;
+
+  document.getElementById("submitPanel").style.display = "none";
+
+  document.getElementById("reportReason").value = "";
+  document.getElementById("reportDetails").value = "";
+  document.getElementById("reportDetails").style.display = "none";
+
+  document.getElementById("reportPanel").style.display = "block";
+
+  setHeader("Report this location");
+};
+
+window.handleReportReasonChange = function () {
+
+  const reason = document.getElementById("reportReason").value;
+  const details = document.getElementById("reportDetails");
+
+  if (reason === "other") {
+    details.style.display = "block";
+  } else {
+    details.style.display = "none";
+    details.value = "";
+  }
+};
+
+window.closeReportPanel = function () {
+
+  document.getElementById("reportPanel").style.display = "none";
+
+  activeReportLocationId = null;
+
+  setHeader("Tap map to add • Tap shops to vote");
+};
+
+window.submitReport = async function () {
+
+  const reason = document.getElementById("reportReason").value;
+  const details = document.getElementById("reportDetails").value.trim();
+
+  if (!activeReportLocationId) {
+    return alert("Missing location");
+  }
+
+  if (!reason) {
+    return alert("Select a reason");
+  }
+
+  if (reason === "other" && !details) {
+    return alert("Please describe the issue");
+  }
+
+  try {
+
+    await addDoc(collection(db, "reports"), {
+      locationId: activeReportLocationId,
+      reason,
+      details: reason === "other" ? details : "",
+      timestamp: Date.now()
+    });
+
+    alert("✅ Report submitted");
+
+    closeReportPanel();
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert("Error submitting report");
+  }
 };
 
 // ========================

@@ -12,23 +12,13 @@ yarn-error.log*
 serviceAccountKey.json
 .env
 .env.local
-
-# ========================
-# 🔥 DATA PIPELINE (IMPORTANT)
-# ========================
-/data/
-data/
-
-# Overpass + seeding scripts (local tools)
-pull.js
-pull-*.js
-seed.js
-seed-*.js
+*.keystore
 
 # ========================
 # 📝 LOGS
 # ========================
 *.log
+hs_err_pid*
 
 # ========================
 # 🧠 OS junk
@@ -45,23 +35,23 @@ build/
 # ========================
 # 🤖 ANDROID / CAPACITOR
 # ========================
-android/
-app/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
 .gradle/
-gradle/
 
-build.gradle
-settings.gradle
-gradlew
-gradlew.bat
-local.properties
-*.keystore
+# Release binaries
+*.apk
+*.aab
+*.idsig
 
 # ========================
 # 🧪 TEMP / CACHE
 # ========================
 *.tmp
 *.cache
+*.swp
 
 # ========================
 # 🛠 IDE
@@ -69,3 +59,10 @@ local.properties
 .idea/
 .vscode/
 *.iml
+
+# ========================
+# 🔥 GENERATED DATA ONLY
+# ========================
+data/raw/
+data/cache/
+data/tmp/

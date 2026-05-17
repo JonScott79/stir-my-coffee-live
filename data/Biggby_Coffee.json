@@ -1,0 +1,2610 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-25T15:24:16Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 539277465,
+      "lat": 42.6702194,
+      "lon": -83.2333139,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 865701343,
+      "lat": 42.2425726,
+      "lon": -85.5899356,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1260968951,
+      "lat": 42.9920298,
+      "lon": -84.545686,
+      "tags": {
+        "addr:housenumber": "1077",
+        "addr:street": "US 127 Business (St. Johns, MI)",
+        "addr:unit": "14b",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-20:00; Sa-Su 07:00-20:00",
+        "smoking": "no",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:access": "customers"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1503605078,
+      "lat": 42.3038986,
+      "lon": -83.2517728,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1710264101,
+      "lat": 43.234612,
+      "lon": -86.2022172,
+      "tags": {
+        "addr:city": "Muskegon",
+        "addr:housenumber": "1684",
+        "addr:postcode": "49442",
+        "addr:state": "MI",
+        "addr:street": "East Apple Avenue",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 6:00-21:00; Su 7:00-21:00",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2330102997,
+      "lat": 42.7397367,
+      "lon": -84.6213804,
+      "tags": {
+        "addr:housenumber": "536",
+        "addr:street": "Elmwood Drive",
+        "addr:unit": "A",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "check_date": "2022-12-24",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-19:00; Sa-Su 07:00-19:00",
+        "phone": "+1 517 321 4146",
+        "smoking": "no",
+        "source": "http://www.biggby.com/",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2331380823,
+      "lat": 42.733278,
+      "lon": -84.5450193,
+      "tags": {
+        "addr:city": "Lansing",
+        "addr:housenumber": "500",
+        "addr:postcode": "48912",
+        "addr:state": "MI",
+        "addr:street": "East Michigan Avenue",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-20:00; Sa-Su 07:00-18:00",
+        "phone": "+1-517-374-1314",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2370921723,
+      "lat": 42.3264262,
+      "lon": -83.287895,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "ref": "341",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2644730396,
+      "lat": 42.2969149,
+      "lon": -85.6453976,
+      "tags": {
+        "addr:city": "Kalamazoo Township",
+        "addr:housenumber": "4560",
+        "addr:postcode": "49006",
+        "addr:street": "West Main Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "phone": "+1 269 552 9240",
+        "takeaway": "yes",
+        "website": "https://biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2653781397,
+      "lat": 42.7412256,
+      "lon": -84.7340113,
+      "tags": {
+        "addr:city": "Grand Ledge",
+        "addr:housenumber": "914",
+        "addr:postcode": "48837",
+        "addr:state": "MI",
+        "addr:street": "Charlevoix Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2656638059,
+      "lat": 42.272302,
+      "lon": -85.6295789,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "takeaway": "yes",
+        "website": "https://biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2674324972,
+      "lat": 42.2606284,
+      "lon": -85.1892596,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2762546440,
+      "lat": 42.5702958,
+      "lon": -84.8251187,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Biggby Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3015250665,
+      "lat": 41.0562387,
+      "lon": -83.5931385,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3057673556,
+      "lat": 42.5889745,
+      "lon": -84.4583182,
+      "tags": {
+        "addr:city": "Mason",
+        "addr:country": "US",
+        "addr:housenumber": "661",
+        "addr:postcode": "48854",
+        "addr:state": "MI",
+        "addr:street": "North Cedar Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes",
+        "website": "https://biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3125106695,
+      "lat": 42.3949151,
+      "lon": -83.4834519,
+      "tags": {
+        "addr:city": "Plymouth Township",
+        "addr:country": "US",
+        "addr:housenumber": "44601",
+        "addr:postcode": "48170",
+        "addr:state": "MI",
+        "addr:street": "5 Mile Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3281338456,
+      "lat": 42.7983938,
+      "lon": -83.7052806,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3377862931,
+      "lat": 29.2623473,
+      "lon": -81.1084991,
+      "tags": {
+        "addr:city": "Ormond Beach",
+        "addr:housenumber": "1340",
+        "addr:postcode": "32174",
+        "addr:state": "FL",
+        "addr:street": "West Granada Boulevard",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3510279234,
+      "lat": 41.4846083,
+      "lon": -81.5901199,
+      "tags": {
+        "addr:city": "Cleveland",
+        "addr:housenumber": "13201",
+        "addr:postcode": "44120",
+        "addr:state": "OH",
+        "addr:street": "Shaker Square",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3522405753,
+      "lat": 42.7339886,
+      "lon": -84.5021287,
+      "tags": {
+        "addr:city": "Lansing",
+        "addr:housenumber": "3335",
+        "addr:postcode": "48912",
+        "addr:state": "MI",
+        "addr:street": "East Michigan Avenue",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-21:00; Sa-Su 07:00-21:00",
+        "outdoor_seating": "no",
+        "phone": "+1 517 708 0018",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3661099167,
+      "lat": 42.7193742,
+      "lon": -84.4209608,
+      "tags": {
+        "addr:city": "Okemos",
+        "addr:housenumber": "4756",
+        "addr:postcode": "48864",
+        "addr:state": "MI",
+        "addr:street": "Marsh Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 6:30-21:00; Sa-Su 7:00-21:00",
+        "phone": "+1-517-853-9918",
+        "smoking": "outside",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3678134450,
+      "lat": 42.5155984,
+      "lon": -83.6169883,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-21:00; Su 07:00-21:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3819892130,
+      "lat": 39.0368964,
+      "lon": -84.5607627,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4083217713,
+      "lat": 46.5508151,
+      "lon": -87.4559601,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4149844876,
+      "lat": 42.7406081,
+      "lon": -84.6802135,
+      "tags": {
+        "addr:city": "Lansing",
+        "addr:housenumber": "8741",
+        "addr:postcode": "48317",
+        "addr:state": "MI",
+        "addr:street": "West Saginaw Highway",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4149926990,
+      "lat": 43.6030961,
+      "lon": -84.7680678,
+      "tags": {
+        "addr:city": "Mount Pleasant",
+        "addr:housenumber": "210",
+        "addr:postcode": "48858",
+        "addr:state": "MI",
+        "addr:street": "South Mission Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4231109300,
+      "lat": 42.6736014,
+      "lon": -85.6543817,
+      "tags": {
+        "addr:city": "Wayland",
+        "addr:housenumber": "1114",
+        "addr:postcode": "49348",
+        "addr:state": "MI",
+        "addr:street": "West Superior Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "phone": "+1-269-397-5060",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4333797449,
+      "lat": 42.4557922,
+      "lon": -83.3361925,
+      "tags": {
+        "addr:housenumber": "22370",
+        "addr:street": "Middlebelt Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4438417268,
+      "lat": 42.2796818,
+      "lon": -83.7798038,
+      "tags": {
+        "addr:housenumber": "2550",
+        "addr:street": "West Stadium Boulevard",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "smoking": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4804574638,
+      "lat": 43.1175223,
+      "lon": -85.6029615,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4951251601,
+      "lat": 47.1216964,
+      "lon": -88.5636079,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4962249569,
+      "lat": 42.4607574,
+      "lon": -83.1436948,
+      "tags": {
+        "addr:city": "Ferndale",
+        "addr:housenumber": "750",
+        "addr:postcode": "48220",
+        "addr:state": "MI",
+        "addr:street": "West 9 Mile Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5128509427,
+      "lat": 44.7544793,
+      "lon": -85.5726669,
+      "tags": {
+        "addr:city": "Traverse City",
+        "addr:housenumber": "748",
+        "addr:postcode": "49686",
+        "addr:state": "MI",
+        "addr:street": "Munson Avenue",
+        "addr:unit": "Suite 3",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5177299563,
+      "lat": 42.9984086,
+      "lon": -84.1458877,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-21:00; Sa 06:00-21:00; Su 07:00-21:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5211388166,
+      "lat": 41.1011956,
+      "lon": -85.0566606,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5257996261,
+      "lat": 42.503272,
+      "lon": -83.1961477,
+      "tags": {
+        "addr:city": "Berkley",
+        "addr:housenumber": "3600",
+        "addr:state": "MI",
+        "addr:street": "12 Mile Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "phone": "+1-248-268-1905",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5285414221,
+      "lat": 42.3068969,
+      "lon": -83.1887028,
+      "tags": {
+        "addr:city": "Dearborn",
+        "addr:housenumber": "3389",
+        "addr:postcode": "48120",
+        "addr:state": "MI",
+        "addr:street": "Greenfield Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Su 06:00-21:00",
+        "phone": "+1-313-982-1100",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5357763147,
+      "lat": 42.9718457,
+      "lon": -85.904892,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5517238782,
+      "lat": 43.1925042,
+      "lon": -86.2639545,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5648575421,
+      "lat": 44.9697661,
+      "lon": -89.6265097,
+      "tags": {
+        "addr:city": "Wausau",
+        "addr:housenumber": "320",
+        "addr:postcode": "54403",
+        "addr:state": "WI",
+        "addr:street": "East Bridge Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "phone": "+1-715-848-2442",
+        "takeaway": "yes",
+        "website": "https://biggby.com/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5648658010,
+      "lat": 41.2964427,
+      "lon": -84.3613343,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5664792913,
+      "lat": 42.6838621,
+      "lon": -84.4316639,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5832400799,
+      "lat": 42.322524,
+      "lon": -83.4883488,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5878432976,
+      "lat": 42.287477,
+      "lon": -83.8339892,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5939844875,
+      "lat": 42.2305798,
+      "lon": -83.7003887,
+      "tags": {
+        "addr:city": "Ann Arbor",
+        "addr:housenumber": "3980",
+        "addr:postcode": "48108",
+        "addr:state": "MI",
+        "addr:street": "Platt Road",
+        "addr:unit": "A",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "check_date": "2022-11-25",
+        "cuisine": "coffee_shop",
+        "delivery": "yes",
+        "delivery:partner": "doordash",
+        "delivery:website": "https://www.doordash.com/store/biggby-coffee-ann-arbor-258962",
+        "diet:halal": "yes",
+        "diet:kosher": "yes",
+        "diet:vegan": "yes",
+        "diet:vegetarian": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-19:00; Su 07:00-19:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-734-368-9384",
+        "takeaway": "yes",
+        "website": "https://biggby.com",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6281068423,
+      "lat": 42.6822047,
+      "lon": -84.5138994,
+      "tags": {
+        "addr:city": "Lansing",
+        "addr:housenumber": "2546",
+        "addr:postcode": "48910",
+        "addr:state": "MI",
+        "addr:street": "East Jolly Road",
+        "addr:unit": "2",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "check_date": "2023-06-12",
+        "contact:facebook": "https://www.facebook.com/biggbycoffee270",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-19:00",
+        "outdoor_seating": "no",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "phone": "+1-517-882-9711",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6336636402,
+      "lat": 43.6201539,
+      "lon": -84.2182352,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6407024931,
+      "lat": 42.8547027,
+      "lon": -85.8599749,
+      "tags": {
+        "addr:city": "Hudsonville",
+        "addr:housenumber": "4676",
+        "addr:postcode": "49426",
+        "addr:state": "MI",
+        "addr:street": "32nd Avenue",
+        "addr:unit": "Ste. D",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "takeaway": "yes",
+        "website": "https://biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6483243154,
+      "lat": 42.1908453,
+      "lon": -83.2199102,
+      "tags": {
+        "addr:city": "Southgate",
+        "addr:housenumber": "16215",
+        "addr:postcode": "48195",
+        "addr:state": "MI",
+        "addr:street": "Dix-Toledo Highway",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 05:30-20:00; Sa,Su 07:00-20:00",
+        "outdoor_seating": "no",
+        "start_date": "2016",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6595374630,
+      "lat": 39.2269961,
+      "lon": -84.2548463,
+      "tags": {
+        "addr:city": "Loveland",
+        "addr:country": "US",
+        "addr:housenumber": "732",
+        "addr:postcode": "45140",
+        "addr:state": "OH",
+        "addr:street": "Middleton Way",
+        "addr:unit": "106",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "level": "0",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6666594439,
+      "lat": 41.8744087,
+      "lon": -84.0348956,
+      "tags": {
+        "addr:city": "Adrian",
+        "addr:housenumber": "1441",
+        "addr:postcode": "49221",
+        "addr:state": "MI",
+        "addr:street": "US 223",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-20:00, Sa-Su 07:00-20:00",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6687036884,
+      "lat": 46.4779033,
+      "lon": -84.3545614,
+      "tags": {
+        "addr:city": "Sault Ste Marie",
+        "addr:housenumber": "2505",
+        "addr:postcode": "49783",
+        "addr:state": "MI",
+        "addr:street": "Ashmun Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "phone": "+1-906-635-3545",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6949038964,
+      "lat": 42.1970143,
+      "lon": -85.6282417,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6975236266,
+      "lat": 42.2918261,
+      "lon": -85.5827235,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6993043842,
+      "lat": 42.4503902,
+      "lon": -85.6715433,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7054784652,
+      "lat": 43.0228633,
+      "lon": -83.5164011,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7054836046,
+      "lat": 42.9912117,
+      "lon": -83.6346739,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7055531109,
+      "lat": 42.9449762,
+      "lon": -83.6638251,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7057405529,
+      "lat": 42.9847673,
+      "lon": -83.7715167,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7178447711,
+      "lat": 43.0596151,
+      "lon": -83.8083971,
+      "tags": {
+        "addr:city": "Flushing",
+        "addr:postcode": "48433",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-19:00; Sa,Su 07:00-19:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7179048721,
+      "lat": 43.1766548,
+      "lon": -83.7785186,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7189059093,
+      "lat": 43.4361356,
+      "lon": -84.0301805,
+      "tags": {
+        "addr:city": "Saginaw",
+        "addr:housenumber": "5775",
+        "addr:postcode": "48603",
+        "addr:street": "State Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7189241607,
+      "lat": 43.4532182,
+      "lon": -83.9759802,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7237819143,
+      "lat": 43.3941811,
+      "lon": -84.665298,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7243058338,
+      "lat": 43.0368153,
+      "lon": -85.6163958,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7289286071,
+      "lat": 42.2083693,
+      "lon": -84.536252,
+      "tags": {
+        "addr:city": "Spring Arbor",
+        "addr:housenumber": "7851",
+        "addr:postcode": "49283-9500",
+        "addr:state": "MI",
+        "addr:street": "Spring Arbor Road",
+        "addr:unit": "4",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Biggby Coffee",
+        "postal_code": "49283",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7412363613,
+      "lat": 42.6035867,
+      "lon": -83.4475794,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7935892948,
+      "lat": 42.9710879,
+      "lon": -85.7769411,
+      "tags": {
+        "addr:city": "Walker",
+        "addr:housenumber": "355",
+        "addr:postcode": "49534",
+        "addr:state": "MI",
+        "addr:street": "Wilson Avenue Northwest",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8066691537,
+      "lat": 42.5331366,
+      "lon": -83.1438082,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8200167653,
+      "lat": 42.8547724,
+      "lon": -85.7615055,
+      "tags": {
+        "addr:city": "Grandville",
+        "addr:housenumber": "6066",
+        "addr:postcode": "49418",
+        "addr:state": "MI",
+        "addr:street": "Wilson Avenue Southwest",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "delivery": "yes",
+        "drive_through": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-We 06:00-17:00; Fr 06:00-17:00; Sa-Su 08:00-17:00",
+        "phone": "+1 616-226-6629",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8236542184,
+      "lat": 42.2772669,
+      "lon": -83.2140559,
+      "tags": {
+        "addr:city": "Allen Park",
+        "addr:housenumber": "23190",
+        "addr:postcode": "48101",
+        "addr:state": "MI",
+        "addr:street": "West Outer Drive",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes",
+        "website": "https://www.facebook.com/biggbystore630/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8265500750,
+      "lat": 41.5383404,
+      "lon": -83.6377489,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8267572291,
+      "lat": 42.8823503,
+      "lon": -85.7439777,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8401548718,
+      "lat": 43.2219898,
+      "lon": -85.5722856,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8464304470,
+      "lat": 42.6719487,
+      "lon": -83.0345285,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8494920057,
+      "lat": 42.7602622,
+      "lon": -84.5193872,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8538006623,
+      "lat": 42.4911288,
+      "lon": -83.1071533,
+      "tags": {
+        "addr:city": "Madison Heights",
+        "addr:housenumber": "222",
+        "addr:postcode": "48071",
+        "addr:state": "MI",
+        "addr:street": "West 11 Mile Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "phone": "+1 248 291 5932",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8620147312,
+      "lat": 42.3594259,
+      "lon": -83.4642452,
+      "tags": {
+        "addr:city": "Plymouth",
+        "addr:housenumber": "400",
+        "addr:postcode": "48170",
+        "addr:state": "MI",
+        "addr:street": "West Ann Arbor Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "phone": "+1 734 259 6230",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8641781698,
+      "lat": 42.2598051,
+      "lon": -83.2072362,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8912339248,
+      "lat": 41.486867,
+      "lon": -81.535243,
+      "tags": {
+        "addr:city": "Shaker Heights",
+        "addr:housenumber": "20609",
+        "addr:postcode": "44118",
+        "addr:state": "OH",
+        "addr:street": "Fairmount Boulevard",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "phone": "+1-216-331-4118",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/",
+        "website:menu": "https://www.biggby.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8942912077,
+      "lat": 41.4194308,
+      "lon": -81.9172021,
+      "tags": {
+        "addr:city": "North Olmsted",
+        "addr:housenumber": "26625",
+        "addr:postcode": "44070",
+        "addr:state": "OH",
+        "addr:street": "Brookpark Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "phone": "+1-440-385-7778",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8960611544,
+      "lat": 42.7365262,
+      "lon": -84.4880077,
+      "tags": {
+        "addr:city": "East Lansing",
+        "addr:housenumber": "300",
+        "addr:postcode": "48823",
+        "addr:state": "MI",
+        "addr:street": "West Grand River Avenue",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-22:00, Su 7:00-22:00",
+        "phone": "+1-517-679-0330",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9022961656,
+      "lat": 40.002287,
+      "lon": -85.7310421,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9064933706,
+      "lat": 40.5550604,
+      "lon": -84.3826789,
+      "tags": {
+        "addr:city": "Saint Marys",
+        "addr:housenumber": "488",
+        "addr:postcode": "45885",
+        "addr:state": "OH",
+        "addr:street": "Fortman Drive",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 05:30-20:00; Su 07:00-20:00",
+        "outdoor_seating": "no",
+        "phone": "+1-419-778-7604",
+        "takeaway": "yes",
+        "website": "https://biggby.com",
+        "website:menu": "https://biggby.com/menu/food"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9102652868,
+      "lat": 39.1888018,
+      "lon": -84.6004207,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9170496372,
+      "lat": 42.2769489,
+      "lon": -84.4523301,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9251761949,
+      "lat": 42.6484965,
+      "lon": -85.3122847,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9392998812,
+      "lat": 42.147771,
+      "lon": -83.2654816,
+      "tags": {
+        "addr:city": "Brownstown Township",
+        "addr:housenumber": "21469",
+        "addr:postcode": "48183",
+        "addr:state": "MI",
+        "addr:street": "Telegraph Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "start_date": "2022-09",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9554873342,
+      "lat": 42.8592414,
+      "lon": -85.7237597,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9627469024,
+      "lat": 42.027645,
+      "lon": -86.5156129,
+      "tags": {
+        "addr:city": "Stevensville",
+        "addr:housenumber": "4933",
+        "addr:postcode": "49127",
+        "addr:state": "MI",
+        "addr:street": "Red Arrow Highway",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9693364904,
+      "lat": 41.9302296,
+      "lon": -83.4117213,
+      "tags": {
+        "addr:city": "Monroe",
+        "addr:housenumber": "559",
+        "addr:postcode": "48162",
+        "addr:state": "MI",
+        "addr:street": "North Telegraph Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10032231099,
+      "lat": 42.1121096,
+      "lon": -83.2840246,
+      "tags": {
+        "addr:city": "Flat Rock",
+        "addr:housenumber": "26614",
+        "addr:postcode": "48134",
+        "addr:state": "MI",
+        "addr:street": "Telegraph Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10036644887,
+      "lat": 43.4052676,
+      "lon": -85.7985231,
+      "tags": {
+        "addr:city": "Newaygo",
+        "addr:housenumber": "176",
+        "addr:postcode": "49337",
+        "addr:state": "MI",
+        "addr:street": "River Valley",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10234759717,
+      "lat": 42.3280088,
+      "lon": -85.5137952,
+      "tags": {
+        "addr:city": "Kalamazoo",
+        "addr:housenumber": "5913",
+        "addr:postcode": "49048",
+        "addr:state": "MI",
+        "addr:street": "Gull Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10291107225,
+      "lat": 41.5729417,
+      "lon": -84.1361533,
+      "tags": {
+        "addr:city": "Wauseon",
+        "addr:housenumber": "480",
+        "addr:postcode": "43567",
+        "addr:state": "OH",
+        "addr:street": "Airport Highway",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "contact:facebook": "https://www.facebook.com/biggbycoffeewauseon/",
+        "contact:instagram": "https://www.instagram.com/biggbycoffeewauseon/",
+        "cuisine": "coffee_shop",
+        "email": "store645@biggby.com",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Fr 06:00-20:00; Sa 07:00-20:00; Su closed",
+        "phone": "+1-419-404-9035",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10627472780,
+      "lat": 41.7238892,
+      "lon": -85.9806002,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10971377546,
+      "lat": 42.4046668,
+      "lon": -86.2744278,
+      "tags": {
+        "addr:housenumber": "515, Unit 21",
+        "addr:street": "Williams Street",
+        "amenity": "cafe",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "phone": "+1-269-767-7389",
+        "website": "https://www.biggby.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11018980296,
+      "lat": 42.6572199,
+      "lon": -83.4690178,
+      "tags": {
+        "addr:city": "White Lake",
+        "addr:housenumber": "9228",
+        "addr:postcode": "48386",
+        "addr:state": "MI",
+        "addr:street": "Highland Road",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11053353776,
+      "lat": 42.7890179,
+      "lon": -86.1031867,
+      "tags": {
+        "addr:city": "Holland",
+        "addr:housenumber": "225",
+        "addr:postcode": "49423",
+        "addr:state": "MI",
+        "addr:street": "College Avenue",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-21:00, Su 07:00-21:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-616-499-6106",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11075228834,
+      "lat": 43.8362435,
+      "lon": -84.7665027,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11075296460,
+      "lat": 42.8270458,
+      "lon": -86.0969624,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11075316829,
+      "lat": 42.7965193,
+      "lon": -86.0781077,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11118356388,
+      "lat": 42.3532624,
+      "lon": -83.0555651,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11177219883,
+      "lat": 42.9660418,
+      "lon": -85.6714984,
+      "tags": {
+        "addr:city": "Grand Rapids",
+        "addr:housenumber": "146",
+        "addr:postcode": "49503",
+        "addr:state": "MI",
+        "addr:street": "Monroe Center Street Northwest",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11244961266,
+      "lat": 41.7245531,
+      "lon": -86.1838976,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11270055369,
+      "lat": 38.1937869,
+      "lon": -85.2100786,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11369024113,
+      "lat": 39.8969444,
+      "lon": -85.975596,
+      "tags": {
+        "addr:city": "Indianapolis",
+        "addr:housenumber": "7829",
+        "addr:postcode": "46236",
+        "addr:state": "IN",
+        "addr:street": "Sunnyside Road",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "check_date": "2023-11-22",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-21:00; Su 07:00-21:00",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1-317-855-7730",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11378669934,
+      "lat": 39.0857041,
+      "lon": -84.7115443,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11415438885,
+      "lat": 39.7117088,
+      "lon": -86.3812408,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11481113416,
+      "lat": 42.2004373,
+      "lon": -84.4377513,
+      "tags": {
+        "addr:city": "Jackson",
+        "addr:housenumber": "2003",
+        "addr:postcode": "49203",
+        "addr:state": "MI",
+        "addr:street": "Horton Road",
+        "addr:unit": "Suite C",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "no",
+        "phone": "+1-517-748-7310",
+        "takeaway": "yes",
+        "website": "https://www.biggby.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11492800523,
+      "lat": 45.0607039,
+      "lon": -83.4319444,
+      "tags": {
+        "addr:city": "Alpena",
+        "addr:housenumber": "224",
+        "addr:postcode": "49707",
+        "addr:state": "MI",
+        "addr:street": "East Chisholm Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "email": "feedback@biggby.com",
+        "facebook": "https://www.facebook.com/BiggbyCoffee.Bhappy/",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "phone": "+1-989-340-0373",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11935585876,
+      "lat": 43.15853,
+      "lon": -86.2064148,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "check_date": "2024-05-26",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11968073490,
+      "lat": 44.2670358,
+      "lon": -86.2970965,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11992312151,
+      "lat": 42.5186323,
+      "lon": -85.8381542,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11992665579,
+      "lat": 38.9744114,
+      "lon": -84.6598513,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12029178337,
+      "lat": 42.3108463,
+      "lon": -85.1290809,
+      "tags": {
+        "addr:city": "Battle Creek",
+        "addr:housenumber": "1125",
+        "addr:postcode": "49014",
+        "addr:state": "MI",
+        "addr:street": "East Michigan Avenue",
+        "addr:unit": "Suite 1",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "delivery:partner": "Doordash",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00, Su 07:00-20:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-269-223-7760",
+        "takeaway": "yes",
+        "website": "https://biggby.com/",
+        "website:menu": "https://biggby.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12129311604,
+      "lat": 41.5489856,
+      "lon": -83.5970161,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12263058766,
+      "lat": 32.9750579,
+      "lon": -80.171036,
+      "tags": {
+        "addr:housenumber": "717",
+        "addr:street": "Old Trolley Road",
+        "name": "Biggby Coffee",
+        "opening_hours": "Su 07:00-20:00; Mo-Sa 06:00-20:00",
+        "phone": "+1-843-821-4711",
+        "shop": "coffee",
+        "website": "https://biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12288952688,
+      "lat": 42.6434964,
+      "lon": -84.0738839,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-19:00; Su 07:00-07:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12310932093,
+      "lat": 40.7310368,
+      "lon": -84.0774316,
+      "tags": {
+        "addr:city": "Lima",
+        "addr:housenumber": "1519",
+        "addr:postcode": "45804",
+        "addr:state": "OH",
+        "addr:street": "Harding Highway",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "phone": "+1 567-289-9434",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12322043502,
+      "lat": 44.7273056,
+      "lon": -85.1817076,
+      "tags": {
+        "addr:housenumber": "556",
+        "addr:postcode": "49646",
+        "addr:street": "South Cedar Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "contact:instagram": "biggbycoffee",
+        "contact:twitter": "biggbycoffee",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "opening_hours": "Tu-Su 06:00-20:00; Mo 07:00-20:00",
+        "phone": "+1 231-384-6105",
+        "shop": "coffee",
+        "takeaway": "yes",
+        "website": "https://biggby.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12385603364,
+      "lat": 39.6699373,
+      "lon": -84.2215217,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12397150071,
+      "lat": 42.9850101,
+      "lon": -85.6401397,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12410072827,
+      "lat": 42.3611134,
+      "lon": -83.4165232,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12431386210,
+      "lat": 41.162784,
+      "lon": -81.477628,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12488915504,
+      "lat": 42.8493272,
+      "lon": -85.8032298,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12582191859,
+      "lat": 42.678698,
+      "lon": -86.1770694,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12610932959,
+      "lat": 39.8921844,
+      "lon": -86.0466624,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12634125293,
+      "lat": 34.0462055,
+      "lon": -84.342896,
+      "tags": {
+        "amenity": "cafe",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "outdoor_seating": "yes",
+        "toilets": "yes",
+        "toilets:unisex": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12724300487,
+      "lat": 39.7032761,
+      "lon": -84.1263648,
+      "tags": {
+        "addr:city": "Kettering",
+        "addr:housenumber": "2061",
+        "addr:postcode": "45420",
+        "addr:state": "OH",
+        "addr:street": "East Dorothy Lane",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "delivery": "yes",
+        "drive_through": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "outdoor_seating": "yes",
+        "phone": "+19376403167",
+        "takeaway": "yes",
+        "website": "https://biggby.com",
+        "website:menu": "https://www.biggby.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12849719686,
+      "lat": 43.3374043,
+      "lon": -83.7377009,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12877131501,
+      "lat": 41.8857597,
+      "lon": -86.5974496,
+      "tags": {
+        "addr:housenumber": "12874",
+        "addr:postcode": "49125",
+        "addr:street": "Super Drive",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Su 06:00-19:00",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12977095101,
+      "lat": 42.522112,
+      "lon": -82.9063771,
+      "tags": {
+        "addr:housenumber": "30760",
+        "addr:postcode": "48066",
+        "addr:street": "Little Mack Avenue",
+        "internet_access": "wlan",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "phone": "+1 586-533-0442",
+        "shop": "coffee",
+        "website": "https://biggby.com/locations"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13246485700,
+      "lat": 42.9557606,
+      "lon": -85.6660966,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13252683551,
+      "lat": 41.2177098,
+      "lon": -86.6974501,
+      "tags": {
+        "addr:city": "North Judson",
+        "addr:housenumber": "5900",
+        "addr:postcode": "46366",
+        "addr:state": "IN",
+        "addr:street": "South Range Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13279111341,
+      "lat": 39.1585077,
+      "lon": -84.4063026,
+      "tags": {
+        "addr:city": "Cincinnati",
+        "addr:country": "US",
+        "addr:housenumber": "4795",
+        "addr:postcode": "45227",
+        "addr:state": "OH",
+        "addr:street": "Red Bank Expressway",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13288168026,
+      "lat": 42.324735,
+      "lon": -83.4013371,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13296589816,
+      "lat": 42.2568966,
+      "lon": -83.2242268,
+      "tags": {
+        "addr:housenumber": "17410",
+        "addr:street": "Ecorse Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13348704931,
+      "lat": 41.8856055,
+      "lon": -87.636065,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13394028442,
+      "lat": 43.0430065,
+      "lon": -87.9098128,
+      "tags": {
+        "addr:city": "Milwaukee",
+        "addr:housenumber": "920",
+        "addr:postcode": "53202",
+        "addr:street": "North Water Street",
+        "amenity": "cafe",
+        "branch": "920 North Water St",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "contact:phone": "+1 414 226 6537",
+        "contact:website": "https://www.biggby.com/",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "outdoor_seating": "yes",
+        "source": "http://assessments.milwaukee.gov/remast.asp?taxkey=3921262120;http://city.milwaukee.gov/ImageLibrary/Groups/ccClerk/HPC/PDFs/Memorial-Inventory-Sheets/Ald.04-09-RedArrowParkmemorial.pdf",
+        "start_date": "2024-11-22",
+        "takeaway": "yes",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13425571826,
+      "lat": 42.741277,
+      "lon": -84.7381888,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13513095112,
+      "lat": 35.9935073,
+      "lon": -80.2700337,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13544760001,
+      "lat": 43.0033988,
+      "lon": -85.6879293,
+      "tags": {
+        "addr:housenumber": "2200",
+        "addr:postcode": "49544",
+        "addr:street": "Alpine Avenue Northwest",
+        "check_date": "2026-02-11",
+        "check_date:opening_hours": "2026-02-11",
+        "name": "Biggby Coffee",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su 07:00-20:00",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13623279681,
+      "lat": 44.2510565,
+      "lon": -85.3631252,
+      "tags": {
+        "addr:city": "Cadillac",
+        "addr:housenumber": "201",
+        "addr:postcode": "49601",
+        "addr:state": "MI",
+        "addr:street": "Teri-Dee Boulevard",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13626764081,
+      "lat": 41.5981632,
+      "lon": -85.8623594,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647941281,
+      "lat": 43.4087936,
+      "lon": -86.3269548,
+      "tags": {
+        "addr:city": "Whitehall",
+        "addr:housenumber": "1315",
+        "addr:postcode": "49461",
+        "addr:state": "MI",
+        "addr:street": "East Colby Street",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13649924639,
+      "lat": 41.3933067,
+      "lon": -82.0069574,
+      "tags": {
+        "addr:city": "North Ridgeville",
+        "addr:housenumber": "35065",
+        "addr:postcode": "44039",
+        "addr:state": "OH",
+        "addr:street": "Center Ridge Road",
+        "amenity": "cafe",
+        "brand": "Biggby Coffee",
+        "brand:wikidata": "Q4906876",
+        "cuisine": "coffee_shop",
+        "name": "Biggby Coffee",
+        "takeaway": "yes"
+      }
+    }
+  ]
+}

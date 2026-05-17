@@ -1127,9 +1127,98 @@ let allLocations = [];
 let userLat = null;
 let userLng = null;
 let dataFullyReady = false;
+let bestNearbySort = "distance";
 
 const DISPLAY_LIMIT = 10;
 const MAX_DISTANCE_MILES = 5;
+
+// ========================
+// ONBOARDING
+// ========================
+
+const hasSeenOnboarding =
+  localStorage.getItem("hasSeenOnboarding") === "true";
+
+let onboardingIndex = 0;
+
+function startOnboarding() {
+
+  trackEvent("onboarding_started");
+
+  document.body.classList.add("loading");
+
+  const standardLoader = document.getElementById("standardLoader");
+
+  if (standardLoader) {
+    standardLoader.style.display = "none";
+  }
+
+  const onboarding = document.getElementById("onboarding");
+
+  onboarding.classList.remove("hidden");
+
+  const slides = document.querySelectorAll(".onboarding-slide");
+
+  const nextBtn = document.getElementById("nextOnboardingBtn");
+
+  function showSlide(index) {
+
+    slides.forEach(slide => {
+      slide.classList.remove("active");
+    });
+
+    slides[index].classList.add("active");
+
+    // Dynamic button text
+    nextBtn.textContent =
+      index === slides.length - 1
+        ? "Get Started"
+        : "Next";
+  }
+
+  showSlide(onboardingIndex);
+
+  nextBtn.addEventListener("click", () => {
+
+    onboardingIndex++;
+
+    if (onboardingIndex >= slides.length) {
+      finishOnboarding();
+      return;
+    }
+
+    showSlide(onboardingIndex);
+  });
+
+  document.getElementById("skipOnboardingBtn")
+    .addEventListener("click", finishOnboarding);
+}
+
+function finishOnboarding() {
+
+  trackEvent("onboarding_completed");
+
+  localStorage.setItem("hasSeenOnboarding", "true");
+
+  // Hide onboarding
+  document.getElementById("onboarding")
+    .classList.add("hidden");
+
+  // Show regular loader again
+  const standardLoader =
+    document.getElementById("standardLoader");
+
+  if (standardLoader) {
+    standardLoader.style.display = "block";
+  }
+
+  // Keep loading screen active
+  document.body.classList.add("loading");
+
+  startLoadingPuns();
+
+  init();
+}
 
 // ========================
 // Generate IDs
@@ -1145,7 +1234,7 @@ function generateLocationId(name, lat, lng) {
 // Voting Limitation
 // ========================
 
-const VOTE_LIMIT_HOURS = 24;
+const VOTE_LIMIT_HOURS = 20;
 
 function getVoteHistory() {
   return JSON.parse(localStorage.getItem("voteHistory") || "{}");
@@ -1192,6 +1281,8 @@ function goToUser() {
     .then(location => {
       userLat = location.lat;
       userLng = location.lng;
+	  
+switchView("rate");
 
       updateDistancesAndSort();
 
@@ -1413,7 +1504,6 @@ async function loadLocations() {
       const maxAge = 1000 * 60 * 10;
 
       if (age < maxAge) {
-        console.log("⚡ Using cached votes");
         voteMap = parsedVotes.data;
       }
     }
@@ -1457,8 +1547,6 @@ async function loadLocations() {
     dataFullyReady = true;
 
     tryRender();
-
-    console.log("🔥 Firebase locations loaded:", firebaseData.length);
 
     // ========================
     // 💾 CACHE (SLIM VERSION)
@@ -1565,13 +1653,24 @@ function updateDistancesAndSort() {
     ? allLocations.filter(loc => loc.distance <= MAX_DISTANCE_MILES)
     : allLocations;
 
-  const sortedByScore = [...workingSet].sort((a, b) => b.score - a.score);
+  const sortedByScore = [...workingSet].sort((a, b) => {
+
+  if (b.score !== a.score) {
+    return b.score - a.score;
+  }
+
+  return a.distance - b.distance;
+});
   const picks = getTopPicks(sortedByScore);
   renderTopPicksPanel(picks);
+  
 
   const sortedByDistance = hasUser
     ? [...workingSet].sort((a, b) => a.distance - b.distance)
     : workingSet;
+
+
+renderBestNearbyList(sortedByDistance);
 
   renderList(sortedByDistance);
 
@@ -1616,6 +1715,120 @@ function renderTopPicksPanel({ fastest, best, overall }) {
   `;
 }
 
+function renderBestNearbyList(locations) {
+
+  const list = document.getElementById("bestNearbyList");
+
+  if (!list) return;
+
+  let sorted = [...locations];
+
+  if (bestNearbySort === "distance") {
+    sorted.sort((a, b) => a.distance - b.distance);
+  }
+
+  if (bestNearbySort === "rated") {
+    sorted.sort((a, b) => b.score - a.score);
+  }
+
+  if (bestNearbySort === "fastest") {
+    sorted.sort((a, b) => b.speed - a.speed);
+  }
+
+  const visible = sorted.slice(0, 10);
+
+  // Load addresses for currently visible shops
+  loadAddressesForVisible(visible);
+
+  list.innerHTML = visible
+    .map((l, index) => {
+
+      const accuracyPercent =
+        Math.max(0, Math.min(100, l.percent || 0));
+
+      const speedPercent =
+        Math.max(
+          0,
+          Math.min(
+            100,
+            ((l.speed || 0) / 5) * 100
+          )
+        );
+
+      return `
+        <div class="location-card"
+          role="button"
+          tabindex="0"
+          onclick="openDirections(event, ${l.lat}, ${l.lng})"
+          onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
+
+          <div class="card-header">
+            <div class="name">
+              #${index + 1} — ${l.name}
+            </div>
+          </div>
+
+          <div class="street">
+            📍 ${l.street || "Locating address..."}
+          </div>
+
+          <div class="meta">
+
+            <span>📍 ${l.distance?.toFixed(1)} mi</span>
+
+            <span>👥 ${l.votes}</span>
+
+          </div>
+
+          <!-- STATUS BARS -->
+          <div class="statusBars">
+
+            <!-- ACCURACY -->
+            <div class="statusRow">
+
+              <span class="statusLabel">
+                🎯 Accuracy
+              </span>
+
+              <div class="statusTrack">
+                <div class="statusFill accuracy"
+                     style="width:${accuracyPercent}%">
+                </div>
+              </div>
+
+              <span class="statusPercent">
+                ${l.percent ? l.percent + "%" : "—"}
+              </span>
+
+            </div>
+
+            <!-- SPEED -->
+            <div class="statusRow">
+
+              <span class="statusLabel">
+                ⚡ Speed
+              </span>
+
+              <div class="statusTrack">
+                <div class="statusFill speed"
+                     style="width:${speedPercent}%">
+                </div>
+              </div>
+
+              <span class="statusPercent">
+                ${l.speed ? l.speed.toFixed(1) : "—"}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    })
+    .join("");
+}
+
 function renderMiniCard(title, shop) {
   if (!shop) return `<div class="mini-card">${title}<br>—</div>`;
 
@@ -1636,7 +1849,7 @@ function renderMiniCard(title, shop) {
 
       <div class="meta">
         <span>🎯 ${shop.percent ? shop.percent + "%" : "—"}</span>
-        <span>⭐ ${shop.speed ? shop.speed.toFixed(1) : "—"}</span>
+        <span>⚡ ${shop.speed ? shop.speed.toFixed(1) : "—"}</span>
         <span>📍 ${shop.distance?.toFixed(1)} mi</span>
       </div>
 
@@ -1651,20 +1864,38 @@ function renderList(locations) {
   list.innerHTML = locations
     .slice(0, DISPLAY_LIMIT)
     .map(l => {
+
       const canUserVote = canVote(l.id);
       const voteDisabled = canUserVote ? "" : "disabled";
+
       const canUserRate = canRateSpeed(l.id);
+
+      // 🎯 accuracy %
+      const accuracyPercent =
+        Math.max(0, Math.min(100, l.percent || 0));
+
+      // ⚡ convert 1-5 speed into %
+      const speedPercent =
+        Math.max(
+          0,
+          Math.min(
+            100,
+            ((l.speed || 0) / 5) * 100
+          )
+        );
 
       return `
         <div class="location-card" 
           tabindex="0"
           role="button"
           aria-label="${l.name}, ${l.percent || 0}% stir quality, ${
-            userLat ? l.distance.toFixed(1) + " miles away" : "distance unavailable"
+            userLat
+              ? l.distance.toFixed(1) + " miles away"
+              : "distance unavailable"
           }. Press Enter for details."
           onclick="trackEvent('view_location', { location_id: '${l.id}' }); selectLocation('${l.id}')"
           onkeypress="if(event.key==='Enter'){selectLocation('${l.id}')}">
-          
+
           <div class="card-header">
             <div class="name">${l.name}</div>
           </div>
@@ -1679,49 +1910,104 @@ function renderList(locations) {
           <div class="meta">
 
             <span class="vote-inline">
-              <button aria-label="Upvote this location" ${voteDisabled} onclick="vote(event, '${l.id}', true)">👍</button>
-              <button aria-label="Downvote this location" ${voteDisabled} onclick="vote(event, '${l.id}', false)">👎</button>
+              <button aria-label="Upvote this location"
+                      ${voteDisabled}
+                      onclick="vote(event, '${l.id}', true)">
+                👍
+              </button>
+
+              <button aria-label="Downvote this location"
+                      ${voteDisabled}
+                      onclick="vote(event, '${l.id}', false)">
+                👎
+              </button>
             </span>
 
-            <span class="quality ${getRatingClass(l.percent)}">
-              🎯 ${l.percent ? l.percent + "%" : "—"}
-            </span>
+            <!-- ⚡ SPEED SLIDER -->
+            <span class="speed-slider">
+              <span class="speed-icon">⚡</span>
 
-            <span class="stars">
-              ${Array.from({ length: 5 }, (_, i) => {
-                const rounded = Math.round(l.speed);
-                const filled = i + 1 <= rounded ? "★" : "☆";
+              <span class="slider-value">
+                ${l.speed ? l.speed.toFixed(1) : "—"}
+              </span>
 
-                const disabledStyle = !canUserRate
-                  ? 'style="opacity:0.4;pointer-events:none;"'
-                  : "";
-
-                return `<span ${disabledStyle}
-                  role="button"
-                  tabindex="0"
-                  aria-label="Rate ${i + 1} stars"
-                  onclick="rateSpeed(event, '${l.id}', ${i + 1})"
-                  onkeypress="if(event.key==='Enter'){rateSpeed(event, '${l.id}', ${i + 1})}">
-                  ${filled}
-                </span>`;
-              }).join("")}
+              <input type="range"
+                     min="1"
+                     max="5"
+                     step="1"
+                     value="${Math.round(l.speed) || 3}"
+                     ${!canUserRate ? "disabled" : ""}
+                     oninput="updateSliderLabel(this)"
+                     onchange="rateSpeed(event, '${l.id}', this.value)">
             </span>
 
             <span class="directions"
-              role="button"
-              tabindex="0"
-              aria-label="Get directions to this location"
-              onclick="openDirections(event, ${l.lat}, ${l.lng})"
-              onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
+                  role="button"
+                  tabindex="0"
+                  aria-label="Get directions to this location"
+                  onclick="openDirections(event, ${l.lat}, ${l.lng})"
+                  onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
               🚗
             </span>
 
             <span>👥 ${l.votes}</span>
 
           </div>
+
+          <!-- STATUS BARS -->
+          <div class="statusBars">
+
+            <!-- ACCURACY -->
+            <div class="statusRow">
+
+              <span class="statusLabel">
+                🎯 Accuracy
+              </span>
+
+              <div class="statusTrack">
+                <div class="statusFill accuracy"
+                     style="width:${accuracyPercent}%">
+                </div>
+              </div>
+
+              <span class="statusPercent">
+                ${accuracyPercent}%
+              </span>
+
+            </div>
+
+            <!-- SPEED -->
+            <div class="statusRow">
+
+              <span class="statusLabel">
+                ⚡ Speed
+              </span>
+
+              <div class="statusTrack">
+                <div class="statusFill speed"
+                     style="width:${speedPercent}%">
+                </div>
+              </div>
+
+              <span class="statusPercent">
+                ${l.speed ? l.speed.toFixed(1) : "—"}
+              </span>
+
+            </div>
+
+          </div>
+
         </div>
       `;
-    }).join("");
+    })
+    .join("");
+}
+
+function updateSliderLabel(el) {
+  const valueSpan = el.previousElementSibling;
+  if (valueSpan) {
+    valueSpan.textContent = el.value;
+  }
 }
 
 function renderTopPick(shop) {
@@ -1832,6 +2118,16 @@ function vote(e, id, up) {
 // HELPERS
 // ========================
 
+function toggleRatingsHelp() {
+
+  const box =
+    document.getElementById("ratingsHelpBox");
+
+  if (!box) return;
+
+  box.classList.toggle("hidden");
+}
+
 function renderStars(id, rating) {
   return Array.from({ length: 5 }, (_, i) => {
     const rounded = Math.round(rating);
@@ -1843,6 +2139,8 @@ const filled = i + 1 <= rounded ? "★" : "☆";
 function rateSpeed(e, id, rating) {
   e.stopPropagation();
 
+  rating = Number(rating); // 🔥 ensures correct math
+
   if (!canRateSpeed(id)) {
     alert("⏳ You already rated speed here. Try again later.");
     return;
@@ -1850,7 +2148,6 @@ function rateSpeed(e, id, rating) {
 
   recordSpeedRating(id);
 
-  // ANALYTICS
   trackEvent("rate_speed", {
     location_id: id,
     rating: rating
@@ -1909,7 +2206,7 @@ function calculateScore(shop) {
 // ===============================
 
 
-const SPEED_LIMIT_HOURS = 24;
+const SPEED_LIMIT_HOURS = 20;
 
 function getSpeedHistory() {
   return JSON.parse(localStorage.getItem("speedHistory") || "{}");
@@ -1938,8 +2235,75 @@ function recordSpeedRating(id) {
 }
 
 // ========================
-// Buttons
+// BUTTONS
 // ========================
+
+
+// view switching
+let currentView = "rate";
+
+function switchView(view) {
+
+  currentView = view;
+
+  const rateView = document.getElementById("rateView");
+  const bestView = document.getElementById("bestView");
+
+  const rateTab = document.getElementById("rateTab");
+  const bestTab = document.getElementById("bestTab");
+
+  // reset tabs
+  rateTab.classList.remove("active");
+  bestTab.classList.remove("active");
+
+  if (view === "rate") {
+
+    rateView.style.display = "block";
+    bestView.style.display = "none";
+
+    rateTab.classList.add("active");
+
+    trackEvent("switch_view", {
+      view: "rate"
+    });
+
+  } else {
+
+    rateView.style.display = "none";
+    bestView.style.display = "block";
+
+    bestTab.classList.add("active");
+
+    trackEvent("switch_view", {
+      view: "best"
+    });
+  }
+}
+
+function setBestSort(type) {
+
+  bestNearbySort = type;
+
+  document.querySelectorAll(".sort-tab")
+    .forEach(btn => btn.classList.remove("active"));
+
+  if (type === "distance") {
+    document.getElementById("distanceSortBtn")
+      .classList.add("active");
+  }
+
+  if (type === "rated") {
+    document.getElementById("topRatedSortBtn")
+      .classList.add("active");
+  }
+
+  if (type === "fastest") {
+    document.getElementById("fastestSortBtn")
+      .classList.add("active");
+  }
+
+  updateDistancesAndSort();
+}
 
 function goToMap() {
   window.location.href = "/map.html";
@@ -1948,8 +2312,13 @@ function goToMap() {
 let deferredPrompt = null;
 
 window.addEventListener("load", () => {
-  startLoadingPuns();
-  init();
+
+  if (!hasSeenOnboarding) {
+    startOnboarding();
+  } else {
+    startLoadingPuns();
+    init();
+  }
 
   const btn = document.getElementById("installBtn");
 
@@ -1991,33 +2360,124 @@ function scheduleLoader() {
 }
 
 const COFFEE_PUNS = [
-"First brew takes the longest ☕",
-"Brewing something awesome...",
-"Grinding the beans...",
-"Espresso yourself...",
-"Almost latte fun...",
-"Perking things up...",
-"Steaming ahead...",
-"Pouring greatness...",
-"Caffeine loading...",
-"Stay grounded ☕",
-"Bean there in a sec..."
+
+  //First Line Always! (UI Flow)
+  "First brew takes the longest ☕",
+  // Original
+  "Brewing something awesome...",
+  "Grinding the beans...",
+  "Espresso yourself...",
+  "Almost latte fun...",
+  "Perking things up...",
+  "Steaming ahead...",
+  "Pouring greatness...",
+  "Caffeine loading...",
+  "Stay grounded ☕",
+  "Bean there in a sec...",
+
+  // Coffee Revolution
+  "Join the coffee revolution ☕🔥",
+  "Stop enabling bad coffee...",
+  "Rate your last coffee run...",
+  "Together we can fix drive thru coffee...",
+  "The people deserve accurate coffee ☕",
+  "Powered by caffeine and mild frustration...",
+  "Coffee justice is brewing...",
+  "One coffee run at a time...",
+  "Coffee drinkers unite ☕",
+  "The revolution will be caffeinated...",
+
+  // Slightly Silly
+  "No foam left behind...",
+  "Your latte deserves better ☕",
+  "Calmly judging coffee shops nationwide...",
+  "One incorrect coffee order is one too many...",
+  "Your espresso has rights...",
+  "This app runs on caffeine and stubbornness...",
+  "The beans have spoken ☕",
+  "Defending the public from disappointing cold brew...",
+  "Your caramel swirl should actually swirl...",
+  "Some heroes wear aprons...",
+  "Others rate coffee ☕",
+  "Coffee deserves transparency...",
+  "May your coffee be fast and accurate...",
+  "Coffee peace was never an option ☕🔥",
+
+  // Fast Loading Style
+  "Brewing data...",
+  "Rating coffee...",
+  "Scanning nearby shops...",
+  "Loading the revolution...",
+  "Calibrating caffeine...",
+  "Locating good coffee...",
+  "Measuring coffee accuracy...",
+  "Preparing coffee intel...",
+  "Checking the vibes ☕",
+  "Tracking coffee speed...",
+  "Stirring the algorithm...",
+  "Preparing your next coffee run...",
+  "Coffee radar activated...",
+  "Fueling the movement...",
+
+  // Sticker / Movement
+  "Seen the stickers yet?",
+  "The coffee revolution is spreading ☕",
+  "Every sticker is a warning...",
+  "The movement has begun...",
+  "Support your local coffee heroes...",
+  "Community powered coffee ratings...",
+  "Coffee accountability starts here...",
+  "Tell your friends. Rate your coffee ☕",
+
+  // Playfully Dramatic
+  "Somewhere... a coffee order is being made incorrectly...",
+  "Another iced coffee has fallen ☕",
+  "The stakes have never been higher...",
+  "This mission is dangerously caffeinated...",
+  "History will remember this coffee run...",
+  "The drive thru remembers...",
+  "Stay strong. Coffee is coming ☕🔥",
+  "We must protect the morning commute..."
+
 ];
 
 let punInterval = null;
 
 function startLoadingPuns() {
-  const textEl = document.getElementById("loadingText");
+
+  const textEl =
+    document.getElementById("loadingText");
+
   if (!textEl) return;
 
-  let i = 0;
+  // Always show this first
+  textEl.textContent =
+    "First brew takes the longest ☕";
 
-  textEl.textContent = COFFEE_PUNS[i];
+  let currentIndex = 0;
 
   punInterval = setInterval(() => {
-    i = (i + 1) % COFFEE_PUNS.length;
-    textEl.textContent = COFFEE_PUNS[i];
+
+    let nextIndex;
+
+    // Prevent immediate repeats
+    do {
+
+      nextIndex =
+        Math.floor(Math.random() * COFFEE_PUNS.length);
+
+    } while (
+      nextIndex === currentIndex &&
+      COFFEE_PUNS.length > 1
+    );
+
+    currentIndex = nextIndex;
+
+    textEl.textContent =
+      COFFEE_PUNS[currentIndex];
+
   }, 2000);
+
 }
 
 function hideLoader() {
@@ -2028,4 +2488,73 @@ function hideLoader() {
   document.body.classList.remove("loading"); // ✅ clean removal
 
   loaderVisible = false;
+}
+
+// ========================
+// MOBILE SWIPE NAVIGATION
+// ========================
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", (e) => {
+
+  // Ignore map gestures
+  if (e.target.closest(".leaflet-container")) return;
+
+  touchStartX = e.changedTouches[0].screenX;
+
+});
+
+document.addEventListener("touchend", (e) => {
+
+  // Ignore map gestures
+  if (e.target.closest(".leaflet-container")) return;
+
+  touchEndX = e.changedTouches[0].screenX;
+
+  handleSwipe();
+
+});
+
+function handleSwipe() {
+
+  const swipeDistance =
+    touchEndX - touchStartX;
+
+  // Prevent tiny accidental swipes
+  if (Math.abs(swipeDistance) < 60) return;
+
+  const rateView =
+    document.getElementById("rateView");
+
+  const bestView =
+    document.getElementById("bestView");
+
+  const rateVisible =
+    rateView &&
+    rateView.style.display !== "none";
+
+  const bestVisible =
+    bestView &&
+    bestView.style.display !== "none";
+
+  // SWIPE LEFT
+  if (swipeDistance < 0) {
+
+    if (rateVisible) {
+      switchView("best");
+    }
+
+  }
+
+  // SWIPE RIGHT
+  else {
+
+    if (bestVisible) {
+      switchView("rate");
+    }
+
+  }
+
 }

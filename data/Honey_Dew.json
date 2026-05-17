@@ -1,0 +1,502 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-25T15:28:28Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 966212218,
+      "lat": 42.4828859,
+      "lon": -71.066823,
+      "tags": {
+        "addr:city": "Wakefield",
+        "addr:housenumber": "919",
+        "addr:postcode": "01880",
+        "addr:state": "MA",
+        "addr:street": "Main Street",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "drive_through": "no",
+        "name": "Honey Dew",
+        "opening_hours": "Mo-Fr 05:00-18:00; Sa 05:00-16:00; Su 06:00-15:00",
+        "outdoor_seating": "no",
+        "phone": "+1-781-245-5526",
+        "takeaway": "yes",
+        "website": "https://honeydewdonuts.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1310749670,
+      "lat": 42.2635836,
+      "lon": -71.8022965,
+      "tags": {
+        "disused:amenity": "fast_food",
+        "name": "Honey Dew Donuts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1923794030,
+      "lat": 42.2446382,
+      "lon": -71.4303612,
+      "tags": {
+        "amenity": "cafe",
+        "branch": "Dounuts",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2443692289,
+      "lat": 42.5850442,
+      "lon": -71.3836983,
+      "tags": {
+        "addr:housenumber": "273",
+        "addr:street": "Littleton Road",
+        "amenity": "fast_food",
+        "cuisine": "coffee_shop;donut",
+        "name": "Honey Dew Donuts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3001745868,
+      "lat": 42.8873278,
+      "lon": -71.1494456,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "drive_through": "yes",
+        "name": "Honey Dew Donuts",
+        "takeaway": "yes",
+        "website": "https://honeydewdonuts.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3197488827,
+      "lat": 42.5493658,
+      "lon": -71.1761066,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3366901636,
+      "lat": 42.089095,
+      "lon": -71.4753705,
+      "tags": {
+        "addr:city": "Bellingham",
+        "addr:housenumber": "19",
+        "addr:postcode": "02019",
+        "addr:state": "MA",
+        "addr:street": "North Main Street",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "opening_hours": "Mo-Su 05:00-21:00",
+        "phone": "+1 508 966 1500",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3452850816,
+      "lat": 42.254543,
+      "lon": -71.4676131,
+      "tags": {
+        "addr:city": "Ashland",
+        "addr:housenumber": "14",
+        "addr:postcode": "01721",
+        "addr:street": "West Union Street",
+        "amenity": "restaurant",
+        "cuisine": "coffee_shop",
+        "name": "Honey Dew Donuts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3803651608,
+      "lat": 41.8942033,
+      "lon": -71.3537796,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4062731055,
+      "lat": 42.3384959,
+      "lon": -71.7895068,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "delivery": "no",
+        "drive_through": "yes",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4905010515,
+      "lat": 42.3814614,
+      "lon": -71.5686457,
+      "tags": {
+        "amenity": "fast_food",
+        "cuisine": "donut",
+        "name": "Honey Dew Donuts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4962179025,
+      "lat": 41.6497766,
+      "lon": -70.2351367,
+      "tags": {
+        "addr:city": "West Yarmouth",
+        "addr:housenumber": "529",
+        "addr:street": "Main Street",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5441166491,
+      "lat": 42.1619523,
+      "lon": -71.0610235,
+      "tags": {
+        "amenity": "fast_food",
+        "name": "Honey Dew Donuts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5517738483,
+      "lat": 42.5036788,
+      "lon": -71.0703451,
+      "tags": {
+        "addr:city": "Wakefield",
+        "addr:housenumber": "386",
+        "addr:postcode": "01880",
+        "addr:state": "MA",
+        "addr:street": "Main Street",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5703626395,
+      "lat": 42.4800267,
+      "lon": -71.1000793,
+      "tags": {
+        "addr:city": "Stoneham",
+        "addr:housenumber": "362",
+        "addr:postcode": "02180",
+        "addr:state": "MA",
+        "addr:street": "Main Street",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "indoor_seating": "yes",
+        "name": "Honey Dew",
+        "outdoor_seating": "yes",
+        "phone": "+1 781 4384004",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6743220757,
+      "lat": 42.2906184,
+      "lon": -71.8037244,
+      "tags": {
+        "amenity": "fast_food",
+        "cuisine": "donut",
+        "name": "Honey Dew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7802904579,
+      "lat": 42.9176558,
+      "lon": -71.3760308,
+      "tags": {
+        "amenity": "fast_food",
+        "check_date": "2026-01-11",
+        "cuisine": "donut",
+        "name": "Honey Dew Donuts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8372608686,
+      "lat": 41.7840072,
+      "lon": -71.4732704,
+      "tags": {
+        "addr:city": "Cranston",
+        "addr:housenumber": "300",
+        "addr:postcode": "02920",
+        "addr:state": "RI",
+        "addr:street": "Atwood Avenue",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "phone": "+14019436365",
+        "takeaway": "yes",
+        "website": "https://www.honeydewdonuts.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8939498659,
+      "lat": 41.6974818,
+      "lon": -71.1478854,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9325310686,
+      "lat": 41.6964095,
+      "lon": -70.9340772,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9755476572,
+      "lat": 41.7507896,
+      "lon": -70.5985008,
+      "tags": {
+        "addr:city": "Buzzards Bay",
+        "addr:housenumber": "282",
+        "addr:state": "MA",
+        "addr:street": "Main Street",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "phone": "+1 508-759-7765",
+        "takeaway": "yes",
+        "website": "https://www.honeydewdonuts.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10717476507,
+      "lat": 42.521721,
+      "lon": -70.8955833,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "check_date": "2025-08-02",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11265422547,
+      "lat": 42.0501049,
+      "lon": -71.0836545,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12047779345,
+      "lat": 42.429323,
+      "lon": -71.0501559,
+      "tags": {
+        "addr:city": "Malden",
+        "addr:housenumber": "691",
+        "addr:postcode": "02148",
+        "addr:state": "MA",
+        "addr:street": "Eastern Avenue",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "opening_hours": "Mo-Sa 05:00-20:00; Su 06:00-19:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12297217401,
+      "lat": 42.1263427,
+      "lon": -71.517121,
+      "tags": {
+        "addr:housenumber": "140B",
+        "addr:postcode": "01757",
+        "internet_access": "wlan",
+        "name": "Honey Dew Donuts",
+        "opening_hours": "Mo-Sa 04:30-18:00; Su 05:30-18:00",
+        "shop": "coffee",
+        "website": "https://honeydewdonuts.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12307696885,
+      "lat": 41.9339619,
+      "lon": -71.2995535,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12403429303,
+      "lat": 42.5354853,
+      "lon": -70.9900762,
+      "tags": {
+        "addr:city": "Peabody",
+        "addr:housenumber": "130",
+        "addr:postcode": "01960",
+        "addr:state": "MA",
+        "addr:street": "Newbury Street",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "diet:halal": "yes",
+        "diet:kosher": "yes",
+        "diet:vegan": "yes",
+        "diet:vegetarian": "yes",
+        "drive_through": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "customers",
+        "name": "Honey Dew",
+        "opening_hours": "05:00-18:00",
+        "outdoor_seating": "no",
+        "phone": "+1-978-587-2016",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://www.honeydewdonuts.com/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12599538681,
+      "lat": 42.3303427,
+      "lon": -71.2548288,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13113081569,
+      "lat": 41.8683764,
+      "lon": -71.4275584,
+      "tags": {
+        "addr:city": "North Providence",
+        "addr:housenumber": "1113",
+        "addr:postcode": "02904",
+        "addr:state": "RI",
+        "addr:street": "Mineral Spring Avenue",
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13339182311,
+      "lat": 42.4565759,
+      "lon": -70.9537399,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Honey Dew Donuts",
+        "brand:wikidata": "Q5893524",
+        "cuisine": "donut;coffee_shop",
+        "name": "Honey Dew",
+        "takeaway": "yes"
+      }
+    }
+  ]
+}

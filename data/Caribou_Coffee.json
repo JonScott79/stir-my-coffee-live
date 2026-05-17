@@ -1,0 +1,4423 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-25T15:27:29Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 443919843,
+      "lat": 45.5534524,
+      "lon": -94.1877391,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 443970049,
+      "lat": 45.553784,
+      "lon": -94.2115647,
+      "tags": {
+        "addr:housenumber": "4135",
+        "addr:street": "W Division St",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:00-21:00; Sa, Su 05:30-21:00",
+        "phone": "+1-320-426-1900",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 503546362,
+      "lat": 44.9394898,
+      "lon": -93.1665345,
+      "tags": {
+        "addr:city": "Saint Paul",
+        "addr:housenumber": "68",
+        "addr:postcode": "55105",
+        "addr:state": "MN",
+        "addr:street": "Snelling Avenue South",
+        "disused:amenity": "cafe",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 546630646,
+      "lat": 44.9486033,
+      "lon": -93.0923409,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 561234341,
+      "lat": 44.9662247,
+      "lon": -93.3499316,
+      "tags": {
+        "addr:city": "Saint Louis Park",
+        "addr:housenumber": "1650",
+        "addr:postcode": "55416",
+        "addr:state": "MN",
+        "addr:street": "Park Place Boulevard",
+        "addr:unit": "101",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+19525939694",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/st-louis-park/1650-park-place-boulevard"
+      }
+    },
+    {
+      "type": "node",
+      "id": 572520020,
+      "lat": 44.8746744,
+      "lon": -94.3760271,
+      "tags": {
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "branch": "& Einstein Bagels",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "patio",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 598415403,
+      "lat": 39.6222204,
+      "lon": -104.987542,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 660909435,
+      "lat": 44.9174514,
+      "lon": -93.1908845,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 670883088,
+      "lat": 44.9060215,
+      "lon": -93.4636328,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 672576424,
+      "lat": 35.9129584,
+      "lon": -79.0565059,
+      "tags": {
+        "bench": "yes",
+        "bin": "yes",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "West Franklin Street at Caribou Coffee",
+        "network": "CHT",
+        "operator": "Chapel Hill Transit",
+        "public_transport": "platform",
+        "ref": "3422",
+        "shelter": "yes",
+        "tactile_paving": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 673851372,
+      "lat": 44.737932,
+      "lon": -93.258711,
+      "tags": {
+        "addr:city": "Burnsville",
+        "addr:country": "US",
+        "addr:housenumber": "1100",
+        "addr:postcode": "55337",
+        "addr:state": "MN",
+        "addr:street": "County Road 42 East",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "phone": "+1 952 9536459",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "http://www.CaribouCoffee.com",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 708094605,
+      "lat": 44.9482979,
+      "lon": -93.3499571,
+      "tags": {
+        "addr:city": "Saint Louis Park",
+        "addr:housenumber": "5551",
+        "addr:postcode": "55416",
+        "addr:state": "MN",
+        "addr:street": "Lake Street West",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2025-11-30",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Caribou Coffee",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+19529299536",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/st-louis-park/5551-west-lake-street",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 729418074,
+      "lat": 44.9273191,
+      "lon": -93.1768656,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2024-12-17",
+        "check_date:diet:halal": "2024-12-17",
+        "check_date:diet:kosher": "2024-12-17",
+        "check_date:diet:vegan": "2024-12-17",
+        "check_date:diet:vegetarian": "2024-12-17",
+        "cuisine": "coffee_shop",
+        "diet:halal": "no",
+        "diet:kosher": "no",
+        "diet:vegan": "no",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo,We-Fr 05:30-20:00; Tu,Su 06:00-19:00; Sa 06:00-20:00",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/st.-paul/1817-randolph-avenue",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 741857421,
+      "lat": 44.8844763,
+      "lon": -93.1204948,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 765261093,
+      "lat": 44.8636397,
+      "lon": -93.5447373,
+      "tags": {
+        "addr:city": "Chanhassen",
+        "addr:housenumber": "920",
+        "addr:postcode": "55317",
+        "addr:state": "MN",
+        "addr:street": "West 78th Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 779212236,
+      "lat": 33.8439407,
+      "lon": -84.3701491,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 829657628,
+      "lat": 44.9118088,
+      "lon": -93.3311253,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 06:30-15:00; Su 06:30-14:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 829659559,
+      "lat": 44.9133423,
+      "lon": -93.3289033,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "4999",
+        "addr:postcode": "55410",
+        "addr:state": "MN",
+        "addr:street": "France Avenue South",
+        "addr:unit": "180",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2024-06-02",
+        "level": "0",
+        "name": "J. Morten's Meat Market",
+        "opening_hours": "Tu-Fr 11:00-19:00; Sa,Su 11:00-17:00",
+        "shop": "butcher",
+        "takeaway": "yes",
+        "website": "https://jmortensmeats.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 923857553,
+      "lat": 44.9410681,
+      "lon": -93.5027986,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 930367165,
+      "lat": 44.894773,
+      "lon": -93.4196824,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1097641459,
+      "lat": 44.7364382,
+      "lon": -93.2170265,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1233514392,
+      "lat": 45.0446623,
+      "lon": -93.5312986,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "building": "commercial",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1236777137,
+      "lat": 41.6008455,
+      "lon": -93.7920072,
+      "tags": {
+        "addr:city": "Clive",
+        "addr:housenumber": "12655",
+        "addr:postcode": "50325",
+        "addr:street": "University Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1313773961,
+      "lat": 44.9401244,
+      "lon": -93.1444352,
+      "tags": {
+        "addr:city": "Saint Paul",
+        "addr:housenumber": "1055",
+        "addr:postcode": "55105",
+        "addr:state": "MN",
+        "addr:street": "Grand Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1314167465,
+      "lat": 39.9145581,
+      "lon": -105.0209,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1542603231,
+      "lat": 44.9874919,
+      "lon": -93.2553924,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1549928378,
+      "lat": 44.0218147,
+      "lon": -92.4809002,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1587196024,
+      "lat": 44.8634495,
+      "lon": -93.3538555,
+      "tags": {
+        "addr:city": "Edina",
+        "addr:housenumber": "5125",
+        "addr:postcode": "55439",
+        "addr:state": "MN",
+        "addr:street": "Edina Industrial Boulevard",
+        "addr:unit": "#100",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-952-831-9230",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1719957647,
+      "lat": 44.8269362,
+      "lon": -93.1657246,
+      "tags": {
+        "addr:city": "Eagan",
+        "addr:housenumber": "1380",
+        "addr:postcode": "55123",
+        "addr:state": "MN",
+        "addr:street": "Duckwood Drive",
+        "addr:unit": "101",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2024-09-26",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1 651-994-8950",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/eagan/1380-duckwood-drive"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1763865413,
+      "lat": 44.00451,
+      "lon": -92.4798422,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "source": "http://www.apachemall.com/directory",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1774215608,
+      "lat": 45.0516916,
+      "lon": -93.1476408,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1780785417,
+      "lat": 45.0800966,
+      "lon": -93.1147442,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1914627255,
+      "lat": 44.9925999,
+      "lon": -93.1476343,
+      "tags": {
+        "addr:city": "Roseville",
+        "addr:housenumber": "1127",
+        "addr:postcode": "55113",
+        "addr:state": "MN",
+        "addr:street": "Larpenteur Avenue West",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 05:30-20:30; Fr 05:30-21:00; Sa 06:00-20:00; Su 06:00-20:30",
+        "outdoor_seating": "no",
+        "phone": "+1-651-487-5502",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/roseville/1127-larpenteur-avenue-w",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1914981857,
+      "lat": 41.2328323,
+      "lon": -96.1912592,
+      "tags": {
+        "addr:housenumber": "17650",
+        "addr:postcode": "68130",
+        "addr:street": "Wright Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1989907893,
+      "lat": 44.8330067,
+      "lon": -92.9600278,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2089326482,
+      "lat": 44.731222,
+      "lon": -93.14356,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2195275125,
+      "lat": 36.1213019,
+      "lon": -97.0685917,
+      "tags": {
+        "addr:city": "Stillwater",
+        "addr:postcode": "74078",
+        "addr:state": "OK",
+        "addr:unit": "125",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 07:30-22:00, Fr 07:30-15:00, Su 15:00-21:00",
+        "phone": "+1-405-744-2911",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ok/stillwater/470-student-union",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2249045449,
+      "lat": 44.9368424,
+      "lon": -93.3836672,
+      "tags": {
+        "addr:city": "Saint Louis Park",
+        "addr:housenumber": "8208",
+        "addr:postcode": "55426",
+        "addr:state": "MN",
+        "addr:street": "Minnesota State Highway 7",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 06:30-18:00; Sa,Su 07:00-18:00",
+        "outdoor_seating": "no",
+        "phone": "+19529334592",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/st-louis-park/8208-highway-7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2277885151,
+      "lat": 33.7820764,
+      "lon": -84.3806365,
+      "tags": {
+        "addr:floor": "G;1",
+        "addr:housenumber": "1000",
+        "addr:street": "Piedmont Avenue Northeast",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2025-10-08",
+        "cuisine": "coffee_shop",
+        "level": "0;1",
+        "name": "Caribou Coffee",
+        "opening_hours": "06:00-18:00",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1-404-870-0711",
+        "source": "local_knowledge",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ga/atlanta/1000-piedmont-avenue-ne",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2475712692,
+      "lat": 41.0643019,
+      "lon": -83.6636138,
+      "tags": {
+        "addr:city": "Findlay",
+        "addr:housenumber": "2021",
+        "addr:postcode": "45840",
+        "addr:state": "OH",
+        "addr:street": "Broad Avenue",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "phone": "+1-419-422-9521",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/oh/findlay/2021-broad-avenue"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2476590675,
+      "lat": 45.2352438,
+      "lon": -93.4694313,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2545086404,
+      "lat": 33.63766,
+      "lon": -84.4392807,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2546415693,
+      "lat": 48.9091569,
+      "lon": -95.3185528,
+      "tags": {
+        "addr:city": "Warroad",
+        "addr:housenumber": "310",
+        "addr:postcode": "56763",
+        "addr:street": "Main Avenue Northeast",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 07:00-19:00; Su 08:00-19:00",
+        "outdoor_seating": "yes",
+        "phone": "+1 218 386 1246",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2579781844,
+      "lat": 46.8031342,
+      "lon": -92.1473715,
+      "tags": {
+        "addr:city": "Duluth",
+        "addr:housenumber": "627",
+        "addr:postcode": "55811",
+        "addr:state": "MN",
+        "addr:street": "West Central Entrance",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-218-720-4675",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/duluth/627-west-central-entrance",
+        "website:menu": "https://order.cariboucoffee.com/#/?storeId=1114"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2592251840,
+      "lat": 43.7965813,
+      "lon": -99.3418531,
+      "tags": {
+        "addr:housenumber": "1480",
+        "addr:postcode": "57325",
+        "addr:street": "South Main Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "note": "located inside South Dakota Hall of Fame",
+        "source": "Bing",
+        "website": "http://www.sdhalloffame.com/index.php?option=com_content&task=view&id=27&Itemid=42"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2600380079,
+      "lat": 44.9728998,
+      "lon": -93.2758849,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "1100",
+        "addr:postcode": "55403",
+        "addr:street": "Nicollet Mall",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "disused:amenity": "restaurant",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 06:00-18:00; Sa 06:30-18:00; Su 07:00-18:00",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/minneapolis/1100-nicollet-avenue"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2601361545,
+      "lat": 44.9336583,
+      "lon": -93.4202116,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2686935981,
+      "lat": 44.865832,
+      "lon": -93.056046,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2700334564,
+      "lat": 44.8792764,
+      "lon": -93.3205663,
+      "tags": {
+        "addr:city": "Edina",
+        "addr:housenumber": "6805",
+        "addr:postcode": "55435",
+        "addr:street": "York Avenue South",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "phone": "+1 952 929 4734",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2703493094,
+      "lat": 39.889029,
+      "lon": -105.0678952,
+      "tags": {
+        "addr:city": "Westminster",
+        "addr:housenumber": "10611",
+        "addr:postcode": "80020",
+        "addr:state": "CO",
+        "addr:street": "Westminster Boulevard",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Caribou Coffee",
+        "opening_hours": "Su 06:00-20:00; Mo-Th 05:00-21:00; Fr 05:00-22:00; Sa 06:00-22:00",
+        "source": "esri_USDOT_ColoradoOITGIS",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2747615001,
+      "lat": 42.9135588,
+      "lon": -85.5306662,
+      "tags": {
+        "addr:city": "Grand Rapids",
+        "addr:housenumber": "5551",
+        "addr:postcode": "49512",
+        "addr:street": "28th Street Southeast",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "fixme:atp": "no ATP match, check if still exists",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2846157452,
+      "lat": 44.9515609,
+      "lon": -93.0952117,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "start_date": "2014-05-15",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2863367769,
+      "lat": 39.65297,
+      "lon": -104.970703,
+      "tags": {
+        "addr:housenumber": "1400",
+        "addr:postcode": "80113",
+        "addr:street": "East Hampden Avenue",
+        "addr:unit": "150",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-303-806-0900",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2924606872,
+      "lat": 33.6408524,
+      "lon": -84.4255666,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2955729197,
+      "lat": 42.5213865,
+      "lon": -96.4196764,
+      "tags": {
+        "addr:housenumber": "2799",
+        "addr:street": "Hamilton Boulevard",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-712-252-5422",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2978085124,
+      "lat": 44.9698287,
+      "lon": -93.2446896,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "1925",
+        "addr:postcode": "55455",
+        "addr:state": "MN",
+        "addr:street": "South 4th Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "2",
+        "name": "Caribou Coffee",
+        "opening_date": "July 2018",
+        "opening_hours": "Mo-Th 07:00-20:00; Fr 07:00-16:00; Sa 07:00-14:00",
+        "phone": "+1-612-625-8585",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2988989421,
+      "lat": 39.7399549,
+      "lon": -104.827901,
+      "tags": {
+        "addr:housenumber": "13700",
+        "addr:postcode": "80011",
+        "addr:street": "East Colfax Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-21:00, Sa 06:00-21:00, Su 06:00-19:00",
+        "phone": "+1-720-859-0312",
+        "source": "knowledge",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3012274812,
+      "lat": 45.1318784,
+      "lon": -93.3570967,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:00-18:00; Sa,Su 06:00-18:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3065575738,
+      "lat": 43.5117789,
+      "lon": -96.7758513,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3093012422,
+      "lat": 44.8732693,
+      "lon": -93.328301,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1 952 831 0288",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3104150322,
+      "lat": 44.0638605,
+      "lon": -92.5010315,
+      "tags": {
+        "addr:city": "Rochester",
+        "addr:housenumber": "3938",
+        "addr:postcode": "55901",
+        "addr:state": "MN",
+        "addr:street": "Marketplace Drive Northwest",
+        "addr:unit": "101",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fi 06:00-17:30; Sa-Su 06:30-17:30",
+        "outdoor_seating": "yes",
+        "phone": "+1 507-252-0066",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/rochester/3938-marketplace-drive-nw"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3115635386,
+      "lat": 43.0482951,
+      "lon": -89.3234517,
+      "tags": {
+        "addr:city": "Monona",
+        "addr:housenumber": "115",
+        "addr:postcode": "53716",
+        "addr:street": "East Broadway",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3121358335,
+      "lat": 44.9663232,
+      "lon": -93.4430833,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3121514751,
+      "lat": 44.8592686,
+      "lon": -93.309359,
+      "tags": {
+        "addr:city": "Bloomington",
+        "addr:housenumber": "7950",
+        "addr:postcode": "55431",
+        "addr:street": "Penn Avenue S",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1 952 888 1504",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3144823175,
+      "lat": 39.6252677,
+      "lon": -104.900042,
+      "tags": {
+        "addr:city": "Denver",
+        "addr:housenumber": "5073",
+        "addr:postcode": "80237",
+        "addr:state": "CO",
+        "addr:street": "South Syracuse Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-303-534-6300",
+        "source": "knowledge",
+        "takeaway": "yes",
+        "website": "http://woodycreekcafe.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3214261311,
+      "lat": 45.5533513,
+      "lon": -94.1490059,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3235588408,
+      "lat": 44.9784893,
+      "lon": -93.2609972,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3254680935,
+      "lat": 38.8844892,
+      "lon": -94.6907815,
+      "tags": {
+        "addr:city": "Overland Park",
+        "addr:housenumber": "9050",
+        "addr:postcode": "66221",
+        "addr:state": "KS",
+        "addr:street": "West 135th Street",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "drive_through": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-18:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-913-814-0683",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ks/overland-park/9050-w-135th-street",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3291892938,
+      "lat": 45.8467575,
+      "lon": -95.387362,
+      "tags": {
+        "addr:city": "Alexandria",
+        "addr:housenumber": "4911 #101",
+        "addr:postcode": "56308",
+        "addr:street": "South State Highway 29",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-320-762-8589",
+        "source": "Bing",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/home"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3421934941,
+      "lat": 44.9733458,
+      "lon": -93.2317497,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 07:00-21:00; Fr 07:00-16:00; Sa 09:00-16:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3442832664,
+      "lat": 44.9628499,
+      "lon": -92.9636693,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3447700393,
+      "lat": 41.597339,
+      "lon": -93.7500061,
+      "tags": {
+        "addr:city": "West Des Moines",
+        "addr:housename": "Valley West Mall",
+        "addr:housenumber": "1551",
+        "addr:postcode": "50265",
+        "addr:state": "IA",
+        "addr:street": "Valley West Drive",
+        "addr:unit": "210",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1 515-224-5246",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3513904825,
+      "lat": 43.6851215,
+      "lon": -93.3597667,
+      "tags": {
+        "addr:city": "Albert Lea",
+        "addr:housenumber": "2717",
+        "addr:street": "Bridge Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "source": "GPS, Site visit",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3714593365,
+      "lat": 44.9475218,
+      "lon": -93.3213318,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "3040",
+        "addr:postcode": "55416",
+        "addr:state": "MN",
+        "addr:street": "Excelsior Boulevard",
+        "addr:unit": "103",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+16122859650",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/minneapolis/3044-excelsior-boulevard"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3721680106,
+      "lat": 44.0292294,
+      "lon": -92.4836007,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3797128186,
+      "lat": 45.020329,
+      "lon": -93.4801935,
+      "tags": {
+        "addr:city": "Plymouth",
+        "addr:housenumber": "3500",
+        "addr:postcode": "55447",
+        "addr:state": "MN",
+        "addr:street": "Vicksburg Lane North",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 05:30-21:00; Fr 05:30-21:00; Sa 06:30-22:00; Su 06:30-21:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3797636252,
+      "lat": 44.0441026,
+      "lon": -92.5170443,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3798414888,
+      "lat": 44.9881531,
+      "lon": -93.5787046,
+      "tags": {
+        "addr:city": "Long Lake",
+        "addr:housenumber": "2073",
+        "addr:postcode": "55356",
+        "addr:state": "MN",
+        "addr:street": "Wayzata Boulevard",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-21:00; Sa-Su 06:00-21:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3803729233,
+      "lat": 44.7064681,
+      "lon": -93.4287985,
+      "tags": {
+        "addr:city": "Prior Lake",
+        "addr:housenumber": "16731",
+        "addr:postcode": "55372",
+        "addr:state": "MN",
+        "addr:street": "Highway 13 S",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 06:30-19:00; Su 06:30-18:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3841177151,
+      "lat": 45.1188968,
+      "lon": -92.5387676,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3918725570,
+      "lat": 44.7924118,
+      "lon": -91.5094001,
+      "tags": {
+        "amenity": "cafe",
+        "branch": "Einstein's Bagels",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4082283816,
+      "lat": 36.0874211,
+      "lon": -79.8309739,
+      "tags": {
+        "addr:housenumber": "3109",
+        "addr:street": "Northline Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2025-01-14",
+        "cuisine": "coffee_shop",
+        "image": "https://a.mktgcdn.com/p/xWUJOqVyoirVtAX3ujKhJq4h6mEqOUbykbgFtGogLKE/1600x1200.jpg",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "phone": "+1 336-292-3202",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/nc/greensboro/3109-northline-avenue"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4094847585,
+      "lat": 44.7451819,
+      "lon": -93.378893,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4220086790,
+      "lat": 47.9099946,
+      "lon": -97.0660385,
+      "tags": {
+        "addr:city": "Grand Forks",
+        "addr:housenumber": "1225",
+        "addr:postcode": "58201",
+        "addr:state": "ND",
+        "addr:street": "South Columbia Road",
+        "amenity": "cafe",
+        "cuisine": "bagel",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee & Einstein Bros Bagels",
+        "opening_hours": "Mo-Fr 05:00-21:00; Sa 06:00-21:00; Su 06:00-20:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4278331490,
+      "lat": 46.8174079,
+      "lon": -96.8635445,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4286358195,
+      "lat": 39.854071,
+      "lon": -104.6735624,
+      "tags": {
+        "addr:state": "CO",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4286618557,
+      "lat": 39.8588371,
+      "lon": -104.6735986,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2025-03-03",
+        "contact:phone": "+1 303-342-8397",
+        "contact:website": "https://locations.cariboucoffee.com/us/co/denver/8500-pena-boulevard-8865528",
+        "cuisine": "coffee_shop",
+        "indoor": "yes",
+        "indoor_seating": "yes",
+        "level": "3",
+        "name": "Caribou Coffee",
+        "opening_hours": "05:00-21:00",
+        "outdoor_seating": "no",
+        "source:opening_hours": "website",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4428410444,
+      "lat": 44.0502364,
+      "lon": -91.6798064,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4441446707,
+      "lat": 44.859033,
+      "lon": -93.4248679,
+      "tags": {
+        "addr:city": "Eden Prairie",
+        "addr:housenumber": "11611",
+        "addr:postcode": "55344",
+        "addr:state": "MN",
+        "addr:street": "Leona Road",
+        "addr:unit": "C",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4642330728,
+      "lat": 44.7734088,
+      "lon": -93.2771738,
+      "tags": {
+        "amenity": "cafe",
+        "level": "0",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4643591899,
+      "lat": 46.7188168,
+      "lon": -92.0892655,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4645441916,
+      "lat": 44.7825067,
+      "lon": -93.5067988,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4675776565,
+      "lat": 35.7710132,
+      "lon": -78.7827396,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4751795928,
+      "lat": 44.8821845,
+      "lon": -93.212394,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "name:en": "Caribou",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4790577660,
+      "lat": 43.9542507,
+      "lon": -92.4619999,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4795800509,
+      "lat": 44.9194106,
+      "lon": -93.2783772,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "4606",
+        "addr:postcode": "55419",
+        "addr:state": "MN",
+        "addr:street": "Nicollet Avenue South",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "Caribou Coffee",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-17:30; Sa,Su 06:30-17:30",
+        "phone": "+1-612-825-6361",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4810800036,
+      "lat": 39.8491955,
+      "lon": -104.674005,
+      "tags": {
+        "addr:city": "Denver",
+        "addr:housenumber": "8500",
+        "addr:postcode": "80249",
+        "addr:state": "CO",
+        "addr:street": "Peña Boulevard",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2025-06-23",
+        "cuisine": "coffee_shop",
+        "level": "6",
+        "name": "Caribou Coffee",
+        "note": "Jeppesen Terminal, Level 6 West",
+        "opening_hours": "04:30-20:30",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1 303-342-6324",
+        "takeaway": "yes",
+        "website": "https://www.flydenver.com/dine/caribou-coffee/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4812789184,
+      "lat": 39.8631898,
+      "lon": -104.6759374,
+      "tags": {
+        "addr:housenumber": "9100",
+        "addr:postcode": "80249",
+        "addr:state": "CO",
+        "addr:street": "Pena Boulevard",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "note": "C Gates",
+        "opening_hours:signed": "no",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4872918685,
+      "lat": 45.1592643,
+      "lon": -93.2341709,
+      "tags": {
+        "addr:city": "Blaine",
+        "addr:housenumber": "10400",
+        "addr:postcode": "55449",
+        "addr:state": "MN",
+        "addr:street": "Baltimore Street Northeast",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "Caribou Coffee",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 05:30-21:00; Fr 05:30-22:00; Sa 06:30-22:00; Su 06:30-21:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-763-792-4994",
+        "smoking": "outside",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4882124901,
+      "lat": 45.1608552,
+      "lon": -93.3926144,
+      "tags": {
+        "addr:city": "Champlin",
+        "addr:housenumber": "11468",
+        "addr:state": "MN",
+        "addr:street": "Jefferson Court",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-763-323-7408",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffee.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4921454722,
+      "lat": 46.8614525,
+      "lon": -99.9162736,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "name:en": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4995975075,
+      "lat": 43.6939307,
+      "lon": -98.0123114,
+      "tags": {
+        "addr:city": "Mitchell",
+        "addr:state": "SD",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5054819321,
+      "lat": 44.0769552,
+      "lon": -103.231495,
+      "tags": {
+        "addr:housenumber": "902",
+        "addr:postcode": "57701",
+        "addr:street": "Mount Rushmore Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:00-21:00; Sa 06:00-21:00; Su 06:00-20:00",
+        "phone": "+1 605-341-3266",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5069793221,
+      "lat": 44.77663,
+      "lon": -93.412163,
+      "tags": {
+        "addr:housenumber": "8360",
+        "addr:postcode": "55379",
+        "addr:street": "Hansen Avenue",
+        "amenity": "cafe",
+        "name": "Caribou Coffee & Einstein Bros. Bagels",
+        "name:en": "Caribou Coffee & Einstein Bros. Bagels"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5143808470,
+      "lat": 44.1378266,
+      "lon": -93.2546837,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5264283906,
+      "lat": 44.8634203,
+      "lon": -93.3041982,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access:fee": "yes",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 06:00-17:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5291408314,
+      "lat": 44.5645698,
+      "lon": -92.5394967,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5338309423,
+      "lat": 44.9488943,
+      "lon": -93.3001807,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "1450",
+        "addr:postcode": "55408",
+        "addr:state": "MN",
+        "addr:street": "West Lake Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "diet:vegetarian": "yes",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-19:00",
+        "shop": "coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5415591284,
+      "lat": 41.6156785,
+      "lon": -93.7812755,
+      "tags": {
+        "addr:city": "Urbandale",
+        "addr:housename": "Heritage Park",
+        "addr:housenumber": "11895",
+        "addr:postcode": "50323",
+        "addr:street": "Hickman Road",
+        "amenity": "cafe",
+        "branch": "& Einstein Bros Bagels",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5462490322,
+      "lat": 36.1908732,
+      "lon": -95.8872569,
+      "tags": {
+        "access": "permit",
+        "addr:city": "Tulsa",
+        "addr:housenumber": "7777",
+        "addr:postcode": "74115",
+        "addr:state": "OK",
+        "addr:street": "East Apache Street",
+        "airside": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "permit": "boarding_pass",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5487132343,
+      "lat": 42.7855052,
+      "lon": -96.7967101,
+      "tags": {
+        "addr:city": "Burbank",
+        "addr:housenumber": "47051",
+        "addr:postcode": "57010",
+        "addr:state": "SD",
+        "addr:street": "South Dakota Highway 50",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 05:30-22:00",
+        "outdoor_seating": "no",
+        "phone": "+1-605-624-2062",
+        "smoking": "outside",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/sd/burbank/47051-highway-50"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5564612139,
+      "lat": 39.7751758,
+      "lon": -89.6702165,
+      "tags": {
+        "addr:city": "Springfield",
+        "addr:housenumber": "1025",
+        "addr:postcode": "62704",
+        "addr:state": "IL",
+        "addr:street": "Outer Park Drive",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-217-726-1025",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/il/springfield/1025-outer-park-drive"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5739830048,
+      "lat": 44.8535559,
+      "lon": -93.2421993,
+      "tags": {
+        "addr:housenumber": "226",
+        "addr:street": "South Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 06:30-21:00; Fr-Sa 06:30-21:30; Su 06:30-18:30",
+        "phone": "+1-952-854-1031",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5739830075,
+      "lat": 44.8556779,
+      "lon": -93.2421184,
+      "tags": {
+        "addr:housenumber": "224",
+        "addr:street": "North Garden",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 07:30-21:30; Fr 07:30-22:00; Sa 09:30-21:30; Su 08:30-19:00",
+        "outdoor_seating": "no",
+        "phone": "+1-952-858-8360",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5739830184,
+      "lat": 44.855386,
+      "lon": -93.2432847,
+      "tags": {
+        "addr:housenumber": "194",
+        "addr:street": "North Garden",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "0",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 07:30-21:30; Sa 07:30-22:00; Su 08:30-19:00",
+        "phone": "+1-952-854-2501",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5744547221,
+      "lat": 44.8805454,
+      "lon": -93.200811,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5788366187,
+      "lat": 47.4969808,
+      "lon": -94.9127279,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5794428453,
+      "lat": 46.7998067,
+      "lon": -100.7873087,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5921519347,
+      "lat": 43.3987835,
+      "lon": -103.395896,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "24/7",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6045504703,
+      "lat": 44.0394569,
+      "lon": -92.4626674,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6050166170,
+      "lat": 35.9088009,
+      "lon": -78.7845626,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 06:00-21:30; Fr 06:00-22:00; Sa 06:30-22:00; Su 06:30-21:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6104221227,
+      "lat": 44.0237867,
+      "lon": -92.46757,
+      "tags": {
+        "addr:city": "Rochester",
+        "addr:housenumber": "9",
+        "addr:postcode": "55901",
+        "addr:state": "MN",
+        "addr:street": "3rd Avenue Northwest",
+        "addr:unit": "135",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:00-24:00; Sa-Su 06:00-24:00",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6281910607,
+      "lat": 41.8929378,
+      "lon": -87.6416278,
+      "tags": {
+        "addr:city": "Chicago",
+        "addr:housenumber": "600",
+        "addr:postcode": "60610",
+        "addr:state": "IL",
+        "addr:street": "North Kingsbury Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "phone": "+1-312-335-0576",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6289179535,
+      "lat": 44.9735229,
+      "lon": -93.2300846,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "604",
+        "addr:postcode": "55414",
+        "addr:state": "MN",
+        "addr:street": "Southeast Washington Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6387502586,
+      "lat": 44.8832535,
+      "lon": -93.213208,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6555537004,
+      "lat": 47.7849526,
+      "lon": -96.609469,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6566813799,
+      "lat": 45.0225105,
+      "lon": -93.1684533,
+      "tags": {
+        "addr:housenumber": "2714",
+        "addr:street": "Lincoln Drive",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-20:30; Sa 06:00-20:30; Su 06:30-20:00",
+        "phone": "+1-651-636-0976",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6594961539,
+      "lat": 45.0047476,
+      "lon": -93.1673846,
+      "tags": {
+        "addr:city": "Roseville",
+        "addr:housenumber": "2111",
+        "addr:postcode": "55113",
+        "addr:street": "Snelling Avenue North",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6614500031,
+      "lat": 43.8673997,
+      "lon": -91.2055196,
+      "tags": {
+        "addr:city": "Onalaska",
+        "addr:housenumber": "1202",
+        "addr:postcode": "54650",
+        "addr:street": "County Road PH",
+        "addr:unit": "200",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6614697025,
+      "lat": 45.292985,
+      "lon": -93.7714007,
+      "tags": {
+        "addr:housenumber": "1523",
+        "addr:street": "7th Street East",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "phone": "+1-763-295-2052",
+        "takeaway": "yes",
+        "website": "https://www.cariboucoffe.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6681614706,
+      "lat": 44.9032367,
+      "lon": -91.931458,
+      "tags": {
+        "addr:city": "Menomonie",
+        "addr:housenumber": "101",
+        "addr:postcode": "54751",
+        "addr:state": "WI",
+        "addr:street": "Oak Avenue",
+        "addr:unit": "4",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6711068708,
+      "lat": 44.8329744,
+      "lon": -93.1535511,
+      "tags": {
+        "addr:city": "Eagan",
+        "addr:housenumber": "3405",
+        "addr:postcode": "55121",
+        "addr:state": "MN",
+        "addr:street": "Promenade Avenue",
+        "addr:unit": "400",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2024-09-26",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1 651-452-2343",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/eagan/3405-promenade-avenue",
+        "website:menu": "https://order.cariboucoffee.com/#/?storeId=1320"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6765227905,
+      "lat": 33.5799268,
+      "lon": -111.8871325,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6796169320,
+      "lat": 46.8001042,
+      "lon": -92.131738,
+      "tags": {
+        "addr:city": "Duluth",
+        "addr:housenumber": "2",
+        "addr:postcode": "55811",
+        "addr:state": "MN",
+        "addr:street": "East Central Entrance",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1-218-249-0058",
+        "source": "EsriWorldImageryClarity",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/duluth/2-east-central-entrance",
+        "website:menu": "https://order.cariboucoffee.com/#/?storeId=1400"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6824416797,
+      "lat": 44.8697562,
+      "lon": -91.9188303,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 07:00-18:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6975301936,
+      "lat": 46.8218205,
+      "lon": -92.1015647,
+      "tags": {
+        "addr:city": "Duluth",
+        "addr:housenumber": "1515",
+        "addr:postcode": "55811",
+        "addr:state": "MN",
+        "addr:street": "Kenwood Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-18:00; Sa-Su 06:00-18:00",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6975320932,
+      "lat": 46.8209176,
+      "lon": -92.07263,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6982974947,
+      "lat": 45.0130465,
+      "lon": -93.1711999,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "0",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 06:00-21:00; Su 08:00-18:00",
+        "phone": "+1-651-633-7322",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/roseville/1595-mn-36-w"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7088705174,
+      "lat": 45.3003648,
+      "lon": -93.554807,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7129455330,
+      "lat": 45.0544212,
+      "lon": -93.3688582,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7131834919,
+      "lat": 45.0337185,
+      "lon": -93.3799832,
+      "tags": {
+        "addr:city": "New Hope",
+        "addr:housenumber": "4210",
+        "addr:postcode": "55428",
+        "addr:state": "MN",
+        "addr:street": "Winnetka Avenue North",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7156640363,
+      "lat": 45.2017178,
+      "lon": -93.5552247,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7167433125,
+      "lat": 45.0337859,
+      "lon": -93.4090074,
+      "tags": {
+        "addr:city": "Plymouth",
+        "addr:housenumber": "4345",
+        "addr:postcode": "55442",
+        "addr:state": "MN",
+        "addr:street": "Nathan Lane North",
+        "addr:unit": "A",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7168433512,
+      "lat": 44.8838724,
+      "lon": -93.249789,
+      "tags": {
+        "addr:city": "Richfield",
+        "addr:housenumber": "1700",
+        "addr:postcode": "55423",
+        "addr:state": "MN",
+        "addr:street": "East 66th Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7175760286,
+      "lat": 35.1730754,
+      "lon": -80.8479777,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "entrance": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7183566068,
+      "lat": 45.5732307,
+      "lon": -93.2052379,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7319840220,
+      "lat": 45.0713148,
+      "lon": -93.2668127,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7464708246,
+      "lat": 44.4499651,
+      "lon": -95.7619101,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7487941224,
+      "lat": 44.8568198,
+      "lon": -92.627645,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 08:00-20:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7626827702,
+      "lat": 44.8772269,
+      "lon": -94.3788001,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7635890763,
+      "lat": 43.8168553,
+      "lon": -91.2295999,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7732654641,
+      "lat": 40.7250357,
+      "lon": -99.0846168,
+      "tags": {
+        "addr:city": "Kearney",
+        "addr:housenumber": "5204",
+        "addr:postcode": "68845",
+        "addr:state": "NE",
+        "addr:street": "2nd Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-18:00",
+        "outdoor_seating": "no",
+        "phone": "+1-308-236-0050",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ne/kearney/5204-2nd-avenue"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7805624208,
+      "lat": 39.1739841,
+      "lon": -94.4882885,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes",
+        "website": "https://www.worldsoffun.com/play/drinks-dining/caribou-coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7946343462,
+      "lat": 36.8423359,
+      "lon": -76.1323079,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7988993894,
+      "lat": 45.3112385,
+      "lon": -97.046454,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7989975399,
+      "lat": 35.8252938,
+      "lon": -78.7086872,
+      "tags": {
+        "addr:city": "Raleigh",
+        "addr:housenumber": "3300",
+        "addr:postcode": "27612",
+        "addr:state": "NC",
+        "addr:street": "Duraleigh Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "source": "WakeGIS",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8024112013,
+      "lat": 44.264054,
+      "lon": -104.944678,
+      "tags": {
+        "addr:city": "Moorcroft",
+        "addr:housenumber": "506",
+        "addr:postcode": "82721",
+        "addr:state": "WY",
+        "addr:street": "East Converse Street",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 05:30-19:00; Fr-Sa 05:30-20:00; Su 05:30-19:00",
+        "phone": "+1-307-756-3493",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/wy/moorcroft/506-e-converse-street"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8024128787,
+      "lat": 42.0160428,
+      "lon": -86.4931056,
+      "tags": {
+        "addr:city": "Stevensville",
+        "addr:housenumber": "5637",
+        "addr:postcode": "49127",
+        "addr:state": "MI",
+        "addr:street": "Cleveland Avenue",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-21:00",
+        "phone": "+1-269-429-1711",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mi/stevensville/5637-cleveland-avenue"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8025852881,
+      "lat": 41.95871,
+      "lon": -88.7188833,
+      "tags": {
+        "addr:city": "Sycamore",
+        "addr:housenumber": "2700",
+        "addr:postcode": "60178",
+        "addr:state": "IL",
+        "addr:street": "Dekalb Avenue",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "phone": "+1-815-756-6174",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/il/sycamore/2700-dekalb-avenue",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8076136531,
+      "lat": 44.7986189,
+      "lon": -93.4541542,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8142789125,
+      "lat": 45.1106696,
+      "lon": -93.3054055,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8285054902,
+      "lat": 44.9565206,
+      "lon": -92.374459,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8322199028,
+      "lat": 45.2254969,
+      "lon": -93.3979965,
+      "tags": {
+        "addr:city": "Ramsey",
+        "addr:housenumber": "14050",
+        "addr:postcode": "55303",
+        "addr:state": "MN",
+        "addr:street": "Saint Francis Boulevard",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8459321746,
+      "lat": 45.1853587,
+      "lon": -93.3131179,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8541854042,
+      "lat": 44.9722916,
+      "lon": -93.5001665,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8644341591,
+      "lat": 46.8178212,
+      "lon": -95.8432698,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8677144771,
+      "lat": 44.9190415,
+      "lon": -93.2163629,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8729806226,
+      "lat": 45.1547333,
+      "lon": -93.307017,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8777584536,
+      "lat": 43.7013621,
+      "lon": -98.0428624,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9099545837,
+      "lat": 35.226953,
+      "lon": -80.8420991,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9103978757,
+      "lat": 46.8045538,
+      "lon": -92.0683213,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-20:00; Sa,Su 06:00-19:00",
+        "smoking": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9191126731,
+      "lat": 45.8876426,
+      "lon": -89.7194716,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9351683409,
+      "lat": 41.7023757,
+      "lon": -93.5848636,
+      "tags": {
+        "addr:city": "Ankeny",
+        "addr:housenumber": "909",
+        "addr:postcode": "50021-4038",
+        "addr:state": "IA",
+        "addr:street": "Southeast Oralabor Road",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2025-07-13",
+        "check_date:smoking": "2025-07-13",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+1 515-964-1208",
+        "smoking": "no",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ia/ankeny/909-se-oralabor-road"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9368728510,
+      "lat": 46.8340576,
+      "lon": -96.8205577,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-19:00; Sa,Su 06:30-19:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9438226877,
+      "lat": 39.0125186,
+      "lon": -95.7640321,
+      "tags": {
+        "addr:city": "Topeka",
+        "addr:housenumber": "2951",
+        "addr:postcode": "66614",
+        "addr:state": "KS",
+        "addr:street": "Southwest Wanamaker Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 06:00-19:00; Su 07:00-18:00",
+        "phone": "+1-785-272-1763",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ks/topeka/2951-sw-wanamaker-road"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9486285991,
+      "lat": 45.334202,
+      "lon": -93.7348459,
+      "tags": {
+        "addr:housenumber": "726",
+        "addr:street": "Martin Avenue",
+        "addr:unit": "Suite 100",
+        "amenity": "cafe",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9565699939,
+      "lat": 45.0056131,
+      "lon": -93.2281861,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "1730",
+        "addr:postcode": "55413",
+        "addr:state": "MN",
+        "addr:street": "New Brighton Boulevard",
+        "addr:unit": "Suite 102",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-19:00; Sa,Su 06:00-19:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9610330951,
+      "lat": 44.9630306,
+      "lon": -93.3479509,
+      "tags": {
+        "addr:city": "Saint Louis Park",
+        "addr:housenumber": "5330",
+        "addr:postcode": "55416",
+        "addr:state": "MN",
+        "addr:street": "Cedar Lake Road",
+        "addr:unit": "100",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "phone": "+19525456281",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/st-louis-park/5330-cedar-lake-road"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9809275519,
+      "lat": 38.9555789,
+      "lon": -94.6838148,
+      "tags": {
+        "addr:city": "Overland Park",
+        "addr:housenumber": "8501",
+        "addr:postcode": "66212",
+        "addr:state": "KS",
+        "addr:street": "West 95th Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-18:00",
+        "operator": "Hy-Vee",
+        "phone": "+1-913-894-1983",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ks/overland-park/8501-west-95th-street",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9844659945,
+      "lat": 30.2021187,
+      "lon": -97.6688216,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9930059180,
+      "lat": 44.8893714,
+      "lon": -97.1101995,
+      "tags": {
+        "addr:city": "Watertown",
+        "addr:housenumber": "933",
+        "addr:postcode": "57201",
+        "addr:state": "SD",
+        "addr:street": "5th Street Southeast",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-20:00",
+        "phone": "+16058783118",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/sd/watertown/933-5th-street-se"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10604156998,
+      "lat": 44.6942465,
+      "lon": -93.2152177,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10824591646,
+      "lat": 45.1148928,
+      "lon": -93.4028954,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10838177362,
+      "lat": 39.7737026,
+      "lon": -86.1764066,
+      "tags": {
+        "addr:city": "Indianapolis",
+        "addr:housenumber": "420",
+        "addr:postcode": "46202",
+        "addr:state": "IN",
+        "addr:street": "University Boulevard",
+        "addr:unit": "120",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Th 07:00-18:00; Fr 07:00-15:00",
+        "payment:debit_cards": "yes",
+        "phone": "+1-317-274-5157",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/in/indianapolis/420-university-boulevard"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10838177363,
+      "lat": 41.6600461,
+      "lon": -86.2143221,
+      "tags": {
+        "addr:city": "Mishawaka",
+        "addr:housenumber": "314",
+        "addr:postcode": "46544",
+        "addr:state": "IN",
+        "addr:street": "North Ironwood Drive",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2023-08-18",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-19:00",
+        "phone": "+1-574-259-6348",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/in/mishawaka/314-n-ironwood-drive"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969581003,
+      "lat": 40.8220306,
+      "lon": -81.934973,
+      "tags": {
+        "addr:city": "Wooster",
+        "addr:housenumber": "1840",
+        "addr:postcode": "44691",
+        "addr:state": "OH",
+        "addr:street": "Cleveland Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 05:30-21:00; Su 06:00-20:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-330-222-3102",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/oh/wooster/1840-cleveland-rd"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969613743,
+      "lat": 32.9066005,
+      "lon": -97.0444417,
+      "tags": {
+        "addr:city": "Dallas",
+        "addr:housenumber": "2141",
+        "addr:postcode": "75261",
+        "addr:state": "TX",
+        "addr:street": "South International Parkway",
+        "addr:unit": "B29",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:30-15:30",
+        "outdoor_seating": "no",
+        "phone": "+1-678-818-8608",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/tx/dallas/2141-s-international-parkway"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969633942,
+      "lat": 37.9305753,
+      "lon": -79.2284569,
+      "tags": {
+        "addr:city": "Raphine",
+        "addr:housenumber": "2430",
+        "addr:postcode": "24472",
+        "addr:state": "VA",
+        "addr:street": "Raphine Road",
+        "addr:unit": "A",
+        "addr:unit:label": "Suite",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "note": "Webpage for this amenity has the incorrect address of 2440 listed. Verify using Rockbridge Co. GIS.",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "phone": "+1 540-377-2111",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/va/raphine/2440-raphine-rd",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969654539,
+      "lat": 39.3261164,
+      "lon": -101.7271855,
+      "tags": {
+        "addr:city": "Goodland",
+        "addr:housenumber": "2710",
+        "addr:postcode": "67735",
+        "addr:state": "KS",
+        "addr:street": "Commerce Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 07:00-19:00",
+        "phone": "+1-785-728-4297",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ks/goodland/2710-commerce-rd"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969699526,
+      "lat": 40.7147768,
+      "lon": -99.0847573,
+      "tags": {
+        "addr:city": "Kearney",
+        "addr:housenumber": "3920",
+        "addr:postcode": "68847",
+        "addr:state": "NE",
+        "addr:street": "2nd Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-19:00",
+        "phone": "+1-308-236-5488",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ne/kearney/3920-2nd-avenue",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10969706356,
+      "lat": 39.0193159,
+      "lon": -94.6625235,
+      "tags": {
+        "addr:city": "Mission",
+        "addr:housenumber": "6655",
+        "addr:postcode": "66202",
+        "addr:state": "KS",
+        "addr:street": "Martway Street",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Sa 06:00-19:00; Su 07:00-19:00",
+        "phone": "+1-913-831-4447",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/ks/mission/6655-martway-street",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10972103932,
+      "lat": 45.9771253,
+      "lon": -94.3448511,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10992518039,
+      "lat": 41.2501809,
+      "lon": -96.1938917,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11018455810,
+      "lat": 46.0129202,
+      "lon": -91.481476,
+      "tags": {
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11038264587,
+      "lat": 46.9191598,
+      "lon": -95.0578657,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "location": "indoor",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11040515800,
+      "lat": 44.6817502,
+      "lon": -93.2880982,
+      "tags": {
+        "addr:city": "Lakeville",
+        "addr:housenumber": "184444",
+        "addr:postcode": "55044",
+        "addr:state": "MN",
+        "addr:street": "Kenrick Avenue",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-19:00",
+        "phone": "+19528981550",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/lakeville/18444-kenrick-avenue"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11062173071,
+      "lat": 45.1770839,
+      "lon": -93.8626743,
+      "tags": {
+        "addr:city": "Buffalo",
+        "addr:housenumber": "630",
+        "addr:postcode": "55313",
+        "addr:state": "MN",
+        "addr:street": "Ryan's Way",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11098487965,
+      "lat": 44.9178689,
+      "lon": -93.5039389,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11155391387,
+      "lat": 46.0106818,
+      "lon": -92.9299702,
+      "tags": {
+        "addr:floor": "1",
+        "addr:housenumber": "404",
+        "addr:street": "Fire Monument Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2024-12-23",
+        "cuisine": "coffee_shop",
+        "level": "0",
+        "name": "Caribou Coffee",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11191518058,
+      "lat": 45.1648129,
+      "lon": -93.0259477,
+      "tags": {
+        "addr:city": "Lino Lakes",
+        "addr:housenumber": "7107",
+        "addr:postcode": "55038",
+        "addr:state": "MN",
+        "addr:street": "Otter Lake Road",
+        "addr:unit": "150",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "delivery": "yes",
+        "drive_through": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 05:30-20:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-651-333-3550",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/lino-lakes/7107-otter-lake-road-suite-150"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11223168100,
+      "lat": 44.8845881,
+      "lon": -93.2106802,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "indoor": "yes",
+        "level": "2",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11261793746,
+      "lat": 44.0465694,
+      "lon": -92.4317224,
+      "tags": {
+        "addr:city": "Rochester",
+        "addr:housenumber": "2190",
+        "addr:postcode": "55906",
+        "addr:state": "MN",
+        "addr:street": "Wheelock Drive Northeast",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-18:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-507-738-1700",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/rochester/2190-wheelock-dr-ne"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11465728669,
+      "lat": 45.0225573,
+      "lon": -93.0910345,
+      "tags": {
+        "addr:housenumber": "228",
+        "addr:street": "Little Canada Road East",
+        "check_date": "2024-08-25",
+        "name": "Caribou Coffee",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11500843443,
+      "lat": 45.0437675,
+      "lon": -93.3305029,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11537935868,
+      "lat": 40.9385666,
+      "lon": -80.5870631,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "check_date": "2024-08-18",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11556052743,
+      "lat": 44.7237465,
+      "lon": -93.1779861,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11582992879,
+      "lat": 45.0117951,
+      "lon": -93.1758682,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11688651088,
+      "lat": 44.8838157,
+      "lon": -93.285833,
+      "tags": {
+        "addr:city": "Richfield",
+        "addr:housenumber": "6545",
+        "addr:postcode": "55423",
+        "addr:state": "MN",
+        "addr:street": "Lyndale Avenue South",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11775549011,
+      "lat": 44.9012213,
+      "lon": -93.5886515,
+      "tags": {
+        "addr:city": "Excelsior",
+        "addr:housenumber": "5663",
+        "addr:postcode": "55331",
+        "addr:state": "MN",
+        "addr:street": "Manitou Road",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 06:00-18:00; Sa-Su 06:30-18:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-952-401-1067",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/excelsior/5663-manitou-road"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11874448227,
+      "lat": 35.1470753,
+      "lon": -80.8090311,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11884843524,
+      "lat": 45.21906,
+      "lon": -93.3158725,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11926406740,
+      "lat": 45.2807662,
+      "lon": -93.5672623,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11988912633,
+      "lat": 44.9424252,
+      "lon": -92.9320597,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11988975539,
+      "lat": 44.9439748,
+      "lon": -92.9046678,
+      "tags": {
+        "addr:city": "Woodbury",
+        "addr:housenumber": "9955",
+        "addr:postcode": "55125",
+        "addr:state": "MN",
+        "addr:street": "Hudson Place",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-19:00, Sa,Su 06:00-18:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-651-731-5183",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/woodbury/9955-hudson-place"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11989054547,
+      "lat": 44.9208017,
+      "lon": -92.9384173,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11989079681,
+      "lat": 44.9263803,
+      "lon": -92.9636341,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12040235469,
+      "lat": 45.6349384,
+      "lon": -89.4155529,
+      "tags": {
+        "addr:housenumber": "232",
+        "addr:postcode": "54501",
+        "addr:street": "South Courtney Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop;tea",
+        "indoor_seating": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "phone": "+1-715-420-1870",
+        "website": "https://locations.cariboucoffee.com/us/wi/rhinelander/232-s-courtney-street"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12124640948,
+      "lat": 45.0093536,
+      "lon": -93.4506939,
+      "tags": {
+        "addr:city": "Plymouth",
+        "addr:housenumber": "2720",
+        "addr:postcode": "55441",
+        "addr:state": "MN",
+        "addr:street": "Annapolis Circle North",
+        "addr:unit": "Suite F",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/plymouth/2720-annapolis-circle"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12193006115,
+      "lat": 46.9204073,
+      "lon": -98.0193781,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12248425902,
+      "lat": 45.3155432,
+      "lon": -91.6520615,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "only"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12290903605,
+      "lat": 43.5277765,
+      "lon": -96.7309165,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12311531975,
+      "lat": 45.5642572,
+      "lon": -94.1425032,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12319698486,
+      "lat": 48.2591061,
+      "lon": -101.3213187,
+      "tags": {
+        "addr:city": "Minot",
+        "addr:housenumber": "1700 21st Ave NW",
+        "addr:postcode": "58703",
+        "addr:state": "ND",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "phone": "+1701578-3088",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12328345468,
+      "lat": 43.4618471,
+      "lon": -88.8350299,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "Caribou Coffee",
+        "service": "drive-through",
+        "takeaway": "only"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12335894133,
+      "lat": 45.0225978,
+      "lon": -93.3996507,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12437572233,
+      "lat": 46.7841945,
+      "lon": -92.0950084,
+      "tags": {
+        "addr:housenumber": "307",
+        "addr:street": "Canal Park Drive",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2024-12-20",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12451848527,
+      "lat": 41.9496677,
+      "lon": -91.7166095,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12582328602,
+      "lat": 43.015817,
+      "lon": -88.0510862,
+      "tags": {
+        "addr:postcode": "53214",
+        "contact:facebook": "cariboucoffee",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-18:00",
+        "shop": "coffee",
+        "website": "https://locations.cariboucoffee.com/us/wi/west-allis/11111-w-greenfield-ave"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12597598511,
+      "lat": 44.7972071,
+      "lon": -91.4650619,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12654028433,
+      "lat": 43.8739953,
+      "lon": -91.1884198,
+      "tags": {
+        "addr:city": "Onalaska",
+        "addr:housenumber": "3025",
+        "addr:postcode": "54650",
+        "addr:street": "South Kinney Coulee Road",
+        "addr:unit": "100",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "phone": "+1-608-394-3877",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/wi/onalaska/3025-s-kinney-coulee-rd"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12750640048,
+      "lat": 44.8037806,
+      "lon": -93.5779945,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "internet_access": "yes",
+        "name": "Caribou Coffee",
+        "outdoor_seating": "yes",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12753315922,
+      "lat": 44.9771037,
+      "lon": -93.2675381,
+      "tags": {
+        "amenity": "cafe",
+        "branch": "US Bank Plaza",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "website": "https://locations.cariboucoffee.com/us/mn/minneapolis/200-south-6th-street"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12875997517,
+      "lat": 45.0392745,
+      "lon": -93.2201811,
+      "tags": {
+        "addr:city": "Minneapolis",
+        "addr:housenumber": "2700",
+        "addr:state": "MN",
+        "addr:street": "39th Avenue Northeast",
+        "addr:unit": "A120",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "05:30-19:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-612-788-0170",
+        "takeaway": "yes",
+        "website": "https://locations.cariboucoffee.com/us/mn/minneapolis/2700-39th-avenue-ne"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13017745211,
+      "lat": 44.8297401,
+      "lon": -93.6000569,
+      "tags": {
+        "addr:city": "Chaska",
+        "addr:housenumber": "142",
+        "addr:postcode": "55318",
+        "addr:state": "MN",
+        "addr:street": "Pioneer Trail",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13072730553,
+      "lat": 48.7133231,
+      "lon": -94.5992638,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13305497720,
+      "lat": 46.8599113,
+      "lon": -96.8189054,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Fr 05:30-19:00; Sa,Su 06:00-19:00",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13382509701,
+      "lat": 44.7370327,
+      "lon": -92.8937047,
+      "tags": {
+        "addr:housenumber": "1823",
+        "addr:postcode": "55033",
+        "addr:street": "Market Boulevard",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13391644344,
+      "lat": 43.3157417,
+      "lon": -88.3586378,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Caribou Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13448863367,
+      "lat": 44.8190767,
+      "lon": -93.0386866,
+      "tags": {
+        "addr:housenumber": "9008",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13531876036,
+      "lat": 34.9584677,
+      "lon": -82.4380035,
+      "tags": {
+        "addr:city": "Travelers Rest",
+        "addr:housenumber": "569",
+        "addr:postcode": "29690",
+        "addr:state": "SC",
+        "addr:street": "Roe Center Court",
+        "addr:unit": "500",
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13588237001,
+      "lat": 45.1077335,
+      "lon": -93.2122977,
+      "tags": {
+        "check_date": "2026-02-21",
+        "name": "Caribou Coffee",
+        "shop": "coffee",
+        "website": "https://locations.cariboucoffee.com/us/mn/mounds-view/2585-county-road-10"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13618421501,
+      "lat": 45.7231673,
+      "lon": -94.9525311,
+      "tags": {
+        "addr:housenumber": "533",
+        "addr:postcode": "56378",
+        "addr:street": "12th Street South",
+        "amenity": "cafe",
+        "name": "Caribou Coffee",
+        "opening_hours": "Mo-Su 06:00-18:00",
+        "phone": "+1-320-527-9699"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13721627442,
+      "lat": 44.9479935,
+      "lon": -93.0940623,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "cuisine": "coffee_shop",
+        "layer": "1",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13726727019,
+      "lat": 44.8747683,
+      "lon": -93.2271831,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "Caribou Coffee",
+        "brand:wikidata": "Q5039494",
+        "check_date": "2026-04-12",
+        "cuisine": "coffee_shop",
+        "level": "1",
+        "name": "Caribou Coffee",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      }
+    }
+  ]
+}

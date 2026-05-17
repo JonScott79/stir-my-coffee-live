@@ -1,0 +1,356 @@
+<!-- stickers.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Stickers | Stir My Coffee™</title>
+
+<meta
+  name="description"
+  content="Download free Stir My Coffee QR stickers and help expose bad coffee one scan at a time."
+>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+>
+
+<link href="css/styles.css" rel="stylesheet" />
+
+<link id="baseTheme" rel="stylesheet" />
+<link id="holidayTheme" rel="stylesheet" />
+
+<style>
+
+.mini-card {
+  cursor: default;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.download-button {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: var(--accent);
+  color: white;
+
+  text-decoration: none;
+
+  padding: 14px 20px;
+
+  border-radius: 10px;
+
+  font-weight: bold;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.download-button:hover {
+
+  transform: translateY(-2px);
+
+  opacity: 0.95;
+}
+
+.preview-image {
+
+  width: 100%;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--border);
+
+  display: block;
+
+  margin-top: 14px;
+}
+
+.instructions-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px,1fr));
+
+  gap: 16px;
+}
+
+.fun-message {
+
+  text-align: center;
+}
+
+.fun-message p:last-child {
+  margin-bottom: 0;
+}
+
+</style>
+
+</head>
+
+<body class="content-page">
+
+<!-- HEADER -->
+
+<header>
+
+<img
+  src="images/StirLogo.png"
+  class="logo"
+  alt="Stir My Coffee logo"
+/>
+
+<div class="headerText">
+
+<h1>Stir My Coffee™</h1>
+
+<p class="tagline">
+Free QR Sticker Pack
+</p>
+
+</div>
+
+</header>
+
+<!-- MAIN -->
+
+<div class="container">
+
+  <!-- HERO -->
+
+  <div class="mini-card section">
+
+    <h2>
+      Don’t Enable Bad Coffee. Rate It.
+    </h2>
+
+    <p>
+      Download free Stir My Coffee™ QR stickers
+      and help coffee drinkers discover which
+      shops actually get the order right.
+    </p>
+
+    <p>
+      Print them. Cut them out. Spread them
+      responsibly throughout the caffeine universe.
+    </p>
+
+    <a
+      href="data/Stickers_3x3.pdf"
+      class="download-button"
+      download
+    >
+
+      <i class="fa-solid fa-download"></i>
+
+      Download Sticker PDF
+
+    </a>
+
+  </div>
+
+  <!-- PREVIEW -->
+
+  <div class="mini-card section">
+
+    <h2>
+      Sticker Preview
+    </h2>
+
+    <p>
+      Each sticker contains a QR code that links
+      directly into the Stir My Coffee™ network
+      so users can instantly rate coffee quality
+      and speed.
+    </p>
+
+    <img
+      src="images/sticker-preview.png"
+      alt="Stir My Coffee sticker sheet preview"
+      class="preview-image"
+    >
+
+  </div>
+
+  <!-- HOW TO -->
+
+  <div class="instructions-grid section">
+
+    <div class="mini-card">
+
+      <h2>
+        <i class="fa-solid fa-print"></i>
+        Print
+      </h2>
+
+      <p>
+        Print on regular paper or sticker paper.
+        Home printers work perfectly.
+      </p>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h2>
+        <i class="fa-solid fa-scissors"></i>
+        Cut
+      </h2>
+
+      <p>
+        Cut along the sticker borders and keep
+        extras in your backpack or laptop bag.
+      </p>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h2>
+        <i class="fa-solid fa-location-dot"></i>
+        Deploy
+      </h2>
+
+      <p>
+        Coffee shops. Offices. Campuses.
+        Anywhere people deserve better coffee.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FUN MESSAGE -->
+
+  <div class="mini-card fun-message">
+
+    <h2>
+      ☕ Welcome to the Coffee Resistance
+    </h2>
+
+    <p>
+      Every scan helps reward shops that care
+      and expose weak coffee operations.
+    </p>
+
+    <p>
+      Somewhere out there, someone is drinking
+      an unstirred iced coffee right now.
+      Together, we can stop this.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="footer-left">
+
+    © 2026 Stir My Coffee™
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+
+    <a href="legal.html">
+      Legal
+    </a>
+
+    <a href="mailto:hello@stirmycoffee.com">
+      Contact
+    </a>
+
+    <span class="version">
+
+      <a href="/changelog.html">
+
+        <span id="appVersion"></span>
+
+      </a>
+
+    </span>
+
+  </div>
+
+  <div class="footer-right">
+
+    <!-- PLAY -->
+
+    <a
+      href="https://play.google.com/store/apps/details?id=com.stirmycoffee.app"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="play-badge-link"
+    >
+
+      <img
+        src="images/google-play-badge.svg"
+        alt="Get it on Google Play"
+        class="play-badge"
+      >
+
+    </a>
+
+    <span class="footer-divider">
+      |
+    </span>
+
+    <!-- SOCIAL -->
+
+    <a
+      href="https://instagram.com/stir.my.coffee"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+    >
+
+      <i class="fa-brands fa-instagram"></i>
+
+    </a>
+
+    <a
+      href="https://www.facebook.com/profile.php?id=61576515072675"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+    >
+
+      <i class="fa-brands fa-facebook"></i>
+
+    </a>
+
+  </div>
+
+</footer>
+
+<script src="js/version.js"></script>
+<script src="js/theme.js" defer></script>
+
+<div id="themeFade"></div>
+
+</body>
+</html>

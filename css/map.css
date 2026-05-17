@@ -260,6 +260,10 @@
   pointer-events: none;
 }
 
+.leaflet-marker-icon {
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.28));
+}
+
 /* ======================== */
 /* ⭐ MAP STARS */
 /* ======================== */
@@ -288,3 +292,25 @@
   opacity: 0.4;
   pointer-events: none;
 }
+
+/* ======================== */
+/* REPORT PANEL */
+/* ======================== */
+
+#reportPanel {
+  top: 110px;
+  left: 12px;
+  width: 280px;
+  z-index: 2000;
+}
+
+#reportPanel select,
+#reportPanel textarea {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+#reportPanel textarea {
+  margin-top: 4px;
+}
+

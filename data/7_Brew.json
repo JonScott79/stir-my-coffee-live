@@ -1,0 +1,2125 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-25T15:28:28Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 738182839,
+      "lat": 37.9497941,
+      "lon": -91.7768293,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "7 Brew",
+        "website": "http://www.tggch.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4955227474,
+      "lat": 38.6543681,
+      "lon": -121.4908802,
+      "tags": {
+        "addr:housenumber": "826",
+        "addr:street": "Professor Lane",
+        "amenity": "pub",
+        "name": "Track 7 Brewing",
+        "website": "https://track7brewing.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5282900198,
+      "lat": 36.3344474,
+      "lon": -94.1765874,
+      "tags": {
+        "amenity": "cafe",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5291856442,
+      "lat": 36.3174939,
+      "lon": -94.1862087,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2026-02-13",
+        "name": "7 Brew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5614191647,
+      "lat": 39.6089321,
+      "lon": -84.1626371,
+      "tags": {
+        "addr:housenumber": "1035",
+        "addr:street": "S Main St",
+        "craft": "brewery",
+        "name": "Lock 27 Brewing",
+        "opening_hours": "Mo,Tu 11:00-22:00; We,Th 11:00-23:00; Fr,Sa 11:00-24:00; Su 11:00-21:00",
+        "phone": "+1-937-433-2739",
+        "website": "https://lock27brewing.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6409004592,
+      "lat": 42.2863983,
+      "lon": -84.4311629,
+      "tags": {
+        "name": "127 Brewing",
+        "opening_hours": "We,Th 14:00-22:00; Fr,Sa 14:00-24:00",
+        "shop": "beverages",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6716243025,
+      "lat": 39.7639459,
+      "lon": -84.1863048,
+      "tags": {
+        "addr:city": "Dayton",
+        "addr:housenumber": "329",
+        "addr:postcode": "45402",
+        "addr:state": "OH",
+        "addr:street": "East 1st Street",
+        "addr:unit": "rear",
+        "amenity": "pub",
+        "brewery": "yes",
+        "microbrewery": "yes",
+        "name": "Lock 27 Brewing",
+        "opening_hours": "Mo-Tu 11:00-22:00; We-Th 11:00-23:00; Fr-Sa 11:00-24:00; Su 11:00-21:00",
+        "smoking": "no",
+        "website": "https://lock27brewing.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7204644489,
+      "lat": 40.12232,
+      "lon": -83.1925336,
+      "tags": {
+        "addr:housenumber": "7620",
+        "addr:street": "Industrial Parkway",
+        "name": "1487 Brewery",
+        "shop": "beverages"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8008658894,
+      "lat": 47.3009595,
+      "lon": -122.4353263,
+      "tags": {
+        "addr:housenumber": "1000",
+        "addr:street": "Town Center",
+        "addr:unit": "Suite 160",
+        "craft": "brewery",
+        "description": "Craft micro pub with beers brewed on site.",
+        "name": "North 47 Brewing Co.",
+        "opening_hours": "Mo 15:00-22:00; Tu 15:00-22:00; We 15:00-22:00; Th 15:00-22:00; Fr 15:00-23:00; Sa 14:00-23:00; Su 13:00-20:00",
+        "phone": "+1-253-517-9865",
+        "website": "https://www.north47brewery.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9107805035,
+      "lat": 41.1194964,
+      "lon": -81.4742221,
+      "tags": {
+        "addr:city": "Cuyahoga Falls",
+        "addr:housenumber": "699",
+        "addr:postcode": "44221",
+        "addr:state": "OH",
+        "addr:street": "Howe Avenue",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9267522419,
+      "lat": 36.1507396,
+      "lon": -81.1941478,
+      "tags": {
+        "addr:city": "Wilkesboro",
+        "addr:housenumber": "1828",
+        "addr:postcode": "28697",
+        "addr:state": "NC",
+        "addr:street": "US-421",
+        "amenity": "cafe",
+        "brand": "7 Brew Coffee",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "image": "https://lh3.googleusercontent.com/p/AF1QipOlTwSymLWNWeJmgBCGK1vIViB2dfPtvyn3J8mf=w408-h241-k-no",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+14793589274",
+        "website": "https://7brew.com/location/north-carolina-wilkesboro-000336"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9448377549,
+      "lat": 37.0209127,
+      "lon": -76.4425834,
+      "tags": {
+        "addr:city": "Newport News",
+        "addr:housenumber": "5018",
+        "addr:postcode": "23605",
+        "addr:state": "VA",
+        "addr:street": "Mercury Boulevard",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10822776422,
+      "lat": 38.9290609,
+      "lon": -94.6672347,
+      "tags": {
+        "addr:city": "Overland Park",
+        "addr:housenumber": "11001",
+        "addr:postcode": "66211",
+        "addr:state": "KS",
+        "addr:street": "Metcalf Avenue",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "website": "https://7brew.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10913448396,
+      "lat": 31.8821867,
+      "lon": -102.3844873,
+      "tags": {
+        "addr:city": "Odessa",
+        "addr:housenumber": "3838",
+        "addr:postcode": "79762",
+        "addr:state": "TX",
+        "addr:street": "Andrews Highway",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew",
+        "phone": "+1-479-358-9274",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10977990405,
+      "lat": 38.8833506,
+      "lon": -94.7818383,
+      "tags": {
+        "amenity": "cafe",
+        "name": "7 Brew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11088427471,
+      "lat": 39.6368039,
+      "lon": -86.0898538,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew Coffee",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11168544238,
+      "lat": 30.4011639,
+      "lon": -91.1053995,
+      "tags": {
+        "addr:city": "Baton Rouge",
+        "addr:housenumber": "5117",
+        "addr:postcode": "70809",
+        "addr:state": "LA",
+        "addr:street": "Essen Lane",
+        "amenity": "cafe",
+        "brand": "7Brew",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "internet_access": "no",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00, Fr-Sa 05:30-23:00",
+        "outdoor_seating": "yes",
+        "payment:apple_pay": "yes",
+        "payment:cash": "yes",
+        "payment:coins": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:google_pay": "yes",
+        "payment:mastercard": "yes",
+        "payment:mastercard_contactless": "yes",
+        "payment:visa": "yes",
+        "phone": "+12258009095",
+        "website": "https://7brew.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11218293145,
+      "lat": 44.7337084,
+      "lon": -85.5976944,
+      "tags": {
+        "addr:city": "Traverse City",
+        "addr:housenumber": "1114",
+        "addr:postcode": "49686",
+        "addr:state": "MI",
+        "addr:street": "West South Airport Road",
+        "name": "7 Brew Coffee",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11359306597,
+      "lat": 31.8885181,
+      "lon": -102.351764,
+      "tags": {
+        "addr:city": "odessa",
+        "addr:housenumber": "4001",
+        "addr:state": "TX",
+        "addr:street": "North Grandview Avenue",
+        "amenity": "cafe",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11596191554,
+      "lat": 28.0355993,
+      "lon": -80.6401178,
+      "tags": {
+        "addr:city": "Palm Bay",
+        "addr:housenumber": "1165",
+        "addr:postcode": "32904",
+        "addr:state": "FL",
+        "addr:street": "Palm Bay Road Northeast",
+        "amenity": "cafe",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "outdoor_seating": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11682777728,
+      "lat": 33.8374891,
+      "lon": -78.6695975,
+      "tags": {
+        "addr:city": "North Myrtle Beach",
+        "addr:housenumber": "961",
+        "addr:postcode": "29582",
+        "addr:state": "SC",
+        "addr:street": "US Highway 17 North",
+        "amenity": "cafe",
+        "check_date:opening_hours": "2025-05-05",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-854-504-4982",
+        "website": "https://7brew.com/location/north-myrtle-beach-sc/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11704877335,
+      "lat": 37.1802755,
+      "lon": -93.2353833,
+      "tags": {
+        "addr:housenumber": "2970",
+        "addr:street": "East Sunshine Street",
+        "amenity": "cafe",
+        "check_date": "2024-03-08",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Mo-Th,Su 05:30-22:00; Fr-Sa 05:30-23:00",
+        "outdoor_seating": "no",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1 479-358-9274",
+        "toilets": "no",
+        "website": "https://7brew.com",
+        "website:menu": "7brew.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11810029314,
+      "lat": 35.4650531,
+      "lon": -94.3567771,
+      "tags": {
+        "addr:city": "Van Buren",
+        "addr:housenumber": "1911",
+        "addr:postcode": "72956",
+        "addr:state": "AR",
+        "addr:street": "Fayetteville Rd",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11837368869,
+      "lat": 32.931304,
+      "lon": -83.7272122,
+      "tags": {
+        "addr:housenumber": "1667",
+        "addr:postcode": "31210",
+        "addr:street": "Bass Road",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-479-358-9274",
+        "shop": "coffee",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11957248675,
+      "lat": 38.3283649,
+      "lon": -85.7437709,
+      "tags": {
+        "addr:city": "Jeffersonville",
+        "addr:housenumber": "1626",
+        "addr:postcode": "47130",
+        "addr:state": "IN",
+        "addr:street": "Veterans Parkway",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "check_date": "2024-06-04",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "Seven Brew",
+        "opening_hours": "Mo-Th,Su 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1 479-358-9274",
+        "takeaway": "yes",
+        "website": "https://7brew.com/location/jeffersonville-in-2/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12033971550,
+      "lat": 36.6228018,
+      "lon": -88.3145298,
+      "tags": {
+        "addr:city": "Murray",
+        "addr:housenumber": "700",
+        "addr:postcode": "42071",
+        "addr:state": "KY",
+        "addr:street": "North 12th Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12046455536,
+      "lat": 37.1604459,
+      "lon": -93.3121768,
+      "tags": {
+        "amenity": "fast_food",
+        "check_date:opening_hours": "2024-09-26",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours:signed": "no",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12173467076,
+      "lat": 34.800536,
+      "lon": -92.2547159,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2025-11-26",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "website": "https://7brew.com/location/north-little-rock-ar/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12217388497,
+      "lat": 35.1094925,
+      "lon": -92.4401772,
+      "tags": {
+        "addr:city": "Conway",
+        "addr:housenumber": "1135",
+        "addr:postcode": "72032",
+        "addr:state": "AR",
+        "addr:street": "Skyline Drive",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "delivery": "no",
+        "drive_through": "yes",
+        "name": "7 Brew",
+        "opening_hours": "Mo-Th 05:30-22:00, Fr-Sa 05:30-11:00",
+        "phone": "+15017649139",
+        "website": "https://7brew.com/",
+        "website:menu": "https://7brew.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12232464408,
+      "lat": 44.7240311,
+      "lon": -85.6467517,
+      "tags": {
+        "addr:city": "Traverse City",
+        "addr:housenumber": "2537",
+        "addr:postcode": "49684",
+        "addr:state": "MI",
+        "addr:street": "North US 31 South",
+        "name": "7 Brew Coffee",
+        "phone": "+1-231-454-2012",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12269781151,
+      "lat": 36.3357494,
+      "lon": -94.2050359,
+      "tags": {
+        "addr:city": "Bentonville",
+        "addr:country": "US",
+        "addr:housenumber": "411",
+        "addr:postcode": "72712",
+        "addr:state": "AR",
+        "addr:street": "Southeast Walton Boulevard",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "takeaway": "yes",
+        "website": "https://7brew.com/location/bentonville-ar-2/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12292582205,
+      "lat": 32.5381434,
+      "lon": -92.6525916,
+      "tags": {
+        "addr:city": "Ruston",
+        "addr:housenumber": "1110",
+        "addr:postcode": "71270",
+        "addr:state": "LA",
+        "addr:street": "Cooktown Road",
+        "amenity": "cafe",
+        "check_date": "2026-04-11",
+        "check_date:opening_hours": "2026-04-11",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "level": "0",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-479-358-9274",
+        "website": "https://locations.7brew.com/la/ruston/1110-cooktown-rd"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12292757223,
+      "lat": 36.1753852,
+      "lon": -94.2127511,
+      "tags": {
+        "addr:city": "Springdale",
+        "addr:housenumber": "1359",
+        "addr:postcode": "72762",
+        "addr:state": "AR",
+        "addr:street": "East Henri de Tonti Boulevard",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12508494587,
+      "lat": 40.7595039,
+      "lon": -96.6436605,
+      "tags": {
+        "addr:city": "Lincoln",
+        "addr:housenumber": "5302",
+        "addr:postcode": "68516",
+        "addr:state": "NE",
+        "addr:street": "South 56th Street",
+        "amenity": "cafe",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 5:30-23:00",
+        "phone": "+1-479-358-9274",
+        "website": "https://7brew.com/location/nebraska-lincoln-000317",
+        "website:menu": "https://7brew.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12545119321,
+      "lat": 37.3537483,
+      "lon": -79.2249902,
+      "tags": {
+        "addr:city": "Lynchburg",
+        "addr:housenumber": "7719",
+        "addr:state": "VA",
+        "addr:street": "Timberlake Road",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "only",
+        "name": "7 Brew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12626588872,
+      "lat": 26.2658144,
+      "lon": -98.2034922,
+      "tags": {
+        "addr:city": "Edinburg",
+        "addr:housenumber": "3000",
+        "addr:postcode": "78539",
+        "addr:state": "TX",
+        "addr:street": "West Trenton Road",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "only",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00, Fr-Sa 05:30-23:00",
+        "outdoor_seating": "yes",
+        "phone": "+1-956-663-4614",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12778876654,
+      "lat": 44.4624546,
+      "lon": -87.9858679,
+      "tags": {
+        "addr:city": "Bellevue",
+        "addr:housenumber": "2162",
+        "addr:postcode": "54311",
+        "addr:state": "WI",
+        "addr:street": "Monroe Road",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-479-358-9274",
+        "website": "https://7brew.com/location/wisconsin-bellevue-000528?gad_source=6&gclid=EAIaIQobChMIhcftmLzujAMV_EtHAR3JljH5EBEYASAHEgJa8fD_BwE"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12950163792,
+      "lat": 34.9765506,
+      "lon": -92.0251636,
+      "tags": {
+        "addr:city": "Cabot",
+        "addr:housenumber": "918",
+        "addr:postcode": "72023",
+        "addr:state": "AR",
+        "addr:street": "West Main Street",
+        "air_conditioning": "no",
+        "amenity": "cafe",
+        "changing_table": "no",
+        "check_date": "2025-12-30",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "email": "info@7brew.com",
+        "name": "7 Brew Coffee",
+        "outdoor_seating": "no",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1 501-764-9692",
+        "website": "https://7brew.com/location/arkansas-cabot-000183"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12958241739,
+      "lat": 35.8512785,
+      "lon": -101.9737937,
+      "tags": {
+        "addr:city": "Dumas",
+        "addr:housenumber": "1324",
+        "addr:postcode": "79029",
+        "addr:state": "TX",
+        "addr:street": "South Dumas Avenue",
+        "amenity": "cafe",
+        "building": "construction",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew",
+        "opening_date": "2025-11-01",
+        "outdoor_seating": "no",
+        "website": "https://7brew.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12992897683,
+      "lat": 38.8245145,
+      "lon": -90.8751646,
+      "tags": {
+        "addr:city": "Wentzville",
+        "addr:housenumber": "1540",
+        "addr:postcode": "63385",
+        "addr:state": "MO",
+        "addr:street": "Wentzville Parkway",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "fixme": "Fix the location marker",
+        "name": "7 Brew Coffee",
+        "outdoor_seating": "yes",
+        "phone": "+1-618-992-2893",
+        "website": "https://7brew.com/location/missouri-wentzville-000285"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12993525451,
+      "lat": 35.56016,
+      "lon": -77.4061648,
+      "tags": {
+        "amenity": "cafe",
+        "drive_through": "only",
+        "name": "7 Brews"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12996211259,
+      "lat": 33.6414309,
+      "lon": -86.6234185,
+      "tags": {
+        "addr:city": "Trussville",
+        "addr:housenumber": "5982",
+        "addr:postcode": "35235",
+        "addr:state": "AL",
+        "addr:street": "Chalkville Mountain Road",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "check_date": "2025-09-30",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13002184601,
+      "lat": 41.4829764,
+      "lon": -72.8105615,
+      "tags": {
+        "addr:housenumber": "905",
+        "addr:postcode": "06492",
+        "addr:street": "North Colony Road",
+        "name": "7 Brew",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13016372201,
+      "lat": 29.2241049,
+      "lon": -81.0914607,
+      "tags": {
+        "addr:housenumber": "2079",
+        "addr:postcode": "32117",
+        "addr:street": "LPGA Boulevard",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:00-22:00; Fr-Sa 05:00-23:00",
+        "phone": "+1-479-358-9274",
+        "shop": "coffee",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13028360524,
+      "lat": 32.5233764,
+      "lon": -92.0983941,
+      "tags": {
+        "addr:city": "Monroe",
+        "addr:housenumber": "2401",
+        "addr:postcode": "71201",
+        "addr:state": "LA",
+        "addr:street": "Louisville Avenue",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13030696960,
+      "lat": 40.5080889,
+      "lon": -111.986242,
+      "tags": {
+        "addr:city": "Riverton",
+        "addr:housenumber": "4004",
+        "addr:postcode": "84096",
+        "addr:state": "UT",
+        "addr:street": "West 13400 South",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew Drive-Thru Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "website": "https://7brew.com/location/utah-riverton-000199"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13088536912,
+      "lat": 41.954707,
+      "lon": -91.7165608,
+      "tags": {
+        "addr:housenumber": "2350",
+        "addr:street": "Edgewood Road Southwest",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "outdoor_seating": "no",
+        "takeaway": "only"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13143105159,
+      "lat": 34.8194142,
+      "lon": -92.2363213,
+      "tags": {
+        "addr:city": "North Little Rock",
+        "addr:housenumber": "7001",
+        "addr:postcode": "72116",
+        "addr:state": "AR",
+        "addr:street": "John F Kennedy Boulevard",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "outdoor_seating": "no",
+        "phone": "+1 501-462-3782",
+        "website": "https://7brew.com/location/arkansas-north-little-rock-000324"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13154344421,
+      "lat": 30.3664876,
+      "lon": -87.6825107,
+      "tags": {
+        "addr:city": "Foley",
+        "addr:housenumber": "3201",
+        "addr:postcode": "36535",
+        "addr:state": "AL",
+        "addr:street": "McKenzie Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "phone": "+1-479-358-9274",
+        "website": "https://locations.7brew.com/al/foley/3201-s-mckenzie-st"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13160846218,
+      "lat": 28.9837886,
+      "lon": -95.9538694,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr,Sa 05:30-23:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13183922088,
+      "lat": 32.3962016,
+      "lon": -99.7620055,
+      "tags": {
+        "addr:city": "Abilene",
+        "addr:country": "US",
+        "addr:housenumber": "4458",
+        "addr:postcode": "79606",
+        "addr:state": "TX",
+        "addr:street": "Buffalo Gap Road",
+        "amenity": "cafe",
+        "branch": "Abilene",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/texas-abilene-000458",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184005692,
+      "lat": 32.4780505,
+      "lon": -99.697323,
+      "tags": {
+        "addr:city": "Abilene",
+        "addr:country": "US",
+        "addr:housenumber": "1639",
+        "addr:postcode": "79601",
+        "addr:state": "TX",
+        "addr:street": "Highway 351",
+        "amenity": "cafe",
+        "branch": "Abilene",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/texas-abilene-000245",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184042921,
+      "lat": 34.7901814,
+      "lon": -96.6675775,
+      "tags": {
+        "addr:city": "Ada",
+        "addr:country": "US",
+        "addr:housenumber": "910",
+        "addr:postcode": "74820",
+        "addr:state": "OK",
+        "addr:street": "Lonnie Abbott Boulevard",
+        "amenity": "cafe",
+        "branch": "Ada",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/oklahoma-ada-000392",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184051251,
+      "lat": 33.2136756,
+      "lon": -86.8280945,
+      "tags": {
+        "addr:city": "Alabaster",
+        "addr:country": "US",
+        "addr:housenumber": "9207",
+        "addr:postcode": "35007",
+        "addr:state": "AL",
+        "addr:street": "Montevallo Road",
+        "amenity": "cafe",
+        "branch": "Alabaster",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 659-259-0015",
+        "website": "https://7brew.com/location/alabama-alabaster-000359",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184083089,
+      "lat": 37.473943,
+      "lon": -105.8905431,
+      "tags": {
+        "addr:city": "Alamosa",
+        "addr:country": "US",
+        "addr:housenumber": "2209",
+        "addr:postcode": "81101",
+        "addr:state": "CO",
+        "addr:street": "Main Street",
+        "amenity": "cafe",
+        "branch": "Alamosa",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 720-983-1120",
+        "website": "https://7brew.com/location/colorado-alamosa-000196",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184128483,
+      "lat": 35.126786,
+      "lon": -106.702087,
+      "tags": {
+        "addr:city": "Albuquerque",
+        "addr:country": "US",
+        "addr:housenumber": "3835",
+        "addr:postcode": "87120",
+        "addr:state": "NM",
+        "addr:street": "Coors Boulevard Northwest",
+        "amenity": "cafe",
+        "branch": "Albuquerque",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/new-mexico-albuquerque-000152",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184352346,
+      "lat": 27.7523676,
+      "lon": -98.0620101,
+      "tags": {
+        "addr:city": "Alice",
+        "addr:country": "US",
+        "addr:housenumber": "1172",
+        "addr:postcode": "78332",
+        "addr:state": "TX",
+        "addr:street": "East Main Street",
+        "amenity": "cafe",
+        "branch": "Alice",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 361-929-3419",
+        "website": "https://7brew.com/location/texas-alice-000832",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184392079,
+      "lat": 44.2442638,
+      "lon": -88.3507286,
+      "tags": {
+        "addr:city": "Appleton",
+        "addr:country": "US",
+        "addr:housenumber": "W3236",
+        "addr:postcode": "54915",
+        "addr:state": "WI",
+        "addr:street": "East Calumet Street",
+        "amenity": "cafe",
+        "branch": "Appleton",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/wisconsin-appleton-000529",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184398425,
+      "lat": 42.02328,
+      "lon": -93.6679075,
+      "tags": {
+        "addr:city": "Ames",
+        "addr:country": "US",
+        "addr:housenumber": "3615",
+        "addr:postcode": "50014",
+        "addr:state": "IA",
+        "addr:street": "Lincoln Way",
+        "amenity": "cafe",
+        "branch": "Ames",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 515-304-5920",
+        "website": "https://7brew.com/location/iowa-ames-000773",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184400187,
+      "lat": 41.7323013,
+      "lon": -93.5823069,
+      "tags": {
+        "addr:city": "Ankeny",
+        "addr:country": "US",
+        "addr:housenumber": "1020",
+        "addr:postcode": "50021",
+        "addr:state": "IA",
+        "addr:street": "East 1st Street",
+        "amenity": "cafe",
+        "branch": "Ankey",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 515-304-5920",
+        "website": "https://7brew.com/location/iowa-ankeny-000050",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184401533,
+      "lat": 39.2910822,
+      "lon": -84.3059926,
+      "tags": {
+        "addr:city": "Cincinnati",
+        "addr:country": "US",
+        "addr:housenumber": "9281",
+        "addr:postcode": "45249",
+        "addr:state": "OH",
+        "addr:street": "Fields Ertel Road",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "opening_hours": "Mo-Sa 05:30-23:00",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/ohio-cincinnati-000418"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184431373,
+      "lat": 34.7813172,
+      "lon": -86.9337702,
+      "tags": {
+        "addr:city": "Athens",
+        "addr:country": "US",
+        "addr:housenumber": "15383",
+        "addr:postcode": "35611",
+        "addr:state": "AL",
+        "addr:street": "Flinders Lane",
+        "amenity": "cafe",
+        "branch": "Athens",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 256-913-4738",
+        "website": "https://7brew.com/location/alabama-athens-000421",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184459726,
+      "lat": 35.4503989,
+      "lon": -84.6198759,
+      "tags": {
+        "addr:city": "Athens",
+        "addr:country": "US",
+        "addr:housenumber": "1514",
+        "addr:postcode": "37303",
+        "addr:state": "TN",
+        "addr:street": "Decatur Pike",
+        "amenity": "cafe",
+        "branch": "Athens",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 423-830-8974",
+        "website": "https://7brew.com/location/tennessee-athens-000263",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184474057,
+      "lat": 32.6100144,
+      "lon": -85.4481518,
+      "tags": {
+        "addr:city": "Auburn",
+        "addr:country": "US",
+        "addr:housenumber": "1615",
+        "addr:postcode": "36830",
+        "addr:state": "AL",
+        "addr:street": "East University Drive",
+        "amenity": "cafe",
+        "branch": "Auburn",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 479-358-9274",
+        "website": "https://7brew.com/location/alabama-auburn-000207",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184494536,
+      "lat": 33.4178189,
+      "lon": -82.0233511,
+      "tags": {
+        "addr:city": "Augusta",
+        "addr:country": "US",
+        "addr:housenumber": "2915",
+        "addr:postcode": "30906",
+        "addr:state": "GA",
+        "addr:street": "Peach Orchard Road",
+        "amenity": "cafe",
+        "branch": "Augusta",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 706-426-5585",
+        "website": "https://7brew.com/location/georgia-augusta-000102",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184657036,
+      "lat": 39.6962566,
+      "lon": -104.830631,
+      "tags": {
+        "addr:city": "Aurora",
+        "addr:country": "US",
+        "addr:housenumber": "13792",
+        "addr:postcode": "80012",
+        "addr:state": "CO",
+        "addr:street": "East Mississippi Avenue",
+        "amenity": "cafe",
+        "branch": "Augusta",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 720-983-1120",
+        "website": "https://7brew.com/location/colorado-aurora-000353",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184666644,
+      "lat": 33.4676658,
+      "lon": -82.0808592,
+      "tags": {
+        "addr:city": "Augusta",
+        "addr:country": "US",
+        "addr:housenumber": "3435",
+        "addr:postcode": "30909",
+        "addr:state": "GA",
+        "addr:street": "Wrightsboro Road",
+        "amenity": "cafe",
+        "branch": "Augusta",
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "indoor_seating": "no",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "phone": "+1 706-426-5530",
+        "takeaway": "yes",
+        "website": "https://7brew.com/location/georgia-augusta-000554",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13184685037,
+      "lat": 30.8384557,
+      "lon": -83.3184799,
+      "tags": {
+        "brand": "7 Brew",
+        "brand:website": "https://7brew.com",
+        "brand:wikidata": "Q131838275",
+        "construction:amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "email": "info@7brew.com",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:gift_card": "yes",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13207816905,
+      "lat": 38.9720457,
+      "lon": -95.2984361,
+      "tags": {
+        "addr:city": "Lawrence",
+        "addr:housenumber": "4433",
+        "addr:postcode": "66049",
+        "addr:state": "KS",
+        "addr:street": "Bauer Farm Drive",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-816-300-3622",
+        "website": "https://7brew.com/location/kansas-lawrence-000790"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13256879337,
+      "lat": 40.0055944,
+      "lon": -83.0089754,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13275900457,
+      "lat": 30.1453168,
+      "lon": -85.5914941,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop;tea",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13279094568,
+      "lat": 34.7543624,
+      "lon": -92.4032106,
+      "tags": {
+        "addr:city": "Little Rock",
+        "addr:housenumber": "11418",
+        "addr:postcode": "72211",
+        "addr:state": "AR",
+        "addr:street": "West Markham Street",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "fixme": "This is similar to orientation of the 7 Brew on N Rodney Parham Rd.  Please update this, the drive-through lanes, parking lot, and service road once the map is updated or you are otherwise able.  Parking exists for employees only.",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr,Sa 05:30-23:00",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "+1-501-764-9139",
+        "takeaway": "yes",
+        "website": "https://7brew.com/location/arkansas-little-rock-000173"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13329319883,
+      "lat": 37.1598174,
+      "lon": -93.2693137,
+      "tags": {
+        "building": "retail",
+        "name": "7 Brew",
+        "shop": "coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13334894413,
+      "lat": 30.0048494,
+      "lon": -90.2190154,
+      "tags": {
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "only",
+        "name": "7 Brew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13348993357,
+      "lat": 40.7855951,
+      "lon": -77.8330715,
+      "tags": {
+        "addr:city": "State College",
+        "addr:housenumber": "1923",
+        "addr:postcode": "16801",
+        "addr:state": "PA",
+        "addr:street": "South Atherton Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr,Sa 05:30-23:00",
+        "outdoor_seating": "no",
+        "phone": "+1 479-358-9274",
+        "start_date": "2025-12-08",
+        "website": "https://locations.7brew.com/pa/state-college"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13374102545,
+      "lat": 28.9833743,
+      "lon": -81.2988478,
+      "tags": {
+        "addr:city": "DeLand",
+        "addr:housenumber": "2597",
+        "addr:postcode": "32720",
+        "addr:state": "FL",
+        "addr:street": "South Woodland Boulevard",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "phone": "+1-479-358-9274",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13411792645,
+      "lat": 39.4788846,
+      "lon": -76.3109026,
+      "tags": {
+        "addr:city": "Abingdon",
+        "addr:housenumber": "2912",
+        "addr:postcode": "21009",
+        "addr:state": "MD",
+        "addr:street": "Emmorton Road",
+        "alt_name": "Seven Brew Coffee",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew Coffee",
+        "phone": "+1-479-358-9274",
+        "start_date": "2025-12-29"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13415715144,
+      "lat": 41.493889,
+      "lon": -87.0463926,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13507016579,
+      "lat": 34.7898113,
+      "lon": -92.2208507,
+      "tags": {
+        "addr:city": "North Little Rock",
+        "addr:housenumber": "4211",
+        "addr:postcode": "72117",
+        "addr:state": "AR",
+        "addr:street": "McCain Boulevard",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "check_date": "2026-01-28",
+        "cuisine": "coffee_shop",
+        "description": "Drive-thru only coffee",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "phone": "+1 479 358 9274",
+        "takeaway": "yes",
+        "website": "https://locations.7brew.com/ar/north-little-rock/4211-east-mccain-boulevard",
+        "website:menu": "https://7brew.com/menu"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13508142919,
+      "lat": 36.0020471,
+      "lon": -95.6798011,
+      "tags": {
+        "amenity": "cafe",
+        "building": "retail",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13535448052,
+      "lat": 37.36673,
+      "lon": -79.1749848,
+      "tags": {
+        "addr:city": "Lynchburg",
+        "addr:housenumber": "3403",
+        "addr:postcode": "24502",
+        "addr:state": "VA",
+        "addr:street": "Candlers Mountain Road",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "drive_through": "yes",
+        "name": "7 Brew",
+        "website": "https://locations.7brew.com/va/lynchburg/3403-candlers-mountain-road"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13544497317,
+      "lat": 42.9905764,
+      "lon": -78.8150529,
+      "tags": {
+        "addr:city": "Amherst",
+        "addr:housenumber": "3999",
+        "addr:postcode": "14226",
+        "addr:state": "NY",
+        "addr:street": "Maple Road",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew",
+        "outdoor_seating": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13562927151,
+      "lat": 38.8943632,
+      "lon": -99.3171553,
+      "tags": {
+        "addr:city": "Hays",
+        "addr:housenumber": "3380",
+        "addr:postcode": "67601",
+        "addr:state": "KS",
+        "addr:street": "North Vine Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "outdoor_seating": "no",
+        "payment:american_express": "yes",
+        "payment:apple_pay": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:discover_card": "yes",
+        "payment:google_pay": "yes",
+        "payment:mastercard": "yes",
+        "payment:samsung_pay": "yes",
+        "payment:visa": "yes",
+        "phone": "+1-479-358-9274",
+        "start_date": "2025-11",
+        "takeaway": "yes",
+        "website": "https://locations.7brew.com/ks/hays/3380-vine-street"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13563997091,
+      "lat": 31.579778,
+      "lon": -90.4615906,
+      "tags": {
+        "amenity": "cafe",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13565004301,
+      "lat": 33.1690279,
+      "lon": -87.5191935,
+      "tags": {
+        "addr:housenumber": "1404",
+        "addr:postcode": "35405",
+        "addr:street": "Skyland Boulevard East",
+        "amenity": "cafe",
+        "check_date": "2026-02-14",
+        "check_date:opening_hours": "2026-02-14",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "outdoor_seating": "no",
+        "phone": "+1-479-358-9274",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13565026901,
+      "lat": 33.1979583,
+      "lon": -87.5310186,
+      "tags": {
+        "addr:housenumber": "406",
+        "addr:postcode": "35401",
+        "addr:street": "15th Street East",
+        "amenity": "cafe",
+        "check_date": "2026-02-14",
+        "check_date:opening_hours": "2026-02-14",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "outdoor_seating": "no",
+        "phone": "+1-479-358-9274",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13574929516,
+      "lat": 46.8510577,
+      "lon": -96.7688337,
+      "tags": {
+        "addr:housenumber": "2401",
+        "addr:street": "8th Street South",
+        "amenity": "cafe",
+        "description": "Drive thru coffee shop",
+        "name": "7 Brew",
+        "opening_hours": "Mo-Su 05:30-22:00",
+        "phone": "+1-479-358-9274",
+        "website": "https://locations.7brew.com/mn/moorhead/2401-8th-street-south"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13594558701,
+      "lat": 27.5309052,
+      "lon": -99.4816659,
+      "tags": {
+        "addr:housenumber": "1501",
+        "addr:postcode": "78041",
+        "addr:street": "East Olive Street",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Su-Th 05:30-23:00; Fr-Sa 05:30-00:00",
+        "phone": "+14793589274",
+        "website": "https://7brew.com/location/laredo-tx"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13594558702,
+      "lat": 27.5310924,
+      "lon": -99.4809268,
+      "tags": {
+        "addr:housenumber": "1509",
+        "addr:postcode": "78041",
+        "addr:street": "East Olive Street",
+        "amenity": "cafe",
+        "name": "7 Brew Coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13596038795,
+      "lat": 35.3764028,
+      "lon": -77.9398735,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "description": "Drive thru only",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "Seven Brew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13598625775,
+      "lat": 45.5537907,
+      "lon": -94.2106947,
+      "tags": {
+        "addr:housenumber": "4149",
+        "addr:street": "Division St",
+        "name": "7 Brew Coffee",
+        "opening_hours": "Mo-Su 05:30-22:00",
+        "phone": "+1-479-358-9274",
+        "shop": "coffee",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13614555741,
+      "lat": 33.5139321,
+      "lon": -81.7149154,
+      "tags": {
+        "addr:city": "Aiken",
+        "addr:country": "US",
+        "addr:housenumber": "2235",
+        "addr:postcode": "29803",
+        "addr:state": "SC",
+        "addr:street": "Whiskey Road",
+        "amenity": "cafe",
+        "disused:amenity": "fast_food",
+        "disused:name": "Checkers",
+        "name": "7 Brew Coffee",
+        "takeaway": "only",
+        "website": "https://locations.7brew.com/sc/aiken/2235-whiskey-road"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13621988655,
+      "lat": 36.1043132,
+      "lon": -79.8248395,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2026-03-06",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13627063533,
+      "lat": 42.1290217,
+      "lon": -72.6261533,
+      "tags": {
+        "addr:city": "West Springfield",
+        "addr:housenumber": "927",
+        "addr:postcode": "01089",
+        "addr:state": "MA",
+        "addr:street": "Riverdale Street",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "diet:lactose_free": "yes",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "outdoor_seating": "no",
+        "phone": "+1-479-358-9274",
+        "takeaway": "yes",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13634211864,
+      "lat": 42.6269034,
+      "lon": -88.614412,
+      "tags": {
+        "addr:city": "Delavan",
+        "addr:housenumber": "1738",
+        "addr:postcode": "53115",
+        "addr:state": "WI",
+        "addr:street": "East Geneva Street",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13645809630,
+      "lat": 31.2186819,
+      "lon": -85.360092,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew Coffee",
+        "brand:wikidata": "Q131838275"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13667283914,
+      "lat": 41.450837,
+      "lon": -96.4524291,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13687087260,
+      "lat": 34.753688,
+      "lon": -86.7452889,
+      "tags": {
+        "addr:city": "Madison",
+        "addr:housenumber": "101",
+        "addr:postcode": "35758",
+        "addr:state": "AL",
+        "addr:street": "Uptown Drive",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:00-22:00; Fri-Sat 05:00-23:00",
+        "phone": "+1-479-358-9274",
+        "takeaway": "yes",
+        "website": "https://7brew.com/location/alabama-madison-000457",
+        "website:menu": "https://7brew.com/menu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13711979348,
+      "lat": 35.9817378,
+      "lon": -86.5539565,
+      "tags": {
+        "addr:city": "Smyrna",
+        "addr:housenumber": "800",
+        "addr:postcode": "37167",
+        "addr:state": "TN",
+        "addr:street": "Isabella Lane",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-479-358-9274",
+        "takeaway": "yes",
+        "website": "https://7Brew.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13714497864,
+      "lat": 37.5703072,
+      "lon": -97.2437522,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13714618103,
+      "lat": 34.9006298,
+      "lon": -95.7537802,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13717567406,
+      "lat": 35.6418915,
+      "lon": -106.0119005,
+      "tags": {
+        "addr:city": "Santa Fe",
+        "addr:housenumber": "3505",
+        "addr:state": "NM",
+        "addr:street": "Zafarano Drive",
+        "cuisine": "coffee_shop",
+        "name": "7 Brew",
+        "planned:amenity": "cafe"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13726072346,
+      "lat": 34.3636206,
+      "lon": -89.5135471,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13741690632,
+      "lat": 37.2468123,
+      "lon": -77.3899467,
+      "tags": {
+        "addr:city": "Colonial Heights",
+        "addr:housenumber": "660",
+        "addr:postcode": "23834",
+        "addr:state": "VA",
+        "addr:street": "Southpark Boulevard",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew",
+        "opening_hours": "Su-Th 05:30-22:00; Fr-Sa 05:30-23:00",
+        "phone": "+1-479-358-9274",
+        "takeaway": "yes",
+        "website": "https://7brew.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13750391050,
+      "lat": 31.53133,
+      "lon": -97.195133,
+      "tags": {
+        "addr:city": "Waco",
+        "addr:housenumber": "1540",
+        "addr:postcode": "76710",
+        "addr:state": "TX",
+        "addr:street": "North Valley Mills Drive",
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "brand:wikidata": "Q131838275",
+        "cuisine": "coffee_shop",
+        "drink:coffee": "yes",
+        "drive_through": "only",
+        "name": "7 Brew Coffeee",
+        "phone": "+1-479-358-9274",
+        "takeaway": "yes",
+        "website": "https://locations.7brew.com/tx/waco/1540-north-valley-mills-drive"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13753167226,
+      "lat": 26.5725517,
+      "lon": -80.1160651,
+      "tags": {
+        "amenity": "cafe",
+        "brand": "7 Brew",
+        "cuisine": "coffee_shop",
+        "takeaway": "only"
+      }
+    }
+  ]
+}
