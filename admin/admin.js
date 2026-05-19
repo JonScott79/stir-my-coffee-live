@@ -33,16 +33,33 @@ const bootLines = [
 ];
 
 // =====================================
-// GLOBAL STATE
+// GLOBAL STATE & DOM ELEMENTS
 // =====================================
 
 let allLocations = [];
+
+// Explicitly declared DOM references to prevent ReferenceErrors
+let emailInput, passwordInput, loginView, app, searchInput;
+let metricLocations, metricVotes, metricReports, metricAccuracy;
 
 // =====================================
 // BOOT
 // =====================================
 
 window.addEventListener("load", async () => {
+
+  // Bind form inputs and view structures
+  emailInput = document.getElementById("emailInput") || document.querySelector("input[type='email']");
+  passwordInput = document.getElementById("passwordInput") || document.querySelector("input[type='password']");
+  loginView = document.getElementById("loginView");
+  app = document.getElementById("app");
+  searchInput = document.getElementById("searchInput");
+
+  // Bind metrics elements
+  metricLocations = document.getElementById("metricLocations");
+  metricVotes = document.getElementById("metricVotes");
+  metricReports = document.getElementById("metricReports");
+  metricAccuracy = document.getElementById("metricAccuracy");
 
   const container =
     document.getElementById("bootLines");
@@ -64,8 +81,9 @@ window.addEventListener("load", async () => {
   document.getElementById("bootScreen")
     .style.display = "none";
 
-  document.getElementById("loginView")
-    .classList.remove("hidden");
+  if (loginView) {
+    loginView.classList.remove("hidden");
+  }
 });
 
 function delay(ms) {
@@ -76,13 +94,28 @@ function delay(ms) {
 // LOGIN
 // =====================================
 
-document.getElementById("loginBtn")
-  .addEventListener("click", login);
+// Safely bind event listeners and handle default form submissions
+const loginBtn = document.getElementById("loginBtn");
+if (loginBtn) {
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    login();
+  });
+}
 
-document.getElementById("logoutBtn")
-  .addEventListener("click", logout);
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    logout();
+  });
+}
 
 function login() {
+  if (!emailInput || !passwordInput) {
+    console.error("Authentication DOM inputs are missing.");
+    return;
+  }
 
   const email =
     emailInput.value.trim();
@@ -95,7 +128,6 @@ function login() {
     password
   )
   .catch(err => {
-
     console.error(err);
     alert(err.message);
   });
@@ -106,6 +138,9 @@ function logout() {
 }
 
 auth.onAuthStateChanged(user => {
+
+  // Guard rails in case DOM elements aren't initialized yet
+  if (!loginView || !app) return;
 
   // Block non-admins
   if (user && user.email !== ADMIN_EMAIL) {
