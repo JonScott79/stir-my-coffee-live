@@ -6,12 +6,23 @@
 - Fixed Top Picks address loading issue affecting certain Fastest locations
 - Fixed duplicate geocoding requests causing some addresses to remain stuck on "Locating address..."
 - Resolved address loading edge cases caused by duplicate location processing
+- Fixed speed rating edge cases preventing some slider values from registering correctly
+- Fixed layout width issue causing cards to leave unused space in certain views
+- Fixed inconsistent card sizing between Rate Shops and Best Nearby layouts
 
 ### Improved
 - Added strict location deduplication before reverse-geocoding requests
 - Improved request sequencing for address lookups
 - Improved reliability of address resolution across Top Picks and Best Nearby views
 - Reduced unnecessary API calls during UI refreshes
+- Improved responsive layout behavior between list and sidebar views
+- Improved visual consistency across location cards
+- Improved speed rating interaction reliability
+
+### Changed
+- Updated speed slider interaction flow with improved default behavior
+- Updated speed slider styling with new blue visual system
+- Added clearer locked-state styling for previously rated locations
 
 ### Technical
 - Added protected ID-based batching logic for geocoding operations

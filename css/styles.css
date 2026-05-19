@@ -60,12 +60,13 @@ body {
   overflow-y: auto;
 }
 
-/* 🔥 FIX: Changed from display: block to a proper responsive grid */
 .mainLayout {
-  display: grid;
-  grid-template-columns: 1fr 380px; /* Desktop splits into List and Sidebar */
-  gap: 24px;
-  align-items: start;
+  display:grid;
+  grid-template-columns:1fr;
+
+  gap:24px;
+
+  align-items:start;
 }
 
 .listSection {
@@ -237,10 +238,15 @@ border: 3px solid #3A160B;
 }
 
 .location-card {
-  padding: 14px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow-soft);
-  cursor: pointer;
+  width:100%;
+  max-width:100%;
+
+  padding:14px;
+  margin-bottom:12px;
+
+  box-shadow:var(--shadow-soft);
+
+  cursor:pointer;
 }
 
 .mini-card,
@@ -266,31 +272,36 @@ border: 3px solid #3A160B;
 ======================== */
 
 .meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
 
-  gap: 10px;
+  gap:10px;
 
-  font-size: 13px;
-  line-height: 1.2;
+  font-size:13px;
+  line-height:1.2;
+
+  width:100%;
 }
 
 .meta > span {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
 
-  min-width: 0;
+  flex-shrink:0;
 }
 
-.street {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 8px;
+.speed-slider {
+  display:inline-flex;
+  align-items:center;
 
-  width: 100%;
-  word-break: break-word;
+  flex:1 1 180px;
+
+  min-width:140px;
+  max-width:220px;
+
+  gap:4px;
 }
 
 /* ========================

@@ -2238,14 +2238,20 @@ function switchView(view) {
   const rateTab = document.getElementById("rateTab");
   const bestTab = document.getElementById("bestTab");
 
+  const layout = document.querySelector(".mainLayout");
+
   // reset tabs
   rateTab.classList.remove("active");
   bestTab.classList.remove("active");
 
   if (view === "rate") {
 
+    // show rate page
     rateView.style.display = "block";
     bestView.style.display = "none";
+
+    // 🔥 make content use full width
+    layout.style.gridTemplateColumns = "1fr";
 
     rateTab.classList.add("active");
 
@@ -2255,14 +2261,19 @@ function switchView(view) {
 
   } else {
 
+    // show best page
     rateView.style.display = "none";
     bestView.style.display = "block";
+
+    // 🔥 restore sidebar layout
+    layout.style.gridTemplateColumns = "1fr 380px";
 
     bestTab.classList.add("active");
 
     trackEvent("switch_view", {
       view: "best"
     });
+
   }
 }
 
