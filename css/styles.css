@@ -60,8 +60,12 @@ body {
   overflow-y: auto;
 }
 
+/* 🔥 FIX: Changed from display: block to a proper responsive grid */
 .mainLayout {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 380px; /* Desktop splits into List and Sidebar */
+  gap: 24px;
+  align-items: start;
 }
 
 .listSection {
@@ -243,6 +247,18 @@ border: 3px solid #3A160B;
 #topPickCard {
   padding: 16px;
   box-shadow: var(--shadow-strong);
+}
+
+.mini-card .name {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.mini-address {
+  color:#777;
+  font-size:12px;
+  margin-top:2px;
 }
 
 /* ========================

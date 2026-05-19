@@ -1,3 +1,26 @@
+## [3.0.2] – May 2026
+
+### ☕ Address Resolution & Stability Hotfix
+
+### Fixed
+- Fixed Top Picks address loading issue affecting certain Fastest locations
+- Fixed duplicate geocoding requests causing some addresses to remain stuck on "Locating address..."
+- Resolved address loading edge cases caused by duplicate location processing
+
+### Improved
+- Added strict location deduplication before reverse-geocoding requests
+- Improved request sequencing for address lookups
+- Improved reliability of address resolution across Top Picks and Best Nearby views
+- Reduced unnecessary API calls during UI refreshes
+
+### Technical
+- Added protected ID-based batching logic for geocoding operations
+- Introduced request throttling to reduce reverse-geocoder rate-limit issues
+- Improved render/update flow for asynchronous address loading
+
+### Misc
+- The Very Hungry Caterpillar was successfully contained 🐛☕
+
 ## [3.0.1] – May 2026
 
 ### ☕ Post Launch Stabilization Update

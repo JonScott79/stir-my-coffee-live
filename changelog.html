@@ -70,7 +70,58 @@
     Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
   </p>
  
- 
+ <!-- v3.0.2 -->
+<div class="changelog-entry">
+
+<div class="version-title">
+v3.0.2 – May 2026
+</div>
+
+<div class="section-title">
+☕ Address Resolution & Stability Hotfix
+</div>
+
+<div class="section-title">
+Fixed
+</div>
+
+<ul>
+<li>Fixed Top Picks address loading issue affecting certain Fastest locations</li>
+<li>Fixed duplicate geocoding requests causing some addresses to remain stuck on "Locating address..."</li>
+<li>Resolved address loading edge cases caused by duplicate location processing</li>
+</ul>
+
+<div class="section-title">
+Improved
+</div>
+
+<ul>
+<li>Added strict location deduplication before reverse-geocoding requests</li>
+<li>Improved request sequencing for address lookups</li>
+<li>Improved reliability of address resolution across Top Picks and Best Nearby views</li>
+<li>Reduced unnecessary API calls during UI refreshes</li>
+</ul>
+
+<div class="section-title">
+Technical
+</div>
+
+<ul>
+<li>Added protected ID-based batching logic for geocoding operations</li>
+<li>Introduced request throttling to reduce reverse-geocoder rate-limit issues</li>
+<li>Improved render/update flow for asynchronous address loading</li>
+</ul>
+
+<div class="section-title">
+Misc
+</div>
+
+<ul>
+<li>The Very Hungry Caterpillar was successfully contained 🐛☕</li>
+</ul>
+
+</div>
+
  <!-- v3.0.1 -->
 <div class="changelog-entry">
 

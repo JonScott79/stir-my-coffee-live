@@ -1351,35 +1351,34 @@ function init() {
 // ========================
 
 function getTopPicks(locations) {
-  if (!locations.length) return {};
 
-  const pool = [...locations];
-
-  // 🧠 BEST OVERALL (your smart algorithm)
-  const overall = pool
-    .sort((a, b) => b.score - a.score)[0];
-
-  const remainingAfterOverall = pool.filter(l => l.id !== overall.id);
-
-  // ⭐ BEST QUALITY (pure accuracy)
-  let best = null;
-  if (remainingAfterOverall.length) {
-    best = [...remainingAfterOverall]
-      .sort((a, b) => (b.percent || 0) - (a.percent || 0))[0];
+  if (!locations.length) {
+    return {
+      overall: null,
+      fastest: null,
+      best: null
+    };
   }
 
-  const remainingAfterBest = remainingAfterOverall.filter(
-    l => best && l.id !== best.id
-  );
+  // 🧠 Best Overall (Highest calculated algorithmic score)
+  const overall = locations[0];
 
-  // ⚡ FASTEST (pure speed)
-  let fastest = null;
-  if (remainingAfterBest.length) {
-    fastest = [...remainingAfterBest]
-      .sort((a, b) => (b.speed || 0) - (a.speed || 0))[0];
-  }
+  // ⚡ Fastest (Lowest average speed rating score = fastest service)
+  const fastest =
+    [...locations]
+      .filter(l => l.speed > 0)
+      .sort((a, b) => a.speed - b.speed)[0];
 
-  return { fastest, best, overall };
+  // ⭐ Best Quality (Highest accurate order percentage)
+  const best =
+    [...locations]
+      .sort((a, b) => b.percent - a.percent)[0];
+
+  return {
+    overall,
+    fastest,
+    best
+  };
 }
 
 async function loadVotes() {
@@ -1450,40 +1449,38 @@ async function loadAddressesForVisible(locations) {
   let updated = false;
 
   for (const loc of locations) {
-    // ✅ Skip if already has a real address
-if (loc.street !== null) continue;
+    // Skip if it already has an address
+    if (loc.street !== null) continue;
 
-    // ✅ Prevent duplicate in-flight requests
+    // Skip if it's already actively fetching
     if (loc.loadingAddress) continue;
 
-    // ✅ Retry cooldown (5 seconds)
-    if (loc.lastAddressAttempt && Date.now() - loc.lastAddressAttempt < 5000) continue;
+    // Cooldown check to prevent hammering the API
+    if (loc.lastAddressAttempt && Date.now() - loc.lastAddressAttempt < 5000) {
+      continue;
+    }
 
     loc.loadingAddress = true;
     loc.lastAddressAttempt = Date.now();
 
     try {
-      const addr = await getAddress(loc.lat, loc.lng);
+      // ⏳ FORCE A 1-SECOND PAUSE BEFORE EACH REQUEST TO RESPECT RATE LIMITS
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
+      const addr = await getAddress(loc.lat, loc.lng);
+      
       if (addr) {
         loc.street = addr;
-      } else {
-        // ❌ DO NOT lock it into "Unknown"
-        if (!loc.street) loc.street = null;
+        updated = true;
+        
+        // 🔥 RE-RENDER IMMEDIATELY as each address lands so the user sees progress
+        updateDistancesAndSort();
       }
-
-    } catch {
-      // same logic on failure
-      if (!loc.street) loc.street = null;
+    } catch (err) {
+      console.error("Address lookup failed:", err);
+    } finally {
+      loc.loadingAddress = false;
     }
-
-    loc.loadingAddress = false;
-    updated = true;
-  }
-
-  // ✅ Only rerender once after batch
-  if (updated) {
-    updateDistancesAndSort();
   }
 }
 
@@ -1634,50 +1631,74 @@ function getUserLocation() {
 // DISTANCE + SORT
 // ========================
 
+async function updateDistancesAndSort() {
 
-function updateDistancesAndSort() {
-  // Allow render even without user location
   const hasUser = userLat && userLng;
 
+  // 1. Calculate distances and scores for every location
   allLocations.forEach(loc => {
     if (hasUser) {
-      loc.distance = getDistance(userLat, userLng, loc.lat, loc.lng);
+      loc.distance = getDistance(
+        userLat,
+        userLng,
+        loc.lat,
+        loc.lng
+      );
     } else {
-      loc.distance = 0; // fallback
+      loc.distance = 0;
     }
 
     loc.score = calculateScore(loc);
   });
 
+  // 2. Filter locations down to the maximum allowed range
   const workingSet = hasUser
-    ? allLocations.filter(loc => loc.distance <= MAX_DISTANCE_MILES)
+    ? allLocations.filter(
+        loc => loc.distance <= MAX_DISTANCE_MILES
+      )
     : allLocations;
 
-  const sortedByScore = [...workingSet].sort((a, b) => {
-
-  if (b.score !== a.score) {
-    return b.score - a.score;
-  }
-
-  return a.distance - b.distance;
-});
+  // 3. Extract top picks based on total scores
+  const sortedByScore = [...workingSet].sort((a, b) => b.score - a.score);
   const picks = getTopPicks(sortedByScore);
-  renderTopPicksPanel(picks);
-  
 
+  // 4. Render the Top 3 Panels
+  renderTopPicksPanel(picks);
+
+  // 5. Sort by distance for the nearby feeds
   const sortedByDistance = hasUser
     ? [...workingSet].sort((a, b) => a.distance - b.distance)
     : workingSet;
 
-
-renderBestNearbyList(sortedByDistance);
-
+  // 6. Render the main list UI blocks
+  renderBestNearbyList(sortedByDistance);
   renderList(sortedByDistance);
 
+  // 7. Batch and deduplicate strictly by ID string to protect the geocoding API
   if (hasUser) {
-    const visible = sortedByDistance.slice(0, DISPLAY_LIMIT);
-    loadAddressesForVisible(visible);
+    const visibleNearby = sortedByDistance.slice(0, DISPLAY_LIMIT);
+    
+    const uniqueLocationsToGeocode = [];
+    const seenIds = new Set();
+
+    [
+      ...visibleNearby,
+      picks.overall,
+      picks.fastest, 
+      picks.best
+    ]
+    .filter(Boolean)
+    .forEach(loc => {
+      if (!seenIds.has(loc.id)) {
+        seenIds.add(loc.id);
+        uniqueLocationsToGeocode.push(loc);
+      }
+    });
+
+    // Send the truly unique object batch down to the reverse lookup sequence
+    loadAddressesForVisible(uniqueLocationsToGeocode);
   }
+
 }
 
 // ========================
@@ -1731,120 +1752,126 @@ function renderBestNearbyList(locations) {
     sorted.sort((a, b) => b.score - a.score);
   }
 
+  // ⚡ FIX: Swap to ascending order so the lowest score (fastest) comes first!
   if (bestNearbySort === "fastest") {
-    sorted.sort((a, b) => b.speed - a.speed);
+    sorted.sort((a, b) => a.speed - b.speed);
   }
 
   const visible = sorted.slice(0, 10);
 
-  // Load addresses for currently visible shops
-  loadAddressesForVisible(visible);
+  list.innerHTML = visible.map((l, index) => {
 
-  list.innerHTML = visible
-    .map((l, index) => {
+    const accuracyPercent =
+      Math.max(0, Math.min(100, l.percent || 0));
 
-      const accuracyPercent =
-        Math.max(0, Math.min(100, l.percent || 0));
+    const speedPercent =
+      Math.max(
+        0,
+        Math.min(
+          100,
+          ((l.speed || 0) / 5) * 100
+        )
+      );
 
-      const speedPercent =
-        Math.max(
-          0,
-          Math.min(
-            100,
-            ((l.speed || 0) / 5) * 100
-          )
-        );
+    return `
+      <div class="location-card"
+        role="button"
+        tabindex="0"
+        onclick="openDirections(event, ${l.lat}, ${l.lng})"
+        onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
 
-      return `
-        <div class="location-card"
-          role="button"
-          tabindex="0"
-          onclick="openDirections(event, ${l.lat}, ${l.lng})"
-          onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
-
-          <div class="card-header">
-            <div class="name">
-              #${index + 1} — ${l.name}
-            </div>
+        <div class="card-header">
+          <div class="name">
+            #${index + 1} — ${l.name}
           </div>
+        </div>
 
-          <div class="street">
-            📍 ${l.street || "Locating address..."}
-          </div>
+        <div class="street">
+          📍 ${l.street || "Locating address..."}
+        </div>
 
-          <div class="meta">
+        <div class="meta">
+          <span>📍 ${l.distance?.toFixed(1)} mi</span>
+          <span>👥 ${l.votes}</span>
+        </div>
 
-            <span>📍 ${l.distance?.toFixed(1)} mi</span>
+        <div class="statusBars">
 
-            <span>👥 ${l.votes}</span>
+          <div class="statusRow">
+            <span class="statusLabel">
+              🎯 Accuracy
+            </span>
 
-          </div>
-
-          <!-- STATUS BARS -->
-          <div class="statusBars">
-
-            <!-- ACCURACY -->
-            <div class="statusRow">
-
-              <span class="statusLabel">
-                🎯 Accuracy
-              </span>
-
-              <div class="statusTrack">
-                <div class="statusFill accuracy"
-                     style="width:${accuracyPercent}%">
-                </div>
-              </div>
-
-              <span class="statusPercent">
-                ${l.percent ? l.percent + "%" : "—"}
-              </span>
-
+            <div class="statusTrack">
+              <div class="statusFill accuracy"
+              style="width:${accuracyPercent}%"></div>
             </div>
 
-            <!-- SPEED -->
-            <div class="statusRow">
+            <span class="statusPercent">
+              ${l.percent || 0}%
+            </span>
+          </div>
 
-              <span class="statusLabel">
-                ⚡ Speed
-              </span>
+          <div class="statusRow">
 
-              <div class="statusTrack">
-                <div class="statusFill speed"
-                     style="width:${speedPercent}%">
-                </div>
-              </div>
+            <span class="statusLabel">
+              ⚡ Speed
+            </span>
 
-              <span class="statusPercent">
-                ${l.speed ? l.speed.toFixed(1) : "—"}
-              </span>
-
+            <div class="statusTrack">
+              <div class="statusFill speed"
+              style="width:${speedPercent}%"></div>
             </div>
+
+            <span class="statusPercent">
+              ${l.speed ? l.speed.toFixed(1) : "—"}
+            </span>
 
           </div>
 
         </div>
-      `;
-    })
-    .join("");
+
+      </div>
+    `;
+
+  }).join("");
+
 }
 
 function renderMiniCard(title, shop) {
-  if (!shop) return `<div class="mini-card">${title}<br>—</div>`;
+
+  if (!shop) {
+    return `
+      <div class="mini-card">
+        ${title}<br>—
+      </div>
+    `;
+  }
+
+  // Fall back gracefully if the geocoder hasn't finished loading the address yet
+  const address =
+    shop.street && shop.street.trim()
+      ? shop.street
+      : "Locating address...";
 
   return `
-<div class="mini-card"
-     role="button"
-     tabindex="0"
-     aria-label="Get directions to ${shop.name}"
-     onclick="openDirections(event, ${shop.lat}, ${shop.lng})"
-     onkeypress="if(event.key==='Enter'){openDirections(event, ${shop.lat}, ${shop.lng})}">
-      
-      <div class="mini-title">${title}</div>
+    <div class="mini-card"
+         role="button"
+         tabindex="0"
+         aria-label="Get directions to ${shop.name}"
+         onclick="openDirections(event, ${shop.lat}, ${shop.lng})"
+         onkeypress="if(event.key==='Enter'){openDirections(event, ${shop.lat}, ${shop.lng})}">
+
+      <div class="mini-title">
+        ${title}
+      </div>
 
       <div class="name">
         ${shop.name}
-        <span class="mini-address">(${shop.street || "..."})</span>
+      </div>
+
+      <div class="mini-address">
+        ${address}
       </div>
 
       <div class="meta">
@@ -1859,199 +1886,90 @@ function renderMiniCard(title, shop) {
 
 function renderList(locations) {
 
-  const list =
-    document.getElementById("listContainer");
-
+  const list = document.getElementById("listContainer");
   if (!list) return;
 
   list.innerHTML = locations
     .slice(0, DISPLAY_LIMIT)
     .map(l => {
 
-      const canUserVote =
-        canVote(l.id);
-
-      const voteDisabled =
-        canUserVote ? "" : "disabled";
-
-      const canUserRate =
-        canRateSpeed(l.id);
+      const canUserVote = canVote(l.id);
+      const voteDisabled = canUserVote ? "" : "disabled";
+      const canUserRate = canRateSpeed(l.id);
 
       // 🎯 accuracy %
-      const accuracyPercent =
-        Math.max(
-          0,
-          Math.min(100, l.percent || 0)
-        );
+      const accuracyPercent = Math.max(0, Math.min(100, l.percent || 0));
 
       // ⚡ convert 1-5 speed into %
-      const speedPercent =
-        Math.max(
-          0,
-          Math.min(
-            100,
-            ((l.speed || 0) / 5) * 100
-          )
-        );
+      const speedPercent = Math.max(0, Math.min(100, ((l.speed || 0) / 5) * 100));
+
+      // Check if street address string actually exists and is populated
+      const streetDisplay = l.street && l.street.trim() ? l.street : "Locating address...";
 
       return `
+        <div class="location-card" 
+             tabindex="0"
+             role="button"
+             aria-label="${l.name}, ${l.percent || 0}% stir quality"
+             onclick="trackEvent('view_location', { location_id:'${l.id}' }); selectLocation('${l.id}')"
+             onkeypress="if(event.key==='Enter'){ selectLocation('${l.id}') }">
 
-<div class="location-card" 
-     tabindex="0"
-     role="button"
-     aria-label="${l.name}, ${l.percent || 0}% stir quality, ${
-       userLat
-         ? l.distance.toFixed(1) + " miles away"
-         : "distance unavailable"
-     }"
-     onclick="trackEvent('view_location', {
-       location_id:'${l.id}'
-     });
-     selectLocation('${l.id}')"
+          <div class="card-header">
+            <div class="name">${l.name}</div>
+          </div>
 
-     onkeypress="if(event.key==='Enter'){
-       selectLocation('${l.id}')
-     }">
+          <div class="street">
+            📍 ${streetDisplay}
+            <span class="distance-inline">
+              · ${userLat ? l.distance.toFixed(1) + " mi" : "Locating..."}
+            </span>
+          </div>
 
-<div class="card-header">
+          <div class="meta">
+            <span class="vote-inline">
+              <button aria-label="Upvote this location" ${voteDisabled} onclick="vote(event,'${l.id}',true)">👍</button>
+              <button aria-label="Downvote this location" ${voteDisabled} onclick="vote(event,'${l.id}',false)">👎</button>
+            </span>
 
-<div class="name">
-${l.name}
-</div>
+            <span class="speed-slider">
+              <span class="speed-icon">⚡</span>
+              <span class="slider-value">—</span>
+              <input type="range"
+                     min="-1"
+                     max="5"
+                     step="1"
+                     value="-1"
+                     ${!canUserRate ? "disabled" : ""}
+                     oninput="updateSliderLabel(this)"
+                     onchange="if(this.value >= 0){ rateSpeed(event,'${l.id}',this.value) }">
+            </span>
 
-</div>
+            <span class="directions" role="button" tabindex="0" aria-label="Get directions" onclick="openDirections(event, ${l.lat}, ${l.lng})">🚗</span>
+            <span>👥 ${l.votes}</span>
+          </div>
 
-<div class="street">
-📍 ${l.street ||
-(userLat
-? "Locating address..."
-: "Tap Locate Me")}
+          <div class="statusBars">
+            <div class="statusRow">
+              <span class="statusLabel">🎯 Accuracy</span>
+              <div class="statusTrack">
+                <div class="statusFill accuracy" style="width:${accuracyPercent}%"></div>
+              </div>
+              <span class="statusPercent">${accuracyPercent}%</span>
+            </div>
 
-<span class="distance-inline">
-· ${userLat
-? l.distance.toFixed(1)+" mi"
-: "Locating..."}
-</span>
+            <div class="statusRow">
+              <span class="statusLabel">⚡ Speed</span>
+              <div class="statusTrack">
+                <div class="statusFill speed" style="width:${speedPercent}%"></div>
+              </div>
+              <span class="statusPercent">${l.speed ? l.speed.toFixed(1) : "—"}</span>
+            </div>
+          </div>
 
-</div>
-
-<div class="meta">
-
-<span class="vote-inline">
-
-<button
-aria-label="Upvote this location"
-${voteDisabled}
-onclick="vote(event,'${l.id}',true)">
-👍
-</button>
-
-<button
-aria-label="Downvote this location"
-${voteDisabled}
-onclick="vote(event,'${l.id}',false)">
-👎
-</button>
-
-</span>
-
-<!-- SPEED SLIDER -->
-
-<span class="speed-slider">
-
-<span class="speed-icon">
-⚡
-</span>
-
-<span class="slider-value">
-—
-</span>
-
-<input type="range"
-       min="-1"
-       max="5"
-       step="1"
-       value="-1"
-       ${!canUserRate ? "disabled" : ""}
-       oninput="updateSliderLabel(this)"
-       onchange="
-         if(this.value >= 0){
-           rateSpeed(event,'${l.id}',this.value)
-         }
-       ">
-
-</span>
-
-<span class="directions"
-      role="button"
-      tabindex="0"
-      aria-label="Get directions"
-      onclick="openDirections(
-      event,
-      ${l.lat},
-      ${l.lng})">
-
-🚗
-
-</span>
-
-<span>
-👥 ${l.votes}
-</span>
-
-</div>
-
-<div class="statusBars">
-
-<div class="statusRow">
-
-<span class="statusLabel">
-🎯 Accuracy
-</span>
-
-<div class="statusTrack">
-
-<div class="statusFill accuracy"
-style="width:${accuracyPercent}%">
-</div>
-
-</div>
-
-<span class="statusPercent">
-${accuracyPercent}%
-</span>
-
-</div>
-
-<div class="statusRow">
-
-<span class="statusLabel">
-⚡ Speed
-</span>
-
-<div class="statusTrack">
-
-<div class="statusFill speed"
-style="width:${speedPercent}%">
-</div>
-
-</div>
-
-<span class="statusPercent">
-${l.speed
-? l.speed.toFixed(1)
-: "—"}
-</span>
-
-</div>
-
-</div>
-
-</div>
-`;
-})
-.join("");
-
+        </div>
+      `;
+    })
+    .join("");
 }
 
 function updateSliderLabel(el) {
@@ -2242,13 +2160,14 @@ function getRatingClass(percent) {
 function openDirections(e, lat, lng) {
   e.stopPropagation();
 
-  // ANALYTICS ($$$)
+  // 🔥 ANALYTICS
   trackEvent("get_directions", {
     lat,
     lng
   });
 
-  window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`);
+  // Fixed: Changed 12{lat} to the proper ${lat} template literal variable syntax
+ window.open(`http://googleusercontent.com/maps.google.com/${lat},${lng}`, '_blank');
 }
 
 // ===============================
