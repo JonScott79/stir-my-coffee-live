@@ -1,3 +1,27 @@
+## [3.0.1] – May 2026
+
+### ☕ Post Launch Stabilization Update
+
+### Fixed
+- Fixed speed slider issue preventing certain ratings from registering correctly
+- Fixed slider interaction edge cases causing inconsistent vote behavior
+- Fixed missing brand font loading across secondary pages
+- Corrected minor UI inconsistencies and typography issues
+
+### Improved
+- Reworked speed rating interaction to start from a neutral state
+- Added clearer visual feedback for speed rating controls
+- Improved disabled-state behavior for previously rated locations
+- Enhanced visual consistency across supporting pages
+
+### Changed
+- Updated speed slider styling with new blue visual system
+- Improved slider state clarity between active and locked ratings
+- Refined interaction flow to reduce accidental input
+
+### Misc
+- The coffee inspectors found a few loose bean ☕🔧
+
 ## [3.0.0] – May 2026
 
 ### ☕ Stir My Coffee 3.0 – The Platform Release

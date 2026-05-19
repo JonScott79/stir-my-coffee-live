@@ -1858,21 +1858,31 @@ function renderMiniCard(title, shop) {
 }
 
 function renderList(locations) {
-  const list = document.getElementById("listContainer");
+
+  const list =
+    document.getElementById("listContainer");
+
   if (!list) return;
 
   list.innerHTML = locations
     .slice(0, DISPLAY_LIMIT)
     .map(l => {
 
-      const canUserVote = canVote(l.id);
-      const voteDisabled = canUserVote ? "" : "disabled";
+      const canUserVote =
+        canVote(l.id);
 
-      const canUserRate = canRateSpeed(l.id);
+      const voteDisabled =
+        canUserVote ? "" : "disabled";
+
+      const canUserRate =
+        canRateSpeed(l.id);
 
       // 🎯 accuracy %
       const accuracyPercent =
-        Math.max(0, Math.min(100, l.percent || 0));
+        Math.max(
+          0,
+          Math.min(100, l.percent || 0)
+        );
 
       // ⚡ convert 1-5 speed into %
       const speedPercent =
@@ -1885,129 +1895,177 @@ function renderList(locations) {
         );
 
       return `
-        <div class="location-card" 
-          tabindex="0"
-          role="button"
-          aria-label="${l.name}, ${l.percent || 0}% stir quality, ${
-            userLat
-              ? l.distance.toFixed(1) + " miles away"
-              : "distance unavailable"
-          }. Press Enter for details."
-          onclick="trackEvent('view_location', { location_id: '${l.id}' }); selectLocation('${l.id}')"
-          onkeypress="if(event.key==='Enter'){selectLocation('${l.id}')}">
 
-          <div class="card-header">
-            <div class="name">${l.name}</div>
-          </div>
+<div class="location-card" 
+     tabindex="0"
+     role="button"
+     aria-label="${l.name}, ${l.percent || 0}% stir quality, ${
+       userLat
+         ? l.distance.toFixed(1) + " miles away"
+         : "distance unavailable"
+     }"
+     onclick="trackEvent('view_location', {
+       location_id:'${l.id}'
+     });
+     selectLocation('${l.id}')"
 
-          <div class="street">
-            📍 ${l.street || (userLat ? "Locating address..." : "Tap Locate Me")}
-            <span class="distance-inline">
-              · ${userLat ? l.distance.toFixed(1) + " mi" : "Locating..."}
-            </span>
-          </div>
+     onkeypress="if(event.key==='Enter'){
+       selectLocation('${l.id}')
+     }">
 
-          <div class="meta">
+<div class="card-header">
 
-            <span class="vote-inline">
-              <button aria-label="Upvote this location"
-                      ${voteDisabled}
-                      onclick="vote(event, '${l.id}', true)">
-                👍
-              </button>
+<div class="name">
+${l.name}
+</div>
 
-              <button aria-label="Downvote this location"
-                      ${voteDisabled}
-                      onclick="vote(event, '${l.id}', false)">
-                👎
-              </button>
-            </span>
+</div>
 
-            <!-- ⚡ SPEED SLIDER -->
-            <span class="speed-slider">
-              <span class="speed-icon">⚡</span>
+<div class="street">
+📍 ${l.street ||
+(userLat
+? "Locating address..."
+: "Tap Locate Me")}
 
-              <span class="slider-value">
-                ${l.speed ? l.speed.toFixed(1) : "—"}
-              </span>
+<span class="distance-inline">
+· ${userLat
+? l.distance.toFixed(1)+" mi"
+: "Locating..."}
+</span>
 
-              <input type="range"
-                     min="1"
-                     max="5"
-                     step="1"
-                     value="${Math.round(l.speed) || 3}"
-                     ${!canUserRate ? "disabled" : ""}
-                     oninput="updateSliderLabel(this)"
-                     onchange="rateSpeed(event, '${l.id}', this.value)">
-            </span>
+</div>
 
-            <span class="directions"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Get directions to this location"
-                  onclick="openDirections(event, ${l.lat}, ${l.lng})"
-                  onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
-              🚗
-            </span>
+<div class="meta">
 
-            <span>👥 ${l.votes}</span>
+<span class="vote-inline">
 
-          </div>
+<button
+aria-label="Upvote this location"
+${voteDisabled}
+onclick="vote(event,'${l.id}',true)">
+👍
+</button>
 
-          <!-- STATUS BARS -->
-          <div class="statusBars">
+<button
+aria-label="Downvote this location"
+${voteDisabled}
+onclick="vote(event,'${l.id}',false)">
+👎
+</button>
 
-            <!-- ACCURACY -->
-            <div class="statusRow">
+</span>
 
-              <span class="statusLabel">
-                🎯 Accuracy
-              </span>
+<!-- SPEED SLIDER -->
 
-              <div class="statusTrack">
-                <div class="statusFill accuracy"
-                     style="width:${accuracyPercent}%">
-                </div>
-              </div>
+<span class="speed-slider">
 
-              <span class="statusPercent">
-                ${accuracyPercent}%
-              </span>
+<span class="speed-icon">
+⚡
+</span>
 
-            </div>
+<span class="slider-value">
+—
+</span>
 
-            <!-- SPEED -->
-            <div class="statusRow">
+<input type="range"
+       min="-1"
+       max="5"
+       step="1"
+       value="-1"
+       ${!canUserRate ? "disabled" : ""}
+       oninput="updateSliderLabel(this)"
+       onchange="
+         if(this.value >= 0){
+           rateSpeed(event,'${l.id}',this.value)
+         }
+       ">
 
-              <span class="statusLabel">
-                ⚡ Speed
-              </span>
+</span>
 
-              <div class="statusTrack">
-                <div class="statusFill speed"
-                     style="width:${speedPercent}%">
-                </div>
-              </div>
+<span class="directions"
+      role="button"
+      tabindex="0"
+      aria-label="Get directions"
+      onclick="openDirections(
+      event,
+      ${l.lat},
+      ${l.lng})">
 
-              <span class="statusPercent">
-                ${l.speed ? l.speed.toFixed(1) : "—"}
-              </span>
+🚗
 
-            </div>
+</span>
 
-          </div>
+<span>
+👥 ${l.votes}
+</span>
 
-        </div>
-      `;
-    })
-    .join("");
+</div>
+
+<div class="statusBars">
+
+<div class="statusRow">
+
+<span class="statusLabel">
+🎯 Accuracy
+</span>
+
+<div class="statusTrack">
+
+<div class="statusFill accuracy"
+style="width:${accuracyPercent}%">
+</div>
+
+</div>
+
+<span class="statusPercent">
+${accuracyPercent}%
+</span>
+
+</div>
+
+<div class="statusRow">
+
+<span class="statusLabel">
+⚡ Speed
+</span>
+
+<div class="statusTrack">
+
+<div class="statusFill speed"
+style="width:${speedPercent}%">
+</div>
+
+</div>
+
+<span class="statusPercent">
+${l.speed
+? l.speed.toFixed(1)
+: "—"}
+</span>
+
+</div>
+
+</div>
+
+</div>
+`;
+})
+.join("");
+
 }
 
 function updateSliderLabel(el) {
-  const valueSpan = el.previousElementSibling;
-  if (valueSpan) {
-    valueSpan.textContent = el.value;
-  }
+
+  const valueSpan =
+    el.previousElementSibling;
+
+  if (!valueSpan) return;
+
+  valueSpan.textContent =
+    el.value == -1
+      ? "—"
+      : el.value;
+
 }
 
 function renderTopPick(shop) {
@@ -2137,12 +2195,15 @@ const filled = i + 1 <= rounded ? "★" : "☆";
 }
 
 function rateSpeed(e, id, rating) {
+
   e.stopPropagation();
 
-  rating = Number(rating); // 🔥 ensures correct math
+  rating = Number(rating);
 
   if (!canRateSpeed(id)) {
-    alert("⏳ You already rated speed here. Try again later.");
+    alert(
+      "⏳ You already rated speed here. Try again later."
+    );
     return;
   }
 
@@ -2153,16 +2214,22 @@ function rateSpeed(e, id, rating) {
     rating: rating
   });
 
-  const ref = db.collection("votes").doc(id);
+  db.collection("votes")
+    .doc(id)
+    .set({
 
-  ref.set({
-    speedTotal: firebase.firestore.FieldValue.increment(rating),
-    speedVotes: firebase.firestore.FieldValue.increment(1)
-  }, { merge: true })
-  .catch(err => console.error("❌ Speed failed:", err));
+      speedTotal:
+        firebase.firestore.FieldValue.increment(
+          rating
+        ),
 
-  e.target.classList.add("pop");
-  setTimeout(() => e.target.classList.remove("pop"), 300);
+      speedVotes:
+        firebase.firestore.FieldValue.increment(
+          1
+        )
+
+    }, { merge:true });
+
 }
 
 function getRatingClass(percent) {
