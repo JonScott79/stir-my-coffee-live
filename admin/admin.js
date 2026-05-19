@@ -107,9 +107,7 @@ function logout() {
 
 auth.onAuthStateChanged(user => {
 
-  // OPTIONAL EMAIL LOCK
-  // remove this block if desired
-
+  // Block non-admins
   if (user && user.email !== ADMIN_EMAIL) {
 
     alert("Unauthorized operator.");
@@ -129,7 +127,18 @@ auth.onAuthStateChanged(user => {
       `OPERATOR LINKED — ${user.email}`
     );
 
-    init();
+    // Force token refresh before init
+    user.getIdToken(true)
+      .then(() => init())
+      .catch(err => {
+
+        console.error(err);
+
+        addEvent(
+          "AUTH TOKEN FAILURE"
+        );
+
+      });
 
   } else {
 
@@ -137,6 +146,7 @@ auth.onAuthStateChanged(user => {
 
     loginView.classList.remove("hidden");
   }
+
 });
 
 // =====================================
@@ -147,13 +157,36 @@ async function init() {
 
   try {
 
-    await loadMetrics();
+    const results =
+      await Promise.allSettled([
 
-    await loadReports();
+        loadMetrics(),
 
-    await loadLocations();
+        loadReports(),
 
-    await loadBeaconStats();
+        loadLocations(),
+
+        loadBeaconStats()
+
+      ]);
+
+    results.forEach(result => {
+
+      if (
+        result.status === "rejected"
+      ) {
+
+        console.error(
+          result.reason
+        );
+
+        addEvent(
+          `MODULE ERROR`
+        );
+
+      }
+
+    });
 
     startFakeFeed();
 
@@ -161,14 +194,16 @@ async function init() {
       "TACTICAL SYSTEMS ONLINE"
     );
 
-  } catch (err) {
+  } catch(err) {
 
     console.error(err);
 
     addEvent(
       "SYSTEM ERROR DETECTED"
     );
+
   }
+
 }
 
 // =====================================
@@ -296,6 +331,7 @@ async function loadReports() {
         margin-top:12px;
         display:flex;
         gap:8px;
+        flex-wrap:wrap;
       ">
 
         <button
@@ -320,6 +356,16 @@ async function loadReports() {
         </button>
 
         <button
+          class="ignore-btn"
+          onclick="ignoreReport(
+            '${doc.id}'
+          )">
+
+          IGNORE
+
+        </button>
+
+        <button
           class="delete-btn"
           onclick="deleteReportedLocation(
             '${d.locationId}',
@@ -334,11 +380,47 @@ async function loadReports() {
     `;
 
     container.appendChild(div);
+
   });
 
   addEvent(
     `${snapshot.size} INCIDENTS LOADED`
   );
+
+}
+async function ignoreReport(reportId) {
+
+  const ok =
+    confirm(
+      "IGNORE THIS INCIDENT?"
+    );
+
+  if (!ok) return;
+
+  try {
+
+    await db.collection("reports")
+      .doc(reportId)
+      .delete();
+
+    addEvent(
+      "INCIDENT DISMISSED"
+    );
+
+    await loadReports();
+
+    await loadMetrics();
+
+  } catch(err) {
+
+    console.error(err);
+
+    alert(
+      "Ignore failed"
+    );
+
+  }
+
 }
 
 // =====================================
