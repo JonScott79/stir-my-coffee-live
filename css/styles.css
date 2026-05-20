@@ -52,34 +52,51 @@ body {
 ======================== */
 
 .container {
-  width: 100%;
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: clamp(12px, 2vw, 24px);
-  flex: 1;
-  overflow-y: auto;
+  width:100%;
+
+  max-width:none;
+
+  margin:0 auto;
+
+  padding:clamp(12px,2vw,24px);
+
+  flex:1;
+
+  overflow-y:auto;
 }
 
 .mainLayout {
-  display:grid;
-  grid-template-columns:1fr;
+  display: grid;
 
-  gap:24px;
+  grid-template-columns: minmax(0,1fr);
 
-  align-items:start;
+  gap: 24px;
+
+  align-items: start;
+
+  width: 100%;
+  min-width: 0;
 }
 
 .listSection {
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+  flex: 1;
+
   min-width: 0;
+  max-width: none;
 }
 
 .topPickSection {
   position: sticky;
   top: 20px;
+
   height: fit-content;
+
   min-width: 0;
+  width:100%;
 }
 
 /* ========================
@@ -237,9 +254,17 @@ border: 3px solid #3A160B;
   border: 2px solid var(--accent);
 }
 
+.topPickSection,
+#topPickCard,
+.mini-card {
+    width:100%;
+    max-width:none;
+}
+
 .location-card {
+  display:block;
+
   width:100%;
-  max-width:100%;
 
   padding:14px;
   margin-bottom:12px;
@@ -247,6 +272,13 @@ border: 3px solid #3A160B;
   box-shadow:var(--shadow-soft);
 
   cursor:pointer;
+}
+
+#listContainer,
+#bestNearbyList,
+#topPickCard {
+    width:100%;
+    max-width:none;
 }
 
 .mini-card,
