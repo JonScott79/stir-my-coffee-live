@@ -1931,18 +1931,12 @@ function renderList(locations) {
               <button aria-label="Downvote this location" ${voteDisabled} onclick="vote(event,'${l.id}',false)">👎</button>
             </span>
 
-            <span class="speed-slider">
-              <span class="speed-icon">⚡</span>
-              <span class="slider-value">—</span>
-              <input type="range"
-                     min="-1"
-                     max="5"
-                     step="1"
-                     value="-1"
-                     ${!canUserRate ? "disabled" : ""}
-                     oninput="updateSliderLabel(this)"
-                     onchange="if(this.value >= 0){ rateSpeed(event,'${l.id}',this.value) }">
-            </span>
+<span class="speed-status-trigger"
+      onclick="openSpeedBottomSheet(event, '${l.id}')">
+
+  ⚡ Rate Speed
+
+</span>
 
             <span class="directions" role="button" tabindex="0" aria-label="Get directions" onclick="openDirections(event, ${l.lat}, ${l.lng})">🚗</span>
             <span>👥 ${l.votes}</span>
@@ -2548,3 +2542,86 @@ function handleSwipe() {
   }
 
 }
+
+// ========================
+// SPEED RATING BOTTOM SHEET SYSTEM
+// ========================
+
+let activeSpeedLocationId = null;
+let toastTimeout = null;
+
+window.openSpeedBottomSheet = function (e, id) {
+  e.stopPropagation();
+
+  if (!canRateSpeed(id)) {
+    alert("⏳ You already rated speed here. Try again later.");
+    return;
+  }
+
+  activeSpeedLocationId = id;
+  
+  const sheet = document.getElementById("speedBottomSheet");
+  if (sheet) {
+    sheet.classList.remove("hidden");
+  }
+};
+
+window.closeSpeedBottomSheet = function () {
+  const sheet = document.getElementById("speedBottomSheet");
+  if (sheet) {
+    sheet.classList.add("hidden");
+  }
+  activeSpeedLocationId = null;
+};
+
+window.submitSpeedRating = function (rating) {
+  if (!activeSpeedLocationId) return;
+
+  rating = Number(rating);
+
+  // Preserve existing validation
+  if (!canRateSpeed(activeSpeedLocationId)) {
+    alert("⏳ You already rated speed here. Try again later.");
+    closeSpeedBottomSheet();
+    return;
+  }
+
+  // 1. Record speed rating in localStorage (lock user out)
+  recordSpeedRating(activeSpeedLocationId);
+
+  // 2. Track existing analytics behavior
+  trackEvent("rate_speed", {
+    location_id: activeSpeedLocationId,
+    rating: rating
+  });
+
+  // 3. Close the Bottom Sheet immediately to prevent double submissions
+  closeSpeedBottomSheet();
+
+  // 4. Write to Firestore using the exact existing increment logic
+  db.collection("votes")
+    .doc(activeSpeedLocationId)
+    .set({
+      speedTotal: firebase.firestore.FieldValue.increment(rating),
+      speedVotes: firebase.firestore.FieldValue.increment(1)
+    }, { merge: true })
+    .then(() => {
+      // 5. Show simple success toast only when Firestore write succeeds
+      const toast = document.getElementById("speedSuccessToast");
+      if (toast) {
+        toast.classList.remove("hidden");
+        
+        if (toastTimeout) {
+          clearTimeout(toastTimeout);
+        }
+        
+        toastTimeout = setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 3000);
+      }
+    })
+    .catch(err => {
+      console.error("❌ Speed rating failed:", err);
+      alert("❌ Speed rating failed. Please try again.");
+    });
+};

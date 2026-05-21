@@ -1,3 +1,22 @@
+## [3.0.3] – May 2026
+
+### ☕ Slider & UI Polish Update
+
+### Fixed
+- Fixed speed slider edge cases preventing some ratings from registering correctly
+- Fixed slider interaction inconsistencies affecting user input
+- Fixed card width issue causing unused space in certain desktop layouts
+- Fixed inconsistent card sizing between views
+
+### Improved
+- Improved speed slider interaction reliability
+- Improved visual consistency across location cards
+- Improved responsive layout behavior
+
+### Changed
+- Updated speed slider default behavior and interaction flow
+- Added clearer locked-state styling for previously rated locations
+
 ## [3.0.2] – May 2026
 
 ### ☕ Address Resolution & Stability Hotfix

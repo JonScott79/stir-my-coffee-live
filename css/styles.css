@@ -1201,3 +1201,224 @@ body.loading #loader {
 .hidden {
   display: none;
 }
+
+/* ========================
+   SIMPLE SPEED BOTTOM SHEET
+======================== */
+.speed-bottom-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.speed-bottom-sheet-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.speed-bottom-sheet-content {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: clamp(16px, 4vw, 24px);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+  text-align: center;
+  color: var(--text-main);
+  z-index: 10000;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.speed-bottom-sheet-content h3 {
+  margin: 0 0 6px;
+  font-family: 'Luckiest Guy', cursive;
+  font-weight: normal;
+  font-size: 22px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.speed-bottom-sheet-content p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.speed-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.speed-btn-option {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-main);
+  background: #faf7f2;
+  border: 2px solid var(--accent-light);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.speed-btn-option:hover,
+.speed-btn-option:active {
+  background: #f0ece6;
+  border-color: var(--accent);
+  transform: scale(0.99);
+}
+
+.speed-btn-cancel {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.speed-btn-cancel:hover {
+  background: #faf7f2;
+  color: var(--text-main);
+}
+
+/* ========================
+   SIMPLE SUCCESS TOAST
+======================== */
+.speed-success-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  z-index: 10001;
+  text-align: center;
+  pointer-events: none;
+  min-width: 250px;
+}
+
+/* ========================
+   TAPPABLE TRIGGER LINK
+======================== */
+.speed-status-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+  background: #f0ece6;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--text-muted);
+  transition: all 0.15s ease;
+}
+
+.speed-status-trigger:hover {
+  background: var(--bg-header);
+  color: var(--accent);
+  border-color: var(--accent-light);
+}
+
+/* ========================
+   SPEED BOTTOM SHEET
+======================== */
+
+.speed-bottom-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+/* THIS FIXES YOUR BUG */
+.speed-bottom-sheet.hidden {
+  display: none !important;
+}
+
+.speed-bottom-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+}
+
+.speed-bottom-sheet-content {
+  position: relative;
+  background: var(--bg-card);
+
+  width: 100%;
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  border-radius: 16px 16px 0 0;
+
+  z-index: 10000;
+}
+
+.speed-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.speed-btn-option {
+  width: 100%;
+  padding: 14px;
+
+  border: 2px solid var(--accent-light);
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+.speed-status-trigger {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: #f0ece6;
+}

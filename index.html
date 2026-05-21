@@ -408,6 +408,28 @@ if ("serviceWorker" in navigator) {
 <script src="js/app.js" defer></script>
 <script src="js/theme.js" defer></script>
 
+<!-- Simple Speed Rating Bottom Sheet -->
+<div id="speedBottomSheet" class="speed-bottom-sheet hidden">
+  <div class="speed-bottom-sheet-backdrop" onclick="closeSpeedBottomSheet()"></div>
+  <div class="speed-bottom-sheet-content">
+    <h3>Rate Service Speed</h3>
+    <p>Select a speed rating from 1 (Slowest) to 5 (Fastest):</p>
+    <div class="speed-buttons-container">
+      <button class="speed-btn-option" onclick="submitSpeedRating(1)">1 — Very Slow 🐢</button>
+      <button class="speed-btn-option" onclick="submitSpeedRating(2)">2 — Slow 🚗</button>
+      <button class="speed-btn-option" onclick="submitSpeedRating(3)">3 — Average ☕</button>
+      <button class="speed-btn-option" onclick="submitSpeedRating(4)">4 — Fast ⚡</button>
+      <button class="speed-btn-option" onclick="submitSpeedRating(5)">5 — Lightning 🚀</button>
+    </div>
+    <button class="speed-btn-cancel" onclick="closeSpeedBottomSheet()">Cancel</button>
+  </div>
+</div>
+
+<!-- Simple Success Message Toast -->
+<div id="speedSuccessToast" class="speed-success-toast hidden">
+  Speed rating submitted! Thank you! ⚡
+</div>
+
 <div id="themeFade"></div>
 </body>
 </html>
