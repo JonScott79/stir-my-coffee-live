@@ -1,3 +1,33 @@
+## [3.0.4] – May 2026
+
+### 📈 Analytics, SEO & Visibility Upgrade
+
+### Added
+- Added Microsoft Clarity tracking across all site pages
+- Connected Google Analytics and Clarity integrations
+- Added Bing Webmaster Tools integration
+- Added IndexNow support for faster search engine notifications
+
+### Improved
+- Improved search visibility and indexing workflow
+- Improved metadata consistency across pages
+- Improved crawler discovery and sitemap handling
+- Improved analytics visibility for user behavior tracking
+
+### Fixed
+- Fixed duplicate title tag issue affecting SEO analysis
+- Fixed duplicate metadata causing crawler confusion
+- Fixed missing metadata across secondary pages
+- Fixed stale route and indexing references
+
+### Technical
+- Refreshed sitemap generation and indexing structure
+- Added search engine verification improvements
+- Added crawler and bot monitoring support
+
+### Misc
+- Added emotional support for favicon-related incidents ☕🫂
+
 ## [3.0.3] – May 2026
 
 ### ☕ Slider & UI Polish Update
