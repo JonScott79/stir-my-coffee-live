@@ -7,6 +7,7 @@
 - Connected Google Analytics and Clarity integrations
 - Added Bing Webmaster Tools integration
 - Added IndexNow support for faster search engine notifications
+- Embedded browser detection
 
 ### Improved
 - Improved search visibility and indexing workflow

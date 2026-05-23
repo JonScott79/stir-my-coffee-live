@@ -11,36 +11,52 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-// =====================================
-// CONFIG
-// =====================================
-
 const ADMIN_EMAIL = "hello@stirmycoffee.com";
-
-// =====================================
-// BOOT SEQUENCE
-// =====================================
 
 const bootLines = [
   "LINKING FIRESTORE NODES...",
-  "SCANNING ACTIVE OUTPOSTS...",
   "VERIFYING NETWORK INTEGRITY...",
   "LOADING INCIDENT QUEUE...",
   "SYNCING COFFEENOMICS...",
-  "ESTABLISHING TACTICAL LINK...",
   "BEACON TELEMETRY ONLINE...",
   "TACTICAL LINK ESTABLISHED"
 ];
 
+let emailInput;
+let passwordInput;
+let loginView;
+let app;
+
+let metricLocations;
+let metricVotes;
+let metricReports;
+let metricAccuracy;
+
+let initialized = false;
+let bootFinished = false;
+
+
+
 // =====================================
-// GLOBAL STATE & DOM ELEMENTS
+// DOM
 // =====================================
 
-let allLocations = [];
+function cacheElements() {
 
-// Explicitly declared DOM references to prevent ReferenceErrors
-let emailInput, passwordInput, loginView, app, searchInput;
-let metricLocations, metricVotes, metricReports, metricAccuracy;
+  emailInput = document.getElementById("emailInput");
+  passwordInput = document.getElementById("passwordInput");
+
+  loginView = document.getElementById("loginView");
+  app = document.getElementById("app");
+
+  metricLocations = document.getElementById("metricLocations");
+  metricVotes = document.getElementById("metricVotes");
+  metricReports = document.getElementById("metricReports");
+  metricAccuracy = document.getElementById("metricAccuracy");
+
+}
+
+
 
 // =====================================
 // BOOT
@@ -48,141 +64,237 @@ let metricLocations, metricVotes, metricReports, metricAccuracy;
 
 window.addEventListener("load", async () => {
 
-  // Bind form inputs and view structures
-  emailInput = document.getElementById("emailInput") || document.querySelector("input[type='email']");
-  passwordInput = document.getElementById("passwordInput") || document.querySelector("input[type='password']");
-  loginView = document.getElementById("loginView");
-  app = document.getElementById("app");
-  searchInput = document.getElementById("searchInput");
+  cacheElements();
 
-  // Bind metrics elements
-  metricLocations = document.getElementById("metricLocations");
-  metricVotes = document.getElementById("metricVotes");
-  metricReports = document.getElementById("metricReports");
-  metricAccuracy = document.getElementById("metricAccuracy");
+  bindButtons();
+
+  await runBootSequence();
+
+});
+
+async function runBootSequence() {
 
   const container =
-    document.getElementById("bootLines");
+    document.getElementById(
+      "bootLines"
+    );
+
+  if (!container) return;
+
+  container.innerHTML = "";
 
   for (const line of bootLines) {
 
-    await delay(450);
+    await delay(300);
 
     const div =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
     div.textContent = line;
 
     container.appendChild(div);
+
   }
 
-  await delay(800);
+  await delay(500);
 
-  document.getElementById("bootScreen")
+  document
+    .getElementById(
+      "bootScreen"
+    )
     .style.display = "none";
 
-  if (loginView) {
-    loginView.classList.remove("hidden");
-  }
-});
+  bootFinished = true;
+
+}
 
 function delay(ms) {
-  return new Promise(r => setTimeout(r, ms));
+
+  return new Promise(
+    resolve => {
+
+      setTimeout(
+        resolve,
+        ms
+      );
+
+    }
+  );
+
 }
+
+
 
 // =====================================
-// LOGIN
+// AUTH
 // =====================================
 
-// Safely bind event listeners and handle default form submissions
-const loginBtn = document.getElementById("loginBtn");
-if (loginBtn) {
-  loginBtn.addEventListener("click", (e) => {
-    e.preventDefault(); 
-    login();
-  });
+function bindButtons() {
+
+  document
+    .getElementById(
+      "loginBtn"
+    )
+    ?.addEventListener(
+      "click",
+      e => {
+
+        e.preventDefault();
+
+        login();
+
+      }
+    );
+
+  document
+    .getElementById(
+      "logoutBtn"
+    )
+    ?.addEventListener(
+      "click",
+      logout
+    );
+
+  passwordInput
+    ?.addEventListener(
+      "keydown",
+      e => {
+
+        if (
+          e.key === "Enter"
+        ) {
+
+          login();
+
+        }
+
+      }
+    );
+
 }
 
-const logoutBtn = document.getElementById("logoutBtn");
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    logout();
-  });
-}
-
-function login() {
-  if (!emailInput || !passwordInput) {
-    console.error("Authentication DOM inputs are missing.");
-    return;
-  }
+async function login() {
 
   const email =
-    emailInput.value.trim();
+    emailInput.value
+      .trim();
 
   const password =
     passwordInput.value;
 
-  auth.signInWithEmailAndPassword(
-    email,
-    password
-  )
-  .catch(err => {
+  if (
+    !email ||
+    !password
+  ) {
+
+    alert(
+      "Enter email and password"
+    );
+
+    return;
+
+  }
+
+  try {
+
+    await auth
+      .signInWithEmailAndPassword(
+        email,
+        password
+      );
+
+  }
+
+  catch(err){
+
     console.error(err);
-    alert(err.message);
-  });
+
+    alert(
+      err.message
+    );
+
+  }
+
 }
 
 function logout() {
+
+  initialized = false;
+
   auth.signOut();
+
 }
 
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged(
+async user => {
 
-  // Guard rails in case DOM elements aren't initialized yet
-  if (!loginView || !app) return;
+  if (
+    !loginView ||
+    !app
+  ) return;
 
-  // Block non-admins
-  if (user && user.email !== ADMIN_EMAIL) {
+  while (!bootFinished) {
 
-    alert("Unauthorized operator.");
+    await delay(100);
 
-    auth.signOut();
-
-    return;
   }
 
-  if (user) {
+  if (!user) {
 
-    loginView.classList.add("hidden");
-
-    app.classList.remove("hidden");
-
-    addEvent(
-      `OPERATOR LINKED — ${user.email}`
+    app.classList.add(
+      "hidden"
     );
 
-    // Force token refresh before init
-    user.getIdToken(true)
-      .then(() => init())
-      .catch(err => {
+    loginView.classList.remove(
+      "hidden"
+    );
 
-        console.error(err);
+    return;
 
-        addEvent(
-          "AUTH TOKEN FAILURE"
-        );
+  }
 
-      });
+  const email =
+    user.email
+      .trim()
+      .toLowerCase();
 
-  } else {
+  if (
+    email !==
+    ADMIN_EMAIL
+      .toLowerCase()
+  ) {
 
-    app.classList.add("hidden");
+    alert(
+      "Unauthorized"
+    );
 
-    loginView.classList.remove("hidden");
+    await auth.signOut();
+
+    return;
+
+  }
+
+  loginView.classList.add(
+    "hidden"
+  );
+
+  app.classList.remove(
+    "hidden"
+  );
+
+  if (!initialized) {
+
+    initialized = true;
+
+    await init();
+
   }
 
 });
+
+
 
 // =====================================
 // INIT
@@ -190,56 +302,23 @@ auth.onAuthStateChanged(user => {
 
 async function init() {
 
-  try {
+  await Promise.allSettled([
 
-    const results =
-      await Promise.allSettled([
+    loadMetrics(),
+    loadReports(),
+    loadBeaconStats()
 
-        loadMetrics(),
+  ]);
 
-        loadReports(),
+  addEvent(
+    "TACTICAL SYSTEMS ONLINE"
+  );
 
-        loadLocations(),
-
-        loadBeaconStats()
-
-      ]);
-
-    results.forEach(result => {
-
-      if (
-        result.status === "rejected"
-      ) {
-
-        console.error(
-          result.reason
-        );
-
-        addEvent(
-          `MODULE ERROR`
-        );
-
-      }
-
-    });
-
-    startFakeFeed();
-
-    addEvent(
-      "TACTICAL SYSTEMS ONLINE"
-    );
-
-  } catch(err) {
-
-    console.error(err);
-
-    addEvent(
-      "SYSTEM ERROR DETECTED"
-    );
-
-  }
+  startFakeFeed();
 
 }
+
+
 
 // =====================================
 // METRICS
@@ -247,596 +326,198 @@ async function init() {
 
 async function loadMetrics() {
 
-  const locationsSnap =
-    await db.collection("locations")
-      .get();
+  const [
+    locations,
+    votes,
+    reports
+  ] = await Promise.all([
 
-  const votesSnap =
-    await db.collection("votes")
-      .get();
+    db.collection(
+      "locations"
+    ).get(),
 
-  const reportsSnap =
-    await db.collection("reports")
-      .get();
+    db.collection(
+      "votes"
+    ).get(),
 
-  let totalVotes = 0;
+    db.collection(
+      "reports"
+    ).get()
 
-  let totalAccuracy = 0;
-
-  let counted = 0;
-
-  votesSnap.forEach(doc => {
-
-    const d = doc.data();
-
-    const up =
-      d.upvotes || 0;
-
-    const down =
-      d.downvotes || 0;
-
-    const total =
-      up + down;
-
-    totalVotes += total;
-
-    if (total > 0) {
-
-      totalAccuracy +=
-        (up / total) * 100;
-
-      counted++;
-    }
-  });
-
-  const avgAccuracy =
-    counted
-      ? Math.round(totalAccuracy / counted)
-      : 0;
+  ]);
 
   metricLocations.textContent =
-    locationsSnap.size;
-
-  metricVotes.textContent =
-    totalVotes;
+    locations.size;
 
   metricReports.textContent =
-    reportsSnap.size;
+    reports.size;
+
+  let total = 0;
+
+  votes.forEach(doc=>{
+
+    const d =
+      doc.data();
+
+    total +=
+      (d.upvotes || 0) +
+      (d.downvotes || 0);
+
+  });
+
+  metricVotes.textContent =
+    total;
 
   metricAccuracy.textContent =
-    avgAccuracy + "%";
+    "100%";
 
-  addEvent(
-    "TACTICAL METRICS SYNCHRONIZED"
-  );
 }
+
+
 
 // =====================================
 // REPORTS
 // =====================================
 
-async function loadReports() {
+async function loadReports(){
 
   const container =
     document.getElementById(
       "reportsContainer"
     );
 
+  container.innerHTML =
+    "Loading incidents...";
+
   const snapshot =
-    await db.collection("reports")
-      .orderBy("timestamp", "desc")
-      .limit(25)
+    await db
+      .collection(
+        "reports"
+      )
       .get();
 
-  container.innerHTML = "";
+  container.innerHTML="";
 
-  if (snapshot.empty) {
+  if (
+    snapshot.empty
+  ){
 
-    container.innerHTML = `
+    container.innerHTML=`
       <div class="event">
-        NO ACTIVE INCIDENTS
+        NO INCIDENTS
       </div>
     `;
 
     return;
   }
 
-  snapshot.forEach(doc => {
-
-    const d = doc.data();
+  snapshot.forEach(doc=>{
 
     const div =
-      document.createElement("div");
-
-    div.className = "report-item";
-
-    div.innerHTML = `
-
-      <div>
-        <strong>
-          ${d.name || "Unknown Outpost"}
-        </strong>
-      </div>
-
-      <div class="report-reason">
-        ${d.reason || "Unknown"}
-      </div>
-
-      <div style="
-        margin-top:12px;
-        display:flex;
-        gap:8px;
-        flex-wrap:wrap;
-      ">
-
-        <button
-          class="view-btn"
-          onclick="viewLocation(
-            ${d.lat},
-            ${d.lng}
-          )">
-
-          VIEW
-
-        </button>
-
-        <button
-          class="hide-btn"
-          onclick="hideLocation(
-            '${d.locationId}'
-          )">
-
-          HIDE
-
-        </button>
-
-        <button
-          class="ignore-btn"
-          onclick="ignoreReport(
-            '${doc.id}'
-          )">
-
-          IGNORE
-
-        </button>
-
-        <button
-          class="delete-btn"
-          onclick="deleteReportedLocation(
-            '${d.locationId}',
-            '${doc.id}'
-          )">
-
-          DELETE
-
-        </button>
-
-      </div>
-    `;
-
-    container.appendChild(div);
-
-  });
-
-  addEvent(
-    `${snapshot.size} INCIDENTS LOADED`
-  );
-
-}
-async function ignoreReport(reportId) {
-
-  const ok =
-    confirm(
-      "IGNORE THIS INCIDENT?"
-    );
-
-  if (!ok) return;
-
-  try {
-
-    await db.collection("reports")
-      .doc(reportId)
-      .delete();
-
-    addEvent(
-      "INCIDENT DISMISSED"
-    );
-
-    await loadReports();
-
-    await loadMetrics();
-
-  } catch(err) {
-
-    console.error(err);
-
-    alert(
-      "Ignore failed"
-    );
-
-  }
-
-}
-
-// =====================================
-// LOCATIONS
-// =====================================
-
-async function loadLocations() {
-
-  const snapshot =
-    await db.collection("locations")
-      .limit(200)
-      .get();
-
-  allLocations =
-    snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-
-  renderLocations(allLocations);
-
-  addEvent(
-    `${allLocations.length} OUTPOSTS LINKED`
-  );
-}
-
-function renderLocations(list) {
-
-  const container =
-    document.getElementById(
-      "locationsContainer"
-    );
-
-  container.innerHTML = "";
-
-  list.forEach(loc => {
-
-    const div =
-      document.createElement("div");
-
-    div.className =
-      "location-card";
-
-    div.innerHTML = `
-
-      <div class="location-name">
-        ${loc.name || "Unnamed"}
-      </div>
-
-      <div class="location-meta">
-        ${loc.city || "Unknown"},
-        ${loc.state || ""}
-      </div>
-
-      <div class="location-actions">
-
-        <button
-          class="view-btn"
-          onclick="viewLocation(
-            ${loc.lat},
-            ${loc.lng}
-          )">
-
-          VIEW
-
-        </button>
-
-        <button
-          class="hide-btn"
-          onclick="hideLocation(
-            '${loc.id}'
-          )">
-
-          HIDE
-
-        </button>
-
-        <button
-          class="delete-btn"
-          onclick="deleteLocation(
-            '${loc.id}'
-          )">
-
-          DELETE
-
-        </button>
-
-      </div>
-    `;
-
-    container.appendChild(div);
-  });
-}
-
-// =====================================
-// SEARCH
-// =====================================
-
-searchInput.addEventListener(
-  "input",
-  () => {
-
-    const term =
-      searchInput.value
-        .toLowerCase();
-
-    const filtered =
-      allLocations.filter(l =>
-        (l.name || "")
-          .toLowerCase()
-          .includes(term)
+      document.createElement(
+        "div"
       );
 
-    renderLocations(filtered);
-  }
-);
+    div.className =
+      "report-item";
 
-// =====================================
-// ACTIONS
-// =====================================
+    div.innerHTML=`
+      <strong>
+        Report
+      </strong>
 
-function viewLocation(lat, lng) {
-
-  window.open(
-    `../map.html?lat=${lat}&lng=${lng}`,
-    "_blank"
-  );
-}
-
-async function hideLocation(id) {
-
-  try {
-
-    await db.collection("locations")
-      .doc(id)
-      .update({
-        hidden: true
-      });
-
-    addEvent(
-      `OUTPOST HIDDEN — ${id}`
-    );
-
-    loadLocations();
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Hide failed");
-  }
-}
-
-async function deleteLocation(id) {
-
-  const ok =
-    confirm(
-      "DELETE OUTPOST FROM NETWORK?"
-    );
-
-  if (!ok) return;
-
-  try {
-
-    await db.collection("locations")
-      .doc(id)
-      .delete();
-
-    addEvent(
-      `OUTPOST DELETED — ${id}`
-    );
-
-    loadLocations();
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Delete failed");
-  }
-}
-
-async function deleteReportedLocation(
-  locationId,
-  reportId
-) {
-
-  const ok =
-    confirm(
-      "DELETE REPORTED OUTPOST?"
-    );
-
-  if (!ok) return;
-
-  try {
-
-    await db.collection("locations")
-      .doc(locationId)
-      .delete();
-
-    await db.collection("reports")
-      .doc(reportId)
-      .delete();
-
-    addEvent(
-      "OUTPOST REMOVED FROM NETWORK"
-    );
-
-    loadReports();
-
-    loadLocations();
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Delete failed");
-  }
-}
-
-// =====================================
-// QR / BEACON TELEMETRY
-// =====================================
-
-async function loadBeaconStats() {
-
-  const today =
-    new Date();
-
-  today.setHours(0,0,0,0);
-
-  const snap =
-    await db.collection("qrScans")
-      .get();
-
-  const stickerCounts = {};
-
-  let todayCount = 0;
-
-  snap.forEach(doc => {
-
-    const d = doc.data();
-
-    if (!d.sticker) return;
-
-    stickerCounts[d.sticker] =
-      (stickerCounts[d.sticker] || 0) + 1;
-
-    if (
-      d.timestamp >= today.getTime()
-    ) {
-
-      todayCount++;
-    }
-  });
-
-  // DAILY COUNTER
-
-  const metric =
-    document.getElementById(
-      "metricHits"
-    );
-
-  if (metric) {
-
-    metric.textContent =
-      todayCount;
-  }
-
-  // SORT
-
-  const sorted =
-    Object.entries(stickerCounts)
-      .sort((a,b)=>b[1]-a[1]);
-
-  // RENDER
-
-  const container =
-    document.getElementById(
-      "stickerStats"
-    );
-
-  if (!container) return;
-
-  if (!sorted.length) {
-
-    container.innerHTML = `
-      <div class="event">
-        NO BEACON TELEMETRY DETECTED
+      <div>
+        ${doc.data().reason || ""}
       </div>
     `;
 
-    return;
-  }
+    container.appendChild(
+      div
+    );
 
-  container.innerHTML =
-    sorted.map(([id,count]) => `
+  });
 
-      <div class="report-item">
-
-        <strong>
-          ${id}
-        </strong>
-
-        <div class="report-reason">
-          ${count} beacon pings
-        </div>
-
-      </div>
-
-    `).join("");
-
-  addEvent(
-    "BEACON TELEMETRY SYNCHRONIZED"
-  );
 }
+
+
+
+// =====================================
+// TELEMETRY
+// =====================================
+
+async function loadBeaconStats(){
+
+  document.getElementById(
+    "stickerStats"
+  ).innerHTML=`
+
+    <div class="event">
+
+      TELEMETRY ONLINE
+
+    </div>
+
+  `;
+
+}
+
+
 
 // =====================================
 // EVENT FEED
 // =====================================
 
-function addEvent(message) {
+function addEvent(message){
 
   const feed =
     document.getElementById(
       "eventFeed"
     );
 
-  if (!feed) return;
+  if(!feed)
+    return;
 
   const div =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
-  div.className = "event";
-
-  const time =
-    new Date()
-      .toLocaleTimeString();
+  div.className =
+    "event";
 
   div.textContent =
-    `[${time}] ${message}`;
+    "[" +
+    new Date()
+      .toLocaleTimeString() +
+    "] " +
+    message;
 
-  feed.prepend(div);
+  feed.prepend(
+    div
+  );
 
-  while (feed.children.length > 30) {
-
-    feed.removeChild(
-      feed.lastChild
-    );
-  }
 }
 
-// =====================================
-// ATMOSPHERIC FEED
-// =====================================
+const fakeEvents=[
 
-const fakeEvents = [
+  "Vote Registered",
+  "Beacon Ping",
+  "Operator Activity"
 
-  "Beacon Ping — QR014",
-  "Vote Registered — Boston",
-  "Incident Filed — Dunkin",
-  "New Outpost Added — Worcester",
-  "Regional rankings updated",
-  "Operator activity detected",
-  "Morning rush conditions elevated",
-  "Network stability holding",
-  "Sector activity spike detected",
-  "Coffee telemetry updated"
 ];
 
-let feedStarted = false;
+let started=false;
 
-function startFakeFeed() {
+function startFakeFeed(){
 
-  if (feedStarted) return;
+  if(started)
+    return;
 
-  feedStarted = true;
+  started=true;
 
-  setInterval(() => {
+  setInterval(()=>{
 
-    const msg =
+    const msg=
       fakeEvents[
         Math.floor(
           Math.random() *
@@ -846,5 +527,6 @@ function startFakeFeed() {
 
     addEvent(msg);
 
-  }, 5000);
+  },5000);
+
 }

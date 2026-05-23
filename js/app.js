@@ -1132,6 +1132,100 @@ let bestNearbySort = "distance";
 const DISPLAY_LIMIT = 10;
 const MAX_DISTANCE_MILES = 5;
 
+// ==========================================
+// IN-APP BROWSER DETECTION (PATENT PENDING!)
+// ==========================================
+
+function detectEmbeddedBrowser() {
+
+  const ua = navigator.userAgent || "";
+
+  return {
+    facebook: /FBAN|FBAV/i.test(ua),
+    instagram: /Instagram/i.test(ua),
+    messenger: /Messenger/i.test(ua),
+    tiktok: /TikTok/i.test(ua)
+  };
+
+}
+
+function showEmbeddedBrowserWarning() {
+
+  const dismissed =
+    localStorage.getItem(
+      "browserWarningDismissed"
+    );
+
+  if (dismissed === "true")
+    return;
+
+  const browser =
+    detectEmbeddedBrowser();
+
+  const isEmbedded =
+
+    browser.facebook ||
+    browser.instagram ||
+    browser.messenger ||
+    browser.tiktok;
+
+  if (!isEmbedded)
+    return;
+
+  const banner =
+    document.createElement(
+      "div"
+    );
+
+  banner.id =
+    "browserWarning";
+
+  banner.innerHTML = `
+
+    <div class="browserWarningContent">
+
+      <span>
+
+        ☕ Facebook and in-app browsers sometimes break location, maps, and login features.
+
+        Open in your normal browser for the best experience.
+
+      </span>
+
+      <button id="closeBrowserWarning">
+
+        ✕
+
+      </button>
+
+    </div>
+
+  `;
+
+  document.body.prepend(
+    banner
+  );
+
+  document
+    .getElementById(
+      "closeBrowserWarning"
+    )
+    .addEventListener(
+      "click",
+      () => {
+
+        localStorage.setItem(
+          "browserWarningDismissed",
+          "true"
+        );
+
+        banner.remove();
+
+      }
+    );
+
+}
+
 // ========================
 // ONBOARDING
 // ========================
@@ -2297,35 +2391,63 @@ let deferredPrompt = null;
 
 window.addEventListener("load", () => {
 
+  showEmbeddedBrowserWarning();
+
   if (!hasSeenOnboarding) {
+
     startOnboarding();
+
   } else {
+
     startLoadingPuns();
     init();
+
   }
 
-  const btn = document.getElementById("installBtn");
+  const btn =
+    document.getElementById(
+      "installBtn"
+    );
 
   if (btn) {
-    btn.addEventListener("click", async () => {
-      trackEvent("install_click");
 
-      if (!deferredPrompt) {
-        alert("To install: use browser menu → Add to Home Screen");
-        return;
+    btn.addEventListener(
+      "click",
+      async () => {
+
+        trackEvent(
+          "install_click"
+        );
+
+        if (!deferredPrompt) {
+
+          alert(
+            "To install: use browser menu → Add to Home Screen"
+          );
+
+          return;
+        }
+
+        deferredPrompt.prompt();
+
+        const { outcome } =
+          await deferredPrompt.userChoice;
+
+        trackEvent(
+          "install_prompt_result",
+          {
+            outcome
+          }
+        );
+
+        deferredPrompt =
+          null;
+
       }
+    );
 
-      deferredPrompt.prompt();
-
-      const { outcome } = await deferredPrompt.userChoice;
-
-      trackEvent("install_prompt_result", {
-        outcome: outcome
-      });
-
-      deferredPrompt = null;
-    });
   }
+
 });
 
 // ========================
