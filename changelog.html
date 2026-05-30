@@ -106,6 +106,100 @@
   <p class="subtle">
     Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
   </p>
+  
+  <!-- v3.1.0 -->
+
+<div class="changelog-entry">
+
+<div class="version-title">
+v3.1.0 – May 2026
+</div>
+
+<div class="section-title">
+☕ One Page Experience & UX Simplification
+</div>
+
+<div class="section-title">
+Added
+</div>
+
+<ul>
+<li>New "Rate This Coffee Run" workflow directly integrated into location cards</li>
+<li>Simplified onboarding experience focused on discovery, navigation, and rating</li>
+<li>Added visual "Already Rated" state for completed coffee runs</li>
+<li>Added automatic holiday theme cleanup when seasonal events end</li>
+</ul>
+
+<div class="section-title">
+Improved
+</div>
+
+<ul>
+<li>Streamlined the entire user journey into a single-page experience</li>
+<li>Improved onboarding clarity for first-time visitors</li>
+<li>Improved loading speed by reducing duplicate rendering and unnecessary UI processing</li>
+<li>Improved discoverability of nearby coffee locations</li>
+<li>Improved voting flow with fewer steps and less user friction</li>
+<li>Improved mobile usability through simplified navigation and interaction patterns</li>
+</ul>
+
+<div class="section-title">
+Changed
+</div>
+
+<ul>
+<li>Replaced the separate Rate Shops experience with card-based rating actions</li>
+<li>Reworked coffee rating interactions around real-world coffee runs</li>
+<li>Updated location cards to better surface accuracy, speed, and voting actions</li>
+<li>Refined onboarding messaging to better explain how Stir My Coffee works</li>
+<li>Updated holiday theme logic to support automatic expiration and cleanup</li>
+</ul>
+
+<div class="section-title">
+Removed
+</div>
+
+<ul>
+<li>Removed dedicated Rate Shops view</li>
+<li>Removed Top Picks panel and supporting UI</li>
+<li>Removed duplicate ranking displays and redundant navigation paths</li>
+<li>Removed unused rendering logic tied to legacy ranking systems</li>
+<li>Removed unnecessary address lookups and duplicate UI updates</li>
+</ul>
+
+<div class="section-title">
+Performance
+</div>
+
+<ul>
+<li>Reduced page rendering overhead</li>
+<li>Reduced unnecessary geocoding operations</li>
+<li>Reduced DOM complexity across the homepage</li>
+<li>Improved startup performance through removal of legacy UI systems</li>
+</ul>
+
+<div class="section-title">
+Technical
+</div>
+
+<ul>
+<li>Refactored homepage architecture around a single core workflow</li>
+<li>Continued cleanup of legacy view-switching and ranking code</li>
+<li>Improved maintainability through removal of obsolete components</li>
+<li>Fixed holiday theme persistence issue caused by missing expiration logic</li>
+</ul>
+
+<div class="section-title">
+Misc
+</div>
+
+<ul>
+<li>The best optimization was deleting code ☕🚀</li>
+</ul>
+
+</div>
+
+
  
  <!-- v3.0.4 -->
 <div class="changelog-entry">
@@ -127,6 +221,9 @@ Added
 <li>Connected Google Analytics and Clarity integrations</li>
 <li>Added Bing Webmaster Tools integration</li>
 <li>Added IndexNow support for faster search engine notifications</li>
+<li>Added automated location page generation system for large-scale SEO content creation</li>
+<li>Added dedicated location page structure with canonical URLs and Open Graph support</li>
+<li>Added JSON-LD structured data for coffee location pages</li>
 </ul>
 
 <div class="section-title">
@@ -138,6 +235,9 @@ Improved
 <li>Improved metadata consistency across pages</li>
 <li>Improved crawler discovery and sitemap handling</li>
 <li>Improved analytics visibility for user behavior tracking</li>
+<li>Improved long-tail search targeting for coffee location discovery</li>
+<li>Improved URL slug generation and metadata consistency across generated pages</li>
+<li>Improved search engine understanding of location content structure</li>
 </ul>
 
 <div class="section-title">
@@ -159,6 +259,10 @@ Technical
 <li>Refreshed sitemap generation and indexing structure</li>
 <li>Added search engine verification improvements</li>
 <li>Added crawler and bot monitoring support</li>
+<li>Built Node.js generation pipeline for location-specific SEO pages</li>
+<li>Added deterministic location-based slug generation</li>
+<li>Implemented automated generation of ~19k location pages from source data</li>
+<li>Separated source data from generated output structure</li>
 </ul>
 
 <div class="section-title">

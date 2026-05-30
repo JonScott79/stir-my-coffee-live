@@ -1375,8 +1375,6 @@ function goToUser() {
     .then(location => {
       userLat = location.lat;
       userLng = location.lng;
-	  
-switchView("rate");
 
       updateDistancesAndSort();
 
@@ -1419,8 +1417,13 @@ function tryRender() {
 }
 
 function init() {
-  document.getElementById("listContainer").innerHTML =
+const list =
+  document.getElementById("bestNearbyList");
+
+if (list) {
+  list.innerHTML =
     "☕ Finding great coffee near you...";
+}
 
   // 🚀 JUST CALL IT — no .then()
   loadLocations();
@@ -1443,37 +1446,6 @@ function init() {
 // ========================
 // LOAD DATA
 // ========================
-
-function getTopPicks(locations) {
-
-  if (!locations.length) {
-    return {
-      overall: null,
-      fastest: null,
-      best: null
-    };
-  }
-
-  // 🧠 Best Overall (Highest calculated algorithmic score)
-  const overall = locations[0];
-
-  // ⚡ Fastest (Lowest average speed rating score = fastest service)
-  const fastest =
-    [...locations]
-      .filter(l => l.speed > 0)
-      .sort((a, b) => a.speed - b.speed)[0];
-
-  // ⭐ Best Quality (Highest accurate order percentage)
-  const best =
-    [...locations]
-      .sort((a, b) => b.percent - a.percent)[0];
-
-  return {
-    overall,
-    fastest,
-    best
-  };
-}
 
 async function loadVotes() {
   const snapshot = await db.collection("votes").get();
@@ -1729,68 +1701,58 @@ async function updateDistancesAndSort() {
 
   const hasUser = userLat && userLng;
 
-  // 1. Calculate distances and scores for every location
+  // Calculate distances and scores
   allLocations.forEach(loc => {
+
     if (hasUser) {
+
       loc.distance = getDistance(
         userLat,
         userLng,
         loc.lat,
         loc.lng
       );
+
     } else {
+
       loc.distance = 0;
+
     }
 
     loc.score = calculateScore(loc);
+
   });
 
-  // 2. Filter locations down to the maximum allowed range
+  // Filter by range
   const workingSet = hasUser
     ? allLocations.filter(
         loc => loc.distance <= MAX_DISTANCE_MILES
       )
     : allLocations;
 
-  // 3. Extract top picks based on total scores
-  const sortedByScore = [...workingSet].sort((a, b) => b.score - a.score);
-  const picks = getTopPicks(sortedByScore);
-
-  // 4. Render the Top 3 Panels
-  renderTopPicksPanel(picks);
-
-  // 5. Sort by distance for the nearby feeds
+  // Distance sort for nearby shops
   const sortedByDistance = hasUser
-    ? [...workingSet].sort((a, b) => a.distance - b.distance)
-    : workingSet;
+    ? [...workingSet].sort(
+        (a, b) => a.distance - b.distance
+      )
+    : [...workingSet];
 
-  // 6. Render the main list UI blocks
+  // Render main shop list
   renderBestNearbyList(sortedByDistance);
-  renderList(sortedByDistance);
 
-  // 7. Batch and deduplicate strictly by ID string to protect the geocoding API
+  // Load addresses for visible cards only
   if (hasUser) {
-    const visibleNearby = sortedByDistance.slice(0, DISPLAY_LIMIT);
-    
-    const uniqueLocationsToGeocode = [];
-    const seenIds = new Set();
 
-    [
-      ...visibleNearby,
-      picks.overall,
-      picks.fastest, 
-      picks.best
-    ]
-    .filter(Boolean)
-    .forEach(loc => {
-      if (!seenIds.has(loc.id)) {
-        seenIds.add(loc.id);
-        uniqueLocationsToGeocode.push(loc);
-      }
-    });
+    const visibleNearby =
+      sortedByDistance.slice(
+        0,
+        DISPLAY_LIMIT
+      );
 
-    // Send the truly unique object batch down to the reverse lookup sequence
-    loadAddressesForVisible(uniqueLocationsToGeocode);
+    loadAddressesForVisible(
+      visibleNearby
+    );
+
   }
 
 }
@@ -1819,21 +1781,9 @@ function getDistance(lat1, lon1, lat2, lon2) {
 // RENDER
 // ========================
 
-function renderTopPicksPanel({ fastest, best, overall }) {
-  const el = document.getElementById("topPickCard");
-  if (!el) return;
-
-  el.innerHTML = `
-    ${renderMiniCard("🧠 Best Overall", overall)}
-	${renderMiniCard("⚡ Fastest", fastest)}
-    ${renderMiniCard("⭐ Best Quality", best)}
-  `;
-}
-
 function renderBestNearbyList(locations) {
 
   const list = document.getElementById("bestNearbyList");
-
   if (!list) return;
 
   let sorted = [...locations];
@@ -1846,12 +1796,11 @@ function renderBestNearbyList(locations) {
     sorted.sort((a, b) => b.score - a.score);
   }
 
-  // ⚡ FIX: Swap to ascending order so the lowest score (fastest) comes first!
   if (bestNearbySort === "fastest") {
-    sorted.sort((a, b) => a.speed - b.speed);
+    sorted.sort((a, b) => b.speed - a.speed);
   }
 
-  const visible = sorted.slice(0, 10);
+  const visible = sorted.slice(0, DISPLAY_LIMIT);
 
   list.innerHTML = visible.map((l, index) => {
 
@@ -1859,20 +1808,14 @@ function renderBestNearbyList(locations) {
       Math.max(0, Math.min(100, l.percent || 0));
 
     const speedPercent =
-      Math.max(
-        0,
-        Math.min(
-          100,
-          ((l.speed || 0) / 5) * 100
-        )
-      );
+      Math.max(0, Math.min(100, ((l.speed || 0) / 5) * 100));
+
+    const alreadyRated =
+      !canVote(l.id) || !canRateSpeed(l.id);
 
     return `
-      <div class="location-card"
-        role="button"
-        tabindex="0"
-        onclick="openDirections(event, ${l.lat}, ${l.lng})"
-        onkeypress="if(event.key==='Enter'){openDirections(event, ${l.lat}, ${l.lng})}">
+
+      <div class="location-card">
 
         <div class="card-header">
           <div class="name">
@@ -1885,25 +1828,54 @@ function renderBestNearbyList(locations) {
         </div>
 
         <div class="meta">
-          <span>📍 ${l.distance?.toFixed(1)} mi</span>
-          <span>👥 ${l.votes}</span>
+
+          <span>
+            📍 ${l.distance?.toFixed(1)} mi
+          </span>
+
+          <span>
+            👥 ${l.votes || 0}
+          </span>
+
+          <span
+            class="coffee-run-trigger ${alreadyRated ? 'disabled' : ''}"
+            ${alreadyRated
+              ? ''
+              : `onclick="openCoffeeRunSheet(event,'${l.id}')"`}>
+
+            ${alreadyRated
+              ? '☕ Already Rated'
+              : '☕ Rate This Coffee Run'}
+
+          </span>
+
+          <span
+            class="directions"
+            onclick="openDirections(event,${l.lat},${l.lng})">
+            🚗
+          </span>
+
         </div>
 
         <div class="statusBars">
 
           <div class="statusRow">
+
             <span class="statusLabel">
               🎯 Accuracy
             </span>
 
             <div class="statusTrack">
-              <div class="statusFill accuracy"
-              style="width:${accuracyPercent}%"></div>
+              <div
+                class="statusFill accuracy"
+                style="width:${accuracyPercent}%">
+              </div>
             </div>
 
             <span class="statusPercent">
-              ${l.percent || 0}%
+              ${accuracyPercent}%
             </span>
+
           </div>
 
           <div class="statusRow">
@@ -1913,8 +1885,10 @@ function renderBestNearbyList(locations) {
             </span>
 
             <div class="statusTrack">
-              <div class="statusFill speed"
-              style="width:${speedPercent}%"></div>
+              <div
+                class="statusFill speed"
+                style="width:${speedPercent}%">
+              </div>
             </div>
 
             <span class="statusPercent">
@@ -1926,169 +1900,10 @@ function renderBestNearbyList(locations) {
         </div>
 
       </div>
+
     `;
 
   }).join("");
-
-}
-
-function renderMiniCard(title, shop) {
-
-  if (!shop) {
-    return `
-      <div class="mini-card">
-        ${title}<br>—
-      </div>
-    `;
-  }
-
-  // Fall back gracefully if the geocoder hasn't finished loading the address yet
-  const address =
-    shop.street && shop.street.trim()
-      ? shop.street
-      : "Locating address...";
-
-  return `
-    <div class="mini-card"
-         role="button"
-         tabindex="0"
-         aria-label="Get directions to ${shop.name}"
-         onclick="openDirections(event, ${shop.lat}, ${shop.lng})"
-         onkeypress="if(event.key==='Enter'){openDirections(event, ${shop.lat}, ${shop.lng})}">
-
-      <div class="mini-title">
-        ${title}
-      </div>
-
-      <div class="name">
-        ${shop.name}
-      </div>
-
-      <div class="mini-address">
-        ${address}
-      </div>
-
-      <div class="meta">
-        <span>🎯 ${shop.percent ? shop.percent + "%" : "—"}</span>
-        <span>⚡ ${shop.speed ? shop.speed.toFixed(1) : "—"}</span>
-        <span>📍 ${shop.distance?.toFixed(1)} mi</span>
-      </div>
-
-    </div>
-  `;
-}
-
-function renderList(locations) {
-
-  const list = document.getElementById("listContainer");
-  if (!list) return;
-
-  list.innerHTML = locations
-    .slice(0, DISPLAY_LIMIT)
-    .map(l => {
-
-      const canUserVote = canVote(l.id);
-      const voteDisabled = canUserVote ? "" : "disabled";
-      const canUserRate = canRateSpeed(l.id);
-
-      // 🎯 accuracy %
-      const accuracyPercent = Math.max(0, Math.min(100, l.percent || 0));
-
-      // ⚡ convert 1-5 speed into %
-      const speedPercent = Math.max(0, Math.min(100, ((l.speed || 0) / 5) * 100));
-
-      // Check if street address string actually exists and is populated
-      const streetDisplay = l.street && l.street.trim() ? l.street : "Locating address...";
-
-      return `
-        <div class="location-card" 
-             tabindex="0"
-             role="button"
-             aria-label="${l.name}, ${l.percent || 0}% stir quality"
-             onclick="trackEvent('view_location', { location_id:'${l.id}' }); selectLocation('${l.id}')"
-             onkeypress="if(event.key==='Enter'){ selectLocation('${l.id}') }">
-
-          <div class="card-header">
-            <div class="name">${l.name}</div>
-          </div>
-
-          <div class="street">
-            📍 ${streetDisplay}
-            <span class="distance-inline">
-              · ${userLat ? l.distance.toFixed(1) + " mi" : "Locating..."}
-            </span>
-          </div>
-
-          <div class="meta">
-            <span class="vote-inline">
-              <button aria-label="Upvote this location" ${voteDisabled} onclick="vote(event,'${l.id}',true)">👍</button>
-              <button aria-label="Downvote this location" ${voteDisabled} onclick="vote(event,'${l.id}',false)">👎</button>
-            </span>
-
-<span class="speed-status-trigger"
-      onclick="openSpeedBottomSheet(event, '${l.id}')">
-
-  ⚡ Rate Speed
-
-</span>
-
-            <span class="directions" role="button" tabindex="0" aria-label="Get directions" onclick="openDirections(event, ${l.lat}, ${l.lng})">🚗</span>
-            <span>👥 ${l.votes}</span>
-          </div>
-
-          <div class="statusBars">
-            <div class="statusRow">
-              <span class="statusLabel">🎯 Accuracy</span>
-              <div class="statusTrack">
-                <div class="statusFill accuracy" style="width:${accuracyPercent}%"></div>
-              </div>
-              <span class="statusPercent">${accuracyPercent}%</span>
-            </div>
-
-            <div class="statusRow">
-              <span class="statusLabel">⚡ Speed</span>
-              <div class="statusTrack">
-                <div class="statusFill speed" style="width:${speedPercent}%"></div>
-              </div>
-              <span class="statusPercent">${l.speed ? l.speed.toFixed(1) : "—"}</span>
-            </div>
-          </div>
-
-        </div>
-      `;
-    })
-    .join("");
-}
-
-function updateSliderLabel(el) {
-
-  const valueSpan =
-    el.previousElementSibling;
-
-  if (!valueSpan) return;
-
-  valueSpan.textContent =
-    el.value == -1
-      ? "—"
-      : el.value;
-
-}
-
-function renderTopPick(shop) {
-  const el = document.getElementById("topPickCard");
-  if (!shop || !el) return;
-
-  el.innerHTML = `
-    <div class="name">${shop.name}</div>
-    <div class="meta">
-      <span class="quality ${getRatingClass(shop.percent)}">
-        🎯 ${shop.percent ? shop.percent + "%" : "—"}
-      </span>
-      <span class="stars">${renderStars(shop.id, shop.speed)}</span>
-      <span>📍 ${shop.distance?.toFixed(1) ?? "—"} mi</span>
-      <span>👥 ${shop.votes}</span>
-    </div>
-  `;
 }
 
 // ========================
@@ -2124,61 +1939,6 @@ function subscribeToVotes() {
 }
 
 // ========================
-// VOTING
-// ========================
-
-function vote(e, id, up) {
-  e.stopPropagation();
-
-  if (!canVote(id)) {
-    alert("⏳ You can vote again on this shop in 24 hours.");
-    return;
-  }
-
-  recordVote(id);
-
-  // 🔥 ANALYTICS
-  trackEvent("vote", {
-    location_id: id,
-    type: up ? "upvote" : "downvote"
-  });
-
-  // ========================
-  // ⚡ INSTANT UI UPDATE (KEY FIX)
-  // ========================
-  const loc = allLocations.find(l => l.id === id);
-  if (loc) {
-    const currentUp = Math.round((loc.percent / 100) * loc.votes) || 0;
-    const currentDown = loc.votes - currentUp;
-
-    const newUp = currentUp + (up ? 1 : 0);
-    const newDown = currentDown + (!up ? 1 : 0);
-    const total = newUp + newDown;
-
-    loc.votes = total;
-    loc.percent = total ? Math.round((newUp / total) * 100) : 0;
-  }
-
-  // 🚀 re-render immediately
-  updateDistancesAndSort();
-
-  // ========================
-  // 🔥 FIREBASE (ASYNC)
-  // ========================
-  const ref = db.collection("votes").doc(id);
-
-  ref.set({
-    upvotes: firebase.firestore.FieldValue.increment(up ? 1 : 0),
-    downvotes: firebase.firestore.FieldValue.increment(!up ? 1 : 0)
-  }, { merge: true })
-  .catch(err => console.error("❌ Vote failed:", err));
-
-  // animation
-  e.target.classList.add("pop");
-  setTimeout(() => e.target.classList.remove("pop"), 300);
-}
-
-// ========================
 // HELPERS
 // ========================
 
@@ -2190,52 +1950,6 @@ function toggleRatingsHelp() {
   if (!box) return;
 
   box.classList.toggle("hidden");
-}
-
-function renderStars(id, rating) {
-  return Array.from({ length: 5 }, (_, i) => {
-    const rounded = Math.round(rating);
-const filled = i + 1 <= rounded ? "★" : "☆";
-    return `<span onclick="rateSpeed(event, '${id}', ${i + 1})">${filled}</span>`;
-  }).join("");
-}
-
-function rateSpeed(e, id, rating) {
-
-  e.stopPropagation();
-
-  rating = Number(rating);
-
-  if (!canRateSpeed(id)) {
-    alert(
-      "⏳ You already rated speed here. Try again later."
-    );
-    return;
-  }
-
-  recordSpeedRating(id);
-
-  trackEvent("rate_speed", {
-    location_id: id,
-    rating: rating
-  });
-
-  db.collection("votes")
-    .doc(id)
-    .set({
-
-      speedTotal:
-        firebase.firestore.FieldValue.increment(
-          rating
-        ),
-
-      speedVotes:
-        firebase.firestore.FieldValue.increment(
-          1
-        )
-
-    }, { merge:true });
-
 }
 
 function getRatingClass(percent) {
@@ -2255,12 +1969,15 @@ function openDirections(e, lat, lng) {
   });
 
   // Fixed: Changed 12{lat} to the proper ${lat} template literal variable syntax
- window.open(`http://googleusercontent.com/maps.google.com/${lat},${lng}`, '_blank');
+ window.open(
+  `https://www.google.com/maps?q=${lat},${lng}`,
+  "_blank"
+);
 }
 
-// ===============================
-// SUPER TOP SECRET ALGORITHM™
-// ===============================
+// =========================================
+// SUPER TOP SECRET ALGORITHM™ Paten Pending
+// =========================================
 
 function calculateScore(shop) {
   const accuracy = shop.percent || 0;
@@ -2312,50 +2029,23 @@ function recordSpeedRating(id) {
 // BUTTONS
 // ========================
 
+function setCoffeeAccuracy(value) {
 
-// view switching
-let currentView = "rate";
+  selectedAccuracy = value;
 
-function switchView(view) {
+  document
+    .querySelectorAll(".accuracy-buttons button")
+    .forEach(btn => btn.classList.remove("selected"));
 
-  currentView = view;
+  const btns =
+    document.querySelectorAll(".accuracy-buttons button");
 
-  const rateView = document.getElementById("rateView");
-  const bestView = document.getElementById("bestView");
-
-  const rateTab = document.getElementById("rateTab");
-  const bestTab = document.getElementById("bestTab");
-
-  rateTab.classList.remove("active");
-  bestTab.classList.remove("active");
-
-  // Always use full width
-  const layout = document.querySelector(".mainLayout");
-  layout.style.gridTemplateColumns = "1fr";
-
-  if (view === "rate") {
-
-    rateView.style.display = "block";
-    bestView.style.display = "none";
-
-    rateTab.classList.add("active");
-
-    trackEvent("switch_view", {
-      view: "rate"
-    });
-
+  if (value) {
+    btns[0].classList.add("selected");
   } else {
-
-    rateView.style.display = "none";
-    bestView.style.display = "block";
-
-    bestTab.classList.add("active");
-
-    trackEvent("switch_view", {
-      view: "best"
-    });
-
+    btns[1].classList.add("selected");
   }
+
 }
 
 function setBestSort(type) {
@@ -2597,153 +2287,116 @@ function hideLoader() {
 }
 
 // ========================
-// MOBILE SWIPE NAVIGATION
-// ========================
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener("touchstart", (e) => {
-
-  // Ignore map gestures
-  if (e.target.closest(".leaflet-container")) return;
-
-  touchStartX = e.changedTouches[0].screenX;
-
-});
-
-document.addEventListener("touchend", (e) => {
-
-  // Ignore map gestures
-  if (e.target.closest(".leaflet-container")) return;
-
-  touchEndX = e.changedTouches[0].screenX;
-
-  handleSwipe();
-
-});
-
-function handleSwipe() {
-
-  const swipeDistance =
-    touchEndX - touchStartX;
-
-  // Prevent tiny accidental swipes
-  if (Math.abs(swipeDistance) < 60) return;
-
-  const rateView =
-    document.getElementById("rateView");
-
-  const bestView =
-    document.getElementById("bestView");
-
-  const rateVisible =
-    rateView &&
-    rateView.style.display !== "none";
-
-  const bestVisible =
-    bestView &&
-    bestView.style.display !== "none";
-
-  // SWIPE LEFT
-  if (swipeDistance < 0) {
-
-    if (rateVisible) {
-      switchView("best");
-    }
-
-  }
-
-  // SWIPE RIGHT
-  else {
-
-    if (bestVisible) {
-      switchView("rate");
-    }
-
-  }
-
-}
-
-// ========================
 // SPEED RATING BOTTOM SHEET SYSTEM
 // ========================
 
-let activeSpeedLocationId = null;
-let toastTimeout = null;
+let activeCoffeeLocationId = null;
+let selectedAccuracy = null;
 
-window.openSpeedBottomSheet = function (e, id) {
+function openCoffeeRunSheet(e, id) {
+
   e.stopPropagation();
 
-  if (!canRateSpeed(id)) {
-    alert("⏳ You already rated speed here. Try again later.");
+  if (!canVote(id) || !canRateSpeed(id)) {
+
+    alert(
+      "⏳ You already rated this location recently."
+    );
+
     return;
   }
 
-  activeSpeedLocationId = id;
-  
-  const sheet = document.getElementById("speedBottomSheet");
-  if (sheet) {
-    sheet.classList.remove("hidden");
-  }
-};
+  activeCoffeeLocationId = id;
+  selectedAccuracy = null;
 
-window.closeSpeedBottomSheet = function () {
-  const sheet = document.getElementById("speedBottomSheet");
-  if (sheet) {
-    sheet.classList.add("hidden");
-  }
-  activeSpeedLocationId = null;
-};
+  document
+    .getElementById("coffeeRunSheet")
+    .classList.remove("hidden");
+}
 
-window.submitSpeedRating = function (rating) {
-  if (!activeSpeedLocationId) return;
+function closeCoffeeRunSheet() {
 
-  rating = Number(rating);
+  const sheet =
+    document.getElementById("coffeeRunSheet");
 
-  // Preserve existing validation
-  if (!canRateSpeed(activeSpeedLocationId)) {
-    alert("⏳ You already rated speed here. Try again later.");
-    closeSpeedBottomSheet();
+  if (!sheet) return;
+
+  sheet.classList.add("hidden");
+
+  activeCoffeeLocationId = null;
+  selectedAccuracy = null;
+  selectedSpeed = null;
+
+  document
+    .querySelectorAll(
+      ".accuracy-buttons button, .speed-btn-option"
+    )
+    .forEach(btn => btn.classList.remove("selected"));
+
+}
+
+
+/* =====================
+	Submit Handler
+========================*/
+
+function submitCoffeeRun(speedRating) {
+
+  if (!activeCoffeeLocationId) return;
+
+  if (selectedAccuracy === null) {
+
+    alert(
+      "Please select whether your order was correct."
+    );
+
     return;
   }
 
-  // 1. Record speed rating in localStorage (lock user out)
-  recordSpeedRating(activeSpeedLocationId);
+  recordVote(activeCoffeeLocationId);
+  recordSpeedRating(activeCoffeeLocationId);
 
-  // 2. Track existing analytics behavior
-  trackEvent("rate_speed", {
-    location_id: activeSpeedLocationId,
-    rating: rating
-  });
+  const voteRef =
+    db.collection("votes")
+      .doc(activeCoffeeLocationId);
 
-  // 3. Close the Bottom Sheet immediately to prevent double submissions
-  closeSpeedBottomSheet();
+  voteRef.set({
 
-  // 4. Write to Firestore using the exact existing increment logic
-  db.collection("votes")
-    .doc(activeSpeedLocationId)
-    .set({
-      speedTotal: firebase.firestore.FieldValue.increment(rating),
-      speedVotes: firebase.firestore.FieldValue.increment(1)
-    }, { merge: true })
-    .then(() => {
-      // 5. Show simple success toast only when Firestore write succeeds
-      const toast = document.getElementById("speedSuccessToast");
-      if (toast) {
-        toast.classList.remove("hidden");
-        
-        if (toastTimeout) {
-          clearTimeout(toastTimeout);
-        }
-        
-        toastTimeout = setTimeout(() => {
-          toast.classList.add("hidden");
-        }, 3000);
-      }
-    })
-    .catch(err => {
-      console.error("❌ Speed rating failed:", err);
-      alert("❌ Speed rating failed. Please try again.");
-    });
-};
+    upvotes:
+      firebase.firestore.FieldValue.increment(
+        selectedAccuracy ? 1 : 0
+      ),
+
+    downvotes:
+      firebase.firestore.FieldValue.increment(
+        selectedAccuracy ? 0 : 1
+      ),
+
+    speedTotal:
+      firebase.firestore.FieldValue.increment(
+        speedRating
+      ),
+
+    speedVotes:
+      firebase.firestore.FieldValue.increment(
+        1
+      )
+
+  }, { merge:true });
+
+  closeCoffeeRunSheet();
+
+  const toast =
+    document.getElementById(
+      "speedSuccessToast"
+    );
+
+  toast.textContent =
+    "Thanks for rating your coffee run! ☕";
+
+  toast.classList.remove("hidden");
+
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 3000);
+}

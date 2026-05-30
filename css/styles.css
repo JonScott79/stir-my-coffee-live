@@ -355,145 +355,6 @@ button,
 }
 
 /* ========================
-   SPEED SLIDER
-======================== */
-
-.speed-icon {
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.speed-slider {
-  display: inline-flex;
-  align-items: center;
-
-  gap: 4px;
-
-  flex: 1;
-  min-width: 120px;
-  max-width: 180px;
-}
-
-.speed-slider input[type="range"] {
-  flex: 1;
-  min-width: 0;
-
-  appearance: none;
-  -webkit-appearance: none;
-
-  height: 6px;
-  margin: 0;
-
-  background: transparent;
-
-  cursor: pointer;
-
-  transform: translateY(1px);
-}
-
-/* Track (Chrome / Edge) */
-
-.speed-slider input[type="range"]::-webkit-slider-runnable-track {
-
-  height: 6px;
-
-  border-radius: 999px;
-
-  background: #4A90E2;
-
-}
-
-/* Thumb (Chrome / Edge) */
-
-.speed-slider input[type="range"]::-webkit-slider-thumb {
-
-  -webkit-appearance: none;
-
-  width: 18px;
-  height: 18px;
-
-  margin-top: -6px;
-
-  border-radius: 50%;
-
-  background: #2E6FD8;
-
-  border: 2px solid white;
-
-  box-shadow: 0 2px 6px rgba(0,0,0,.2);
-
-}
-
-/* Firefox track */
-
-.speed-slider input[type="range"]::-moz-range-track {
-
-  height: 6px;
-
-  border-radius: 999px;
-
-  background: #4A90E2;
-
-}
-
-/* Firefox thumb */
-
-.speed-slider input[type="range"]::-moz-range-thumb {
-
-  width: 18px;
-  height: 18px;
-
-  border-radius: 50%;
-
-  background: #2E6FD8;
-
-  border: none;
-
-}
-
-.slider-value {
-
-  font-size: 12px;
-
-  min-width: 18px;
-
-  text-align: center;
-
-}
-
-/* Disabled slider */
-
-.speed-slider input[type="range"]:disabled::-webkit-slider-runnable-track {
-  background:#c8c8c8;
-}
-
-.speed-slider input[type="range"]:disabled::-webkit-slider-thumb {
-  background:#888;
-  border:2px solid #d8d8d8;
-  cursor:not-allowed;
-  opacity:.8;
-}
-
-.speed-slider input[type="range"]:disabled::-moz-range-track {
-  background:#c8c8c8;
-}
-
-.speed-slider input[type="range"]:disabled::-moz-range-thumb {
-  background:#888;
-  cursor:not-allowed;
-}
-
-.speed-slider input[type="range"]:disabled {
-  opacity:.7;
-  cursor:not-allowed;
-}
-
-.speed-slider input[type="range"]:disabled + .slider-value {
-  color:#888;
-}
-
-/* ========================
    FOOTER (FULLY CLEAN)
 ======================== */
 
@@ -1353,7 +1214,7 @@ body.loading #loader {
 }
 
 /* ========================
-   SPEED BOTTOM SHEET
+   BOTTOM SHEET
 ======================== */
 
 .speed-bottom-sheet {
@@ -1366,7 +1227,6 @@ body.loading #loader {
   flex-direction: column;
 }
 
-/* THIS FIXES YOUR BUG */
 .speed-bottom-sheet.hidden {
   display: none !important;
 }
@@ -1423,6 +1283,65 @@ body.loading #loader {
   background: #f0ece6;
 }
 
+.coffee-run-trigger{
+display:inline-flex;
+align-items:center;
+padding:6px 10px;
+border-radius:8px;
+cursor:pointer;
+background:#f0ece6;
+font-size:12px;
+font-weight:700;
+border:1px solid var(--border);
+}
+
+.coffee-run-trigger:hover{
+background:var(--bg-header);
+color:var(--accent);
+}
+
+.accuracy-buttons{
+display:flex;
+gap:10px;
+margin-bottom:12px;
+}
+
+.accuracy-buttons button{
+flex:1;
+padding:14px;
+font-size:16px;
+font-weight:700;
+border:2px solid var(--accent-light);
+border-radius:12px;
+cursor:pointer;
+background:#faf7f2;
+}
+
+.meta{
+display:flex;
+align-items:center;
+gap:12px;
+margin-top:10px;
+}
+
+.coffee-run-trigger{
+white-space:nowrap;
+}
+
+.statusBars{
+margin-top:12px;
+}
+
+.statusLabel{
+width:85px;
+}
+
+.statusPercent{
+width:48px;
+font-weight:700;
+text-align:right;
+}
+
 /* ========================
    EMBEDDED BROWSER WARNING
 ======================== */
@@ -1464,4 +1383,16 @@ body.loading #loader {
 
   cursor: pointer;
   font-weight: bold;
+}
+
+.accuracy-buttons button.selected {
+  opacity: .5;
+  background: #d8d8d8;
+  border-color: #888;
+}
+
+.coffee-run-trigger.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
 }

@@ -175,25 +175,10 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 <div class="container">
 
 <div class="actions">
-
-  <button
-    id="rateTab"
-    class="view-tab"
-    onclick="switchView('rate')">
-    Rate Shops
-  </button>
-
-  <button
-    id="bestTab"
-    class="view-tab"
-    onclick="switchView('best')">
-    Best Nearby
-  </button>
-
-  <button
-    onclick="trackEvent('map_open'); goToMap()">
-    Interactive Map
-  </button>
+<button
+  onclick="trackEvent('map_open'); goToMap()">
+  Interactive Map
+</button>
 
 </div>
 
@@ -217,56 +202,15 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 </div>
   <div class="mainLayout">
 
-    <!-- RATE -->
-<div id="rateView" class="listSection">
-
-<h2>Rate Nearby Coffee</h2>
-<div class="vote-subtext">
-  Vote once per shop every 24 hours
-</div>
-
-<div class="ratings-help">
-
-  <button class="ratings-help-btn"
-          onclick="toggleRatingsHelp()">
-
-    ⓘ How Ratings Work
-
-  </button>
-
-  <div id="ratingsHelpBox"
-       class="ratings-help-box hidden">
-
-    <p>
-      🎯 Accuracy shows how often shops get orders correct.
-    </p>
-
-    <p>
-      ⚡ Speed reflects community-rated service speed.
-    </p>
-
-    <p>
-      👍 👎 Vote after your coffee run to help others.
-    </p>
-
-  </div>
-
-</div>
-
-  <div id="listContainer"></div>
-
-</div>
 
     <!-- BEST -->
-<div id="bestView" class="topPickSection" style="display:none;">
-  <h2>The Top 3</h2>
+<div id="bestView" class="topPickSection">
+
+  <h2>Nearby Coffee Shops</h2>
+
   <div class="vote-subtext">
-Ranked by consistency, speed, and customer votes
+    Find the best coffee near you
   </div>
-
-  <div id="topPickCard"></div>
-
-  <h2>All Nearby Shops</h2>
   <div class="actions sort-actions">
 
   <button
@@ -420,20 +364,70 @@ if ("serviceWorker" in navigator) {
 <script src="js/theme.js" defer></script>
 
 <!-- Simple Speed Rating Bottom Sheet -->
-<div id="speedBottomSheet" class="speed-bottom-sheet hidden">
-  <div class="speed-bottom-sheet-backdrop" onclick="closeSpeedBottomSheet()"></div>
-  <div class="speed-bottom-sheet-content">
-    <h3>Rate Service Speed</h3>
-    <p>Select a speed rating from 1 (Slowest) to 5 (Fastest):</p>
-    <div class="speed-buttons-container">
-      <button class="speed-btn-option" onclick="submitSpeedRating(1)">1 — Very Slow 🐢</button>
-      <button class="speed-btn-option" onclick="submitSpeedRating(2)">2 — Slow 🚗</button>
-      <button class="speed-btn-option" onclick="submitSpeedRating(3)">3 — Average ☕</button>
-      <button class="speed-btn-option" onclick="submitSpeedRating(4)">4 — Fast ⚡</button>
-      <button class="speed-btn-option" onclick="submitSpeedRating(5)">5 — Lightning 🚀</button>
-    </div>
-    <button class="speed-btn-cancel" onclick="closeSpeedBottomSheet()">Cancel</button>
+<div id="coffeeRunSheet" class="speed-bottom-sheet hidden">
+
+  <div class="speed-bottom-sheet-backdrop"
+       onclick="closeCoffeeRunSheet()">
   </div>
+
+  <div class="speed-bottom-sheet-content">
+
+    <h3>Rate This Coffee Run</h3>
+
+    <p>Did they get your order right?</p>
+
+    <div class="accuracy-buttons">
+
+      <button onclick="setCoffeeAccuracy(true)">
+        👍 Yes
+      </button>
+
+      <button onclick="setCoffeeAccuracy(false)">
+        👎 No
+      </button>
+
+    </div>
+
+    <p style="margin-top:20px;">
+      How fast was service?
+    </p>
+
+    <div class="speed-buttons-container">
+
+      <button class="speed-btn-option"
+              onclick="submitCoffeeRun(1)">
+        🐢 Very Slow
+      </button>
+
+      <button class="speed-btn-option"
+              onclick="submitCoffeeRun(2)">
+        🚗 Slow
+      </button>
+
+      <button class="speed-btn-option"
+              onclick="submitCoffeeRun(3)">
+        ☕ Average
+      </button>
+
+      <button class="speed-btn-option"
+              onclick="submitCoffeeRun(4)">
+        ⚡ Fast
+      </button>
+
+      <button class="speed-btn-option"
+              onclick="submitCoffeeRun(5)">
+        🚀 Lightning
+      </button>
+
+    </div>
+
+    <button class="speed-btn-cancel"
+            onclick="closeCoffeeRunSheet()">
+      Cancel
+    </button>
+
+  </div>
+
 </div>
 
 <!-- Simple Success Message Toast -->

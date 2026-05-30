@@ -1,3 +1,58 @@
+## [3.1.0] – May 2026
+
+### One Page Experience & UX Simplification
+
+### Added
+
+* New "Rate This Coffee Run" workflow directly integrated into location cards
+* Simplified onboarding experience focused on discovery, navigation, and rating
+* Added visual "Already Rated" state for completed coffee runs
+* Added automatic holiday theme cleanup when seasonal events end
+
+### Improved
+
+* Streamlined the entire user journey into a single-page experience
+* Improved onboarding clarity for first-time visitors
+* Improved loading speed by reducing duplicate rendering and unnecessary UI processing
+* Improved discoverability of nearby coffee locations
+* Improved voting flow with fewer steps and less user friction
+* Improved mobile usability through simplified navigation and interaction patterns
+
+### Changed
+
+* Replaced the separate Rate Shops experience with card-based rating actions
+* Reworked coffee rating interactions around real-world coffee runs
+* Updated location cards to better surface accuracy, speed, and voting actions
+* Refined onboarding messaging to better explain how Stir My Coffee works
+* Updated holiday theme logic to support automatic expiration and cleanup
+
+### Removed
+
+* Removed dedicated Rate Shops view
+* Removed Top Picks panel and supporting UI
+* Removed duplicate ranking displays and redundant navigation paths
+* Removed unused rendering logic tied to legacy ranking systems
+* Removed unnecessary address lookups and duplicate UI updates
+
+### Performance
+
+* Reduced page rendering overhead
+* Reduced unnecessary geocoding operations
+* Reduced DOM complexity across the homepage
+* Improved startup performance through removal of legacy UI systems
+
+### Technical
+
+* Refactored homepage architecture around a single core workflow
+* Continued cleanup of legacy view-switching and ranking code
+* Improved maintainability through removal of obsolete components
+* Fixed holiday theme persistence issue caused by missing expiration logic
+
+### Misc
+
+* The best optimization was deleting code ☕🚀
+
+
 ## [3.0.4] – May 2026
 
 ### 📈 Analytics, SEO & Visibility Upgrade
