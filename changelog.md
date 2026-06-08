@@ -1,3 +1,37 @@
+## [3.1.1] – June 2026
+
+### 📍 Location Onboarding & Permission Clarity
+
+### Added
+
+* Added dedicated onboarding slide explaining why location access is needed
+* Added location-required messaging when location permissions are unavailable
+* Added guidance for enabling browser or device location permissions
+
+### Improved
+
+* Improved onboarding flow with clearer expectations for first-time users
+* Improved user experience when location permissions are denied
+* Improved transparency around how location data is used
+* Reduced confusion caused by fallback locations appearing as nearby results
+
+### Changed
+
+* Nearby Coffee Shops now displays a location-required message when location access is unavailable
+* Refined onboarding messaging to better explain location usage and benefits
+* Replaced the location enable button with clearer instructions for enabling permissions
+
+### UX
+
+* Clearer experience for users who deny location access
+* Better alignment between onboarding and real-world app behavior
+* Reduced user confusion during initial setup
+
+### Misc
+
+* Turns out users need to know why you want their location ☕📍
+
+
 ## [3.1.0] – May 2026
 
 ### One Page Experience & UX Simplification

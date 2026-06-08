@@ -1361,42 +1361,34 @@ function recordVote(id) {
 // ========================
 
 function goToUser() {
-  const btn = document.getElementById("locateBtn");
 
-  // 🔥 ANALYTICS
   trackEvent("locate_me");
 
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = "⏳ Finding...";
-  }
+  navigator.geolocation.getCurrentPosition(
 
-  getUserLocation()
-    .then(location => {
-      userLat = location.lat;
-      userLng = location.lng;
+    pos => {
+
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
 
       updateDistancesAndSort();
 
-      if (btn) btn.textContent = "✅ Nearby Found";
+    },
 
-      setTimeout(() => {
-        if (btn) {
-          btn.textContent = "📍 Locate Me";
-          btn.disabled = false;
-        }
-      }, 2000);
-    })
-    .catch(() => {
-      if (btn) btn.textContent = "❌ Location Failed";
+    () => {
 
-      setTimeout(() => {
-        if (btn) {
-          btn.textContent = "📍 Locate Me";
-          btn.disabled = false;
-        }
-      }, 2500);
-    });
+      alert(
+        "Location is currently blocked. Please enable location permissions for this site in your browser settings and try again."
+      );
+
+    },
+
+    {
+      timeout: 5000
+    }
+
+  );
+
 }
 
 // ========================
@@ -1693,6 +1685,38 @@ function getUserLocation() {
   });
 }
 
+function showLocationRequired() {
+
+  const list =
+    document.getElementById("bestNearbyList");
+
+  if (!list) return;
+
+  list.innerHTML = `
+
+    <div class="location-card">
+
+      <h3>📍 Location Required</h3>
+
+      <p>
+        Stir My Coffee uses your location
+        to find coffee shops near you.
+      </p>
+
+      <p style="margin-top:12px;">
+        Location access appears to be disabled.
+      </p>
+
+      <div class="vote-subtext" style="margin-top:14px;">
+        Enable location permissions in your browser
+        or device settings, then refresh this page.
+      </div>
+
+    </div>
+
+  `;
+}
+
 // ========================
 // DISTANCE + SORT
 // ========================
@@ -1786,6 +1810,15 @@ function renderBestNearbyList(locations) {
   const list = document.getElementById("bestNearbyList");
   if (!list) return;
 
+  if (
+    userLat === 42.1 &&
+    userLng === -71.8
+  ) {
+
+    showLocationRequired();
+    return;
+  }
+  
   let sorted = [...locations];
 
   if (bestNearbySort === "distance") {
