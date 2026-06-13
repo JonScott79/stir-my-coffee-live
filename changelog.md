@@ -1,3 +1,44 @@
+## [3.1.2] – June 2026
+
+### 📍 Location Experience & User Guidance
+
+### Added
+
+* Added visual location-permission guidance directly within the Nearby Coffee Shops experience
+* Added browser-specific location help images for Chrome and Safari users
+* Added automatic browser detection for location-permission assistance
+* Added direct guidance for users browsing through embedded social media browsers
+
+### Improved
+
+* Improved first-time user success rate when location permissions are unavailable
+* Improved clarity around enabling browser location access
+* Improved onboarding-to-application consistency
+* Reduced friction between discovering nearby coffee shops and granting permissions
+
+### Changed
+
+* Replaced text-heavy location instructions with visual guidance
+* Simplified location-required workflow with clearer user actions
+* Streamlined permission assistance directly within the Nearby Coffee Shops section
+
+### UX
+
+* Reduced confusion for users unfamiliar with browser permission settings
+* Improved experience for Facebook and embedded-browser visitors
+* Faster path from first visit to discovering nearby coffee shops
+
+### Technical
+
+* Added browser-specific image selection for permission guidance
+* Improved location permission handling and fallback behavior
+* Continued cleanup and organization of onboarding and geolocation code
+
+### Misc
+
+* A picture is worth a thousand support tickets ☕📍
+
+
 ## [3.1.1] – June 2026
 
 ### 📍 Location Onboarding & Permission Clarity

@@ -110,39 +110,29 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
     <p id="loadingText">Brewing something good...</p>
   </div>
 
-  <!-- FIRST TIME ONBOARDING -->
-  <div id="onboarding" class="onboarding hidden">
+<!-- FIRST TIME ONBOARDING -->
+<div id="onboarding" class="onboarding hidden">
 
-    <img src="images/StirLogo.png" class="onboarding-logo" alt="Stir My Coffee" />
+<img src="images/StirLogo.png"
+     class="onboarding-logo"
+     alt="Stir My Coffee">
 
 <div class="onboarding-slide active">
   <h2>Wrong coffee ruins mornings.</h2>
-  <p>
-    Stop wasting money on bad coffee.
-  </p>
-</div>
-
-<div class="onboarding-slide">
-  <h2>Find shops that get it right.</h2>
-
-  <p>
-    Rated by real customers for consistency and speed.
-  </p>
-
-  <div class="vote-subtext" style="margin-top: 14px;">
-    Use the interactive map to add or report shops.
-  </div>
+  <p>Stop wasting money on bad coffee.</p>
 </div>
 
 <div class="onboarding-slide">
   <h2>Don’t enable bad coffee. Rate it.</h2>
-  
+  <p>Rate your experience and help others find better coffee.</p>
+  <div class="vote-subtext" style="margin-top:14px;">
+    The only data we collect is your vote.
+  </div>
+</div>
+
 <div class="onboarding-slide">
   <h2>Enable Location</h2>
-
-  <p>
-    Stir My Coffee uses your location to find coffee shops near you.
-  </p>
+  <p>Stir My Coffee uses your location to find coffee shops near you.</p>
 
   <div class="vote-subtext" style="margin-top:14px;">
     Your location is never stored or shared.
@@ -153,22 +143,12 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
   </div>
 </div>
 
-  <p>
-    Rate your experience and help others find better coffee.
-  </p>
-
-  <div class="vote-subtext" style="margin-top: 14px;">
-    The only data we collect is your vote.
-  </div>
+<div class="onboarding-buttons">
+  <button id="nextOnboardingBtn">Next</button>
+  <button id="skipOnboardingBtn">Skip</button>
 </div>
 
-    <div class="onboarding-buttons">
-      <button id="nextOnboardingBtn">Next</button>
-      <button id="skipOnboardingBtn">Skip</button>
-    </div>
-
-  </div>
-</div>
+</div></div>
 
 <header>
 
@@ -188,14 +168,11 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 
 </header>
 
-<div class="container">
-
 <div class="actions">
 <button
   onclick="trackEvent('map_open'); goToMap()">
   Interactive Map
 </button>
-
 </div>
 
 <div class="sticker-cta-wrapper">
@@ -216,10 +193,10 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
   </div>
 
 </div>
+
   <div class="mainLayout">
-
-
     <!-- BEST -->
+
 <div id="bestView" class="topPickSection">
 
   <h2>Nearby Coffee Shops</h2>
@@ -252,10 +229,34 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 
 </div>
 
-<div class="listSection" id="bestNearbyList"></div>
-</div>
+<div id="locationRequiredCard"
+     class="location-required hidden">
+
+  <h3>📍 Location Required</h3>
+
+  <p>
+    Enable location to see coffee shops near you.
+  </p>
+
+<img
+id="locationHelpImage"
+class="location-help-image"
+src="images/location-bar-chrome.png"
+alt="Location permission help">
+
+  <div class="location-actions">
+
+    <button onclick="openInBrowser()">
+      Open In Browser
+    </button>
+
   </div>
 
+</div>
+
+<div class="listSection" id="bestNearbyList"></div>
+
+</div>
 </div>
 
 

@@ -1360,34 +1360,48 @@ function recordVote(id) {
 // USER location
 // ========================
 
-function goToUser() {
+function goToUser(){
 
-  trackEvent("locate_me");
+trackEvent("locate_me");
 
-  navigator.geolocation.getCurrentPosition(
+navigator.geolocation.getCurrentPosition(
 
-    pos => {
+pos=>{
 
-      userLat = pos.coords.latitude;
-      userLng = pos.coords.longitude;
+userLat=pos.coords.latitude;
+userLng=pos.coords.longitude;
 
-      updateDistancesAndSort();
+const card=document.getElementById(
+"locationRequiredCard"
+);
 
-    },
+if(card){
+card.classList.add("hidden");
+}
 
-    () => {
+updateDistancesAndSort();
 
-      alert(
-        "Location is currently blocked. Please enable location permissions for this site in your browser settings and try again."
-      );
+},
 
-    },
+()=>{
 
-    {
-      timeout: 5000
-    }
+const card=document.getElementById(
+"locationRequiredCard"
+);
 
-  );
+if(card){
+card.classList.remove("hidden");
+}
+
+showLocationRequired();
+
+},
+
+{
+timeout:5000
+}
+
+);
 
 }
 
@@ -1667,54 +1681,69 @@ async function loadLocations() {
 // GEOLOCATION
 // ========================
 
-function getUserLocation() {
-  return new Promise(resolve => {
-    if (!navigator.geolocation) {
-      resolve({ lat: 42.1, lng: -71.8 });
-      return;
-    }
+function getUserLocation(){
+return new Promise(resolve=>{
 
-    navigator.geolocation.getCurrentPosition(
-      pos => resolve({
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude
-      }),
-      () => resolve({ lat: 42.1, lng: -71.8 }),
-      { timeout: 5000 }
-    );
-  });
+if(!navigator.geolocation){
+showLocationRequired();
+resolve({lat:42.1,lng:-71.8});
+return;
 }
 
-function showLocationRequired() {
+navigator.geolocation.getCurrentPosition(
 
-  const list =
-    document.getElementById("bestNearbyList");
+pos=>{
 
-  if (!list) return;
+const card=document.getElementById("locationRequiredCard");
 
-  list.innerHTML = `
+if(card){
+card.classList.add("hidden");
+}
 
-    <div class="location-card">
+resolve({
+lat:pos.coords.latitude,
+lng:pos.coords.longitude
+});
 
-      <h3>📍 Location Required</h3>
+},
 
-      <p>
-        Stir My Coffee uses your location
-        to find coffee shops near you.
-      </p>
+()=>{
 
-      <p style="margin-top:12px;">
-        Location access appears to be disabled.
-      </p>
+const card=document.getElementById("locationRequiredCard");
 
-      <div class="vote-subtext" style="margin-top:14px;">
-        Enable location permissions in your browser
-        or device settings, then refresh this page.
-      </div>
+if(card){
+card.classList.remove("hidden");
+}
 
-    </div>
+showLocationRequired();
 
-  `;
+resolve({
+lat:42.1,
+lng:-71.8
+});
+
+},
+
+{
+timeout:5000
+}
+
+);
+
+});
+}
+
+function showLocationRequired(){
+
+const card=
+document.getElementById(
+"locationRequiredCard"
+);
+
+if(!card) return;
+
+card.classList.remove("hidden");
+
 }
 
 // ========================
@@ -2373,9 +2402,12 @@ function closeCoffeeRunSheet() {
 	Submit Handler
 ========================*/
 
+let isSubmittingCoffeeRun = false;
+
 function submitCoffeeRun(speedRating) {
 
   if (!activeCoffeeLocationId) return;
+  if (isSubmittingCoffeeRun) return;
 
   if (selectedAccuracy === null) {
 
@@ -2386,23 +2418,36 @@ function submitCoffeeRun(speedRating) {
     return;
   }
 
-  recordVote(activeCoffeeLocationId);
-  recordSpeedRating(activeCoffeeLocationId);
+  const locId = activeCoffeeLocationId;
 
+  // Pre-flight check
+  if (!canVote(locId) || !canRateSpeed(locId)) {
+    alert("⏳ You already rated this location recently.");
+    closeCoffeeRunSheet();
+    return;
+  }
+
+  isSubmittingCoffeeRun = true;
+
+  // Disable buttons visually to prevent double clicks
+  const buttons = document.querySelectorAll("#coffeeRunSheet button");
+  buttons.forEach(btn => btn.disabled = true);
+
+  const isUp = selectedAccuracy;
   const voteRef =
     db.collection("votes")
-      .doc(activeCoffeeLocationId);
+      .doc(locId);
 
   voteRef.set({
 
     upvotes:
       firebase.firestore.FieldValue.increment(
-        selectedAccuracy ? 1 : 0
+        isUp ? 1 : 0
       ),
 
     downvotes:
       firebase.firestore.FieldValue.increment(
-        selectedAccuracy ? 0 : 1
+        isUp ? 0 : 1
       ),
 
     speedTotal:
@@ -2415,21 +2460,130 @@ function submitCoffeeRun(speedRating) {
         1
       )
 
-  }, { merge:true });
+  }, { merge:true })
+  .then(() => {
+    isSubmittingCoffeeRun = false;
+    buttons.forEach(btn => btn.disabled = false);
 
-  closeCoffeeRunSheet();
+    // Save to local lockout history only after successful write
+    recordVote(locId);
+    recordSpeedRating(locId);
 
-  const toast =
-    document.getElementById(
-      "speedSuccessToast"
-    );
+    // Track analytics behavior exactly matching original behavior
+    trackEvent("vote", {
+      location_id: locId,
+      type: isUp ? "upvote" : "downvote"
+    });
+    trackEvent("rate_speed", {
+      location_id: locId,
+      rating: speedRating
+    });
 
-  toast.textContent =
-    "Thanks for rating your coffee run! ☕";
+    closeCoffeeRunSheet();
 
-  toast.classList.remove("hidden");
+    const toast =
+      document.getElementById(
+        "speedSuccessToast"
+      );
 
-  setTimeout(() => {
-    toast.classList.add("hidden");
-  }, 3000);
+    if (toast) {
+      toast.textContent =
+        "Thanks for rating your coffee run! ☕";
+
+      toast.classList.remove("hidden");
+
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3000);
+    }
+  })
+  .catch(err => {
+    isSubmittingCoffeeRun = false;
+    buttons.forEach(btn => btn.disabled = false);
+    console.error("❌ Coffee run submission failed:", err);
+    alert("❌ Rating submission failed. Please check your connection and try again.");
+  });
+}
+
+/* LOCATION FIX */
+function showLocationRequired(){
+
+const card=document.getElementById(
+"locationRequiredCard"
+);
+
+if(!card) return;
+
+const helpImage=
+document.getElementById(
+"locationHelpImage"
+);
+
+const isSafari=
+/Safari/.test(navigator.userAgent) &&
+!/Chrome/.test(navigator.userAgent);
+
+if(helpImage){
+
+helpImage.src=isSafari
+? "images/location-bar-safari.png"
+: "images/location-bar-chrome.png";
+
+}
+
+card.classList.remove("hidden");
+
+}
+
+function openLocationHelp(){
+
+const ua=navigator.userAgent;
+
+if(ua.includes("Chrome")){
+
+alert(
+"Tap the location icon next to the website address and allow location access."
+);
+
+}
+else if(
+ua.includes("Safari") &&
+!ua.includes("Chrome")
+){
+
+alert(
+"Tap aA → Website Settings → Allow Location Access."
+);
+
+}
+else{
+
+alert(
+"Enable location permissions in your browser settings."
+);
+
+}
+
+}
+
+/* FB/Insta browser breaker */
+function openInBrowser(){
+
+const ua=navigator.userAgent || "";
+
+if(
+ua.includes("FBAN") ||
+ua.includes("FBAV") ||
+ua.includes("Instagram")
+){
+
+alert(
+"Tap the three dots (...) and choose 'Open in Browser' for full functionality."
+);
+
+return;
+}
+
+window.open(window.location.href,"_blank");
+
 }

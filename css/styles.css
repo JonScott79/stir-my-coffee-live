@@ -871,6 +871,45 @@ body.loading #loader {
   filter: brightness(1.08);
 }
 
+/* Location */
+
+.location-required{
+margin:16px 0;
+padding:18px;
+background:#fff;
+border:2px solid #c0392b;
+border-radius:14px;
+text-align:center;
+box-shadow:var(--shadow-soft);
+}
+
+.location-required h3{
+margin:0 0 10px;
+color:#c0392b;
+}
+
+.location-actions{
+display:flex;
+gap:10px;
+justify-content:center;
+margin-top:12px;
+flex-wrap:wrap;
+}
+
+.location-actions button{
+padding:10px 14px;
+cursor:pointer;
+}
+
+.location-help-image{
+display:block;
+width:240px;
+max-width:80%;
+height:auto;
+margin:10px auto;
+border-radius:8px;
+}
+
 /* ==================
    LIST LEGEND
   ===================*/
@@ -1396,3 +1435,46 @@ text-align:right;
   cursor: default;
   pointer-events: none;
 }
+
+/* FOUNDING COFFEE SCOUTS */
+
+.founding-scouts-card{
+margin-top:16px;
+padding:18px;
+background:var(--bg-card);
+border:2px solid var(--accent);
+border-radius:var(--radius);
+box-shadow:var(--shadow-soft);
+text-align:center;
+}
+
+.founding-scouts-card h3{
+margin:0 0 10px;
+color:var(--accent);
+font-family:'Luckiest Guy',cursive;
+font-weight:normal;
+letter-spacing:1px;
+}
+
+.founding-scouts-card p{
+margin:8px 0;
+color:var(--text-muted);
+}
+
+.scout-highlight{
+font-weight:700;
+color:var(--accent);
+}
+
+.help-banner{
+margin:10px 0;
+padding:8px 12px;
+background:#f0ece6;
+border:1px solid var(--border);
+border-radius:999px;
+text-align:center;
+font-size:12px;
+font-weight:700;
+color:var(--accent);
+}
+
