@@ -1412,6 +1412,36 @@ timeout:5000
 let locationsReady = false;
 let userReady = false;
 
+auth.onAuthStateChanged(async user => {
+
+  if (user) {
+
+    console.log(
+      "Logged in:",
+      user.displayName
+    );
+
+    await loadPatrolBar(user);
+
+  } else {
+
+    const patrolBar =
+      document.getElementById(
+        "patrolBar"
+      );
+
+    if (patrolBar) {
+
+      patrolBar.classList.add(
+        "hidden"
+      );
+
+    }
+
+  }
+
+});
+
 function tryRender() {
   if (locationsReady) {
     updateDistancesAndSort();
@@ -1423,19 +1453,21 @@ function tryRender() {
 }
 
 function init() {
-const list =
-  document.getElementById("bestNearbyList");
 
-if (list) {
-  list.innerHTML =
-    "☕ Finding great coffee near you...";
-}
+  const list =
+    document.getElementById("bestNearbyList");
 
-  // 🚀 JUST CALL IT — no .then()
+  if (list) {
+    list.innerHTML =
+      "☕ Finding great coffee near you...";
+  }
+
+  // Coffee locations
   loadLocations();
 
-  // Get user location
+  // User location
   getUserLocation().then(location => {
+
     userLat = location.lat;
     userLng = location.lng;
 
@@ -1443,12 +1475,16 @@ if (list) {
 
     userReady = true;
     tryRender();
+
   });
 
   // Realtime votes
   subscribeToVotes();
-}
 
+  // Coffee Scouts
+  loadTopScouts();
+
+}
 // ========================
 // LOAD DATA
 // ========================
@@ -2422,7 +2458,11 @@ function submitCoffeeRun(speedRating) {
 
   // Pre-flight check
   if (!canVote(locId) || !canRateSpeed(locId)) {
-    alert("⏳ You already rated this location recently.");
+
+    alert(
+      "⏳ You already rated this location recently."
+    );
+
     closeCoffeeRunSheet();
     return;
   }
@@ -2430,10 +2470,17 @@ function submitCoffeeRun(speedRating) {
   isSubmittingCoffeeRun = true;
 
   // Disable buttons visually to prevent double clicks
-  const buttons = document.querySelectorAll("#coffeeRunSheet button");
-  buttons.forEach(btn => btn.disabled = true);
+  const buttons =
+    document.querySelectorAll(
+      "#coffeeRunSheet button"
+    );
+
+  buttons.forEach(
+    btn => btn.disabled = true
+  );
 
   const isUp = selectedAccuracy;
+
   const voteRef =
     db.collection("votes")
       .doc(locId);
@@ -2461,19 +2508,55 @@ function submitCoffeeRun(speedRating) {
       )
 
   }, { merge:true })
-  .then(() => {
-    isSubmittingCoffeeRun = false;
-    buttons.forEach(btn => btn.disabled = false);
 
-    // Save to local lockout history only after successful write
+  .then(() => {
+
+    // 🐧 Penguin Patrol credit
+
+	if (auth.currentUser) {
+
+	  db.collection("scouts")
+		.doc(auth.currentUser.uid)
+		.update({
+
+		  voteCount:
+			firebase.firestore.FieldValue.increment(1)
+
+		})
+		.then(() => {
+
+		  loadTopScouts();
+
+		  loadPatrolBar(
+			auth.currentUser
+		  );
+
+		})
+		.catch(err =>
+		  console.error(
+			"Scout vote update failed:",
+			err
+		  )
+		);
+
+	}
+
+    isSubmittingCoffeeRun = false;
+
+    buttons.forEach(
+      btn => btn.disabled = false
+    );
+
+    // Save local cooldowns
     recordVote(locId);
     recordSpeedRating(locId);
 
-    // Track analytics behavior exactly matching original behavior
+    // Analytics
     trackEvent("vote", {
       location_id: locId,
       type: isUp ? "upvote" : "downvote"
     });
+
     trackEvent("rate_speed", {
       location_id: locId,
       rating: speedRating
@@ -2487,6 +2570,7 @@ function submitCoffeeRun(speedRating) {
       );
 
     if (toast) {
+
       toast.textContent =
         "Thanks for rating your coffee run! ☕";
 
@@ -2495,14 +2579,30 @@ function submitCoffeeRun(speedRating) {
       setTimeout(() => {
         toast.classList.add("hidden");
       }, 3000);
+
     }
+
   })
+
   .catch(err => {
+
     isSubmittingCoffeeRun = false;
-    buttons.forEach(btn => btn.disabled = false);
-    console.error("❌ Coffee run submission failed:", err);
-    alert("❌ Rating submission failed. Please check your connection and try again.");
+
+    buttons.forEach(
+      btn => btn.disabled = false
+    );
+
+    console.error(
+      "❌ Coffee run submission failed:",
+      err
+    );
+
+    alert(
+      "❌ Rating submission failed. Please check your connection and try again."
+    );
+
   });
+
 }
 
 /* LOCATION FIX */
@@ -2587,3 +2687,240 @@ return;
 window.open(window.location.href,"_blank");
 
 }
+
+/* Logins */
+
+function formatDisplayName(name){
+
+if(!name)
+return "Coffee Scout";
+
+const parts =
+name.trim().split(" ");
+
+if(parts.length === 1)
+return parts[0];
+
+return `${parts[0]} ${parts[1][0]}.`;
+
+}
+
+/* Penguin Patrol */
+
+async function loadTopScouts(){
+
+  const el =
+    document.querySelector(
+      ".penguin-leaderboard"
+    );
+
+  if(!el) return;
+
+  try{
+
+    const snapshot =
+      await db.collection("scouts")
+        .orderBy("voteCount","desc")
+        .limit(10)
+        .get();
+
+    el.innerHTML = "";
+
+    if(snapshot.empty){
+
+      el.innerHTML = `
+        <div class="penguin-row">
+          <span>🐧 No Penguins Yet</span>
+          <span>0 Ratings</span>
+        </div>
+      `;
+
+      return;
+    }
+
+    let rank = 1;
+
+    snapshot.forEach(doc => {
+
+      const scout = doc.data();
+
+      let medal = "🐧";
+
+      if(rank === 1) medal = "🥇";
+      else if(rank === 2) medal = "🥈";
+      else if(rank === 3) medal = "🥉";
+
+      const row =
+        document.createElement("div");
+
+      row.className =
+        "penguin-row";
+
+      row.innerHTML = `
+
+        <span>
+          ${medal}
+          ${scout.displayName}
+        </span>
+
+        <span>
+          ${scout.voteCount || 0}
+          Ratings
+        </span>
+
+      `;
+
+      el.appendChild(row);
+
+      rank++;
+
+    });
+
+  }catch(err){
+
+    console.error(
+      "Top scout load failed:",
+      err
+    );
+
+  }
+
+}
+
+async function signInWithGoogle(){
+
+  try{
+
+    const provider =
+      new firebase.auth.GoogleAuthProvider();
+
+    const result =
+      await auth.signInWithPopup(provider);
+
+    const user = result.user;
+
+    const scoutRef =
+      db.collection("scouts")
+        .doc(user.uid);
+
+    const scoutDoc =
+      await scoutRef.get();
+
+    // New scout
+    if(!scoutDoc.exists){
+
+      const badgeNumber =
+        Math.floor(
+          100000 + Math.random() * 900000
+        );
+
+      await scoutRef.set({
+
+        displayName:
+          formatDisplayName(
+            user.displayName
+          ),
+
+        badgeNumber,
+
+        voteCount:0,
+
+        createdAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
+
+      });
+
+      alert(
+        `Welcome to the Penguin Patrol! Badge #${badgeNumber} 🐧`
+      );
+
+    }else{
+
+      console.log(
+        "Existing scout:",
+        scoutDoc.data()
+      );
+
+    }
+
+  }catch(err){
+
+    console.error(
+      "Google login error:",
+      err
+    );
+
+    alert(
+      "Google sign-in failed."
+    );
+
+  }
+
+}
+
+function getScoutRank(votes){
+
+  if(votes >= 500)
+    return "🏆 Chief Coffee Inspector";
+
+  if(votes >= 100)
+    return "🚓 Coffee Inspector";
+
+  if(votes >= 25)
+    return "🐧 Penguin Patrol";
+
+  return "☕ Coffee Scout";
+
+}
+
+async function loadPatrolBar(user){
+
+  try{
+
+    const doc =
+      await db.collection("scouts")
+        .doc(user.uid)
+        .get();
+
+    if(!doc.exists)
+      return;
+
+    const scout = doc.data();
+
+    document
+      .getElementById("patrolName")
+      .textContent =
+      `${scout.displayName} • Badge #${scout.badgeNumber}`;
+
+    document
+      .getElementById("patrolStats")
+      .textContent =
+      `${getScoutRank(
+        scout.voteCount || 0
+      )} • ${
+        scout.voteCount || 0
+      } Ratings`;
+
+    document
+      .getElementById("patrolBar")
+      .classList.remove("hidden");
+
+  }catch(err){
+
+    console.error(
+      "Patrol bar load failed:",
+      err
+    );
+
+  }
+
+}
+
+document
+.getElementById("joinPatrolBtn")
+?.addEventListener(
+"click",
+signInWithGoogle
+);

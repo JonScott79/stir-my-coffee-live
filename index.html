@@ -143,6 +143,32 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
   </div>
 </div>
 
+<div class="onboarding-slide">
+  <h2>☕ Become a Coffee Scout</h2>
+
+  <p>
+    Help fellow coffee drinkers find great coffee and avoid bad coffee.
+  </p>
+
+  <div class="vote-subtext" style="margin-top:14px;">
+    Earn ranks and join the Penguin Patrol.
+  </div>
+
+  <div class="vote-subtext" style="margin-top:14px;">
+    No account required.
+  </div>
+
+  <div style="margin-top:18px;text-align:left;max-width:260px;margin-left:auto;margin-right:auto;">
+
+    <div>☕ Coffee Scout (0+ Ratings)</div>
+    <div>🐧 Penguin (25+ Ratings)</div>
+    <div>🚓 Coffee Inspector (100+ Ratings)</div>
+    <div>🏆 Chief Coffee Inspector (500+ Ratings)</div>
+
+  </div>
+</div>
+
+
 <div class="onboarding-buttons">
   <button id="nextOnboardingBtn">Next</button>
   <button id="skipOnboardingBtn">Skip</button>
@@ -151,6 +177,7 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 </div></div>
 
 <header>
+<div class="container">
 
 <a href="index.html" aria-label="Go to homepage">
   <img src="images/StirLogo.png"
@@ -165,8 +192,30 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
     </p>
 	<p id="holidayGreeting" class="holidayGreeting"></p>
   </div>
-
+</div>
 </header>
+
+<div id="patrolBar" class="patrol-bar hidden">
+
+  <img
+    src="images/coffee-cop.png"
+    alt="Coffee Cop"
+    class="patrol-bar-mascot"
+  >
+
+  <div class="patrol-bar-info">
+
+    <div id="patrolName">
+      Loading...
+    </div>
+
+    <div id="patrolStats">
+      Loading...
+    </div>
+
+  </div>
+
+</div>
 
 <div class="actions">
 <button
@@ -175,25 +224,53 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 </button>
 </div>
 
-<div class="sticker-cta-wrapper">
+<div class="penguin-patrol">
 
-<a href="stickers.html"
-   class="sticker-blast"
-   aria-label="Download free printable Stir My Coffee stickers"
-   onclick="trackEvent('free_stickers_click', {
-     location: 'homepage',
-     type: 'printable'
-   })">
+  <div class="penguin-header">
 
-    💥 FREE STICKERS 💥
-  </a>
+    <img
+      src="images/coffee-cop.png"
+      alt="Coffee Cop"
+      class="penguin-mascot">
 
-  <div class="sticker-subtext">
-    Print your own and support the movement!
+    <h2>Penguin Patrol</h2>
+
   </div>
 
-</div>
+  <div class="help-banner">
+    🏆 Top Penguins This Month
+  </div>
 
+  <p class="penguin-text">
+    Join the mission to eliminate bad coffee.
+  </p>
+
+  <div class="penguin-leaderboard">
+
+    <div class="penguin-row">
+      <span>🥇 Sarah M.</span>
+      <span>214 Ratings</span>
+    </div>
+
+    <div class="penguin-row">
+      <span>🥈 Jon H.</span>
+      <span>182 Ratings</span>
+    </div>
+
+    <div class="penguin-row">
+      <span>🥉 Mike R.</span>
+      <span>137 Ratings</span>
+    </div>
+
+  </div>
+
+	<button
+	  id="joinPatrolBtn"
+	  class="penguin-btn">
+	  Join The Penguin Patrol
+	</button>
+
+</div>
   <div class="mainLayout">
     <!-- BEST -->
 
@@ -344,6 +421,7 @@ alt="Location permission help">
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
 <script>
   firebase.initializeApp({
@@ -353,6 +431,7 @@ alt="Location permission help">
   });
 
   const db = firebase.firestore();
+  const auth = firebase.auth();
 </script>
 
 <!-- Google tag (gtag.js) -->

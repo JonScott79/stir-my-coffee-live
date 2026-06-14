@@ -90,7 +90,6 @@ holidayLink.href = "";
 /* LOAD THEME */
 if (holiday) {
 
-```
 setThemeLink(
   holidayLink,
   `css/${holiday}_style.css`
@@ -137,18 +136,17 @@ if (greeting) {
   greeting.textContent =
     greetings[holiday] || "";
 }
-```
 
 } else {
 
-```
+
 const greeting =
   document.getElementById("holidayGreeting");
 
 if (greeting) {
   greeting.textContent = "";
 }
-```
+ 
 
 }
 }

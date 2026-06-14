@@ -1436,45 +1436,149 @@ text-align:right;
   pointer-events: none;
 }
 
-/* FOUNDING COFFEE SCOUTS */
+/* ========================
+   PENGUIN PATROL V2
+======================== */
 
-.founding-scouts-card{
-margin-top:16px;
-padding:18px;
-background:var(--bg-card);
+.penguin-patrol{
+max-width:600px;
+margin:24px auto;
+padding:20px;
+
+background:#fff;
+
 border:2px solid var(--accent);
-border-radius:var(--radius);
-box-shadow:var(--shadow-soft);
-text-align:center;
+border-radius:16px;
+
+box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.founding-scouts-card h3{
-margin:0 0 10px;
+.penguin-header{
+position:relative;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+min-height:90px;
+
+margin-bottom:8px;
+}
+
+.penguin-mascot{
+position:absolute;
+
+left:16px;
+top:50%;
+
+transform:translateY(-50%);
+
+width:75px;
+height:auto;
+}
+
+.penguin-header h2{
+margin:0;
+
 color:var(--accent);
+
 font-family:'Luckiest Guy',cursive;
 font-weight:normal;
-letter-spacing:1px;
+
+font-size:2rem;
+
+text-align:center;
 }
 
-.founding-scouts-card p{
-margin:8px 0;
+.penguin-text{
+text-align:center;
+margin-bottom:8px;
+}
+.penguin-leaderboard{
+display:flex;
+flex-direction:column;
+gap:10px;
+
+max-width:320px;
+margin:0 auto;
+}
+
+.penguin-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:10px 14px;
+
+background:#f5f5f5;
+
+border-radius:10px;
+}
+
+.penguin-btn{
+display:block;
+
+width:100%;
+
+margin-top:16px;
+padding:12px;
+
+border:none;
+border-radius:12px;
+
+background:#6b3e26;
+color:#fff;
+
+font-weight:700;
+font-size:15px;
+
+cursor:pointer;
+}
+
+/* ========================
+   PATROL BAR
+======================== */
+
+.patrol-bar{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+max-width:700px;
+margin:12px auto;
+padding:12px 16px;
+
+background:var(--bg-card);
+
+border:2px solid var(--accent);
+border-radius:14px;
+
+box-shadow:var(--shadow-soft);
+}
+
+.patrol-bar.hidden{
+display:none;
+}
+
+.patrol-bar-mascot{
+width:64px;
+height:auto;
+flex-shrink:0;
+}
+
+.patrol-bar-info{
+flex:1;
+}
+
+#patrolName{
+font-weight:700;
+font-size:18px;
+color:var(--accent);
+}
+
+#patrolStats{
+font-size:14px;
+margin-top:4px;
 color:var(--text-muted);
 }
-
-.scout-highlight{
-font-weight:700;
-color:var(--accent);
-}
-
-.help-banner{
-margin:10px 0;
-padding:8px 12px;
-background:#f0ece6;
-border:1px solid var(--border);
-border-radius:999px;
-text-align:center;
-font-size:12px;
-font-weight:700;
-color:var(--accent);
-}
-

@@ -1,3 +1,48 @@
+## [3.2.0] – June 2026
+
+### 🐧 Penguin Patrol & Member System
+
+### Added
+
+* Added Firebase Authentication with Google Sign-In
+* Added Penguin Patrol membership system
+* Added unique Scout badge numbers for registered members
+* Added member profile records stored in Firestore
+* Added live Patrol Bar displaying member information
+* Added real-time vote tracking tied to authenticated members
+* Added live Penguin Patrol leaderboard powered by Firestore
+
+### Improved
+
+* Improved community engagement through member recognition
+* Improved user retention with visible contribution tracking
+* Improved user identity system through badges and member records
+* Improved site personalization for authenticated users
+
+### Changed
+
+* Replaced static Penguin Patrol leaderboard data with live Firestore rankings
+* Updated voting system to track member contributions
+* Refined Penguin Patrol experience with dynamic member statistics
+
+### Community
+
+* Members can now earn ratings and climb the Penguin Patrol leaderboard
+* Introduced the foundation for future ranks, achievements, and member profiles
+* Established the first version of the Stir My Coffee community system
+
+### Technical
+
+* Added Firebase Authentication integration
+* Added Scout collection and user data architecture
+* Added vote counting synchronization between ratings and member records
+* Added authentication state handling and dynamic UI updates
+* Added leaderboard queries and live member rendering
+
+### Misc
+
+* The Penguin Patrol is officially open for duty 🐧☕🚓
+
 ## [3.1.2] – June 2026
 
 ### 📍 Location Experience & User Guidance
