@@ -2721,7 +2721,7 @@ async function loadTopScouts(){
     const snapshot =
       await db.collection("scouts")
         .orderBy("voteCount","desc")
-        .limit(10)
+        .limit(3)
         .get();
 
     el.innerHTML = "";
