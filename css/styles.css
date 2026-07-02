@@ -103,63 +103,89 @@ body {
    HEADER
 ======================== */
 
-header {
-  background: var(--bg-header);
-  border-bottom: 1px solid var(--border);
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+header{
+  background:var(--bg-header);
+
+  border-bottom:1px solid var(--border);
+
+  padding:18px 24px;
 }
 
-.logo {
-  height: 50px;
+.container{
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  width:100%;
+  max-width:1200px;
+
+  margin:0 auto;
 }
 
-.headerText {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  width: 100%;
+.logo{
+  display:block;
+
+  width:92px;
+  height:auto;
+
+  flex-shrink:0;
+
+  transition:transform .2s ease;
 }
 
-.headerText h1 {
-  margin: 0;
+.logo:hover{
+  transform:scale(1.03);
+}
 
-  color: var(--accent);
-  font-family: 'Luckiest Guy', cursive;
-  font-weight: normal;
-  font-size: clamp(2rem, 5vw, 2.8rem);
+.headerText{
+  display:flex;
+  flex-direction:column;
 
-  letter-spacing: 0.5px;
-  line-height: 0.95;
+  justify-content:center;
 
-  text-transform: uppercase;
+  gap:2px;
+}
+
+.headerText h1{
+  margin:0;
+
+  color:var(--accent);
+
+  font-family:'Luckiest Guy',cursive;
+  font-weight:normal;
+
+  font-size:clamp(2.4rem,5vw,3.4rem);
+
+  line-height:.9;
+  letter-spacing:.5px;
+
+  text-transform:uppercase;
+
   text-shadow:
-    1px 1px 0 rgba(0,0,0,0.12),
-    2px 2px 0 rgba(0,0,0,0.06);
+    1px 1px 0 rgba(0,0,0,.12),
+    2px 2px 0 rgba(0,0,0,.06);
 
-  -webkit-text-stroke: 1px rgba(0,0,0,0.08);
+  -webkit-text-stroke:1px rgba(0,0,0,.08);
 }
 
-.tagline {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
+.tagline{
+  margin:2px 0 0;
+
+  font-size:16px;
+  font-weight:700;
+
+  color:var(--accent);
 }
 
-.holidayGreeting {
-  margin: 2px 0 0;
+.holidayGreeting{
+  margin:4px 0 0;
 
-  font-size: 11px;
-  font-weight: 700;
+  font-size:13px;
+  font-weight:700;
 
-  color: var(--accent);
+  color:var(--accent);
 
-  opacity: 0.85;
-
-  letter-spacing: 0.3px;
+  opacity:.85;
 }
 
 /* ========================
