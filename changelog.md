@@ -41,7 +41,7 @@
 
 ### Misc
 
-* The Penguin Patrol is officially open for duty 🐧☕🚓
+* The Penguin Patrol is officially on duty 🐧☕🚓
 
 ## [3.1.2] – June 2026
 
