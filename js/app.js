@@ -1819,29 +1819,31 @@ async function updateDistancesAndSort() {
       )
     : allLocations;
 
-  // Distance sort for nearby shops
-  const sortedByDistance = hasUser
-    ? [...workingSet].sort(
-        (a, b) => a.distance - b.distance
-      )
-    : [...workingSet];
+  // Let the renderer handle ALL sorting
+  renderBestNearbyList(workingSet);
 
-  // Render main shop list
-  renderBestNearbyList(sortedByDistance);
+  // Address loading should follow the current sort
+  let visibleNearby = [...workingSet];
 
-  // Load addresses for visible cards only
+  switch (bestNearbySort) {
+
+    case "rated":
+      visibleNearby.sort((a, b) => b.score - a.score);
+      break;
+
+    case "fastest":
+      visibleNearby.sort((a, b) => b.speed - a.speed);
+      break;
+
+    default:
+      visibleNearby.sort((a, b) => a.distance - b.distance);
+
+  }
+
+  visibleNearby = visibleNearby.slice(0, DISPLAY_LIMIT);
+
   if (hasUser) {
-
-    const visibleNearby =
-      sortedByDistance.slice(
-        0,
-        DISPLAY_LIMIT
-      );
-
-    loadAddressesForVisible(
-      visibleNearby
-    );
-
+    loadAddressesForVisible(visibleNearby);
   }
 
 }
@@ -1870,6 +1872,10 @@ function getDistance(lat1, lon1, lat2, lon2) {
 // RENDER
 // ========================
 
+// ========================
+// RENDER
+// ========================
+
 function renderBestNearbyList(locations) {
 
   const list = document.getElementById("bestNearbyList");
@@ -1882,20 +1888,24 @@ function renderBestNearbyList(locations) {
 
     showLocationRequired();
     return;
+
   }
-  
+
   let sorted = [...locations];
 
-  if (bestNearbySort === "distance") {
-    sorted.sort((a, b) => a.distance - b.distance);
-  }
+  switch (bestNearbySort) {
 
-  if (bestNearbySort === "rated") {
-    sorted.sort((a, b) => b.score - a.score);
-  }
+    case "rated":
+      sorted.sort((a, b) => b.score - a.score);
+      break;
 
-  if (bestNearbySort === "fastest") {
-    sorted.sort((a, b) => b.speed - a.speed);
+    case "fastest":
+      sorted.sort((a, b) => b.speed - a.speed);
+      break;
+
+    default:
+      sorted.sort((a, b) => a.distance - b.distance);
+
   }
 
   const visible = sorted.slice(0, DISPLAY_LIMIT);
@@ -2002,6 +2012,7 @@ function renderBestNearbyList(locations) {
     `;
 
   }).join("");
+
 }
 
 // ========================

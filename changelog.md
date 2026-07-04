@@ -1,3 +1,39 @@
+## [3.2.1] – July 2026
+
+### 🐧 Penguin Patrol Polish Update
+
+### Added
+
+* Added live Speed sorting for Nearby Coffee Shops
+* Added synchronized sorting between rendered cards and address loading
+* Added Coffee Cop community branding throughout the homepage
+* Added Penguin Patrol contest promoting community naming of Coffee Cop
+
+### Improved
+
+* Improved Nearby Coffee Shops sorting architecture
+* Improved leaderboard presentation by displaying only the Top 3 Penguin Patrol members
+* Improved Penguin Patrol card spacing and visual balance
+* Improved header branding and mascot integration
+* Improved homepage SEO content with Coffee Cop and Penguin Patrol references
+
+### Fixed
+
+* Fixed Speed sorting being overridden during asynchronous address loading
+* Fixed sorting consistency across Distance, Consistency, and Speed views
+* Fixed Penguin Patrol layout spacing on desktop
+* Fixed minor homepage UI alignment issues
+
+### Technical
+
+* Refactored Nearby Coffee Shops rendering pipeline to centralize sorting logic
+* Eliminated duplicate sorting paths to improve maintainability
+* Improved asynchronous rendering behavior during reverse geocoding
+
+### Misc
+
+* Coffee Cop has officially started writing tickets. ☕🚓🐧
+
 ## [3.2.0] – June 2026
 
 ### 🐧 Penguin Patrol & Member System
