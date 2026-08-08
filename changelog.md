@@ -1,3 +1,22 @@
+## [5.0.0] – August 2026
+
+### ☕ Stir My Coffee 5.0 — Coffee Patrol Redesign
+
+### Added
+
+* Added full unified Coffee Patrol (Concept B) visual design system and mascot guidelines across all pages.
+* Added Dispatch dashboard homepage featuring Officer Coffee Cop, search overlays, and a top 5 patroller list.
+* Added Patrol Rankings page displaying precinct leaderboard data dynamically from Firestore.
+* Added My Record profile page showing user badge numbers, ranks, runs, and unlocked achievement lists.
+* Added regulatory account and data deletion compliance module for Google Play policy.
+* Added interactive tab-based category switcher to Patrol Records (Best, Worst, Fastest, Chaos, Elite).
+
+### Improved
+
+* Modernized auxiliary pages (About, Support, stickers, and legal terms) to match design system colors and layout patterns.
+* Aligned PWA and Bubblewrap TWA compile SDK versions and coordinated color configurations for the v5.0.0 release.
+* Refactored Leaflet map search bar and location drawer panel layout.
+
 ## [3.2.1] – July 2026
 
 ### 🐧 Penguin Patrol Polish Update

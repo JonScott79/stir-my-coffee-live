@@ -45,6 +45,10 @@
 <meta name="twitter:image" content="https://stirmycoffee.com/images/StirLogoTM.png">
 
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="css/styles.css" rel="stylesheet" />
 <!-- Seasonal Styles -->
 <link id="baseTheme" rel="stylesheet" />
@@ -96,11 +100,27 @@
   </style>
 </head>
 
-<body>
+<header class="desktop-header">
+  <div class="header-container">
+    <div class="header-brand">
+      <img src="images/StirLogo.png" class="header-logo" alt="Stir Logo">
+      <div class="header-title-block">
+        <h1>Stir My Coffee™</h1>
+        <p>Don't enable bad coffee. Rate it.</p>
+      </div>
+    </div>
+    
+    <nav class="desktop-nav">
+      <a class="nav-link" href="index.html">Dispatch</a>
+      <a class="nav-link" href="map.html">Patrol Map</a>
+      <a class="nav-link" href="coffeenomics.html">Patrol Records</a>
+      <a class="nav-link" href="rankings.html">Patrol Rankings</a>
+      <a class="nav-link" href="my-record.html">My Record</a>
+    </nav>
+  </div>
+</header>
 
-<div class="changelog-container">
-
-  <a href="/" class="back">← Back to map</a>
+<div class="changelog-container" style="max-width:800px; margin:24px auto; padding:0 20px;">
 
   <h1>Changelog</h1>
   <p class="subtle">
@@ -1491,6 +1511,56 @@ Misc
 
 </div>
 
+<footer style="background:var(--bg-header); color:#fff; padding:24px 20px; font-size:12px; border-top:4px solid var(--badge-gold); text-align:center; margin-top:60px;">
+  <div class="header-container" style="flex-direction:column; gap:16px;">
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; font-weight:700;">
+      <a href="about.html" style="color:#fff; text-decoration:none;">About</a>
+      <a href="legal.html" style="color:#fff; text-decoration:none;">Legal</a>
+      <a href="mailto:hello@stirmycoffee.com" style="color:#fff; text-decoration:none;">Contact</a>
+      <a href="support.html" style="color:#fff; text-decoration:none;">Donate</a>
+      <a href="https://play.google.com/store/apps/details?id=com.stirmycoffee.app" target="_blank" rel="noopener noreferrer" style="color:var(--badge-gold); text-decoration:none;" onclick="trackEvent('rate_us_click')">Rate Us</a>
+    </div>
+    
+    <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
+      <span style="opacity:0.7;">© 2026 Stir My Coffee™</span>
+      <span style="opacity:0.4;">|</span>
+      <span>
+        <a href="changelog.html" style="color:var(--accent-light); text-decoration:none; font-weight:700;"><span id="appVersion">v5.0.0</span></a>
+      </span>
+      <span style="opacity:0.4;">|</span>
+      <div style="display:inline-flex; gap:10px; font-size:16px;">
+        <a href="https://instagram.com/stir.my.coffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61576515072675" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="mobile-bottom-nav">
+  <a class="mobile-bottom-nav-item" href="index.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Dispatch</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="map.html">
+    <i class="fa-solid fa-map-location-dot"></i>
+    <span>Map</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="coffeenomics.html">
+    <i class="fa-solid fa-file-invoice"></i>
+    <span>Records</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="rankings.html">
+    <i class="fa-solid fa-trophy"></i>
+    <span>Rankings</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="my-record.html">
+    <i class="fa-solid fa-user-shield"></i>
+    <span>Profile</span>
+  </a>
+</nav>
+
+<script src="js/version.js"></script>
 <script src="js/theme.js" defer></script>
 
 <div id="themeFade"></div>

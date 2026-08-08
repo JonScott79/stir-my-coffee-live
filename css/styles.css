@@ -28,23 +28,32 @@ body {
 ======================== */
 
 :root {
-  --bg-main: #faf7f2;
---bg-header: #E2D1C2;
-  --bg-card: #ffffff;
-  --bg-footer: #f0ece6;
+  --bg-main: #e8ded1; /* Slightly darker warm latte background */
+  --bg-header: #2a1b12; /* Deep Espresso */
+  --bg-card: #fffaf5; /* Cream */
+  --bg-footer: #2a1b12;
 
---text-main: #4A2416;
---text-muted: #7A5A4F;
+  --text-main: #2a1b12;
+  --text-muted: #7b6255;
 
---accent: #6B2A14;
---accent-light: #B06A4B;
+  --accent: #6b2a14;
+  --accent-light: #eadfd4; /* Warm Latte */
+  --accent-hover: #521f0f;
+  --accent-rgb: 107, 42, 20;
 
-  --border: #ccc;
+  --safety-gold: #d97706; /* Ticket alert gold */
+  --badge-gold: #fbbf24; /* Police badge gold */
 
-  --shadow-soft: 0 6px 18px rgba(0,0,0,0.08);
-  --shadow-strong: 0 8px 20px rgba(0,0,0,0.15);
+  --success: #2e7d32;
+  --error: #c62828;
+  --border: #2a1b12; /* Neobrutalist solid border */
+  --border-focus: #6b2a14;
 
-  --radius: 12px;
+  --shadow-soft: 4px 4px 0 #2a1b12; /* 3D Box Shadow Concept B */
+  --shadow-strong: 8px 8px 0 #2a1b12;
+
+  --radius: 14px;
+  --radius-sm: 8px;
 }
 
 /* ========================
@@ -1616,3 +1625,382 @@ font-size:14px;
 margin-top:4px;
 color:var(--text-muted);
 }
+
+/* ==================================================
+   COFFEE PATROL PRODUCTION REDESIGN CLASSES
+================================================== */
+.desktop-header {
+  background: var(--bg-header);
+  border-bottom: 4px solid var(--badge-gold);
+  padding: 12px 24px;
+  width: 100%;
+}
+
+.desktop-header * {
+  color: #fff;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  height: 44px;
+  width: auto;
+}
+
+.header-title-block h1 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 24px;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.header-title-block p {
+  font-size: 11px;
+  color: var(--accent-light);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s;
+  background: rgba(255,255,255,0.04);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--espresso);
+  box-shadow: 2px 2px 0 var(--espresso);
+}
+
+/* Neobrutalist buttons and cards overrides */
+.btn-primary, button.btn-primary, a.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff !important;
+  border: 3px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--border);
+  transition: all 0.1s;
+  text-decoration: none;
+}
+
+.btn-primary:hover, button.btn-primary:hover, a.btn-primary:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--border);
+  background: var(--accent-hover);
+}
+
+.btn-primary:active, button.btn-primary:active, a.btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--border);
+}
+
+.btn-secondary, button.btn-secondary {
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--border);
+  transition: all 0.1s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover, button.btn-secondary:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--border);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 3px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-strong);
+}
+
+.card-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 22px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-tag {
+  background: var(--accent-light);
+  color: var(--text-main);
+  border: 2px solid var(--border);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+/* Dispatch layout */
+.dispatch-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-card);
+  border: 3px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+}
+
+.dispatch-cop-img {
+  width: 90px;
+  height: auto;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: var(--accent-light);
+  padding: 5px;
+}
+
+.dispatch-banner-text h2 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 26px;
+  color: var(--accent);
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.dispatch-banner-text p {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.dispatch-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+}
+
+.dispatch-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dispatch-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.action-card {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.action-card i {
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.action-card h3 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.action-card p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.blotter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blotter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-main);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blotter-item.bad {
+  border-color: var(--error);
+  background: rgba(198,40,40,0.03);
+}
+
+.blotter-item.good {
+  border-color: var(--success);
+  background: rgba(46,125,50,0.03);
+}
+
+.blotter-meta {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.leaders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leader-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-main);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.leader-rank-badge {
+  font-size: 18px;
+  font-weight: 800;
+  width: 24px;
+}
+
+.leader-name {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.leader-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.leader-score {
+  font-weight: 800;
+  color: var(--accent);
+  font-size: 13px;
+}
+
+/* Mobile Bottom Navigation Bar Styles */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: var(--bg-header);
+  border-top: 3px solid var(--badge-gold);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.mobile-bottom-nav-item i {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+}
+
+.mobile-bottom-nav-item span {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+}
+
+.mobile-bottom-nav-item.active i,
+.mobile-bottom-nav-item.active span {
+  color: var(--badge-gold);
+}
+
+/* Hide navigation sections depending on media size */
+@media (min-width: 769px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 75px; /* space for mobile bar */
+  }
+  .desktop-header {
+    display: none !important;
+  }
+  .dispatch-grid {
+    grid-template-columns: 1fr;
+  }
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* Page container wrapper to prevent legacy flex collisions */
+.page-container {
+  display: block !important;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px 80px 20px;
+  box-sizing: border-box;
+}

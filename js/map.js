@@ -515,66 +515,9 @@ function render() {
     );
 
     marker.on("click", () => {
-      setHeader("Vote or rate this shop");
+      setHeader(`Inspecting outpost: ${loc.name}`);
+      openDrawerDetails(loc);
     });
-
-    // ========================
-    // DISABLE LOGIC
-    // ========================
-
-    const voteDisabled = canVote(loc.id)
-      ? ""
-      : "disabled title='Already voted (24h cooldown)'";
-
-    const speedDisabled = canRateSpeed(loc.id)
-      ? ""
-      : "style='opacity:0.4;pointer-events:none;' title='Already rated (24h cooldown)'";
-
-    // ========================
-    // POPUP
-    // ========================
-
-    marker.bindPopup(`
-      <b>${loc.name}</b><br><br>
-
-      <b>Accuracy:</b> ${loc.percent}% (${loc.votes} votes)<br>
-      <b>Speed:</b> ${loc.speed ? loc.speed.toFixed(1) : "N/A"} ⭐<br><br>
-
-      <div class="vote-inline">
-        <button ${voteDisabled}
-          onclick="vote(event, '${loc.id}', true)">
-          👍
-        </button>
-
-        <button ${voteDisabled}
-          onclick="vote(event, '${loc.id}', false)">
-          👎
-        </button>
-      </div>
-
-      <br>
-
-      <div class="stars">
-        ${Array.from({ length: 5 }, (_, i) => {
-
-          const rounded = Math.round(loc.speed || 0);
-          const filled = i + 1 <= rounded ? "★" : "☆";
-
-          return `
-            <span ${speedDisabled}
-              onclick="rateSpeed(event, '${loc.id}', ${i + 1})">
-              ${filled}
-            </span>
-          `;
-        }).join("")}
-      </div>
-
-      <br>
-
-      <button onclick="reportLocation('${loc.id}')">
-        🚩 Report
-      </button>
-    `);
 
     markers.addLayer(marker);
   }
@@ -775,3 +718,81 @@ async function getCityState(lat, lng) {
     return {};
   }
 }
+
+// ==================================================
+// COFFEE PATROL DRAWER INTERACTION HANDLERS
+// ==================================================
+
+let activeDrawerLocation = null;
+
+window.openDrawerDetails = function (loc) {
+  activeDrawerLocation = loc;
+  
+  const drawer = document.getElementById("mapDetailsPanel");
+  if (!drawer) return;
+
+  document.getElementById("drawerName").textContent = loc.name;
+  document.getElementById("drawerMeta").textContent = `${loc.city || ""}, ${loc.state || ""}`;
+  document.getElementById("drawerAccuracy").textContent = `${loc.percent}%`;
+  document.getElementById("drawerVotes").textContent = loc.votes;
+
+  let speedText = "☕ Average";
+  if (loc.speed >= 4.2) speedText = "🚀 Hot Pursuit";
+  else if (loc.speed >= 3.4) speedText = "⚡ Emergency Dispatch";
+  else if (loc.speed < 2.0) speedText = "🐢 Turtle Speed";
+  
+  document.getElementById("drawerSpeedText").textContent = speedText;
+
+  // Toggle button disable states based on cooldown
+  const canUserVote = canVote(loc.id);
+  const upBtn = document.getElementById("btnVoteUp");
+  const downBtn = document.getElementById("btnVoteDown");
+
+  if (upBtn && downBtn) {
+    if (canUserVote) {
+      upBtn.removeAttribute("disabled");
+      downBtn.removeAttribute("disabled");
+      upBtn.style.opacity = "1";
+      downBtn.style.opacity = "1";
+    } else {
+      upBtn.setAttribute("disabled", "true");
+      downBtn.setAttribute("disabled", "true");
+      upBtn.style.opacity = "0.5";
+      downBtn.style.opacity = "0.5";
+    }
+  }
+
+  drawer.classList.add("active");
+};
+
+window.closeDrawerDetails = function () {
+  document.getElementById("mapDetailsPanel")?.classList.remove("active");
+  activeDrawerLocation = null;
+};
+
+window.triggerDrawerVote = function (up) {
+  if (!activeDrawerLocation) return;
+  
+  if (!canVote(activeDrawerLocation.id)) {
+    alert("⏳ You can vote again on this shop in 24 hours.");
+    return;
+  }
+
+  // Trigger Firestore vote
+  window.vote(new Event("click"), activeDrawerLocation.id, up);
+
+  // Close drawer and display feedback
+  closeDrawerDetails();
+};
+
+window.triggerDrawerDirections = function () {
+  if (!activeDrawerLocation) return;
+  window.open(`https://www.google.com/maps/dir/?api=1&destination=${activeDrawerLocation.lat},${activeDrawerLocation.lng}`);
+};
+
+window.triggerDrawerReport = function () {
+  if (!activeDrawerLocation) return;
+  const locId = activeDrawerLocation.id;
+  closeDrawerDetails();
+  window.reportLocation(locId);
+};

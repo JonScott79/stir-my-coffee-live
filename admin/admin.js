@@ -311,7 +311,7 @@ async function init() {
   ]);
 
   addEvent(
-    "TACTICAL SYSTEMS ONLINE"
+    "PRECINCT OPERATIONS ONLINE ☕"
   );
 
   startFakeFeed();
@@ -499,11 +499,9 @@ function addEvent(message){
 }
 
 const fakeEvents=[
-
-  "Vote Registered",
-  "Beacon Ping",
-  "Operator Activity"
-
+  "Coffee Run Rated",
+  "Sticker Scan Pinged",
+  "Patrol Officer Logged"
 ];
 
 let started=false;

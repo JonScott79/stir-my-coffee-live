@@ -314,3 +314,143 @@
   margin-top: 4px;
 }
 
+/* ==================================================
+   COFFEE PATROL PRODUCTION MAP REDESIGN STYLES
+================================================== */
+#map {
+  top: 72px; /* Offset for desktop header */
+  height: calc(100vh - 72px);
+}
+
+@media (max-width: 768px) {
+  #map {
+    top: 0;
+    height: calc(100vh - 65px); /* space for mobile bottom navigation */
+  }
+  .leaflet-top.leaflet-left {
+    top: 70px !important;
+  }
+}
+
+/* Floating Map Search Overlay */
+.map-sim-search {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 420px;
+  z-index: 1000;
+}
+
+.map-sim-search input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border: 3px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.map-sim-search i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* Sliding Side Drawer Details (Desktop) */
+#mapDetailsPanel {
+  position: fixed;
+  top: 85px;
+  bottom: 15px;
+  right: 15px;
+  width: 360px;
+  background: var(--bg-card);
+  border: 3px solid var(--border);
+  z-index: 2000;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(110%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-strong);
+}
+
+#mapDetailsPanel.active {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  background: var(--bg-header);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 3px solid var(--border);
+}
+
+.drawer-header * {
+  color: #fff;
+}
+
+.close-drawer-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-drawer-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.drawer-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Accuracy and Submit forms */
+.panel {
+  border: 3px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-strong) !important;
+  background: var(--bg-card) !important;
+}
+
+/* Mobile responsive drawer */
+@media (max-width: 768px) {
+  #mapDetailsPanel {
+    position: fixed;
+    bottom: 75px; /* Offset bottom navigation */
+    top: auto;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    height: 300px;
+    transform: translateY(120%);
+    border-radius: var(--radius) var(--radius) var(--radius) var(--radius);
+  }
+
+  #mapDetailsPanel.active {
+    transform: translateY(0);
+  }
+}
+
+

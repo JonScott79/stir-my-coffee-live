@@ -1,183 +1,145 @@
-let locationMap = {};
+/* JS/COFFEENOMICS.JS */
 
-// ========================
-// SAME ID SYSTEM
-// ========================
+let locationMap = {};
+let processedShops = [];
+let coffeenomicsStats = {};
+let activeCategory = "best";
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadCoffeenomics();
+});
+
+// Calculate Location ID helper
 function generateLocationId(name, lat, lng) {
   return `${name}_${Number(lat).toFixed(5)}_${Number(lng).toFixed(5)}`
     .toLowerCase()
     .replace(/[^a-z0-9_]/g, "");
 }
 
-// ========================
-// LOAD EVERYTHING PROPERLY
-// ========================
+// Fetch dynamic data from Firestore
 async function loadCoffeenomics() {
-
-  // ========================
-  // 🔥 STEP 1: FIREBASE LOCATIONS (ONLY ONCE)
-  // ========================
-  const locSnap = await db.collection("locations").get();
-
-  locSnap.forEach(doc => {
-    const d = doc.data();
-
-locationMap[doc.id] = {
-  name: d.name || "Unknown",
-  city: d.city || "",
-  state: d.state || "",
-  lat: Number(d.lat),
-  lng: Number(d.lng)
-};
-  });
-
-  // ========================
-  // 🔥 STEP 2: VOTES
-  // ========================
-  const voteSnap = await db.collection("votes").get();
-
-  const shops = [];
-
-  voteSnap.forEach(doc => {
-    const d = doc.data();
-
-    const up = d.upvotes || 0;
-    const down = d.downvotes || 0;
-    const total = up + down;
-
-    if (!total) return;
-
-    const percent = Math.round((up / total) * 100);
-
-    const speed = d.speedVotes
-      ? d.speedTotal / d.speedVotes
-      : 0;
-
-    // ✅ STRICT MATCH ONLY
-    const loc = locationMap[doc.id] || null;
-
-    if (!loc) {
-      console.warn("Missing location for vote:", doc.id);
-      return;
-    }
-
-    shops.push({
-      id: doc.id,
-      name: loc.name,
-      city: loc.city,
-      state: loc.state,
-      percent,
-      speed,
-      votes: total,
-      score: percent * Math.log(total + 1)
+  try {
+    const locSnap = await db.collection("locations").get();
+    locSnap.forEach(doc => {
+      const d = doc.data();
+      locationMap[doc.id] = {
+        name: d.name || "Unknown Outpost",
+        city: d.city || "",
+        state: d.state || "",
+        lat: Number(d.lat),
+        lng: Number(d.lng)
+      };
     });
-  });
 
-  const stats = buildStats(shops);
-  renderCoffeenomics(stats);
+    const voteSnap = await db.collection("votes").get();
+    processedShops = [];
+
+    voteSnap.forEach(doc => {
+      const d = doc.data();
+      const up = d.upvotes || 0;
+      const down = d.downvotes || 0;
+      const total = up + down;
+
+      if (!total) return;
+
+      const percent = Math.round((up / total) * 100);
+      const speed = d.speedVotes ? (d.speedTotal / d.speedVotes) : 0;
+      const loc = locationMap[doc.id] || null;
+
+      if (!loc) return;
+
+      processedShops.push({
+        id: doc.id,
+        name: loc.name,
+        city: loc.city,
+        state: loc.state,
+        percent,
+        speed,
+        votes: total,
+        score: percent * Math.log(total + 1)
+      });
+    });
+
+    coffeenomicsStats = buildStats(processedShops);
+    renderActiveList();
+  } catch (error) {
+    console.error("Firestore loading error:", error);
+    const container = document.getElementById("recordsContainer");
+    if (container) {
+      container.innerHTML = `<div style="text-align:center; padding:30px; color:var(--error); font-weight:800;">Precinct link offline. Check network.</div>`;
+    }
+  }
 }
-// ========================
-// STATS ENGINE
-// ========================
+
+// Build stats maps
 function buildStats(shops) {
   return {
-    bestOverall: [...shops].sort((a,b)=>b.score-a.score).slice(0,5),
-    worstOverall: [...shops].sort((a,b)=>a.percent-b.percent).slice(0,5),
-    fastest: [...shops].sort((a,b)=>b.speed-a.speed).slice(0,5),
-    chaos: [...shops]
-      .sort((a,b)=>Math.abs(a.percent-50)-Math.abs(b.percent-50))
-      .slice(0,5),
-    elite: shops
-      .filter(s => s.percent >= 90 && s.votes >= 3)
-      .sort((a,b)=>b.percent-a.percent)
-      .slice(0,5),
-    trash: shops
-      .filter(s => s.percent <= 30 && s.votes >= 3)
-      .sort((a,b)=>a.percent-b.percent)
-      .slice(0,5)
+    best: [...shops].sort((a, b) => b.score - a.score).slice(0, 8),
+    worst: [...shops].sort((a, b) => a.percent - b.percent).slice(0, 8),
+    fastest: [...shops].sort((a, b) => b.speed - a.speed).slice(0, 8),
+    chaos: [...shops].sort((a, b) => Math.abs(a.percent - 50) - Math.abs(b.percent - 50)).slice(0, 8),
+    elite: shops.filter(s => s.percent >= 90 && s.votes >= 3).sort((a, b) => b.percent - a.percent).slice(0, 8)
   };
 }
 
-// ========================
-// DISPLAY
-// ========================
-function formatName(shop) {
+// Switch category trigger
+window.switchRecordsCategory = function (category) {
+  activeCategory = category;
+  
+  // Update active chips CSS
+  document.querySelectorAll(".sort-chip").forEach(btn => btn.classList.remove("active"));
+  document.getElementById("tab_" + category)?.classList.add("active");
+  
+  renderActiveList();
+};
 
-  let locationLine = "";
+// Render active list items to records container
+function renderActiveList() {
+  const container = document.getElementById("recordsContainer");
+  if (!container) return;
 
-  if (shop.city && shop.state) {
-    locationLine = `${shop.city}, ${shop.state}`;
-  } else {
-    // fallback to clean name instead of ID garbage
-    locationLine = "";
+  const currentList = coffeenomicsStats[activeCategory] || [];
+  if (currentList.length === 0) {
+    container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted);">No reports logged in this category.</div>`;
+    return;
   }
 
-  return `
-    <strong>${shop.name}</strong>
-    ${locationLine ? `<div style="font-size:12px;color:#666;">${locationLine}</div>` : ""}
-  `;
-}
+  container.innerHTML = currentList.map((shop, idx) => {
+    let scoreDisplay = "";
+    let alertBorder = "";
 
-// ========================
-// RENDER
-// ========================
-function renderCoffeenomics(stats) {
-  renderList("bestOverall", stats.bestOverall);
-  renderList("worstOverall", stats.worstOverall);
-  renderList("fastest", stats.fastest);
-  renderList("chaos", stats.chaos);
-  renderList("elite", stats.elite);
-  renderList("trash", stats.trash);
-}
+    if (activeCategory === "fastest") {
+      scoreDisplay = `Patrol Speed: <strong>${shop.speed.toFixed(1)} / 5 ⭐</strong>`;
+    } else {
+      scoreDisplay = `Stir Score: <strong>${shop.percent}% Accuracy</strong>`;
+    }
 
-function renderList(id, list) {
-  const el = document.getElementById(id);
+    if (activeCategory === "worst") {
+      alertBorder = "border-color: var(--error); background: rgba(198,40,40,0.01);";
+    } else if (activeCategory === "elite" || activeCategory === "best") {
+      alertBorder = "border-color: var(--success); background: rgba(46,125,50,0.01);";
+    }
 
-  el.innerHTML = list.map(s => `
-    <div class="stat">
-      ${formatName(s)}
-      <div>🎯 ${s.percent}% (${s.votes})</div>
-    </div>
-  `).join("");
-}
+    // Dynamic rank tags
+    let rankBadge = "PATROL MEMBER";
+    if (shop.percent >= 90) rankBadge = "ELITE OUTPOST 🎖️";
+    else if (shop.percent <= 40) rankBadge = "CRIME SCENE 🚨";
+    else if (shop.speed >= 4.0) rankBadge = "FAST PATROL ⚡";
 
-// TEMPORARY! DELETEME AFTER SEEDING
-
-async function seedLocationsFromJSON() {
-  const res = await fetch("./coffeeLocations.json");
-  const data = await res.json();
-
-  // 🔥 get all vote IDs first
-  const voteSnap = await db.collection("votes").get();
-  const voteIds = new Set();
-
-  voteSnap.forEach(doc => {
-    voteIds.add(doc.id);
-  });
-
-  const batch = db.batch();
-  let count = 0;
-
-  data.forEach(loc => {
-    const id = generateLocationId(loc.name, loc.lat, loc.lng);
-
-    // ✅ ONLY seed if vote exists
-    if (!voteIds.has(id)) return;
-
-    const ref = db.collection("locations").doc(id);
-
-    batch.set(ref, {
-      name: loc.name,
-      lat: Number(loc.lat),
-      lng: Number(loc.lng),
-      city: loc.city || "",
-      state: loc.state || ""
-    });
-
-    count++;
-  });
-
-  await batch.commit();
-
-  console.log(`🔥 Seeded ${count} matching locations`);
+    return `
+      <div class="card" style="margin-bottom:0; display:flex; justify-content:space-between; align-items:center; gap:20px; ${alertBorder}">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px;">
+            <strong style="font-size:16px;">#${idx+1} ${shop.name}</strong>
+            <span class="badge-tag" style="font-size:9px; padding:2px 6px;">${rankBadge}</span>
+          </div>
+          <div style="font-size:11px; color:var(--text-muted);">${shop.city || "Unknown Sector"}, ${shop.state || "HQ"}</div>
+        </div>
+        <div style="text-align:right; font-size:13px;">
+          <div>${scoreDisplay}</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">${shop.votes} reports</div>
+        </div>
+      </div>
+    `;
+  }).join("");
 }

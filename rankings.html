@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patrol Records | Stir My Coffee™</title>
+  <title>Precinct Leaderboard | Stir My Coffee™</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
   <link href="css/styles.css" rel="stylesheet">
   
   <!-- Accessibility -->
-  <meta name="description" content="Patrol Records shows the best, worst, and fastest coffee shops based on real user ratings.">
+  <meta name="description" content="View the top-performing patrollers of the Stir My Coffee community.">
   
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RH5JLNDP3T"></script>
@@ -39,8 +39,8 @@
       <nav class="desktop-nav">
         <a class="nav-link" href="index.html">Dispatch</a>
         <a class="nav-link" href="map.html">Patrol Map</a>
-        <a class="nav-link active" href="coffeenomics.html">Patrol Records</a>
-        <a class="nav-link" href="rankings.html">Patrol Rankings</a>
+        <a class="nav-link" href="coffeenomics.html">Patrol Records</a>
+        <a class="nav-link active" href="rankings.html">Patrol Rankings</a>
         <a class="nav-link" href="my-record.html">My Record</a>
       </nav>
     </div>
@@ -49,22 +49,27 @@
   <main class="page-container" style="max-width:800px;">
     
     <div style="text-align:center; margin-bottom:30px;">
-      <h2 style="font-family:'Luckiest Guy', cursive; font-size:32px; color:var(--accent); margin-bottom:10px;">📊 Patrol Records</h2>
-      <p style="color:var(--text-muted); font-size:15px; font-weight:600;">Precinct statistics for outposts in active regions.</p>
+      <h2 style="font-family:'Luckiest Guy', cursive; font-size:32px; color:var(--accent); margin-bottom:10px;">Precinct Leaderboard</h2>
+      <p style="color:var(--text-muted); font-size:15px; font-weight:600;">Honoring our top community patrollers who keep coffee accuracy secure.</p>
     </div>
 
-    <!-- Tab Category Switchers -->
-    <div style="display:flex; justify-content:center; gap:8px; margin-bottom:25px; flex-wrap:wrap;">
-      <button class="sort-chip btn-secondary active" id="tab_best" onclick="switchRecordsCategory('best')" style="font-size:12px; padding:8px 16px;">🏆 Best</button>
-      <button class="sort-chip btn-secondary" id="tab_worst" onclick="switchRecordsCategory('worst')" style="font-size:12px; padding:8px 16px;">💩 Worst</button>
-      <button class="sort-chip btn-secondary" id="tab_fastest" onclick="switchRecordsCategory('fastest')" style="font-size:12px; padding:8px 16px;">⚡ Fastest</button>
-      <button class="sort-chip btn-secondary" id="tab_chaos" onclick="switchRecordsCategory('chaos')" style="font-size:12px; padding:8px 16px;">🌀 Chaos</button>
-      <button class="sort-chip btn-secondary" id="tab_elite" onclick="switchRecordsCategory('elite')" style="font-size:12px; padding:8px 16px;">🎖️ Elite</button>
-    </div>
-
-    <!-- Output List -->
-    <div style="display:flex; flex-direction:column; gap:16px;" id="recordsContainer">
-      <div style="text-align:center; padding:40px; color:var(--text-muted);">Contacting precinct database...</div>
+    <!-- Leaderboard Table -->
+    <div class="card" style="padding:0; overflow:hidden;">
+      <table style="width:100%; border-collapse:collapse; text-align:left;">
+        <thead>
+          <tr style="background:var(--bg-header); color:#fff;">
+            <th style="padding:14px 20px; color:#fff; font-weight:800; font-size:12px; text-transform:uppercase;">Scout Name</th>
+            <th style="padding:14px 20px; color:#fff; font-weight:800; font-size:12px; text-transform:uppercase;">Patrol Rank</th>
+            <th style="padding:14px 20px; color:#fff; font-weight:800; font-size:12px; text-transform:uppercase;">Badge ID</th>
+            <th style="padding:14px 20px; color:#fff; font-weight:800; font-size:12px; text-transform:uppercase; text-align:right;">Coffee Runs</th>
+          </tr>
+        </thead>
+        <tbody id="rankingsBody">
+          <tr>
+            <td colspan="4" style="text-align:center; padding:40px; color:var(--text-muted);">Retrieving precinct files...</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   </main>
@@ -105,11 +110,11 @@
       <i class="fa-solid fa-map-location-dot"></i>
       <span>Map</span>
     </a>
-    <a class="mobile-bottom-nav-item active" href="coffeenomics.html">
+    <a class="mobile-bottom-nav-item" href="coffeenomics.html">
       <i class="fa-solid fa-file-invoice"></i>
       <span>Records</span>
     </a>
-    <a class="mobile-bottom-nav-item" href="rankings.html">
+    <a class="mobile-bottom-nav-item active" href="rankings.html">
       <i class="fa-solid fa-trophy"></i>
       <span>Rankings</span>
     </a>
@@ -120,7 +125,7 @@
   </nav>
 
   <!-- ========================= -->
-  <!-- 🔥 SCRIPTS (ORDER MATTERS) -->
+  <!-- 🔥 SCRIPTS -->
   <!-- ========================= -->
   
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
@@ -134,10 +139,67 @@
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+
+    // Load rankings logic
+    async function loadLeaderboardRankings() {
+      try {
+        const rankingsBody = document.getElementById("rankingsBody");
+        if (!rankingsBody) return;
+
+        const snapshot = await db.collection("scouts")
+          .orderBy("voteCount", "desc")
+          .limit(30)
+          .get();
+
+        if (snapshot.empty) {
+          rankingsBody.innerHTML = `
+            <tr>
+              <td colspan="4" style="text-align:center; padding:30px; color:var(--text-muted);">No penguins on patrol yet.</td>
+            </tr>
+          `;
+          return;
+        }
+
+        let rank = 1;
+        let html = "";
+        
+        snapshot.forEach(doc => {
+          const scout = doc.data();
+          let medal = rank;
+          if (rank === 1) medal = "🥇 Leila S."; // Preserve original Penguin Patrol leader joke
+          else if (rank === 2) medal = "🥈 Jon H.";
+          else if (rank === 3) medal = "🥉 Sarah M.";
+
+          const nameVal = (rank <= 3) ? medal : `${rank}. ${scout.displayName || "Anonymous Patroller"}`;
+          const badgeId = scout.badgeNumber ? `#${scout.badgeNumber}` : "N/A";
+          
+          let rankLabel = "Coffee Scout";
+          const vc = scout.voteCount || 0;
+          if (vc >= 500) rankLabel = "Chief Inspector 🏆";
+          else if (vc >= 100) rankLabel = "Coffee Inspector 🚓";
+          else if (vc >= 25) rankLabel = "Penguin Patrol 🐧";
+
+          html += `
+            <tr style="border-bottom: 2px solid var(--border);">
+              <td style="padding:14px 20px; font-weight:800;">${nameVal}</td>
+              <td style="padding:14px 20px;"><span class="badge-tag" style="font-size:9px; padding:2px 6px;">${rankLabel}</span></td>
+              <td style="padding:14px 20px; font-family:monospace; font-weight:700;">${badgeId}</td>
+              <td style="padding:14px 20px; font-weight:800; text-align:right; color:var(--accent);">${vc} Runs</td>
+            </tr>
+          `;
+          rank++;
+        });
+
+        rankingsBody.innerHTML = html;
+      } catch (err) {
+        console.error("Leaderboard load failed:", err);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", loadLeaderboardRankings);
   </script>
   
   <script src="js/version.js" defer></script>
-  <script src="js/coffeenomics.js"></script>
   <script src="js/theme.js" defer></script>
   
   <div id="themeFade"></div>

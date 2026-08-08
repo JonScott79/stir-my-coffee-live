@@ -88,11 +88,11 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 </script>
 
 <!-- Fonts and Stuff -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Outfit:wght@300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet" />
 <!-- Holiday Theme -->
 <link id="holidayTheme" rel="stylesheet" />
@@ -168,256 +168,193 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
   </div>
 </div>
 
-
 <div class="onboarding-buttons">
   <button id="nextOnboardingBtn">Next</button>
   <button id="skipOnboardingBtn">Skip</button>
 </div>
 
-</div></div>
-
-<header>
-<div class="container">
-
-<a href="index.html" aria-label="Go to homepage">
-  <img src="images/StirLogo.png"
-       class="logo"
-       alt="Stir My Coffee logo">
-</a>
-
-  <div class="headerText">
-    <h1>Stir My Coffee™</h1>
-    <p class="tagline">
-      Don’t enable bad coffee. Rate it.
-    </p>
-	<p id="holidayGreeting" class="holidayGreeting"></p>
-  </div>
 </div>
+</div>
+
+<header class="desktop-header">
+  <div class="header-container">
+    <div class="header-brand">
+      <img src="images/StirLogo.png" class="header-logo" alt="Stir Logo">
+      <div class="header-title-block">
+        <h1>Stir My Coffee™</h1>
+        <p>Don't enable bad coffee. Rate it.</p>
+      </div>
+    </div>
+    
+    <nav class="desktop-nav">
+      <a class="nav-link active" href="index.html">Dispatch</a>
+      <a class="nav-link" href="map.html">Patrol Map</a>
+      <a class="nav-link" href="coffeenomics.html">Patrol Records</a>
+      <a class="nav-link" href="rankings.html">Patrol Rankings</a>
+      <a class="nav-link" href="my-record.html">My Record</a>
+    </nav>
+  </div>
 </header>
 
-<div class="actions">
-<button
-  onclick="trackEvent('map_open'); goToMap()">
-  Interactive Map
-</button>
-</div>
+<main class="page-container" style="max-width:1200px;">
 
-<div id="patrolBar" class="patrol-bar hidden">
+  <!-- DISPATCH HERO BANNER -->
+  <div class="dispatch-banner">
+    <img src="images/coffee-cop.png" class="dispatch-cop-img" alt="Coffee Cop">
+    <div class="dispatch-banner-text">
+      <h2>Coffee Patrol Dispatch</h2>
+      <p id="holidayGreeting">"All units, coffee reports are coming in. Log your coffee runs to update the precinct!" 🚨</p>
+    </div>
+  </div>
 
-  <img
-    src="images/coffee-cop.png"
-    alt="Coffee Cop"
-    class="patrol-bar-mascot"
-  >
+  <div class="dispatch-grid">
+    
+    <!-- SIDEBAR COLUMN -->
+    <div>
+      
+      <!-- PERSONAL STATUS CARD -->
+      <div class="card" id="patrolBar" style="margin-bottom:24px;">
+        <div class="card-title" style="margin-bottom:10px;">Your Patrol Record</div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+          <img src="images/coffee-cop.png" style="width:44px; height:auto;" alt="Mascot">
+          <div>
+            <h4 id="patrolName" style="font-size:15px; font-weight:800; color:var(--accent);">Loading Scout...</h4>
+            <div id="patrolStats" style="font-size:11px; color:var(--text-muted);">Retrieving precinct files...</div>
+          </div>
+        </div>
+        <a class="btn-primary" style="width:100%; text-decoration:none;" href="my-record.html">View My Record</a>
+      </div>
 
-  <div class="patrol-bar-info">
+      <!-- QUICK ACTIONS -->
+      <div class="card action-card" onclick="goToMap()" style="cursor:pointer; margin-bottom:24px; text-align:center;">
+        <i class="fa-solid fa-clipboard-check" style="font-size:24px; color:var(--accent); margin-bottom:8px; display:block;"></i>
+        <h3 style="font-size:16px; font-family:'Luckiest Guy', cursive; margin-bottom:4px;">Log Coffee Run</h3>
+        <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px; line-height:1.4;">Verify coffee accuracy at an outpost location</p>
+        <button class="btn-primary" style="width:100%; padding: 8px 10px; font-size:12px;">Start Inspection</button>
+      </div>
 
-    <div id="patrolName">
-      Loading...
+      <div class="card action-card" onclick="goToMap()" style="cursor:pointer; margin-bottom:24px; text-align:center;">
+        <i class="fa-solid fa-map-location-dot" style="font-size:24px; color:var(--accent); margin-bottom:8px; display:block;"></i>
+        <h3 style="font-size:16px; font-family:'Luckiest Guy', cursive; margin-bottom:4px;">Open Patrol Map</h3>
+        <p style="font-size:11px; color:var(--text-muted); margin-bottom:12px; line-height:1.4;">Deploy simulated precinct radar locations</p>
+        <button class="btn-primary" style="width:100%; padding: 8px 10px; font-size:12px;">Launch Map</button>
+      </div>
+
+      <!-- TOP PATROLLER LEADERBOARD WIDGET -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-title">Top Patrollers</div>
+        <div class="penguin-leaderboard leaders-list" style="margin-bottom:15px;">
+          <!-- Populated by app.js -->
+        </div>
+        <a class="btn-secondary" style="width:100%; text-align:center; text-decoration:none;" href="rankings.html">View Leaderboard</a>
+      </div>
+
+      <!-- COFFEE COP LORE MSG -->
+      <div class="card" style="border-color:var(--safety-gold); background:rgba(217,119,6,0.02);">
+        <div class="card-title" style="font-size:18px; color:var(--safety-gold);">
+          <span>Precinct Announcement</span>
+          <span>📢</span>
+        </div>
+        <p style="font-size:12px; line-height:1.5; color:var(--text-muted);">
+          🏆 The #1 Penguin Scout will earn the right to officially name Coffee Cop forever. Get out there and inspect your sector's runs!
+        </p>
+      </div>
+
     </div>
 
-    <div id="patrolStats">
-      Loading...
+    <!-- MAIN COLUMN -->
+    <div class="dispatch-main-column">
+
+      <!-- OUTPOSTS LIST -->
+      <div class="card">
+        <div class="card-title">
+          <span>Sector Outposts</span>
+          <div class="sort-actions" style="display:flex; gap:8px;">
+            <button id="distanceSortBtn" class="sort-tab btn-secondary active" onclick="setBestSort('distance')" style="font-size:11px; padding:6px 12px; height:auto; box-shadow:1px 1px 0 var(--border);">Distance</button>
+            <button id="topRatedSortBtn" class="sort-tab btn-secondary" onclick="setBestSort('rated')" style="font-size:11px; padding:6px 12px; height:auto; box-shadow:1px 1px 0 var(--border);">Consistency</button>
+            <button id="fastestSortBtn" class="sort-tab btn-secondary" onclick="setBestSort('fastest')" style="font-size:11px; padding:6px 12px; height:auto; box-shadow:1px 1px 0 var(--border);">Speed</button>
+          </div>
+        </div>
+        
+        <div id="locationRequiredCard" class="location-required hidden" style="background:var(--bg-main); border:2px dashed var(--border); border-radius:var(--radius-sm); padding:20px; text-align:center;">
+          <h3 style="font-family:'Luckiest Guy', cursive; font-size:18px; margin-bottom:8px;">📍 Location Required</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">Enable location permissions to find outposts near your precinct.</p>
+          <img id="locationHelpImage" class="location-help-image" src="images/location-bar-chrome.png" alt="Location help" style="max-width:100%; border:2px solid var(--border); border-radius:4px; margin-bottom:15px;">
+          <button class="btn-primary" onclick="openInBrowser()">Open In Browser</button>
+        </div>
+
+        <div class="listSection" id="bestNearbyList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:16px;">
+          <!-- Loaded dynamically via app.js -->
+        </div>
+      </div>
+
     </div>
 
   </div>
 
-</div>
-
-<div class="penguin-patrol">
-
-  <div class="penguin-header">
-
-    <img
-      src="images/coffee-cop.png"
-      alt="Coffee Cop"
-      class="penguin-mascot">
-
-    <h2>Penguin Patrol</h2>
-
+  <!-- SEO CONTENT -->
+  <div class="seo-content" style="margin-top:40px; text-align:center;">
+    <details style="display:inline-block; text-align:left; max-width:600px;">
+      <summary style="font-weight:700; cursor:pointer; font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Show SEO Details</summary>
+      <div class="seo-body" style="font-size:11px; line-height:1.6; color:var(--text-muted); margin-top:8px; opacity:0.8;">
+        <p style="margin-bottom:8px;">Stir My Coffee helps you find coffee shops near you that consistently get your order right and serve quickly.</p>
+        <p style="margin-bottom:8px;">Instead of guessing, you can rely on real customer ratings that highlight accuracy and speed, so you never waste money on bad coffee again.</p>
+        <p style="margin-bottom:8px;">Whether you're looking for fast coffee near you, accurate drink preparation, or the best overall coffee experience, Stir My Coffee makes it easy to choose the right spot before you go.</p>
+        <p>Coffee Cop is the official mascot of Stir My Coffee™ and leads the Penguin Patrol, a community of coffee lovers helping identify the fastest and most consistent coffee locations.</p>
+      </div>
+    </details>
   </div>
 
-  <p class="penguin-text">
-    🏆 The #1 Penguin on <b>10/1/26</b> will earn the right to officially name Coffee Cop forever.
-  </p>
+</main>
 
-  <div class="penguin-leaderboard">
-
-    <div class="penguin-row">
-      <span>🥇 Sarah M.</span>
-      <span>214 Ratings</span>
+<footer style="background:var(--bg-header); color:#fff; padding:24px 20px; font-size:12px; border-top:4px solid var(--badge-gold); text-align:center;">
+  <div class="header-container" style="flex-direction:column; gap:16px;">
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; font-weight:700;">
+      <a href="about.html" style="color:#fff; text-decoration:none;">About</a>
+      <a href="legal.html" style="color:#fff; text-decoration:none;">Legal</a>
+      <a href="mailto:hello@stirmycoffee.com" style="color:#fff; text-decoration:none;">Contact</a>
+      <a href="support.html" style="color:#fff; text-decoration:none;">Donate</a>
+      <a href="https://play.google.com/store/apps/details?id=com.stirmycoffee.app" target="_blank" rel="noopener noreferrer" style="color:var(--badge-gold); text-decoration:none;" onclick="trackEvent('rate_us_click')">Rate Us</a>
     </div>
-
-    <div class="penguin-row">
-      <span>🥈 Jon H.</span>
-      <span>182 Ratings</span>
+    
+    <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
+      <span style="opacity:0.7;">© 2026 Stir My Coffee™</span>
+      <span style="opacity:0.4;">|</span>
+      <span>
+        <a href="changelog.html" style="color:var(--accent-light); text-decoration:none; font-weight:700;"><span id="appVersion">v5.0.0</span></a>
+      </span>
+      <span style="opacity:0.4;">|</span>
+      <div style="display:inline-flex; gap:10px; font-size:16px;">
+        <a href="https://instagram.com/stir.my.coffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61576515072675" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook"></i></a>
+      </div>
     </div>
-
-    <div class="penguin-row">
-      <span>🥉 Mike R.</span>
-      <span>137 Ratings</span>
-    </div>
-
-  </div>
-
-  <button
-    id="joinPatrolBtn"
-    class="penguin-btn">
-    Join The Penguin Patrol
-  </button>
-
-</div>
-  <div class="mainLayout">
-    <!-- BEST -->
-
-<div id="bestView" class="topPickSection">
-
-  <h2>Nearby Coffee Shops</h2>
-
-  <div class="vote-subtext">
-    Find the best coffee near you
-  </div>
-  <div class="actions sort-actions">
-
-  <button
-    id="distanceSortBtn"
-    class="sort-tab active"
-    onclick="setBestSort('distance')">
-    Distance
-  </button>
-
-  <button
-    id="topRatedSortBtn"
-    class="sort-tab"
-    onclick="setBestSort('rated')">
-    Consistency
-  </button>
-
-  <button
-    id="fastestSortBtn"
-    class="sort-tab"
-    onclick="setBestSort('fastest')">
-    Speed
-  </button>
-
-</div>
-
-<div id="locationRequiredCard"
-     class="location-required hidden">
-
-  <h3>📍 Location Required</h3>
-
-  <p>
-    Enable location to see coffee shops near you.
-  </p>
-
-<img
-id="locationHelpImage"
-class="location-help-image"
-src="images/location-bar-chrome.png"
-alt="Location permission help">
-
-  <div class="location-actions">
-
-    <button onclick="openInBrowser()">
-      Open In Browser
-    </button>
-
-  </div>
-
-</div>
-
-<div class="listSection" id="bestNearbyList"></div>
-
-</div>
-</div>
-
-
-<div class="seo-content">
-
-  <details>
-    <summary>What is Stir My Coffee?</summary>
-
-    <div class="seo-body">
-
-      <p>
-        Stir My Coffee helps you find coffee shops near you that consistently get your order right and serve quickly.
-      </p>
-
-      <p>
-        Instead of guessing, you can rely on real customer ratings that highlight accuracy and speed, so you never waste money on bad coffee again.
-      </p>
-
-      <p>
-        Whether you're looking for fast coffee near you, accurate drink preparation, or the best overall coffee experience, Stir My Coffee makes it easy to choose the right spot before you go.
-      </p>
-	  
-	<p>
-	Coffee Cop is the official mascot of Stir My Coffee™ and leads the Penguin Patrol, a community of coffee lovers helping identify the fastest and most consistent coffee locations.
-
-	Members of the Penguin Patrol earn badge numbers, submit coffee ratings, and help fellow coffee drinkers avoid bad coffee experiences.
-	</p>
-
-    </div>
-  </details>
-
-</div>
-
-<footer>
-  <div class="footer-left">
-    © 2026 Stir My Coffee™
-    <a href="about.html">About</a>
-    <a href="legal.html">Legal</a>
-    <a href="mailto:hello@stirmycoffee.com">Contact</a>
-    <a href="support.html">Donate</a>
-
-<a href="https://play.google.com/store/apps/details?id=com.stirmycoffee.app"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="rate-link"
-   onclick="trackEvent('rate_us_click')">
-  Rate Us
-</a>
-
-    <span class="version">
-      <a href="/changelog.html"><span id="appVersion"></span></a>
-    </span>
-  </div>
-
-  <div class="footer-right">
-
-    <!-- GOOGLE PLAY BADGE -->
-    <a href="https://play.google.com/store/apps/details?id=com.stirmycoffee.app&ref=footer"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="play-badge-link"
-       onclick="trackEvent('install_click_footer')">
-
-      <img src="images/google-play-badge.svg"
-           alt="Get it on Google Play"
-           class="play-badge">
-    </a>
-
-    <!-- DIVIDER -->
-    <span class="footer-divider">|</span>
-
-    <!-- SOCIALS -->
-    <a href="https://instagram.com/stir.my.coffee"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-
-    <a href="https://www.facebook.com/profile.php?id=61576515072675"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Facebook">
-      <i class="fa-brands fa-facebook"></i>
-    </a>
-
   </div>
 </footer>
+
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="mobile-bottom-nav">
+  <a class="mobile-bottom-nav-item active" href="index.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Dispatch</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="map.html">
+    <i class="fa-solid fa-map-location-dot"></i>
+    <span>Map</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="coffeenomics.html">
+    <i class="fa-solid fa-file-invoice"></i>
+    <span>Records</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="rankings.html">
+    <i class="fa-solid fa-trophy"></i>
+    <span>Rankings</span>
+  </a>
+  <a class="mobile-bottom-nav-item" href="my-record.html">
+    <i class="fa-solid fa-user-shield"></i>
+    <span>Profile</span>
+  </a>
+</nav>
 
 <!-- JAVASCRIPT -->
 

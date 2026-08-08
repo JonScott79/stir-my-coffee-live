@@ -1,116 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Clarity -->
+  <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wutstzkpmk");
+  </script>
 
-<!-- Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wutstzkpmk");
-</script>
+  <meta charset="utf-8">
+  <title>Stir My Coffee™ | Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore nearby coffee shops, add locations, report issues, and help improve coffee experiences with Stir My Coffee.">
 
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<meta charset="utf-8">
-<title>Stir My Coffee™ | Map</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Explore nearby coffee shops, add locations, report issues, and help improve coffee experiences with Stir My Coffee.">
-
-<link rel="icon" href="/images/favicon.ico">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
-
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/map.css">
-<!-- Seasonal Styles -->
-<link id="baseTheme" rel="stylesheet" />
-<!-- Holiday Styles -->
-<link id="holidayTheme" rel="stylesheet" />
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/map.css">
+  
+  <link id="baseTheme" rel="stylesheet" />
+  <link id="holidayTheme" rel="stylesheet" />
 </head>
-
 <body>
 
-<div id="header">
+  <!-- DESKTOP HEADER -->
+  <header class="desktop-header">
+    <div class="header-container">
+      <div class="header-brand">
+        <img src="images/StirLogo.png" class="header-logo" alt="Stir Logo">
+        <div class="header-title-block">
+          <h1>Stir My Coffee™</h1>
+          <p>Don't enable bad coffee. Rate it.</p>
+        </div>
+      </div>
+      
+      <nav class="desktop-nav">
+        <a class="nav-link" href="index.html">Dispatch</a>
+        <a class="nav-link active" href="map.html">Patrol Map</a>
+        <a class="nav-link" href="coffeenomics.html">Patrol Records</a>
+        <a class="nav-link" href="rankings.html">Patrol Rankings</a>
+        <a class="nav-link" href="my-record.html">My Record</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="header-left">
-    <a href="index.html">
-      <img src="images/StirLogo.png" class="logo">
-    </a>
+  <!-- SEARCH OVERLAY & MAP CONTAINER -->
+  <div style="position:relative; width:100%; height:calc(100vh - 72px);">
+    
+    <!-- Floating map instructions / actions -->
+    <div style="position:absolute; bottom:20px; left:20px; z-index:1000; display:flex; gap:8px;">
+      <button class="btn-primary" style="padding:10px 16px; font-size:12px;" onclick="goToUser()">📍 Recenter Map</button>
+    </div>
+
+    <!-- MAP CONTAINER -->
+    <div id="map" style="width:100%; height:100%;"></div>
+
+    <!-- Simulated Map Details sliding panel -->
+    <div class="details-drawer" id="mapDetailsPanel">
+      <div class="drawer-header">
+        <div>
+          <h3 id="drawerName" style="font-size:18px; font-weight:800; font-family:'Luckiest Guy', cursive;">Location Details</h3>
+          <p id="drawerMeta" style="font-size:11px; opacity:0.8; margin-top:2px;">Location address...</p>
+        </div>
+        <button class="close-drawer-btn" onclick="closeDrawerDetails()">×</button>
+      </div>
+      
+      <div class="drawer-body">
+        <div style="background:var(--bg-main); border:2px solid var(--border); border-radius:12px; padding:14px; margin-bottom:20px; text-align:center; box-shadow:2px 2px 0 var(--border);">
+          <div style="font-size:10px; text-transform:uppercase; font-weight:800; color:var(--text-muted);">INSPECTION SUCCESS RATE</div>
+          <div id="drawerAccuracy" style="font-size:32px; font-family:'Luckiest Guy', cursive; color:var(--accent); margin:6px 0;">--%</div>
+          <div style="font-size:11px; color:var(--text-main); font-weight:700;">Based on <span id="drawerVotes">--</span> Patrol Runs</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px; border-bottom:2px solid #cbd5e1; padding-bottom:15px; font-size:12px;">
+          <div>
+            <span style="font-size:10px; color:var(--text-muted); display:block; font-weight:800; text-transform:uppercase;">RESPONSE SPEED</span>
+            <strong id="drawerSpeedText" style="color:var(--safety-gold);">--</strong>
+          </div>
+          <div>
+            <span style="font-size:10px; color:var(--text-muted); display:block; font-weight:800; text-transform:uppercase;">OFFICER STATUS</span>
+            <strong style="color:var(--success);">ACTIVE PATROL</strong>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <h4 style="margin-bottom:10px; font-size:13px; font-weight:800; text-transform:uppercase; color:var(--text-muted);">Log Coffee Run:</h4>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-primary" id="btnVoteUp" style="flex:1; font-size:12px; padding:10px 8px; background:var(--success);" onclick="triggerDrawerVote(true)">👍 Good Cup</button>
+            <button class="btn-primary" id="btnVoteDown" style="flex:1; font-size:12px; padding:10px 8px; background:var(--error);" onclick="triggerDrawerVote(false)">👎 Bad Cup</button>
+          </div>
+        </div>
+        
+        <button class="btn-primary" style="width:100%; margin-bottom:10px;" id="btnDirections" onclick="triggerDrawerDirections()"><i class="fa-solid fa-route"></i> Get Directions</button>
+        <button class="btn-secondary" style="width:100%;" id="btnReportIssue" onclick="triggerDrawerReport()"><i class="fa-solid fa-triangle-exclamation"></i> Report Issue</button>
+      </div>
+    </div>
+
   </div>
 
-  <div class="header-center">
-<div id="mapInstructions">
-  Tap/Click map to add • Tap/Click shops to vote
-</div>
+  <!-- ADD LOCATION PANEL -->
+  <div id="submitPanel" class="panel">
+    <b style="font-family:'Luckiest Guy', cursive; font-size:16px;">Add Coffee Outpost</b><br><br>
 
-    <div class="header-actions">
-      <button onclick="goToList()">Home</button>
-      <button onclick="goToUser()">📍 Center Map</button>
+    <select id="shopChain" onchange="handleChainChange()" style="width:100%; padding:8px; border:2px solid var(--border); border-radius:6px; font-weight:700;">
+      <option value="">Select Chain</option>
+      <option value="Starbucks">Starbucks</option>
+      <option value="Dunkin">Dunkin</option>
+      <option value="Tim Hortons">Tim Hortons</option>
+      <option value="Peet's Coffee">Peet's Coffee</option>
+      <option value="Caribou Coffee">Caribou Coffee</option>
+      <option value="Biggby Coffee">Biggby Coffee</option>
+      <option value="Philz Coffee">Philz Coffee</option>
+      <option value="Blue Bottle Coffee">Blue Bottle Coffee</option>
+      <option value="Other">Other (Local / Independent)</option>
+    </select><br><br>
+
+    <input id="shopName" placeholder="Shop name" disabled style="width:100%; padding:8px; border:2px solid var(--border); border-radius:6px; font-weight:700;"><br><br>
+
+    <div style="display:flex; gap:8px;">
+      <button class="btn-primary" style="flex:1; padding:8px;" onclick="submitShop()">Submit</button>
+      <button class="btn-secondary" style="flex:1; padding:8px;" onclick="closeSubmitForm()">Cancel</button>
     </div>
   </div>
 
-</div>
+  <!-- REPORT PANEL -->
+  <div id="reportPanel" class="panel">
+    <b style="font-family:'Luckiest Guy', cursive; font-size:16px;">Report Outpost</b><br><br>
 
-<div id="map"></div>
+    <select id="reportReason" onchange="handleReportReasonChange()" style="width:100%; padding:8px; border:2px solid var(--border); border-radius:6px; font-weight:700;">
+      <option value="">Select Reason</option>
+      <option value="wrong">Wrong Location</option>
+      <option value="duplicate">Duplicate</option>
+      <option value="closed">Closed Permanently</option>
+      <option value="bad_data">Bad Data</option>
+      <option value="other">Other</option>
+    </select><br><br>
 
-<div id="submitPanel" class="panel">
-  <b>Add Coffee Shop</b><br><br>
+    <textarea
+      id="reportDetails"
+      placeholder="Describe the issue..."
+      style="display:none;width:100%;min-height:90px;padding:8px;border-radius:8px;border:2px solid var(--border);resize:vertical;"
+    ></textarea>
 
-  <select id="shopChain" onchange="handleChainChange()">
-    <option value="">Select Chain</option>
-    <option value="Starbucks">Starbucks</option>
-    <option value="Dunkin">Dunkin</option>
-    <option value="Tim Hortons">Tim Hortons</option>
-    <option value="Peet's Coffee">Peet's Coffee</option>
-    <option value="Caribou Coffee">Caribou Coffee</option>
-    <option value="Biggby Coffee">Biggby Coffee</option>
-    <option value="Philz Coffee">Philz Coffee</option>
-    <option value="Blue Bottle Coffee">Blue Bottle Coffee</option>
-    <option value="Other">Other (Local / Independent)</option>
-  </select><br><br>
-
-  <input id="shopName" placeholder="Shop name" disabled><br><br>
-
-  <button onclick="submitShop()">Submit</button>
-  <button onclick="closeSubmitForm()">Cancel</button>
-</div>
-
-<div id="reportPanel" class="panel">
-  <b>Report Location</b><br><br>
-
-  <select id="reportReason" onchange="handleReportReasonChange()">
-    <option value="">Select Reason</option>
-    <option value="wrong">Wrong Location</option>
-    <option value="duplicate">Duplicate</option>
-    <option value="closed">Closed Permanently</option>
-    <option value="bad_data">Bad Data</option>
-    <option value="other">Other</option>
-  </select><br><br>
-
-  <textarea
-    id="reportDetails"
-    placeholder="Describe the issue..."
-    style="display:none;width:100%;min-height:90px;padding:8px;border-radius:8px;border:1px solid #ccc;resize:vertical;"
-  ></textarea>
-
-  <div style="display:flex;gap:8px;margin-top:12px;">
-    <button onclick="submitReport()">Submit</button>
-    <button onclick="closeReportPanel()">Cancel</button>
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button class="btn-primary" style="flex:1; padding:8px;" onclick="submitReport()">Submit</button>
+      <button class="btn-secondary" style="flex:1; padding:8px;" onclick="closeReportPanel()">Cancel</button>
+    </div>
   </div>
-</div>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!-- MOBILE BOTTOM NAVIGATION -->
+  <nav class="mobile-bottom-nav">
+    <a class="mobile-bottom-nav-item" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Dispatch</span>
+    </a>
+    <a class="mobile-bottom-nav-item active" href="map.html">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <span>Map</span>
+    </a>
+    <a class="mobile-bottom-nav-item" href="coffeenomics.html">
+      <i class="fa-solid fa-file-invoice"></i>
+      <span>Records</span>
+    </a>
+    <a class="mobile-bottom-nav-item" href="rankings.html">
+      <i class="fa-solid fa-trophy"></i>
+      <span>Rankings</span>
+    </a>
+    <a class="mobile-bottom-nav-item" href="my-record.html">
+      <i class="fa-solid fa-user-shield"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
 
-<script type="module" src="js/map.js"></script>
+  <!-- LEAFLET SCRIPTS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
+  <!-- FIREBASE SCRIPTS -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyDuPgwpIZfAoo_88NhfC4VfpOObPUVNnNM",
+      authDomain: "stir-my-coffee.firebaseapp.com",
+      projectId: "stir-my-coffee",
+    });
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+  </script>
+
+  <script src="js/version.js" defer></script>
+  <script type="module" src="js/map.js"></script>
+  <script src="js/theme.js" defer></script>
 </body>
 </html>
