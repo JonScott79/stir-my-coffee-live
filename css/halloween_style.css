@@ -21,3 +21,24 @@
 .location-card:hover {
   box-shadow: 0 0 15px rgba(255, 122, 0, 0.4);
 }
+
+/* Rating Bottom Sheet buttons contrast */
+.speed-btn-option,
+.accuracy-buttons button {
+  color: #2a1b12;
+}
+
+.speed-btn-option:hover,
+.speed-btn-option:active,
+.accuracy-buttons button:hover,
+.accuracy-buttons button:active {
+  color: #2a1b12;
+}
+
+.speed-btn-cancel:hover {
+  color: #2a1b12;
+}
+
+.badge-tag {
+  color: #1a1a1a;
+}
