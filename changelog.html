@@ -67,27 +67,40 @@
     }
 
     .changelog-entry {
-      background: #fff;
-      padding: 16px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      background: var(--bg-card, #fff);
+      color: var(--text-main, #2a1b12);
+      padding: 20px;
+      border: 2px solid var(--border, #e5d5c5);
+      border-radius: var(--radius, 16px);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-soft, 0 4px 10px rgba(0,0,0,0.08));
     }
 
     .version-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #4b2e2b;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--badge-gold, #d97706);
+      font-family: 'Luckiest Guy', cursive;
+      letter-spacing: 0.5px;
     }
 
     .section-title {
-      font-weight: bold;
-      margin-top: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      color: var(--badge-gold, #d97706);
     }
 
-    ul {
-      margin: 5px 0 10px 20px;
+    .changelog-entry ul {
+      margin: 6px 0 14px 20px;
+      color: var(--text-main, #2a1b12);
+      line-height: 1.6;
+    }
+
+    .changelog-entry li {
+      margin-bottom: 4px;
     }
 
     a.back {
@@ -99,6 +112,17 @@
     }
   </style>
 </head>
+
+<!-- MOBILE TOP BAR -->
+<header class="mobile-header">
+  <div class="mobile-header-brand">
+    <img src="images/StirLogo.png" class="mobile-header-logo" alt="Stir My Coffee">
+    <span class="mobile-header-title">Stir My Coffee&trade;</span>
+  </div>
+  <a href="index.html" class="mobile-header-badge-btn" style="text-decoration:none;">
+    <i class="fa-solid fa-house"></i> Dispatch
+  </a>
+</header>
 
 <header class="desktop-header">
   <div class="header-container">
@@ -126,7 +150,66 @@
   <p class="subtle">
     Stir My Coffee™ is actively developed. Updates roll out regularly to improve speed, accuracy, and usability.
   </p>
- <!-- v3.2.1 -->
+ 
+  <!-- v5.1.0 -->
+  <div class="changelog-entry">
+    <div class="version-title">
+      v5.1.0 &mdash; October 2026
+    </div>
+    <div class="section-title">
+      📱 Mobile Patrol Overhaul &amp; Community Intel Update
+    </div>
+    <div class="section-title">
+      Added
+    </div>
+    <ul>
+      <li>Added persistent branded mobile header across all pages with quick-access Precinct Patrol shortcut</li>
+      <li>Added compact dual-action strip (&ldquo;Log Coffee Run&rdquo; &amp; &ldquo;Patrol Map&rdquo;) on mobile Dispatch</li>
+      <li>Added fixed mobile bottom navigation with safe-area support for iOS and Android gesture navigation bars</li>
+      <li>Added discreet, expandable Community Intel &amp; Local Coffee Guide in footer with rich editorial copy and natural search indexing</li>
+      <li>Added mobile-responsive scrolling wrapper for the Patrol Rankings leaderboard table</li>
+    </ul>
+    <div class="section-title">
+      Improved
+    </div>
+    <ul>
+      <li>Elevated Sector Outposts to the top of the mobile feed for immediate local coffee discovery</li>
+      <li>Eliminated horizontal viewport overflow and fixed map drawer containment on small screens</li>
+      <li>Completely removed the obtrusive inline SEO accordion from the homepage body</li>
+      <li>Cleaned up trademark and copyright HTML entity encodings across all site templates</li>
+    </ul>
+  </div>
+
+  <!-- v5.0.0 -->
+  <div class="changelog-entry">
+    <div class="version-title">
+      v5.0.0 &mdash; August 2026
+    </div>
+    <div class="section-title">
+      ☕ Stir My Coffee 5.0 &mdash; Coffee Patrol Redesign
+    </div>
+    <div class="section-title">
+      Added
+    </div>
+    <ul>
+      <li>Added full unified Coffee Patrol visual design system and mascot guidelines across all pages</li>
+      <li>Added Dispatch dashboard homepage featuring Officer Coffee Cop, search overlays, and Top Patrollers list</li>
+      <li>Added Patrol Rankings page displaying precinct leaderboard data dynamically from Firestore</li>
+      <li>Added My Record profile page showing user badge numbers, ranks, runs, and unlocked achievement lists</li>
+      <li>Added regulatory account and data deletion compliance module for Google Play policy</li>
+      <li>Added interactive tab-based category switcher to Patrol Records (Best, Worst, Fastest, Chaos, Elite)</li>
+    </ul>
+    <div class="section-title">
+      Improved
+    </div>
+    <ul>
+      <li>Modernized auxiliary pages (About, Support, stickers, and legal terms) to match design system colors and layout patterns</li>
+      <li>Aligned PWA and Bubblewrap TWA compile SDK versions and coordinated color configurations for the v5.0.0 release</li>
+      <li>Refactored Leaflet map search bar and location drawer panel layout</li>
+    </ul>
+  </div>
+
+  <!-- v3.2.1 -->
 
 <div class="changelog-entry">
 
@@ -1525,7 +1608,7 @@ Misc
       <span style="opacity:0.7;">© 2026 Stir My Coffee™</span>
       <span style="opacity:0.4;">|</span>
       <span>
-        <a href="changelog.html" style="color:var(--accent-light); text-decoration:none; font-weight:700;"><span id="appVersion">v5.0.0</span></a>
+        <a href="changelog.html" style="color:var(--accent-light); text-decoration:none; font-weight:700;"><span id="appVersion">v5.1.0</span></a>
       </span>
       <span style="opacity:0.4;">|</span>
       <div style="display:inline-flex; gap:10px; font-size:16px;">

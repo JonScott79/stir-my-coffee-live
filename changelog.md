@@ -1,3 +1,22 @@
+## [5.1.0] - October 2026
+
+### 📱 Mobile Patrol Overhaul & Community Intel Update
+
+### Added
+
+* Added persistent branded mobile header across all pages with quick-access Precinct Patrol dispatch shortcut.
+* Added compact mobile action strip ("Log Coffee Run" and "Patrol Map") on the Dispatch homepage.
+* Added fixed mobile bottom navigation with safe-area support for iOS and Android gesture bars.
+* Added discreet, expandable Community Intel & Local Coffee Guide in footer with rich editorial copy and natural search indexing.
+* Added mobile-responsive scrolling wrapper for the Patrol Rankings leaderboard table.
+
+### Improved
+
+* Elevated Sector Outposts to the top of mobile feed for immediate local coffee discovery.
+* Eliminated horizontal viewport overflow and fixed map drawer containment on smaller screens.
+* Completely removed the obtrusive inline SEO accordion from the homepage body.
+* Cleaned up trademark and copyright HTML entity encodings across all page templates.
+
 ## [5.0.0] – August 2026
 
 ### ☕ Stir My Coffee 5.0 — Coffee Patrol Redesign
