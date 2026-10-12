@@ -42,3 +42,20 @@
 .badge-tag {
   color: #1a1a1a;
 }
+
+/* Trigger buttons contrast */
+.coffee-run-trigger,
+.speed-status-trigger {
+  color: #2a1b12;
+}
+
+/* Top Patrollers leaderboard */
+.penguin-row {
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 2px solid var(--border);
+}
+
+.penguin-row span:last-child {
+  color: var(--accent);
+}
