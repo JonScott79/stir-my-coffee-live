@@ -176,6 +176,18 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
 </div>
 </div>
 
+<!-- MOBILE APP HEADER -->
+<header class="mobile-header">
+  <a href="index.html" class="mobile-header-brand">
+    <img src="images/StirLogo.png" class="mobile-header-logo" alt="Stir My Coffee">
+    <span class="mobile-header-title">Stir My Coffee™</span>
+  </a>
+  <div class="mobile-header-badge">
+    <span id="mobileHolidayEmoji">🚨</span>
+    <span class="mobile-precinct-tag">Precinct Patrol</span>
+  </div>
+</header>
+
 <header class="desktop-header">
   <div class="header-container">
     <div class="header-brand">
@@ -207,10 +219,20 @@ Coffee Shops Near Me | Fast & Accurate Ratings | Stir My Coffee™
     </div>
   </div>
 
+  <!-- COMPACT MOBILE QUICK ACTIONS -->
+  <div class="mobile-quick-actions">
+    <button class="mobile-action-pill highlight" onclick="goToMap()">
+      <i class="fa-solid fa-clipboard-check"></i> Log Coffee Run
+    </button>
+    <button class="mobile-action-pill" onclick="goToMap()">
+      <i class="fa-solid fa-map-location-dot"></i> Patrol Map
+    </button>
+  </div>
+
   <div class="dispatch-grid">
     
     <!-- SIDEBAR COLUMN -->
-    <div>
+    <div class="dispatch-sidebar-column">
       
       <!-- PERSONAL STATUS CARD -->
       <div class="card" id="patrolBar" style="margin-bottom:24px;">

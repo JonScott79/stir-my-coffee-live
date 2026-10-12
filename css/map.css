@@ -324,8 +324,8 @@
 
 @media (max-width: 768px) {
   #map {
-    top: 0;
-    height: calc(100vh - 65px); /* space for mobile bottom navigation */
+    top: 54px !important;
+    height: calc(100vh - 54px - 58px - env(safe-area-inset-bottom, 0px)) !important;
   }
   .leaflet-top.leaflet-left {
     top: 70px !important;
